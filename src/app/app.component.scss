@@ -1,0 +1,21 @@
+.header-loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    z-index: 100;
+    background-color: #ffdd00;
+    animation-name: full-width;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes full-width {
+    from { width: 0%; height: 4px; }
+    70% { width: 100%; height: 4px; }
+    90% { width: 100%; height: 4px; }
+    to { width: 100%; height: 0px; }
+}

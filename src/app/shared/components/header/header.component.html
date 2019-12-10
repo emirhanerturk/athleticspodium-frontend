@@ -1,0 +1,27 @@
+
+<header class="header">
+    <div class="header-container">
+        <h1>Atletics Podium</h1>
+    </div>
+</header>
+<nav class="nav">
+    <div class="nav-container">
+        <ul class="menu">
+            <li [class.active]="activeNav === ENavigation.HOME">
+                <a routerLink="/">Home</a>
+            </li>
+            <li [class.active]="activeNav === ENavigation.COUNTRIES">
+                <a routerLink="/countries">Countries</a>
+            </li>
+            <li [class.active]="activeNav === ENavigation.CHAMPS">
+                <a routerLink="/champs">Champs</a>
+            </li>
+            <li [class.active]="activeNav === ENavigation.CALENDAR">
+                <a routerLink="/calendar">Calendar</a>
+            </li>
+            <li [class.active]="activeNav === ENavigation.ARTICLES">
+                <a routerLink="/articles">Articles</a>
+            </li>
+        </ul>
+    </div>
+</nav>

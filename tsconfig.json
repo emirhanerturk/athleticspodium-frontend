@@ -17,7 +17,22 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@shared/*": ["src/app/shared/*"],
+      /* core */
+      "@pipes/*": ["src/app/core/pipes/*"],
+      "@services/*": ["src/app/core/services/*"],
+      "@directives/*": ["src/app/core/directives/*"],
+      "@enums/*": ["src/app/core/enums/*"],
+      "@interfaces/*": ["src/app/core/interfaces/*"],
+      "@guards/*": ["src/app/core/guards/*"],
+      "@interceptors/*": ["src/app/core/interceptors/*"],
+      /* shared */
+      "@layouts/*": ["src/app/shared/layouts/*"],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
