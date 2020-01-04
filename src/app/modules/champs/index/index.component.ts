@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService } from "@services/app.service";
+import { AppService, ENavigation } from "@services/app.service";
 
 @Component({
   selector: 'app-index',
@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appService.setNavigation(this.appService.ENavigation.CHAMPS)
+    this.appService.setNavigation(ENavigation.CHAMPS)
 
   }
 

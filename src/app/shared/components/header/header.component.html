@@ -11,10 +11,13 @@
                 <a routerLink="/">Home</a>
             </li>
             <li [class.active]="activeNav === ENavigation.COUNTRIES">
-                <a routerLink="/countries">Countries</a>
+                <a routerLink="/country">Countries</a>
             </li>
             <li [class.active]="activeNav === ENavigation.CHAMPS">
                 <a routerLink="/champs">Champs</a>
+            </li>
+            <li [class.active]="activeNav === ENavigation.ATHLETES">
+                <a routerLink="/athlete">Athletes</a>
             </li>
             <li [class.active]="activeNav === ENavigation.CALENDAR">
                 <a routerLink="/calendar">Calendar</a>

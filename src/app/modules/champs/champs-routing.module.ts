@@ -14,6 +14,10 @@ const routes: Routes = [
     path: ':slug',
     component: DetailComponent,
   },
+  {
+    path: ':slug/:id',
+    component: DetailComponent,
+  },
 ];
 
 @NgModule({

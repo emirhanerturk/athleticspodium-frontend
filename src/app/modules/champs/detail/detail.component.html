@@ -1,17 +1,134 @@
-<section class="main-container">
-    
-    <p>champs detail works!</p>
 
+<app-loader *ngIf="loading"></app-loader>
+
+<section *ngIf="!loading" class="main-container">
+    
     <div class="row">
         <div class="col-3">
             
+            <div class="card mb-4">
+
+                {{ champs.name }}
+                
+                <hr>
+                
+                <ul class="meetings">
+                    <li *ngFor="let meeting of champs.meetings">
+                        <a routerLink="/champs/{{ champs.slug }}/{{ meeting.id }}" routerLinkActive="active">
+                            {{ meeting.year }}
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
             <div class="card">
-                fmsdfmdsf
+
+
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Country</th>
+                            <th>G</th>
+                            <th>S</th>
+                            <th>B</th>
+                            <th>T</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr *ngFor="let country of champs_countries">
+                            <td class="text-left">{{ country.country_code }}</td>
+                            <td>{{ country.golden }}</td>
+                            <td>{{ country.silver }}</td>
+                            <td>{{ country.bronze }}</td>
+                            <td>{{ country.total }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
 
         </div>
         <div class="col-9">
-            content
+
+            <h1>
+                {{ champs.name }}
+            </h1>
+            <hr>
+
+            <app-loader *ngIf="loading_medals"></app-loader>
+
+            <ng-container *ngIf="!loading_medals && meeting">
+
+                <h2>
+                    {{ meeting.name }}
+                </h2>
+
+                <hr>
+
+                <h2 class="gender-name">MENS</h2>
+
+                <div *ngFor="let event of meeting_events">
+
+                    <h3 class="event-name">{{ event.name }}</h3>
+
+                    <table class="medal-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 100px">Medal</th>
+                                <th>Athlete</th>
+                                <th style="width: 70px" class="text-center">Country</th>
+                                <th style="width: 100px" class="text-right">Mark</th>
+                                <th style="width: 80px">W/I</th>
+                                <th style="width: 80px">Record</th>
+                                <th style="width: 60px" class="text-center">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let medal of event.medals" [class.canceled]="medal.is_canceled">
+                                <td>
+                                    {{ (medal.medal | medal).name }}
+                                </td>
+                                <td *ngIf="medal.player">
+                                    <a routerLink="/athlete/{{ medal.player_id }}/{{ medal.player.slug }}">{{ medal.player.fullname }}</a>
+                                </td>
+                                <td *ngIf="!medal.player">
+                                    -
+                                </td>
+                                <td class="text-center">
+                                    <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country_code" data-balloon-pos="up">
+                                        <img class="country-flag" [attr.src]="'/assets/media/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
+                                    </a>
+                                </td>
+                                <td class="text-right font-bold">
+                                    {{ medal.mark_display }}
+                                </td>
+                                <td *ngIf="medal.wind" [class.invalid-wind]="Math.abs(medal.wind) > 2">
+                                    {{ medal.wind }}
+                                </td>
+                                <td *ngIf="!medal.wind">
+                                    {{ medal.info }}
+                                </td>
+                                <td>
+                                    {{ medal.record }}
+                                </td>
+                                <td class="text-center">
+                                    <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
+                                        <img src="/assets/images/info.svg" class="info-circle" alt="">                                        
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </ng-container>
+
+            <ng-container *ngIf="!loading_medals && !meeting">
+                Choose meeting from the left side.
+            </ng-container>
+
         </div>
     </div>
 
