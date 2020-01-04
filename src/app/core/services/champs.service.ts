@@ -11,6 +11,15 @@ export class ChampsService {
   constructor(private apiService: ApiService) { }
 
   /**
+   * Get all champs
+   */
+  async List (){
+
+    return await this.apiService.get(`/champs`);
+
+  }
+
+  /**
    * Get the champs details
    * @param champs champ id or slug
    */
@@ -29,7 +38,7 @@ export class ChampsService {
   async GetCountsGroupByCountry(champs_id: number, gender?: number, limit?: number){
 
     const qs = GenerateQuerySring({ gender, limit });
-    console.log(qs);
+    
     return await this.apiService.get(`/champs/${champs_id}/counts-group-by-country?${qs}`);
 
   }

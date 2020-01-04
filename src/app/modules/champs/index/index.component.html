@@ -1,5 +1,15 @@
-<section class="main-container">
+
+<app-loader *ngIf="loading"></app-loader>
+
+<section *ngIf="!loading" class="main-container">
     
-    <p>champs index works!</p>
+    <ul>
+        <li *ngFor="let item of champs">
+            <a [routerLink]="'/champs/' + item.slug">
+                {{ item.name }}
+            </a>
+            <br><br>
+        </li>
+    </ul>
 
 </section>

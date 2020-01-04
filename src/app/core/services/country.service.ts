@@ -12,6 +12,15 @@ export class CountryService {
   constructor(private apiService: ApiService) { }
 
   /**
+   * Get all countries
+   */
+  async List (){
+
+    return await this.apiService.get(`/countries`);
+
+  }
+
+  /**
    * Get the country details
    * @param country_code country code
    */

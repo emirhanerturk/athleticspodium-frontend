@@ -1,1 +1,16 @@
-<p>index works!</p>
+
+<app-loader *ngIf="loading"></app-loader>
+
+<section *ngIf="!loading" class="main-container">
+    
+    <ul>
+        <li *ngFor="let item of countries">
+            <a [routerLink]="'/country/' + item.code">
+                <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="" style="width: 32px;">
+                {{ item.code }} {{ item.name }}
+            </a>
+            <br><br>
+        </li>
+    </ul>
+
+</section>
