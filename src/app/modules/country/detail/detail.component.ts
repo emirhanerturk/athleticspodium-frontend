@@ -28,9 +28,9 @@ export class DetailComponent implements OnInit {
 
   async ngOnInit() {
 
-    this.country_code = this.route.snapshot.paramMap.get('code');
-
     this.appService.setNavigation(ENavigation.COUNTRIES);
+
+    this.country_code = this.route.snapshot.paramMap.get('code');
 
     const res = await this.countryService.GetCountry(this.country_code);
     if (res.success){

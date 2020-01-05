@@ -1,0 +1,151 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<section *ngIf="!loading" class="main-container">
+
+    <div class="row">
+        <div class="col-4">
+
+            <div class="card">
+
+                <img src="" alt="">
+
+            </div>
+
+        </div>
+        <div class="col-8">
+
+            <section class="athlete-header">
+
+                <h1 class="athlete-name">
+                    {{ athlete.first_name }} {{ athlete.last_name }} ({{ athlete.country_code }})
+                </h1>
+                
+                <br><br>
+                <ul>
+                    <li>
+                        <span>Country:</span>
+                        <span>{{ athlete.country_code }}</span>
+                    </li>
+                    <li>
+                        <span>Date of Birth:</span>
+                        <span>{{ athlete.birth_date }}</span>
+                    </li>
+                    <li>
+                        <span>Birth Place:</span>
+                        <span>-</span>
+                    </li>
+                    <li>
+                        <span>Aka:</span>
+                        <span>{{ athlete.aka }}</span>
+                    </li>
+                    <li>
+                        <span>Events:</span>
+                        <span>-</span>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="athlete-medals mt-4">
+
+                <h2 class="sub-title">
+                    {{ athlete.first_name }} {{ athlete.last_name }}'s Medals
+                </h2>
+
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px">Year</th>
+                            <th>Champs</th>
+                            <th style="width: 80px">Medal</th>
+                            <th style="width: 100px">Event</th>
+                            <th style="width: 70px" class="text-center">Country</th>
+                            <th style="width: 100px" class="text-right">Mark</th>
+                            <th style="width: 80px">W/I</th>
+                            <th style="width: 80px">Record</th>
+                            <th style="width: 60px" class="text-center">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medal of medals" [class.canceled]="medal.is_canceled">
+                            <td>
+                                {{ medal.meeting.year }}
+                            </td>
+                            <td>
+                                <a [routerLink]="'/champs/' + medal.champ.slug">
+                                    {{ medal.champ.name }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ (medal.medal | medal).name }}
+                            </td>
+                            <td>
+                                {{ medal.event.name }}
+                            </td>
+                            <td class="text-center">
+                                <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country_code" data-balloon-pos="up">
+                                    <img class="country-flag" [attr.src]="'/assets/media/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
+                                </a>
+                            </td>
+                            <td class="text-right font-bold">
+                                {{ medal.mark_display }}
+                            </td>
+                            <td *ngIf="medal.wind" [class.invalid-wind]="Math.abs(medal.wind) > 2">
+                                {{ medal.wind }}
+                            </td>
+                            <td *ngIf="!medal.wind">
+                                {{ medal.info }}
+                            </td>
+                            <td>
+                                {{ medal.record }}
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
+                                    <img src="/assets/images/info.svg" class="info-circle" alt="">                                        
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <section class="athlete-medals-counts">
+
+
+                <h2 class="sub-title">
+                    {{ athlete.first_name }} {{ athlete.last_name }}'s Total Medals Counts
+                </h2>
+
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Champs</th>
+                            <th class="text-center">Golden</th>
+                            <th class="text-center">Silver</th>
+                            <th class="text-center">Bronze</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr *ngFor="let champ of medals_counts | keyvalue">
+                            <td>
+                                <a [routerLink]="'/champs/' + champ.value.slug">
+                                    {{ champ.value.name }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ champ.value.medals.golden }}</td>
+                            <td class="text-center">{{ champ.value.medals.silver }}</td>
+                            <td class="text-center">{{ champ.value.medals.bronze }}</td>
+                            <td class="text-center">{{ champ.value.medals.total }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+        </div>
+    </div>
+    
+</section>

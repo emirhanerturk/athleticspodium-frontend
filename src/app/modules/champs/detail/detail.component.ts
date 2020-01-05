@@ -37,6 +37,8 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
 
+    this.appService.setNavigation(ENavigation.CHAMPS)
+
     this.route.params.subscribe(async data => {
       if (!this.firstLoaded){
         this.firstLoaded = true;
@@ -47,8 +49,6 @@ export class DetailComponent implements OnInit {
         this.getMedals(data.id);
       }
     })
-
-    this.appService.setNavigation(ENavigation.CHAMPS)
 
   }
 

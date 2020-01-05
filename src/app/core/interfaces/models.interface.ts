@@ -40,15 +40,17 @@ export interface IMedal {
     country_code: string,
     mark: number,
     mark_format: string,
+    mark_display: string,
     order: number,
     wind: number,
+    info: string,
     record: string,
-    is_cancelled: boolean,
+    is_canceled: boolean,
     notes: string,
     created_date: Date,
     updated_date: Date,
     // includes
-    champs?: IChamps
+    champ?: IChamps
     meeting?: IMeeting
     event?: IEvent
     player?: IPlayer
