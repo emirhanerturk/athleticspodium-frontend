@@ -14,7 +14,7 @@
                 
                 <ul class="meetings">
                     <li *ngFor="let meeting of champs.meetings">
-                        <a routerLink="/champs/{{ champs.slug }}/{{ meeting.id }}" routerLinkActive="active">
+                        <a routerLink="/champs/{{ champs.slug }}/{{ meeting.slug }}" routerLinkActive="active">
                             {{ meeting.year }}
                         </a>
                     </li>
@@ -50,7 +50,7 @@
         </div>
         <div class="col-9">
 
-            <h1>
+            <h1 class="h1">
                 {{ champs.name }}
             </h1>
             <hr>
@@ -65,7 +65,7 @@
 
                 <hr>
 
-                <h2 class="gender-name">MENS</h2>
+                <h2 class="h2-yellow gender-name">MENS</h2>
 
                 <div *ngFor="let event of meeting_events">
 
@@ -88,10 +88,10 @@
                                 <td>
                                     {{ (medal.medal | medal).name }}
                                 </td>
-                                <td *ngIf="medal.player">
-                                    <a routerLink="/athlete/{{ medal.player_id }}/{{ medal.player.slug }}">{{ medal.player.fullname }}</a>
+                                <td *ngIf="medal.athlete">
+                                    <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.fullname }}</a>
                                 </td>
-                                <td *ngIf="!medal.player">
+                                <td *ngIf="!medal.athlete">
                                     -
                                 </td>
                                 <td class="text-center">

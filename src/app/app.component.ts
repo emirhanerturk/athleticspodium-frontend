@@ -7,7 +7,7 @@ import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/route
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AthleticsPodium';
+  title = 'Athletics Podium';
   
   loading: boolean;
   interval: any;

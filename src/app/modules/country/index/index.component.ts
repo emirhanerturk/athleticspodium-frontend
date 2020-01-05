@@ -25,6 +25,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
 
     this.appService.setNavigation(ENavigation.COUNTRIES)
+    this.appService.setTitle('Countries');
 
     this.getCountryList();
 

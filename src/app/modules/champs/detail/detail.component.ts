@@ -42,11 +42,11 @@ export class DetailComponent implements OnInit {
     this.route.params.subscribe(async data => {
       if (!this.firstLoaded){
         this.firstLoaded = true;
-        await this.getChamps(data.slug);
-        await this.getMedals(data.id);
+        await this.getChamps(data.champ_slug);
+        await this.getMedals(data.meeting_slug);
       } else {
         this.firstLoaded = true;
-        this.getMedals(data.id);
+        this.getMedals(data.meeting_slug);
       }
     })
 
@@ -63,6 +63,8 @@ export class DetailComponent implements OnInit {
     if (res.success){
       this.champs = res.data;
 
+      this.appService.setTitle(this.champs.name);
+
       const res2 = await this.champsService.GetCountsGroupByCountry(this.champs.id);
       if (res2){
         this.champs_countries = res2.data;
@@ -74,19 +76,20 @@ export class DetailComponent implements OnInit {
 
     setTimeout(() => {
       this.loading = false;        
-    }, 1000);
+    }, 400);
 
   }
 
-  async getMedals(meeting_id: number){
-    
+  async getMedals(meeting_slug: string){
+
     this.loading_medals = true;
 
-    if (meeting_id){
+    if (meeting_slug){
 
-      this.meeting = this.champs.meetings.filter(item => item.id == meeting_id)[0];
+      this.meeting = this.champs.meetings.find(item => item.slug === meeting_slug);
+      this.appService.setTitle(this.meeting.name);
 
-      const res = await this.meetingService.GetMedals(meeting_id);
+      const res = await this.meetingService.GetMedals(this.meeting.id);
       if (res.success){
         this.meeting_events = res.data;
       } else {
@@ -97,7 +100,7 @@ export class DetailComponent implements OnInit {
 
     setTimeout(() => {
       this.loading_medals = false;        
-    }, 1000);
+    }, 400);
     
   }
 

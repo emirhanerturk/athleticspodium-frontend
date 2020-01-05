@@ -15,7 +15,8 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appService.setNavigation(ENavigation.HOME)
+    this.appService.setNavigation(ENavigation.HOME);
+    this.appService.setTitle('Athletics Podium', false);
 
   }
 

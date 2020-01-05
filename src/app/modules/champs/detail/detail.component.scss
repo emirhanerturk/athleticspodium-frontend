@@ -12,24 +12,8 @@
     }
 }
 
-h2.gender-name {
-    position: relative;
-    font-size: 18px;
-    font-weight: 700;
-    padding-left: 32px;
+.gender-name {
     margin-bottom: 32px;
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 18px;
-        height: 18px;
-        background-color: #ffdd00;
-        transform: skewX(12deg);
-    }
 }
 
 h3.event-name {

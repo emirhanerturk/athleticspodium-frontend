@@ -16,6 +16,7 @@ export interface IMeeting {
     champs_id: number,
     edition: number,
     name: string,
+    slug: string,
     year: number,
     country_code: string,
     city: string,
@@ -32,11 +33,11 @@ export interface IEvent {
 
 export interface IMedal {
     id: number,
-    champs_id: number,
+    champ_id: number,
     meeting_id: number,
     event_id: number,
     medal: number,
-    player_id: number,
+    athlete_id: number,
     country_code: string,
     mark: number,
     mark_format: string,
@@ -53,11 +54,11 @@ export interface IMedal {
     champ?: IChamps
     meeting?: IMeeting
     event?: IEvent
-    player?: IPlayer
+    athlete?: IAthlete
     country?: ICountry
 }
 
-export interface IPlayer {
+export interface IAthlete {
     id: number,
     first_name: string,
     last_name: string,
@@ -66,6 +67,7 @@ export interface IPlayer {
     country_code: string,
     gender: boolean,
     birth_date: Date,
+    birth_place: string,
     biography: string,
     created_date: Date,
     updated_date: Date

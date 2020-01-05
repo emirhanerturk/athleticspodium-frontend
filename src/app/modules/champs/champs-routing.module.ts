@@ -11,11 +11,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: ':slug',
+    path: ':champ_slug',
     component: DetailComponent,
   },
   {
-    path: ':slug/:id',
+    path: ':champ_slug/:meeting_slug',
     component: DetailComponent,
   },
 ];

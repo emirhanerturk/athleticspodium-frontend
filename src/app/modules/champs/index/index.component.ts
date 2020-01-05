@@ -25,6 +25,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
 
     this.appService.setNavigation(ENavigation.CHAMPS)
+    this.appService.setTitle('Champs');
 
     this.getChampsList();
 

@@ -17,30 +17,29 @@
 
             <section class="athlete-header">
 
-                <h1 class="athlete-name">
+                <h1 class="h1 athlete-name">
                     {{ athlete.first_name }} {{ athlete.last_name }} ({{ athlete.country_code }})
                 </h1>
-                
-                <br><br>
-                <ul>
+
+                <ul class="athlete-info">
                     <li>
-                        <span>Country:</span>
+                        <span>Country</span>
                         <span>{{ athlete.country_code }}</span>
                     </li>
                     <li>
-                        <span>Date of Birth:</span>
-                        <span>{{ athlete.birth_date }}</span>
+                        <span>Date of Birth</span>
+                        <span>{{ athlete.birth_date || '-' }}</span>
                     </li>
                     <li>
-                        <span>Birth Place:</span>
+                        <span>Birth Place</span>
                         <span>-</span>
                     </li>
                     <li>
-                        <span>Aka:</span>
-                        <span>{{ athlete.aka }}</span>
+                        <span>Aka</span>
+                        <span>{{ athlete.aka || '-' }}</span>
                     </li>
                     <li>
-                        <span>Events:</span>
+                        <span>Events</span>
                         <span>-</span>
                     </li>
                 </ul>
@@ -49,7 +48,7 @@
 
             <section class="athlete-medals mt-4">
 
-                <h2 class="sub-title">
+                <h2 class="h2-yellow">
                     {{ athlete.first_name }} {{ athlete.last_name }}'s Medals
                 </h2>
 
@@ -70,7 +69,9 @@
                     <tbody>
                         <tr *ngFor="let medal of medals" [class.canceled]="medal.is_canceled">
                             <td>
-                                {{ medal.meeting.year }}
+                                <a [routerLink]="'/champs/' + medal.champ.slug + '/' + medal.meeting.slug">
+                                    {{ medal.meeting.year }}
+                                </a>
                             </td>
                             <td>
                                 <a [routerLink]="'/champs/' + medal.champ.slug">
@@ -114,8 +115,8 @@
             <section class="athlete-medals-counts">
 
 
-                <h2 class="sub-title">
-                    {{ athlete.first_name }} {{ athlete.last_name }}'s Total Medals Counts
+                <h2 class="h2-yellow">
+                    {{ athlete.first_name }} {{ athlete.last_name }}'s Totals
                 </h2>
 
                 <table class="table-medals">
@@ -139,6 +140,13 @@
                             <td class="text-center">{{ champ.value.medals.silver }}</td>
                             <td class="text-center">{{ champ.value.medals.bronze }}</td>
                             <td class="text-center">{{ champ.value.medals.total }}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td class="text-center font-bold">{{ medals_counts_total.golden }}</td>
+                            <td class="text-center font-bold">{{ medals_counts_total.silver }}</td>
+                            <td class="text-center font-bold">{{ medals_counts_total.bronze }}</td>
+                            <td class="text-center font-bold">{{ medals_counts_total.total }}</td>
                         </tr>
                     </tbody>
                 </table>

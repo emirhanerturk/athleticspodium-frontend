@@ -2,7 +2,36 @@
 .athlete-header {
 
     .athlete-name {
-        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .athlete-info {
+        margin-bottom: 20px;
+
+        li {
+            margin-bottom: 8px;
+
+            span:first-child {
+                display: inline-block;
+                width: 140px;
+            }
+
+            span:last-child {
+                display: inline-block;
+                font-weight: bold;
+
+                &:before {
+                    content: ':';
+                    display: inline-block;
+                    width: 40px;
+                    text-align: left;
+                    font-weight: 400;
+                    color: #999;
+                }
+            }
+
+        }
+
     }
 
 }

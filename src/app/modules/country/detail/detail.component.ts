@@ -36,6 +36,8 @@ export class DetailComponent implements OnInit {
     if (res.success){
       this.country = res.data;
 
+      this.appService.setTitle(this.country.name || this.country.code);
+
       const res2 = await this.countryService.GetCountsGroupByChamps(this.country_code);
       if (res2.success){
         this.medals = res2.data;
