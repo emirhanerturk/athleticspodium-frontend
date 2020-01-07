@@ -70,7 +70,7 @@ export class DetailComponent implements OnInit {
   calculateMedalsCounts(medals: IMedal[]){
 
     let counts = {};
-    let total = { golden: 0, silver: 0, bronze: 0, total: 0 };
+    let total = { gold: 0, silver: 0, bronze: 0, total: 0 };
 
     medals.forEach(item => {
 
@@ -78,13 +78,13 @@ export class DetailComponent implements OnInit {
 
         if (counts[item.champ_id] === undefined){
           counts[item.champ_id] = item.champ;
-          counts[item.champ_id].medals = { golden: 0, silver: 0, bronze: 0, total: 0 };
+          counts[item.champ_id].medals = { gold: 0, silver: 0, bronze: 0, total: 0 };
         }
   
         switch(item.medal){
           case 1:
-            counts[item.champ_id].medals.golden++;
-            total.golden++;
+            counts[item.champ_id].medals.gold++;
+            total.gold++;
             break;
           case 2:
             counts[item.champ_id].medals.silver++;

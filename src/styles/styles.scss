@@ -55,12 +55,21 @@ body {
     }
 }
 
+/* breadcrumb */
+
+.breadcrumb {
+
+}
+
+/* tables */
 
 .table-medals {
     width: 100%;
     text-align: left;
     margin-bottom: 32px;
     background-color: #fff;
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 14px;
 
     thead {
         tr {
@@ -85,6 +94,11 @@ body {
                 border: 1px solid #eee;
             }
         }
+    }
+
+    .font-smaller {
+        font-size: 11px;
+        letter-spacing: -1px;
     }
 
     .canceled {

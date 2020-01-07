@@ -37,7 +37,7 @@
                     <tbody style="text-align: center;">
                         <tr *ngFor="let country of champs_countries">
                             <td class="text-left">{{ country.country_code }}</td>
-                            <td>{{ country.golden }}</td>
+                            <td>{{ country.gold }}</td>
                             <td>{{ country.silver }}</td>
                             <td>{{ country.bronze }}</td>
                             <td>{{ country.total }}</td>
@@ -102,10 +102,10 @@
                                 <td class="text-right font-bold">
                                     {{ medal.mark_display }}
                                 </td>
-                                <td *ngIf="medal.wind" [class.invalid-wind]="Math.abs(medal.wind) > 2">
+                                <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="Math.abs(medal.wind) > 2">
                                     {{ medal.wind }}
                                 </td>
-                                <td *ngIf="!medal.wind">
+                                <td *ngIf="!medal.wind" class="font-smaller">
                                     {{ medal.info }}
                                 </td>
                                 <td>

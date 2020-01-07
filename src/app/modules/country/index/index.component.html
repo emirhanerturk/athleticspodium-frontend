@@ -3,13 +3,14 @@
 
 <section *ngIf="!loading" class="main-container">
     
-    <ul>
-        <li *ngFor="let item of countries">
+    <h1 class="h1">Countries</h1>
+
+    <ul class="row countries">
+        <li class="col-6 col-sm-4 col-md-3 col-lg-2 col" *ngFor="let item of countries">
             <a [routerLink]="'/country/' + item.code">
-                <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="" style="width: 32px;">
-                {{ item.code }} {{ item.name }}
+                <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="">
+                <h6>{{ item.code }} <span>{{ item.name }}</span></h6>
             </a>
-            <br><br>
         </li>
     </ul>
 

@@ -1,0 +1,43 @@
+
+.countries {
+
+    li {
+        margin-bottom: 20px;
+
+        a {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            color: #4b4f54;
+            transition: all .2s ease;
+
+            img {
+                width: 32px;
+                margin-right: 12px;
+                box-shadow: 0px 1px 1px rgba(0,0,0,.15);
+            }
+        
+            h6 {
+                display: block;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 18px;
+                color: #4b4f54;
+        
+                span {
+                    display: block;
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 11px;
+                    color: #666;
+                }
+            }
+
+            &:hover {
+
+            }
+        }
+
+    }
+    
+}

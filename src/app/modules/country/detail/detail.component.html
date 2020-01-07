@@ -4,44 +4,57 @@
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
     
-            <div class="card">
+            <div class="card country-info">
 
-                <img [attr.src]="'/assets/media/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
+                <img class="country-flag" [attr.src]="'/assets/media/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
 
-                <p>{{ country.code }} -> {{ country.name }}</p>
-                <p>{{ country.content }}</p>
+                <h1 class="h1">
+                    {{ country.name || country.code }}
+                </h1>
+
+                <p class="country-content" *ngIf="country.content">
+                    {{ country.content }}
+                </p>
     
             </div>
     
         </div>
-        <div class="col-8">
+        <div class="col-9">
 
-            <div>
+            <section>
 
-                <table style="width: 100%;">
+                <h2 class="h2-yellow">{{ country.name || country.code }}'s Medals</h2>
+
+                <table class="table-medals">
                     <thead>
                         <tr>
-                            <th class="text-left">Champs</th>
-                            <th>G</th>
-                            <th>S</th>
-                            <th>B</th>
-                            <th>T</th>
+                            <th>Champs</th>
+                            <th class="text-center">Gold</th>
+                            <th class="text-center">Silver</th>
+                            <th class="text-center">Bronze</th>
+                            <th class="text-center">Total</th>
                         </tr>
                     </thead>
                     <tbody style="text-align: center;">
                         <tr *ngFor="let row of medals">
-                            <td class="text-left">{{ row.champ_id }}</td>
-                            <td>{{ row.golden }}</td>
-                            <td>{{ row.silver }}</td>
-                            <td>{{ row.bronze }}</td>
-                            <td>{{ row.total }}</td>
+                            <td>{{ row.champ_id }}</td>
+                            <td class="text-center">{{ row.gold }}</td>
+                            <td class="text-center">{{ row.silver }}</td>
+                            <td class="text-center">{{ row.bronze }}</td>
+                            <td class="text-center">{{ row.total }}</td>
                         </tr>
                     </tbody>
                 </table>
 
-            </div>
+            </section>
+
+            <section>
+
+                <h2 class="h2-yellow">{{ country.name || country.code }}'s Top Athletes</h2>
+
+            </section>
 
         </div>
     </div> 
