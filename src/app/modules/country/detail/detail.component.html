@@ -39,11 +39,15 @@
                     </thead>
                     <tbody style="text-align: center;">
                         <tr *ngFor="let row of medals">
-                            <td>{{ row.champ_id }}</td>
+                            <td>
+                                <a [routerLink]="'/champs/' + row.slug">
+                                    {{ row.name }}
+                                </a>
+                            </td>
                             <td class="text-center">{{ row.gold }}</td>
                             <td class="text-center">{{ row.silver }}</td>
                             <td class="text-center">{{ row.bronze }}</td>
-                            <td class="text-center">{{ row.total }}</td>
+                            <td class="text-center font-bold">{{ row.total }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -53,6 +57,31 @@
             <section>
 
                 <h2 class="h2-yellow">{{ country.name || country.code }}'s Top Athletes</h2>
+
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Athlete</th>
+                            <th class="text-center">Gold</th>
+                            <th class="text-center">Silver</th>
+                            <th class="text-center">Bronze</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr *ngFor="let row of top_athletes">
+                            <td>
+                                <a [routerLink]="'/athlete/' + row.athlete_id + '/' + row.slug">
+                                    {{ row.first_name }} {{ row.last_name }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ row.gold }}</td>
+                            <td class="text-center">{{ row.silver }}</td>
+                            <td class="text-center">{{ row.bronze }}</td>
+                            <td class="text-center font-bold">{{ row.total }}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </section>
 

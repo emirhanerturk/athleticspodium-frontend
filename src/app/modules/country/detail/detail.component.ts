@@ -19,6 +19,7 @@ export class DetailComponent implements OnInit {
   country_code: string;
   country: ICountry;
   medals: any[];
+  top_athletes: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,9 +39,16 @@ export class DetailComponent implements OnInit {
 
       this.appService.setTitle(this.country.name || this.country.code);
 
-      const res2 = await this.countryService.GetCountsGroupByChamps(this.country_code);
+      const res2 = await this.countryService.GetMedals(this.country_code);
       if (res2.success){
         this.medals = res2.data;
+      } else {
+        // Necessary error
+      }
+
+      const res3 = await this.countryService.GetTopAthletes(this.country_code);
+      if (res3.success){
+        this.top_athletes = res3.data;
       } else {
         // Necessary error
       }

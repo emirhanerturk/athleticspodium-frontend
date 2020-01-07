@@ -30,13 +30,23 @@ export class CountryService {
 
   }
 
-    /**
+  /**
    * Get counts group by champs
    * @param country_code country code
    */
-  async GetCountsGroupByChamps(country_code: string): Promise<IResponse> {
+  async GetMedals(country_code: string): Promise<IResponse> {
 
-    return await this.apiService.get(`/countries/${country_code}/counts-group-by-champs`);
+    return await this.apiService.get(`/countries/${country_code}/medals`);
+
+  }
+
+  /**
+   * Get top athletes by country
+   * @param country_code country code
+   */
+  async GetTopAthletes(country_code: string): Promise<IResponse> {
+
+    return await this.apiService.get(`/countries/${country_code}/top-athletes`);
 
   }
 
