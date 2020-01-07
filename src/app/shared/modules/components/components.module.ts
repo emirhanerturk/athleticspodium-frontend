@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { ErrorComponent } from '@shared/components/error/error.component';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   imports: [
@@ -11,10 +12,12 @@ import { ErrorComponent } from '@shared/components/error/error.component';
   declarations: [
     LoaderComponent,
     ErrorComponent,
+    BreadcrumbComponent,
   ],
   exports: [
     LoaderComponent,
     ErrorComponent,
+    BreadcrumbComponent,
   ]
 })
 export class ComponentsModule { }
