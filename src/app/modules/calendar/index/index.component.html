@@ -1,0 +1,46 @@
+
+
+<section class="main-container">
+
+    <div class="row">
+        <div class="col-3">
+
+            <ng-container *ngFor="let year of years">
+                <a [routerLink]="'/calendar/' + year">
+                    {{ year }}
+                </a>
+                <br><br>
+            </ng-container>
+    
+        </div>
+        <div class="col-9">
+    
+            <h1 class="h1">
+                {{ year }} Calendar
+            </h1>
+
+            <table class="table-medals">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let meeting of meetings">
+                        <td>{{ meeting.year }}</td>
+                        <td>
+                            <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                {{ meeting.name }}
+                            </a>
+                        </td>
+                        <td>{{ meeting.city }} - {{ meeting.country_code }}</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </div>
+    </div>
+
+</section>

@@ -22,7 +22,9 @@ export interface IMeeting {
     city: string,
     content: string,
     created_date: Date,
-    updated_date: Date
+    updated_date: Date,
+    // includes
+    champ?: IChamps,
 }
 
 export interface IEvent {

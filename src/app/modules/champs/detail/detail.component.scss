@@ -1,14 +1,45 @@
 
 .meetings {
+    font-weight: bold;
 
     li {
-        padding: 4px 0;
 
-        a.active {
-            padding-left: 6px;
-            color: red;
-            text-decoration: underline;
+        a {
+            position: relative;
+            display: inline-block;
+            line-height: 18px;
+            padding: 2px 0;
+            padding-left: 18px;
+            transition: all .2s ease;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 7px;
+                left: 0;
+                display: block;
+                width: 8px;
+                height: 8px;
+                background-color: #999;
+                transform: skewX(12deg);
+                transition: all .2s ease;
+            }
+
+            &:hover:before {
+                background-color: #ffdd00;
+            }
+
+            &.active {
+                padding-left: 28px;
+
+                &:before {
+                    left: 8px;
+                    background-color: #ffdd00;
+                }
+            }
+
         }
+        
     }
 }
 

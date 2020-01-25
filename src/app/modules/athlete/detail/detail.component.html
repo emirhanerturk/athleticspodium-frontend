@@ -4,27 +4,37 @@
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
 
-            <div class="card">
+            <section class="card mb-4">
 
-                <img src="" alt="">
+                <img src="/assets/media/flags/eth.svg" alt="">
 
-            </div>
+            </section>
+            
+            <section>
+                <h2 class="h2-yellow">Related Articles</h2>
+
+                <p>There is no articles yet.</p>
+
+            </section>
 
         </div>
-        <div class="col-8">
+        <div class="col-9">
 
-            <section class="athlete-header">
+            <section class="athlete-header mb-4">
 
                 <h1 class="h1 athlete-name">
-                    {{ athlete.first_name }} {{ athlete.last_name }} ({{ athlete.country_code }})
+                    {{ athlete.first_name }} {{ athlete.last_name }}
                 </h1>
 
                 <ul class="athlete-info">
                     <li>
                         <span>Country</span>
-                        <span>{{ athlete.country_code }}</span>
+                        <span>
+                            <img style="width: 18px" [attr.src]="'/assets/media/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
+                            {{ athlete.country_code }}
+                        </span>
                     </li>
                     <li>
                         <span>Date of Birth</span>
@@ -46,7 +56,16 @@
 
             </section>
 
-            <section class="athlete-medals mt-4">
+            <section class="athlete-bio mb-4" *ngIf="athlete.biography">
+                <h2 class="h2-yellow">
+                    {{ athlete.first_name }} {{ athlete.last_name }}'s Bio
+                </h2>
+                <p>
+                    {{ athlete.biography }}
+                </p>
+            </section>
+
+            <section class="athlete-medals mb-4">
 
                 <h2 class="h2-yellow">
                     {{ athlete.first_name }} {{ athlete.last_name }}'s Medals
@@ -112,8 +131,7 @@
 
             </section>
 
-            <section class="athlete-medals-counts">
-
+            <section class="athlete-medals-counts mb-4">
 
                 <h2 class="h2-yellow">
                     {{ athlete.first_name }} {{ athlete.last_name }}'s Totals
@@ -139,7 +157,7 @@
                             <td class="text-center">{{ champ.value.medals.gold }}</td>
                             <td class="text-center">{{ champ.value.medals.silver }}</td>
                             <td class="text-center">{{ champ.value.medals.bronze }}</td>
-                            <td class="text-center">{{ champ.value.medals.total }}</td>
+                            <td class="text-center font-bold">{{ champ.value.medals.total }}</td>
                         </tr>
                         <tr>
                             <td>Total</td>

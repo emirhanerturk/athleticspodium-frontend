@@ -6,11 +6,11 @@
     <div class="row">
         <div class="col-3">
             
-            <div class="card mb-4">
+            <h4 class="h2-yellow">
+                Meetings
+            </h4>
 
-                {{ champs.name }}
-                
-                <hr>
+            <div class="card mb-4">
                 
                 <ul class="meetings">
                     <li *ngFor="let meeting of champs.meetings">
@@ -22,46 +22,61 @@
 
             </div>
 
-            <div class="card">
+            <section class="">
 
-                <table style="width: 100%;">
+                <h4 class="h2-yellow">
+                    Total Medals
+                </h4>
+
+                <table class="table-medals">
                     <thead>
                         <tr>
-                            <th class="text-left">Country</th>
-                            <th>G</th>
-                            <th>S</th>
-                            <th>B</th>
-                            <th>T</th>
+                            <th>Country</th>
+                            <th class="text-center">G</th>
+                            <th class="text-center">S</th>
+                            <th class="text-center">B</th>
+                            <th class="text-center">T</th>
                         </tr>
                     </thead>
-                    <tbody style="text-align: center;">
+                    <tbody>
                         <tr *ngFor="let country of champs_countries">
-                            <td class="text-left">{{ country.country_code }}</td>
-                            <td>{{ country.gold }}</td>
-                            <td>{{ country.silver }}</td>
-                            <td>{{ country.bronze }}</td>
-                            <td>{{ country.total }}</td>
+                            <td>
+                                <a [routerLink]="'/country/' + country.country_code">
+                                    {{ country.country_code }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ country.gold }}</td>
+                            <td class="text-center">{{ country.silver }}</td>
+                            <td class="text-center">{{ country.bronze }}</td>
+                            <td class="text-center font-bold">{{ country.total }}</td>
                         </tr>
                     </tbody>
                 </table>
 
-            </div>
+            </section>
 
         </div>
         <div class="col-9">
 
-            <h1 class="h1">
-                {{ champs.name }}
-            </h1>
-            <hr>
-
             <app-loader *ngIf="loading_medals"></app-loader>
+
+            <ng-container *ngIf="!loading_medals && !meeting">
+
+                <h1 class="h1">
+                    {{ champs.name }}
+                </h1>
+
+                <p>
+                    Choose meeting from the left side.
+                </p>
+
+            </ng-container>
 
             <ng-container *ngIf="!loading_medals && meeting">
 
-                <h2>
+                <h1 class="h1">
                     {{ meeting.name }}
-                </h2>
+                </h1>
 
                 <hr>
 
@@ -74,6 +89,7 @@
                     <table class="table-medals">
                         <thead>
                             <tr>
+                                <th style="width: 20px">#</th>
                                 <th style="width: 100px">Medal</th>
                                 <th>Athlete</th>
                                 <th style="width: 70px" class="text-center">Country</th>
@@ -85,6 +101,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let medal of event.medals" [class.canceled]="medal.is_canceled">
+                                <td class="font-bold">
+                                    {{ medal.medal ? medal.medal + '.' : '' }}
+                                </td>
                                 <td>
                                     {{ (medal.medal | medal).name }}
                                 </td>
@@ -122,10 +141,6 @@
 
                 </div>
 
-            </ng-container>
-
-            <ng-container *ngIf="!loading_medals && !meeting">
-                Choose meeting from the left side.
             </ng-container>
 
         </div>

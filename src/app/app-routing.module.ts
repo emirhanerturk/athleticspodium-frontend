@@ -12,6 +12,7 @@ const routes: Routes = [
         { path: 'champs', loadChildren: () => import('./modules/champs/champs.module').then(m => m.ChampsModule) },
         { path: 'country', loadChildren: () => import('./modules/country/country.module').then(m => m.CountryModule) },
         { path: 'athlete', loadChildren: () => import('./modules/athlete/athlete.module').then(m => m.AthleteModule) },
+        { path: 'calendar', loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule) },
     ]
   },
 ];

@@ -14,7 +14,7 @@ export class CountryService {
   /**
    * Get all countries
    */
-  async List (){
+  async List (): Promise<IResponse> {
 
     return await this.apiService.get(`/countries`);
 

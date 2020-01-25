@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
+import { IResponse } from '@core/interfaces/response.interface';
 import { GenerateQuerySring } from "@services/util.service";
 
 @Injectable({
@@ -23,7 +24,7 @@ export class ChampsService {
    * Get the champs details
    * @param champs champ id or slug
    */
-  async GetChamps(champs: string|number){
+  async GetChamps(champs: string|number): Promise<IResponse>{
 
     return await this.apiService.get(`/champs/${champs}`);
 
@@ -35,7 +36,7 @@ export class ChampsService {
    * @param gender if man 1 else if women 0
    * @param limit rows of limit
    */
-  async GetMedals(champs_id: number, gender?: number, limit?: number){
+  async GetMedals(champs_id: number, gender?: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQuerySring({ gender, limit });
     

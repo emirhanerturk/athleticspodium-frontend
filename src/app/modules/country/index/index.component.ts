@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
   error: any;
 
   countries: ICountry[];
+  searchKey: string = '';
 
   constructor(
     private appService: AppService,
@@ -44,6 +45,17 @@ export class IndexComponent implements OnInit {
 
     this.loading = false;
 
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === 'Backspace'){
+      if (this.searchKey.length) this.searchKey = this.searchKey.slice(0, -1)
+    } else {
+      console.log(event);
+      this.searchKey += event.key;
+    }
+    console.log(this.searchKey);
   }
 
 }
