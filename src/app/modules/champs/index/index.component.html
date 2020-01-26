@@ -3,13 +3,18 @@
 
 <section *ngIf="!loading" class="main-container">
     
-    <ul>
-        <li *ngFor="let item of champs">
-            <a [routerLink]="'/champs/' + item.slug">
-                {{ item.name }}
-            </a>
-            <br><br>
-        </li>
-    </ul>
+    <h1 class="h1 mb-4">Champs</h1>
+
+    <ng-container *ngFor="let category of categories">
+
+        <h2 class="h2-yellow">{{ category.name }}</h2>
+
+        <ul class="champs">
+            <li *ngFor="let item of category.champs">
+                <a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
+            </li>
+        </ul>
+
+    </ng-container>
 
 </section>

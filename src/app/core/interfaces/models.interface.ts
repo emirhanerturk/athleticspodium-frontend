@@ -1,8 +1,12 @@
 
+import { EGender } from "@enums/gender.enum";
+import { EChampsCategory } from "@enums/champs-category.enum";
+
 export interface IChamps {
     id: number,
     name: string,
     slug: string,
+    category: EChampsCategory,
     content: string,
     rank: number,
     created_date: Date,
@@ -30,7 +34,7 @@ export interface IMeeting {
 export interface IEvent {
     id: number,
     name: string,
-    gender: boolean
+    gender: EGender
 }
 
 export interface IMedal {
@@ -67,7 +71,7 @@ export interface IAthlete {
     aka: string[],
     slug: string,
     country_code: string,
-    gender: boolean,
+    gender: EGender,
     birth_date: Date,
     birth_place: string,
     biography: string,

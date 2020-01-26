@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { IResponse } from '@core/interfaces/response.interface';
 import { GenerateQuerySring } from "@services/util.service";
+import { IResponse } from '@interfaces/response.interface';
+import { EGender } from '@enums/gender.enum';
+import { EChampsCategory } from '@enums/champs-category.enum';
+import { typeofExpr } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampsService {
+
+  private _categories: {
+    0: {
+      name: ''
+
+    }
+  }
 
   constructor(private apiService: ApiService) { }
 
@@ -32,15 +42,21 @@ export class ChampsService {
 
   /**
    * Get counts group by country
-   * @param champs_id champ id
-   * @param gender if man 1 else if women 0
-   * @param limit rows of limit
+   * @param champs_id
+   * @param gender
+   * @param limit
    */
-  async GetMedals(champs_id: number, gender?: number, limit?: number): Promise<IResponse> {
+  async GetMedals(champs_id: number, gender?: EGender, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQuerySring({ gender, limit });
     
     return await this.apiService.get(`/champs/${champs_id}/medals?${qs}`);
+
+  }
+
+  GetCategories(){
+
+    return Object.values(EChampsCategory).filter(i => typeof i === 'number').map(i => ({ id: i, name: EChampsCategory[i] }));
 
   }
 

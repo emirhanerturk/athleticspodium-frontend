@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
   error: any;
 
   countries: ICountry[];
+  filteredCountries: ICountry[];
   searchKey: string = '';
 
   constructor(
@@ -28,11 +29,11 @@ export class IndexComponent implements OnInit {
     this.appService.setNavigation(ENavigation.COUNTRIES)
     this.appService.setTitle('Countries');
 
-    this.getCountryList();
+    this.getCountries();
 
   }
 
-  async getCountryList(){
+  async getCountries(){
 
     this.loading = true;
 
@@ -47,15 +48,28 @@ export class IndexComponent implements OnInit {
 
   }
 
-  @HostListener('document:keydown', ['$event'])
-  onKeydownHandler(event: KeyboardEvent) {
-    if (event.key === 'Backspace'){
-      if (this.searchKey.length) this.searchKey = this.searchKey.slice(0, -1)
+  filterCountries(){
+
+    const searchKey = this.searchKey.toLowerCase();
+    this.filteredCountries = this.countries.filter(i => {
+      const code = i.code.toLowerCase();
+      const name = i.name ? i.name.toLowerCase() : '';
+      return code.indexOf(searchKey) !== -1 || name.indexOf(searchKey) !== -1
+    })
+
+  }
+
+  search(e: any){
+
+    const value = e.target.value;
+    if (value){
+      this.searchKey = value;
+      this.filterCountries();
     } else {
-      console.log(event);
-      this.searchKey += event.key;
+      this.searchKey = null;
+      this.filteredCountries = null;
     }
-    console.log(this.searchKey);
+
   }
 
 }

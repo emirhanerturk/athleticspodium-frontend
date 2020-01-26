@@ -19,6 +19,7 @@ export class DetailComponent implements OnInit {
   country_code: string;
   country: ICountry;
   medals: any[];
+  medals_counts: any;
   top_athletes: any[];
 
   constructor(
@@ -42,6 +43,21 @@ export class DetailComponent implements OnInit {
       const res2 = await this.countryService.GetMedals(this.country_code);
       if (res2.success){
         this.medals = res2.data;
+
+        this.medals_counts = {
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+          total: 0,
+        };
+
+        this.medals.map(m => {
+          this.medals_counts.gold += parseInt(m.gold);
+          this.medals_counts.silver += parseInt(m.silver);
+          this.medals_counts.bronze += parseInt(m.bronze);
+          this.medals_counts.total += parseInt(m.total);
+        })
+
       } else {
         // Necessary error
       }

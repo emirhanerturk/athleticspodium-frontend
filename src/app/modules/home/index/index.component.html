@@ -18,6 +18,64 @@
         </div>
         <div class="col-4">
 
+            <h2 class="h2-yellow">Medal Tracker</h2>
+
+            <form (submit)="medalTrackerSubmit($event)" class="card p-3 mb-4">
+                
+                <div class="form-group">
+                    <label class="form-label" for="">* Championship:</label>
+                    <select name="champs" class="form-select">
+                        <option value="">Select a Championship</option>
+                        <option value="12">African Champs</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="">* Country:</label>
+                    <select name="country" class="form-select">
+                        <option value="">Select a Country</option>
+                        <option value="ETH">ETH</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="">Event:</label>
+                    <select name="event" class="form-select">
+                        <option value="">All</option>
+                        <option value="1">100m</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="">Year:</label>
+                    <select name="year" class="form-select">
+                        <option value="">All</option>
+                        <option value="2010">2010</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="">Medal:</label>
+                    <select name="medal" class="form-select">
+                        <option value="">All</option>
+                        <option value="1">Gold</option>
+                        <option value="2">Silver</option>
+                        <option value="3">Bronze</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn">
+                        <span>Search</span>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    *: at least one of the marked fields must be entered
+                </div>
+                
+            </form>
+
             <h2 class="h2-yellow">Latest Adds</h2>
 
             <table class="table-medals">

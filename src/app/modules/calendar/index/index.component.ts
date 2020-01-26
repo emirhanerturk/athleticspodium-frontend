@@ -17,7 +17,7 @@ export class IndexComponent implements OnInit {
 
   years: number[] = [];
   current_year: number = new Date().getFullYear();
-  year: number = this.current_year;
+  active_year: number = this.current_year;
   meetings: IMeeting[];
 
   constructor(
@@ -32,12 +32,12 @@ export class IndexComponent implements OnInit {
 
     this.route.params.subscribe(async data => {
       if (data.year){
-        this.year = parseInt(data.year) 
+        this.active_year = parseInt(data.year) 
       }
-      this.getByYear(this.year);
+      this.getByYear(this.active_year);
     });
 
-    for (let i = this.current_year + 1; i > 1949; i--) {
+    for (let i = this.current_year + 5; i > 1919; i--) {
       this.years.push(i);
     }
 
@@ -56,7 +56,7 @@ export class IndexComponent implements OnInit {
 
     this.loading = false;
 
-    console.log(this.year, this.meetings)
+    console.log(this.active_year, this.meetings)
 
   }
 

@@ -15,7 +15,7 @@ export class IndexComponent implements OnInit {
   loading: boolean = true;
   error: any;
 
-  champs: IChamps[];
+  categories: any[];
 
   constructor(
     private appService: AppService,
@@ -27,22 +27,35 @@ export class IndexComponent implements OnInit {
     this.appService.setNavigation(ENavigation.CHAMPS)
     this.appService.setTitle('Champs');
 
-    this.getChampsList();
+    this.getCategories();
+    this.getChamps();
 
   }
 
-  async getChampsList(){
+  async getChamps(){
 
     this.loading = true;
 
     const res = await this.champsService.List();
     if (res.success){
-      this.champs = res.data.rows;
+      const champs = res.data.rows;
+
+      this.categories.map(category => {
+        category.champs = champs.filter(i => i.category === category.id);
+        return category;
+      })
+
     } else {
       this.error = res.error;
     }
 
     this.loading = false;
+
+  }
+
+  getCategories(){
+
+    this.categories = this.champsService.GetCategories();
 
   }
 

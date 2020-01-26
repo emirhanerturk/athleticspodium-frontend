@@ -1,7 +1,14 @@
 
+// Colors
 $color-yellow: #ffdd00;
 
+// Responsiveness
+$responsive-xl: "only screen and (max-width: 1680px)";
+$responsive-lg: "only screen and (max-width: 1200px)";
+$responsive-md: "only screen and (max-width: 992px)";
+$responsive-sm: "only screen and (max-width: 768px)";
 
+// Root
 :root {
     --yellow: #ffdd00;
 }

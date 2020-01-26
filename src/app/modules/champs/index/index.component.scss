@@ -1,0 +1,21 @@
+
+.champs {
+    margin-bottom: 40px;
+    margin-left: 32px;
+
+    li {
+        display: inline-block;
+
+        &:after {
+            content: ',';
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+
+    }
+
+}

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { IResponse } from '@core/interfaces/response.interface';
 import { GenerateQuerySring } from "@services/util.service";
+import { IResponse } from '@interfaces/response.interface';
+import { EGender } from '@enums/gender.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,13 @@ export class MeetingService {
 
   /**
    * Get the meeting's medals
-   * @param meeting_id number
+   * @param meeting_id
    */
-  async GetMedals(meeting_id: number): Promise<IResponse> {
+  async GetMedals(meeting_id: number, gender: EGender): Promise<IResponse> {
 
-    return await this.apiService.get(`/meetings/${meeting_id}/medals`);
+    const qs = GenerateQuerySring({ gender });
+
+    return await this.apiService.get(`/meetings/${meeting_id}/medals?${qs}`);
 
   }
 

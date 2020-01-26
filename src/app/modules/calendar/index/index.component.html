@@ -3,20 +3,27 @@
 <section class="main-container">
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
 
-            <ng-container *ngFor="let year of years">
-                <a [routerLink]="'/calendar/' + year">
-                    {{ year }}
-                </a>
-                <br><br>
-            </ng-container>
+            <h4 class="h2-yellow">
+                Years
+            </h4>
+
+            <div class="card mb-4">
+                <ul class="years">
+                    <li *ngFor="let year of years">
+                        <a [routerLink]="'/calendar/' + year" [class.active]="active_year === year">
+                            {{ year }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
     
         </div>
-        <div class="col-9">
+        <div class="col-10">
     
             <h1 class="h1">
-                {{ year }} Calendar
+                {{ active_year }} Calendar
             </h1>
 
             <table class="table-medals">

@@ -89,7 +89,7 @@ export class DetailComponent implements OnInit {
       this.meeting = this.champs.meetings.find(item => item.slug === meeting_slug);
       this.appService.setTitle(this.meeting.name);
 
-      const res = await this.meetingService.GetMedals(this.meeting.id);
+      const res = await this.meetingService.GetMedals(this.meeting.id, 0);
       if (res.success){
         this.meeting_events = res.data;
       } else {
