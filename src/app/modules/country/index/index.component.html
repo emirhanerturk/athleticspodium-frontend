@@ -14,22 +14,16 @@
     </div>
 
     <ul class="row countries">
-        <ng-container *ngIf="!filteredCountries">
-            <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of countries">
-                <a [routerLink]="'/country/' + item.code">
-                    <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="">
-                    <h6>{{ item.code }} <span>{{ item.name }}</span></h6>
-                </a>
-            </li>
-        </ng-container>
-        <ng-container *ngIf="filteredCountries">
-            <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of filteredCountries">
-                <a [routerLink]="'/country/' + item.code">
-                    <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="">
-                    <h6>{{ item.code }} <span>{{ item.name }}</span></h6>
-                </a>
-            </li>
-        </ng-container>
+        <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of filteredCountries || countries">
+            <a [routerLink]="'/country/' + item.code">
+                <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="">
+                <h6>{{ item.code }} <span>{{ item.name }}</span></h6>
+            </a>
+        </li>        
     </ul>
+
+    <div *ngIf="filteredCountries && filteredCountries.length === 0">
+        Not matched any country with your search.
+    </div>
 
 </section>
