@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { AppService } from "@services/app.service";
+
+import { IError } from '@interfaces/response.interface';
 
 @Component({
   selector: 'app-error',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  @Input() error: IError|IError[];
+  @Input() fullscreen: boolean = true;
+
+  data: IError;
+
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+
+    this.appService.logError(this.error, 'ErrorComponent')
+
+    if (Array.isArray(this.error)){
+      this.data = this.error[0];
+    } else {
+      this.data = this.error;
+    }
+
   }
 
 }

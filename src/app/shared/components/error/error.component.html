@@ -1,1 +1,6 @@
-<p>error works!</p>
+
+<div class="error-container" [class.fullscreen]="fullscreen">
+    <img src="/assets/images/warning.svg" alt="">
+    <h6>Opps! Something went wrong.</h6>
+    <p>Error Code: {{ data.code }} - Message: {{ data.message }}</p>
+</div>

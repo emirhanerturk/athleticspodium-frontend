@@ -4,6 +4,7 @@ import { AppService, ENavigation } from "@services/app.service";
 import { ChampsService } from "@services/champs.service";
 
 import { IChamps } from "@interfaces/models.interface";
+import { IError } from '@interfaces/response.interface';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ import { IChamps } from "@interfaces/models.interface";
 export class IndexComponent implements OnInit {
 
   loading: boolean = true;
-  error: any;
+  error: IError | IError[];
 
   categories: any[];
 
@@ -41,7 +42,7 @@ export class IndexComponent implements OnInit {
       const champs = res.data.rows;
 
       this.categories.map(category => {
-        category.champs = champs.filter(i => i.category === category.id);
+        category.champs = champs.filter((i: IChamps) => i.category === category.id);
         return category;
       })
 

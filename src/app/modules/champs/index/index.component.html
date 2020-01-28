@@ -1,7 +1,9 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
-<section *ngIf="!loading" class="main-container">
+<app-error *ngIf="error" [error]="error"></app-error>
+
+<section *ngIf="!loading && !error" class="main-container">
     
     <h1 class="h1 mb-4">Champs</h1>
 
