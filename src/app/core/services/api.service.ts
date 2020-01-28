@@ -17,12 +17,24 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  get(endpoint: string): Promise<IResponse> {
-    return this.http.get<IResponse>(this.baseUrl + endpoint).toPromise();
+  async get(endpoint: string): Promise<IResponse> {
+    
+    try {
+      return await this.http.get<IResponse>(this.baseUrl + endpoint).toPromise();      
+    } catch (error) {
+      return Promise.resolve({ success: false, error: { code: error.status, message: error.statusText } })
+    }
+    
   }
 
-  post(endpoint: string, body: any = {}): Promise<IResponse> {
-    return this.http.post<IResponse>(this.baseUrl + endpoint, body).toPromise();
+  async post(endpoint: string, body: any = {}): Promise<IResponse> {
+    
+    try {
+      return await this.http.post<IResponse>(this.baseUrl + endpoint, body).toPromise();
+    } catch (error) {
+      return Promise.resolve({ success: false, error: { code: error.status, message: error.statusText } })
+    }
+    
   }
 
 }

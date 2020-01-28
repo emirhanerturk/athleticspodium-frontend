@@ -2,12 +2,11 @@
 export interface IResponse {
     success: boolean,
     data?: any
-    error?: {
-        code: number,
-        message: string,
-        fatal?: boolean
-    } | {
-        code: number,
-        message: string
-    }[]
+    error?: IError|IError[]
+}
+
+export interface IError {
+    code: number,
+    message: string,
+    fatal?: boolean,
 }

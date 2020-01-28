@@ -4,6 +4,7 @@ import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
 
 import { ICountry } from "@interfaces/models.interface";
+import { IError } from '@interfaces/response.interface';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ import { ICountry } from "@interfaces/models.interface";
 export class IndexComponent implements OnInit {
 
   loading: boolean = true;
-  error: any;
+  error: IError | IError[];
 
   countries: ICountry[];
   filteredCountries: ICountry[];
