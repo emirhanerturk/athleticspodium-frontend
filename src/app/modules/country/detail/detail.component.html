@@ -1,6 +1,8 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
+<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">

@@ -43,6 +43,19 @@ hr {
 .align-items-start { align-items: flex-start; }
 .align-items-end { align-items: flex-end; }
 
+.img-fluid {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .uppercase { text-transform: uppercase; }
 .lowercase { text-transform: lowercase; }
 .capitalize { text-transform: capitalize; }

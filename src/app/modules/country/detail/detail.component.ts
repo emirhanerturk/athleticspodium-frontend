@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
 
+import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { ICountry } from "@interfaces/models.interface";
 
 @Component({
@@ -15,6 +16,7 @@ export class DetailComponent implements OnInit {
 
   loading: boolean = true;
   error: any;
+  breadcrumbs: IBreadcrumb[];
 
   country_code: string;
   country: ICountry;
@@ -39,6 +41,10 @@ export class DetailComponent implements OnInit {
       this.country = res.data;
 
       this.appService.setTitle(this.country.name || this.country.code);
+      this.breadcrumbs = [
+        { name: 'Countries', uri: `/country` },
+        { name: this.country.name || this.country.code, uri: `/country/${this.country.code}` },
+      ];
 
       const res2 = await this.countryService.GetMedals(this.country_code);
       if (res2.success){
