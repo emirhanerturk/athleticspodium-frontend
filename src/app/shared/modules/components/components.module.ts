@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { ErrorComponent } from '@shared/components/error/error.component';
@@ -7,7 +8,8 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   declarations: [
     LoaderComponent,

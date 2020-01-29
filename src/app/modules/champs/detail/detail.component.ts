@@ -5,6 +5,7 @@ import { AppService, ENavigation } from "@services/app.service";
 import { ChampsService } from "@services/champs.service";
 import { MeetingService } from "@services/meeting.service";
 
+import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IChamps, IMeeting } from "@interfaces/models.interface";
 
 @Component({
@@ -15,9 +16,10 @@ import { IChamps, IMeeting } from "@interfaces/models.interface";
 export class DetailComponent implements OnInit {
 
   loading: boolean = true;
-  loading_medals: boolean = true;
+  loading_meetings: boolean = true;
   error: any;
-  firstLoaded: boolean = false;
+  first_loaded: boolean = false;
+  breadcrumbs: IBreadcrumb[];
 
   champs: IChamps;
   meeting: IMeeting;
@@ -40,13 +42,13 @@ export class DetailComponent implements OnInit {
     this.appService.setNavigation(ENavigation.CHAMPS)
 
     this.route.params.subscribe(async data => {
-      if (!this.firstLoaded){
-        this.firstLoaded = true;
+      if (!this.first_loaded){
+        this.first_loaded = true;
         await this.getChamps(data.champ_slug);
-        await this.getMedals(data.meeting_slug);
+        await this.getMeetings(data.meeting_slug);
       } else {
-        this.firstLoaded = true;
-        this.getMedals(data.meeting_slug);
+        this.first_loaded = true;
+        this.getMeetings(data.meeting_slug);
       }
     })
 
@@ -64,6 +66,10 @@ export class DetailComponent implements OnInit {
       this.champs = res.data;
 
       this.appService.setTitle(this.champs.name);
+      this.breadcrumbs = [
+        { name: 'Champs', uri: `/champs` },
+        { name: this.champs.name, uri: `/champs/${this.champs.slug}` },
+      ];
 
       const res2 = await this.champsService.GetMedals(this.champs.id);
       if (res2){
@@ -74,20 +80,24 @@ export class DetailComponent implements OnInit {
       this.error = res.error
     }
 
-    setTimeout(() => {
-      this.loading = false;        
-    }, 400);
+    this.loading = false;
 
   }
 
-  async getMedals(meeting_slug: string){
+  async getMeetings(meeting_slug: string){
 
-    this.loading_medals = true;
+    this.loading_meetings = true;
 
     if (meeting_slug){
 
       this.meeting = this.champs.meetings.find(item => item.slug === meeting_slug);
+
       this.appService.setTitle(this.meeting.name);
+      this.breadcrumbs = [
+        { name: 'Champs', uri: `/champs` },
+        { name: this.champs.name, uri: `/champs/${this.champs.slug}` },
+        { name: this.meeting.name, uri: `/champs/${this.champs.slug}/${this.meeting.slug}` },
+      ];
 
       const res = await this.meetingService.GetMedals(this.meeting.id, 0);
       if (res.success){
@@ -98,9 +108,7 @@ export class DetailComponent implements OnInit {
 
     }
 
-    setTimeout(() => {
-      this.loading_medals = false;        
-    }, 400);
+    this.loading_meetings = false;
     
   }
 

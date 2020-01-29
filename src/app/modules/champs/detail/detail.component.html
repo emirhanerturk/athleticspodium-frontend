@@ -1,6 +1,8 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
+<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+
 <section *ngIf="!loading" class="main-container">
     
     <div class="row">
@@ -58,21 +60,23 @@
         </div>
         <div class="col-9">
 
-            <app-loader *ngIf="loading_medals"></app-loader>
+            <app-loader *ngIf="loading_meetings"></app-loader>
 
-            <ng-container *ngIf="!loading_medals && !meeting">
+            <ng-container *ngIf="!loading_meetings && !meeting">
 
-                <h1 class="h1">
-                    {{ champs.name }}
-                </h1>
-
-                <p>
-                    Choose a meeting from the left side.
-                </p>
+                <section class="card champs-detail">
+                    <figure>
+                        <img [attr.src]="'/assets/media/african-champs.jpg'" class="img-cover" [attr.alt]="champs.name">
+                    </figure>
+                    <h1 class="h1 h1-larger">
+                        {{ champs.name }}
+                    </h1>
+                    <div class="champs-content" [innerHTML]="champs.content"></div>
+                </section>
 
             </ng-container>
 
-            <ng-container *ngIf="!loading_medals && meeting">
+            <ng-container *ngIf="!loading_meetings && meeting">
 
                 <h1 class="h1">
                     {{ meeting.name }}
