@@ -93,8 +93,7 @@
                     <table class="table-medals">
                         <thead>
                             <tr>
-                                <th style="width: 20px">#</th>
-                                <th style="width: 100px">Medal</th>
+                                <th style="width: 60px" class="text-center">Medal</th>
                                 <th>Athlete</th>
                                 <th style="width: 70px" class="text-center">Country</th>
                                 <th style="width: 100px" class="text-right">Mark</th>
@@ -105,11 +104,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let medal of event.medals" [class.canceled]="medal.is_canceled">
-                                <td class="font-bold">
-                                    {{ medal.medal ? medal.medal + '.' : '' }}
-                                </td>
-                                <td>
-                                    {{ (medal.medal | medal).name }}
+                                <td class="p-0 text-center">
+                                    <p [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                        <img [attr.src]="'/assets/images/medals/' + (medal.medal | medal).icon" class="medal-icon" alt="">
+                                    </p>
                                 </td>
                                 <td *ngIf="medal.athlete">
                                     <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.fullname }}</a>

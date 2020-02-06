@@ -5,28 +5,22 @@ import { GenerateQuerySring } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
 import { EGender } from '@enums/gender.enum';
 import { EChampsCategory } from '@enums/champs-category.enum';
-import { typeofExpr } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampsService {
 
-  private _categories: {
-    0: {
-      name: ''
-
-    }
-  }
-
   constructor(private apiService: ApiService) { }
 
   /**
    * Get all champs
    */
-  async List (){
+  async List(fields?: string[], order?: string, limit?: number){
 
-    return await this.apiService.get(`/champs`);
+    const qs = GenerateQuerySring({ fields, order, limit });
+
+    return await this.apiService.get(`/champs?${qs}`);
 
   }
 

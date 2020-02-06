@@ -143,11 +143,33 @@ body {
             background-color: #fff;
           }
     }
+
+    .medal-icon {
+        width: 24px;
+    }
 }
 
 /* forms */
 .form-group {
     margin-bottom: 12px;
+}
+
+.form-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+
+    .form-group {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding-right: 10px;
+        padding-left: 10px;
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+    }   
 }
 
 .form-label {
@@ -184,6 +206,10 @@ body {
     text-transform: uppercase;
     // transform: skewX(20deg);
     transition: all .2s ease;
+
+    &.btn-block {
+        width: 100%;
+    }
 
     span {
         display: block;

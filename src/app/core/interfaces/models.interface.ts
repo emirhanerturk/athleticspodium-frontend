@@ -34,6 +34,7 @@ export interface IMeeting {
 export interface IEvent {
     id: number,
     name: string,
+    rank: number,
     gender: EGender
 }
 
@@ -68,6 +69,7 @@ export interface IAthlete {
     id: number,
     first_name: string,
     last_name: string,
+    fullname: string,
     aka: string[],
     slug: string,
     country_code: string,

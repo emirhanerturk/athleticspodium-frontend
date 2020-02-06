@@ -20,15 +20,4 @@ export class IndexComponent implements OnInit {
 
   }
 
-  getMedalTrackerFormOptions(){
-
-
-
-  }
-
-  medalTrackerSubmit(e: any){
-    e.preventDefault();
-
-  }
-
 }

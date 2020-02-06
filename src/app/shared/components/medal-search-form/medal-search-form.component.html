@@ -1,0 +1,74 @@
+
+<div class="card p-3">
+
+    <form (ngSubmit)="formSubmit(form)" #form="ngForm" [class.form-horizontal]="direction === 'H'" [class.align-items-end]="direction === 'H'">
+    
+        <div class="form-group">
+            <label class="form-label" for="">* Championship:</label>
+            <select name="champs" class="form-select" [(ngModel)]="formValues.champs">
+                <option value="">Select a Championship</option>
+                <option *ngFor="let champ of champs" [value]="champ.id">{{ champ.name }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label class="form-label" for="">* Country:</label>
+            <select name="country" class="form-select" [(ngModel)]="formValues.country">
+                <option value="">Select a Country</option>
+                <option *ngFor="let country of countries" [value]="country.code">{{ country.code }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label class="form-label" for="">Event:</label>
+            <select name="event" class="form-select" [(ngModel)]="formValues.event">
+                <option value="">All</option>
+                <option *ngFor="let event of events" [value]="event.id">{{ event.name }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label class="form-label" for="">Year:</label>
+            <select name="year" class="form-select" [(ngModel)]="formValues.year">
+                <option value="">All</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label class="form-label" for="">Gender:</label>
+            <select name="gender" class="form-select" [(ngModel)]="formValues.gender">
+                <option value="">All</option>
+                <option value="0">Men</option>
+                <option value="1">Women</option>
+                <option value="2">Mixed</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label class="form-label" for="">Medal:</label>
+            <select name="medal" class="form-select" [(ngModel)]="formValues.medal">
+                <option value="">All</option>
+                <option value="1">Gold</option>
+                <option value="2">Silver</option>
+                <option value="3">Bronze</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <button type="submit" class="btn btn-block">
+                <span>Search</span>
+            </button>
+        </div>
+    
+        <div *ngIf="formError && direction === 'V'" class="form-group">
+            *: at least one of the marked fields must be entered
+        </div>
+        
+    </form>
+    
+    <div *ngIf="formError && direction === 'H'" class="mt-2">
+        *: at least one of the marked fields must be entered
+    </div>
+
+</div>

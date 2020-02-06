@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-
-import { IResponse } from '@core/interfaces/response.interface';
+import { GenerateQuerySring } from '@services/util.service';
+import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,9 @@ export class CountryService {
   /**
    * Get all countries
    */
-  async List (): Promise<IResponse> {
+  async List (fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+
+    const qs = GenerateQuerySring({ fields, order, limit });
 
     return await this.apiService.get(`/countries`);
 

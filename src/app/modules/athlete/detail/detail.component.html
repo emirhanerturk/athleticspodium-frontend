@@ -78,7 +78,7 @@
                         <tr>
                             <th style="width: 60px">Year</th>
                             <th>Champs</th>
-                            <th style="width: 80px">Medal</th>
+                            <th style="width: 60px" class="text-center">Medal</th>
                             <th style="width: 100px">Event</th>
                             <th style="width: 70px" class="text-center">Country</th>
                             <th style="width: 100px" class="text-right">Mark</th>
@@ -99,8 +99,10 @@
                                     {{ medal.champ.name }}
                                 </a>
                             </td>
-                            <td>
-                                {{ (medal.medal | medal).name }}
+                            <td class="p-0 text-center">
+                                <p [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                    <img [attr.src]="'/assets/images/medals/' + (medal.medal | medal).icon" class="medal-icon" alt="">
+                                </p>
                             </td>
                             <td>
                                 {{ medal.event.name }}
