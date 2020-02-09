@@ -31,6 +31,7 @@ export class SearchComponent implements OnInit {
     year: '',
     gender: '',
     medal: '',
+    page: 1,
   };
   Math = Math;
 
@@ -46,23 +47,18 @@ export class SearchComponent implements OnInit {
 
     this.route.params.subscribe((queries: IMedalSearch) => {
       if (Object.keys(queries).length) {
-        this.queries = queries
-        this.searchMedals(queries)
+        this.queries = { ...this.queries, ...queries };
+        this.searchMedals();
       }
-    })
-
-    // this.route.queryParams.subscribe(queries => {
-    //   console.log('queries', queries);
-    //   if (queries) this.searchMedals(queries)
-    // });
+    });
 
   }
 
-  async searchMedals(queries: Object){
+  async searchMedals(){
 
     this.loading = true;
 
-    const res = await this.medalService.Search(queries);
+    const res = await this.medalService.Search(this.queries);
     if (res.success){
       this.medals = res.data.rows;
       this.count = res.data.count;
@@ -73,6 +69,11 @@ export class SearchComponent implements OnInit {
 
     this.loading = false;
     
+  }
+
+  changedPage(page: number){
+    this.queries.page = page;
+    this.searchMedals();
   }
 
 }

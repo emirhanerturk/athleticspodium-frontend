@@ -1,0 +1,16 @@
+
+<div class="pagination-container">
+
+    <ul class="pagination">
+        <li class="prev" [class.disabled]="currentPage === 1" (click)="prev()">
+            Prev
+        </li>
+        <li *ngFor="let page of pages" class="page" [class.active]="page === currentPage" (click)="setPage(page)">
+            {{ page }}
+        </li>
+        <li class="next" [class.disabled]="currentPage === pageCount" (click)="next()">
+            Next
+        </li>
+    </ul>
+
+</div>

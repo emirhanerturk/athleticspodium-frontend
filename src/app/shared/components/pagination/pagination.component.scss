@@ -1,0 +1,48 @@
+
+@import 'variables';
+
+.pagination-container {
+
+    .pagination {
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 34px;
+        text-align: center;
+        border: 1px solid #eee;
+        background-color: #fff;
+        color: #4b4f54;
+        user-select: none;
+
+        .page {
+            width: 36px;
+            height: 36px;
+            border-right: 1px solid #eee;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            &.active {
+                background-color: $color-yellow;
+                border-color: $color-yellow;
+            }
+        }
+
+        .prev, .next {
+            height: 36px;
+            padding: 0 12px;
+            border-right: 1px solid #eee;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            &.disabled {
+                color: #ccc;
+            }
+        }
+
+    }
+
+}

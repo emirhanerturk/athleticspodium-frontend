@@ -4,5 +4,6 @@ export interface IMedalSearch {
     event: string,
     year: string,
     gender: string,
-    medal: string
+    medal: string,
+    page?: number
 }
