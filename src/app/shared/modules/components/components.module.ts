@@ -7,6 +7,7 @@ import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { ErrorComponent } from '@shared/components/error/error.component';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { MedalSearchFormComponent } from '@shared/components/medal-search-form/medal-search-form.component';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -19,12 +20,14 @@ import { MedalSearchFormComponent } from '@shared/components/medal-search-form/m
     ErrorComponent,
     BreadcrumbComponent,
     MedalSearchFormComponent,
+    PaginationComponent,
   ],
   exports: [
     LoaderComponent,
     ErrorComponent,
     BreadcrumbComponent,
     MedalSearchFormComponent,
+    PaginationComponent,
   ]
 })
 export class ComponentsModule { }
