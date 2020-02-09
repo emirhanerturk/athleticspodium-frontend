@@ -5,6 +5,7 @@ import { AppService } from '@services/app.service';
 import { MedalService } from "@services/medal.service";
 import { IError } from '@interfaces/response.interface';
 import { IMedal } from '@interfaces/models.interface';
+import { IMedalSearch } from '@interfaces/medal-search.interface';
 
 @Component({
   selector: 'app-search',
@@ -13,12 +14,24 @@ import { IMedal } from '@interfaces/models.interface';
 })
 export class SearchComponent implements OnInit {
 
-  loading: boolean = true;
+  loading: boolean = false;
   error: IError | IError[];
 
   medals: IMedal[];
   count: number = 0;
-  queries: any;
+  counts: {
+    gold: number,
+    silver: number,
+    bronze: number
+  };
+  queries: IMedalSearch = {
+    champs: '',
+    country: '',
+    event: '',
+    year: '',
+    gender: '',
+    medal: '',
+  };
   Math = Math;
 
   constructor(
@@ -31,8 +44,8 @@ export class SearchComponent implements OnInit {
 
     this.appService.setNavigation(null);
 
-    this.route.params.subscribe(queries => {
-      if (queries) {
+    this.route.params.subscribe((queries: IMedalSearch) => {
+      if (Object.keys(queries).length) {
         this.queries = queries
         this.searchMedals(queries)
       }
@@ -53,6 +66,7 @@ export class SearchComponent implements OnInit {
     if (res.success){
       this.medals = res.data.rows;
       this.count = res.data.count;
+      this.counts = res.data.counts;
     } else {
       this.error = res.error;
     }

@@ -16,13 +16,16 @@
         <h2 class="h2-yellow">Medals</h2>
 
         <p *ngIf="count" class="mb-4">
-            Total {{ count }} medal(s) found.
+            Total <strong [class.font-bold]="count > 0">{{ count }} {{ count > 1 ? 'medals' : 'medal' }}</strong> found.
+            <strong [class.font-bold]="counts.gold > 0">{{ counts.gold }} gold</strong> {{ counts.gold > 1 ? 'medals' : 'medal' }},
+            <strong [class.font-bold]="counts.silver > 0">{{ counts.silver }} silver</strong> {{ counts.silver > 1 ? 'medals' : 'medal' }} and
+            <strong [class.font-bold]="counts.bronze > 0">{{ counts.bronze }} bronze</strong> {{ counts.silver > 1 ? 'medals' : 'medal' }}.
         </p>
         <p *ngIf="count === 0" class="mb-4">
             Not found any medal with your filters.
         </p>
     
-        <table class="table-medals">
+        <table *ngIf="count" class="table-medals">
             <thead>
                 <tr>
                     <th style="width: 60px">Year</th>
