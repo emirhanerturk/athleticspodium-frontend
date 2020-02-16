@@ -18,6 +18,10 @@ export class MedalSearchFormComponent implements OnInit {
   @Input() direction: 'H'|'V' = 'V';
   @Input() values: any;
 
+  loadingChamps: boolean = true;
+  loadingCountries: boolean = true;
+  loadingEvents: boolean = true;
+
   champs: IChamps[] = [];
   countries: ICountry[] = [];
   events: IEvent[] = [];
@@ -60,16 +64,27 @@ export class MedalSearchFormComponent implements OnInit {
     const res1 = await this.champsService.List(['id', 'name'], 'name');
     if (res1.success){
       this.champs = res1.data.rows;
+      this.loadingChamps = false;
     }
     const res2 = await this.countryService.List(['id', 'code']);
     if (res2.success){
       this.countries = res2.data.rows;
+      this.loadingCountries = false;
     }
     const res3 = await this.eventService.List();
     if (res3.success){
       this.events = res3.data.rows;
+      this.loadingEvents = false;
     }
 
+  }
+
+  changeChamps(){
+    console.log('champs', this.formValues.champs)
+  }
+
+  changeCountry(){
+    console.log('country', this.formValues.country)
   }
 
   formSubmit(form: NgForm){

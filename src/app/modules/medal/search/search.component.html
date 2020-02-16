@@ -76,7 +76,7 @@
                         <td class="text-right font-bold">
                             {{ medal.mark_display }}
                         </td>
-                        <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="Math.abs(medal.wind) > 2">
+                        <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
                             {{ medal.wind }}
                         </td>
                         <td *ngIf="!medal.wind" class="font-smaller">

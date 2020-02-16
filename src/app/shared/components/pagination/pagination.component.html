@@ -5,8 +5,20 @@
         <li class="prev" [class.disabled]="currentPage === 1" (click)="prev()">
             Prev
         </li>
-        <li *ngFor="let page of pages" class="page" [class.active]="page === currentPage" (click)="setPage(page)">
+        <li *ngIf="scenario === 'middle' || scenario === 'end'" class="page" (click)="setPage(1)">
+            1
+        </li>
+        <li *ngIf="scenario === 'middle' || scenario === 'end'" class="page disabled">
+            ...
+        </li>
+        <li *ngFor="let page of pages" class="page" [class.active]="page == currentPage" (click)="setPage(page)">
             {{ page }}
+        </li>
+        <li *ngIf="scenario === 'middle' || scenario === 'begin'" class="page disabled">
+            ...
+        </li>
+        <li *ngIf="scenario === 'middle' || scenario === 'begin'" class="page" (click)="setPage(this.pageCount)">
+            {{ this.pageCount }}
         </li>
         <li class="next" [class.disabled]="currentPage === pageCount" (click)="next()">
             Next
