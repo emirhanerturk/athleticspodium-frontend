@@ -69,8 +69,6 @@ export class PaginationComponent implements OnInit {
       this.pages.push(i);
     }
 
-    console.log(this.pages, beginPage, endPage, this.scenario);
-
   }
 
   setPage(page: number){
