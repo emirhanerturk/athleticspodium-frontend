@@ -59,7 +59,7 @@
                         </td>
                         <td class="p-0 text-center">
                             <p [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
-                                <img [attr.src]="'/assets/images/medals/' + (medal.medal | medal).icon" class="medal-icon" alt="">
+                                <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
                             </p>
                         </td>
                         <td *ngIf="medal.athlete">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -22,6 +22,12 @@ export class PaginationComponent implements OnInit {
 
     this.calculatePageCount();
 
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    
+    
+    
   }
 
   calculatePageCount(){

@@ -17,6 +17,7 @@ h1 small {
             transition: all .2s ease;
 
             img {
+                min-width: 32px;
                 width: 32px;
                 height: 24px;
                 margin-right: 8px;
@@ -26,6 +27,7 @@ h1 small {
         
             h6 {
                 display: block;
+                max-width: 56px;
                 font-weight: 700;
                 font-size: 16px;
                 line-height: 18px;
@@ -37,6 +39,9 @@ h1 small {
                     font-size: 11px;
                     line-height: 11px;
                     color: #666;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
 
