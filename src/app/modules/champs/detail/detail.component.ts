@@ -26,8 +26,6 @@ export class DetailComponent implements OnInit {
   meeting_events: any[];
   champs_countries: any[];
 
-  Math = Math;
-
   constructor(
     private route: ActivatedRoute,
     private appService: AppService,

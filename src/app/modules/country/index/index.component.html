@@ -16,7 +16,7 @@
 
     <ul class="row countries">
         <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of filteredCountries || countries">
-            <a [routerLink]="'/country/' + item.code">
+            <a [routerLink]="'/country/' + item.code" [title]="item.name ? item.name : ''">
                 <img [attr.src]="'/assets/media/flags/' + item.code.toLowerCase() + '.svg'" alt="">
                 <h6>{{ item.code }} <span>{{ item.name }}</span></h6>
             </a>

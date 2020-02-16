@@ -108,11 +108,17 @@ body {
     }
 
     .canceled {
-        color: #de2d2d;
 
-        td:nth-child(2){
+        td {
+            color: #de2d2d;
             text-decoration: line-through;
+
+            &:hover {
+                text-decoration: none !important;
+            }
+            
         }
+
     }
 
     .invalid-wind {

@@ -105,9 +105,12 @@
                         <tbody>
                             <tr *ngFor="let medal of event.medals" [class.canceled]="medal.is_canceled">
                                 <td class="p-0 text-center">
-                                    <p [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
-                                        <img [attr.src]="'/assets/images/medals/' + (medal.medal | medal).icon" class="medal-icon" alt="">
+                                    <p *ngIf="!medal.is_canceled" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                        <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
                                     </p>
+                                    <span *ngIf="medal.is_canceled">
+                                        {{ medal.medal ? medal.medal + '.' : '-'}}
+                                    </span>
                                 </td>
                                 <td *ngIf="medal.athlete">
                                     <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.fullname }}</a>
@@ -123,7 +126,7 @@
                                 <td class="text-right font-bold">
                                     {{ medal.mark_display }}
                                 </td>
-                                <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="Math.abs(medal.wind) > 2">
+                                <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
                                     {{ medal.wind }}
                                 </td>
                                 <td *ngIf="!medal.wind" class="font-smaller">
@@ -132,7 +135,7 @@
                                 <td>
                                     {{ medal.record }}
                                 </td>
-                                <td class="text-center">
+                                <td class="p-0 text-center">
                                     <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
                                         <img src="/assets/images/info.svg" class="info-circle" alt="">                                        
                                     </span>

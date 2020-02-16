@@ -100,9 +100,12 @@
                                 </a>
                             </td>
                             <td class="p-0 text-center">
-                                <p [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
-                                    <img [attr.src]="'/assets/images/medals/' + (medal.medal | medal).icon" class="medal-icon" alt="">
+                                <p *ngIf="!medal.is_canceled" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                    <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
                                 </p>
+                                <span *ngIf="medal.is_canceled">
+                                    {{ medal.medal ? medal.medal + '.' : '-'}}
+                                </span>
                             </td>
                             <td>
                                 {{ medal.event.name }}
