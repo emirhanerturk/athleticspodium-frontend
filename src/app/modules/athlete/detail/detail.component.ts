@@ -22,8 +22,6 @@ export class DetailComponent implements OnInit {
   medals_counts: any;
   medals_counts_total: any;
 
-  Math = Math;
-
   constructor(
     private route: ActivatedRoute,
     private appService: AppService,

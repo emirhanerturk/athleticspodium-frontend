@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AppService } from '@services/app.service';
 import { MedalService } from "@services/medal.service";
@@ -24,19 +24,11 @@ export class SearchComponent implements OnInit {
     silver: number,
     bronze: number
   };
-  queries: IMedalSearch = {
-    champs: '',
-    country: '',
-    event: '',
-    year: '',
-    gender: '',
-    medal: '',
-    page: 1,
-  };
-  Math = Math;
+  queries: IMedalSearch;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private medalService: MedalService
   ) { }
@@ -47,6 +39,15 @@ export class SearchComponent implements OnInit {
 
     this.route.params.subscribe((queries: IMedalSearch) => {
       if (Object.keys(queries).length) {
+        this.queries = {
+          champs: '',
+          country: '',
+          event: '',
+          year: '',
+          gender: '',
+          medal: '',
+          page: 1,
+        }
         this.queries = { ...this.queries, ...queries };
         this.searchMedals();
       }
@@ -72,8 +73,10 @@ export class SearchComponent implements OnInit {
   }
 
   changedPage(page: number){
+
     this.queries.page = page;
-    this.searchMedals();
+    this.router.navigate(['/medals/search', this.queries])
+
   }
 
 }

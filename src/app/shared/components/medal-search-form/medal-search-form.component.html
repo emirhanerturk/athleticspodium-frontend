@@ -5,7 +5,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">* Championship:</label>
-            <select name="champs" class="form-select" [(ngModel)]="formValues.champs">
+            <select name="champs" class="form-select" [disabled]="loadingChamps" [(ngModel)]="formValues.champs" (change)="changeChamps()">
                 <option value="">Select a Championship</option>
                 <option *ngFor="let champ of champs" [value]="champ.id">{{ champ.name }}</option>
             </select>
@@ -13,7 +13,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">* Country:</label>
-            <select name="country" class="form-select" [(ngModel)]="formValues.country">
+            <select name="country" class="form-select" [disabled]="loadingCountries" [(ngModel)]="formValues.country" (change)="changeCountry()">
                 <option value="">Select a Country</option>
                 <option *ngFor="let country of countries" [value]="country.code">{{ country.code }}</option>
             </select>
@@ -21,7 +21,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">Event:</label>
-            <select name="event" class="form-select" [(ngModel)]="formValues.event">
+            <select name="event" class="form-select" [(ngModel)]="formValues.event" [disabled]="loadingEvents">
                 <option value="">All</option>
                 <option *ngFor="let event of events" [value]="event.id">{{ event.name }}</option>
             </select>

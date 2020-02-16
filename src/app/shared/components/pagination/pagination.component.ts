@@ -10,11 +10,13 @@ export class PaginationComponent implements OnInit {
   @Input() total: number = 0;
   @Input() pageSize: number = 10;
   @Input() currentPage: number = 1;
+  @Input() maxPageShows: number = 10;
 
   @Output() changedPage = new EventEmitter();
 
   pageCount: number = 0;
   pages: number[] = [];
+  scenario: 'normal'|'begin'|'end'|'middle' = 'normal';
 
   constructor() { }
 
@@ -25,15 +27,45 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    
-    
-    
+    if (changes.total){
+      this.total = changes.total.currentValue;
+    }
+    if (changes.currentPage){
+      this.currentPage = changes.currentPage.currentValue;
+    }
+    if (changes.pageSize){
+      this.pageSize = changes.pageSize.currentValue;
+    }
+    this.calculatePageCount();
   }
 
   calculatePageCount(){
 
+    this.currentPage = +this.currentPage;
+    this.pages = [];
     this.pageCount = Math.ceil(this.total / this.pageSize);
-    for (let i = 1; i <= this.pageCount; i++) {
+
+    let beginPage = 1;
+    let endPage = this.pageCount;
+    if (this.pageCount > this.maxPageShows){
+
+      if (this.currentPage <= (this.maxPageShows / 2) + 2){
+        this.scenario = 'begin';
+        beginPage = 1;
+        endPage = beginPage + this.maxPageShows;
+      } else if (this.currentPage >= this.pageCount - 2 - (this.maxPageShows / 2)){
+        this.scenario = 'end';
+        beginPage = this.pageCount - this.maxPageShows;
+        endPage = this.pageCount;
+      } else {
+        this.scenario = 'middle';
+        beginPage = this.currentPage - (this.maxPageShows / 2);
+        endPage = this.currentPage + (this.maxPageShows / 2);
+      }
+
+    }
+
+    for (let i = beginPage; i <= endPage; i++) {
       this.pages.push(i);
     }
 

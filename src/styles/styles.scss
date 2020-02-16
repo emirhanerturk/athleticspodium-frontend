@@ -196,6 +196,12 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 2px;
+
+    &:disabled {
+        background-color: #f3f3f3;
+        cursor: not-allowed;
+    }
+    
 }
 
 .btn {

@@ -29,6 +29,11 @@
                 background-color: $color-yellow;
                 border-color: $color-yellow;
             }
+
+            &.disabled {
+                color: #ccc;
+            }
+            
         }
 
         .prev, .next {
