@@ -63,7 +63,7 @@
                             </p>
                         </td>
                         <td *ngIf="medal.athlete">
-                            <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.fullname }}</a>
+                            <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.first_name }} {{ medal.athlete.last_name }}</a>
                         </td>
                         <td *ngIf="!medal.athlete">
                             -

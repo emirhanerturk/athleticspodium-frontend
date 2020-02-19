@@ -7,24 +7,28 @@
     
     <div class="row">
         <div class="col-3">
-            
-            <h4 class="h2-yellow">
-                Meetings
-            </h4>
 
-            <div class="card mb-4">
-                
-                <ul class="meetings">
-                    <li *ngFor="let meeting of champs.meetings">
-                        <a routerLink="/champs/{{ champs.slug }}/{{ meeting.slug }}" routerLinkActive="active">
-                            {{ meeting.year }}
-                        </a>
-                    </li>
-                </ul>
+            <section>
 
-            </div>
+                <h4 class="h2-yellow">
+                    Meetings
+                </h4>
+    
+                <div class="card mb-4">
+                    
+                    <ul class="meetings">
+                        <li *ngFor="let meeting of champs.meetings">
+                            <a routerLink="/champs/{{ champs.slug }}/{{ meeting.slug }}" routerLinkActive="active">
+                                {{ meeting.year }}
+                            </a>
+                        </li>
+                    </ul>
+    
+                </div>
 
-            <section class="">
+            </section>
+
+            <section>
 
                 <h4 class="h2-yellow">
                     Total Medals

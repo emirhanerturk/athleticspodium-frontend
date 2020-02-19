@@ -27,6 +27,10 @@ export class MedalSearchFormComponent implements OnInit {
   events: IEvent[] = [];
   years: number[] = [];
 
+  allChamps: IChamps[] = [];
+  allCountries: ICountry[] = [];
+  allEvents: IEvent[] = [];
+
   formError: boolean = false;
   formValues: IMedalSearch = {
     champs: '',
@@ -61,30 +65,53 @@ export class MedalSearchFormComponent implements OnInit {
 
   async getFormOptions(){
 
-    const res1 = await this.champsService.List(['id', 'name'], 'name');
+    const res1 = await this.champsService.List(['id', 'name', 'category', 'events'], 'name');
     if (res1.success){
       this.champs = res1.data.rows;
+      this.allChamps = res1.data.rows;
       this.loadingChamps = false;
     }
-    const res2 = await this.countryService.List(['id', 'code']);
+    const res2 = await this.countryService.List(['code', 'name', 'categories']);
     if (res2.success){
       this.countries = res2.data.rows;
+      this.allCountries = res2.data.rows;
       this.loadingCountries = false;
     }
     const res3 = await this.eventService.List();
     if (res3.success){
       this.events = res3.data.rows;
+      this.allEvents = res3.data.rows;
       this.loadingEvents = false;
     }
 
   }
 
   changeChamps(){
-    console.log('champs', this.formValues.champs)
+    
+    if (this.formValues.champs){
+      const champ = this.allChamps.find(i => i.id === parseInt(this.formValues.champs));
+      this.countries = this.allCountries.filter(i => i.categories.includes(champ.category));
+      this.events = this.allEvents.filter(i => champ.events.includes(i.id));
+    } else {
+      this.countries = this.allCountries;
+      this.events = this.allEvents;
+    }
+
   }
 
   changeCountry(){
-    console.log('country', this.formValues.country)
+
+    if (!this.formValues.champs){
+
+      if (this.formValues.country){
+        const country = this.allCountries.find(i => i.code === this.formValues.country);
+        this.champs = this.allChamps.filter(i => country.categories.includes(i.category));  
+      } else {
+        this.champs = this.allChamps;
+      }
+
+    }
+
   }
 
   formSubmit(form: NgForm){

@@ -18,7 +18,7 @@ export class CountryService {
 
     const qs = GenerateQuerySring({ fields, order, limit });
 
-    return await this.apiService.get(`/countries`);
+    return await this.apiService.get(`/countries?${qs}`);
 
   }
 

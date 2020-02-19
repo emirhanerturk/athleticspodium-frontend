@@ -37,7 +37,7 @@ export class IndexComponent implements OnInit {
 
     this.loading = true;
 
-    const res = await this.champsService.List();
+    const res = await this.champsService.List(['id', 'name', 'category']);
     if (res.success){
       const champs = res.data.rows;
 
