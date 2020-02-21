@@ -1,6 +1,10 @@
 
-export function GenerateQuerySring(object: Object){
+export function GenerateQuerySring(queries: Object){
 
-  return Object.keys(object).filter(key => object[key] !== undefined).map(key => key + '=' + object[key]).join('&');
-
+  if (queries){
+    return Object.keys(queries).filter(key => queries[key] !== undefined).map(key => key + '=' + queries[key]).join('&');
+  } else {
+    return '';
+  }
+  
 }

@@ -38,7 +38,7 @@ export class IndexComponent implements OnInit {
 
     this.loading = true;
 
-    const res = await this.countryService.List();
+    const res = await this.countryService.List({ is_country: 1 }, ['code', 'name', 'categories']);
     if (res.success){
       this.countries = res.data.rows;
     } else {

@@ -71,7 +71,7 @@ export class MedalSearchFormComponent implements OnInit {
       this.allChamps = res1.data.rows;
       this.loadingChamps = false;
     }
-    const res2 = await this.countryService.List(['code', 'name', 'categories']);
+    const res2 = await this.countryService.List(null, ['code', 'name', 'categories']);
     if (res2.success){
       this.countries = res2.data.rows;
       this.allCountries = res2.data.rows;

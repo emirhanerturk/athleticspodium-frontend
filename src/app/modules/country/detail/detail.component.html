@@ -10,7 +10,8 @@
     
             <div class="card country-info">
 
-                <img class="country-flag" [attr.src]="'/assets/media/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
+                <img class="country-flag" [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
+                <span class="country-code">{{ country.code }}</span>
 
                 <h1 class="h1">
                     {{ country.name || country.code }}

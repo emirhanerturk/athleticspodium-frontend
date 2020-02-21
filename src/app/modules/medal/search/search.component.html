@@ -70,7 +70,7 @@
                         </td>
                         <td class="text-center">
                             <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country_code" data-balloon-pos="up">
-                                <img class="country-flag" [attr.src]="'/assets/media/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
+                                <img class="country-flag" [src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                             </a>
                         </td>
                         <td class="text-right font-bold">

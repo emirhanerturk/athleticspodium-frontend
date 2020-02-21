@@ -43,7 +43,7 @@ export class DetailComponent implements OnInit {
       this.appService.setTitle(this.country.name || this.country.code);
       this.breadcrumbs = [
         { name: 'Countries', uri: `/country` },
-        { name: this.country.name || this.country.code, uri: `/country/${this.country.code}` },
+        { name: `${this.country.name} (${this.country.code})`, uri: `/country/${this.country.code}` },
       ];
 
       const res2 = await this.countryService.GetMedals(this.country_code);
