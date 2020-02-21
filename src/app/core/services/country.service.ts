@@ -14,11 +14,12 @@ export class CountryService {
   /**
    * Get all countries
    */
-  async List (fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+  async List (filters?: any, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQuerySring({ fields, order, limit });
+    const qs_filters = GenerateQuerySring(filters);
 
-    return await this.apiService.get(`/countries?${qs}`);
+    return await this.apiService.get(`/countries?${qs}&${qs_filters}`);
 
   }
 
