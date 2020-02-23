@@ -68,7 +68,7 @@ export class DetailComponent implements OnInit {
         // Necessary error
       }
 
-      const res3 = await this.countryService.GetTopAthletes(this.country_code);
+      const res3 = await this.countryService.GetTopAthletes(this.country_code, 10);
       if (res3.success){
         this.top_athletes = res3.data;
       } else {

@@ -43,8 +43,8 @@
                     <tbody style="text-align: center;">
                         <tr *ngFor="let row of medals">
                             <td>
-                                <a [routerLink]="'/champs/' + row.slug">
-                                    {{ row.name }}
+                                <a [routerLink]="'/champs/' + row.champ.slug">
+                                    {{ row.champ.name }}
                                 </a>
                             </td>
                             <td class="text-center">{{ row.gold }}</td>
@@ -85,8 +85,8 @@
                     <tbody style="text-align: center;">
                         <tr *ngFor="let row of top_athletes">
                             <td>
-                                <a [routerLink]="'/athlete/' + row.athlete_id + '/' + row.slug">
-                                    {{ row.first_name }} {{ row.last_name }}
+                                <a [routerLink]="'/athlete/' + row.athlete.id + '/' + row.athlete.slug">
+                                    {{ row.athlete.first_name }} {{ row.athlete.last_name }}
                                 </a>
                             </td>
                             <td class="text-center">{{ row.gold }}</td>

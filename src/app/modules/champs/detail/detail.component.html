@@ -47,8 +47,8 @@
                     <tbody>
                         <tr *ngFor="let country of champs_countries">
                             <td>
-                                <a [routerLink]="'/country/' + country.country_code">
-                                    {{ country.country_code }}
+                                <a [routerLink]="'/country/' + country.country.code">
+                                    {{ country.country.code }}
                                 </a>
                             </td>
                             <td class="text-center">{{ country.gold }}</td>
@@ -123,7 +123,7 @@
                                     -
                                 </td>
                                 <td class="text-center">
-                                    <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country_code" data-balloon-pos="up">
+                                    <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                         <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                                     </a>
                                 </td>

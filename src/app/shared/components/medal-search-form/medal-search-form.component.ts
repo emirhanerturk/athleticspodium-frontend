@@ -27,9 +27,9 @@ export class MedalSearchFormComponent implements OnInit {
   events: IEvent[] = [];
   years: number[] = [];
 
-  allChamps: IChamps[] = [];
-  allCountries: ICountry[] = [];
-  allEvents: IEvent[] = [];
+  private _allChamps: IChamps[] = [];
+  private _allCountries: ICountry[] = [];
+  private _allEvents: IEvent[] = [];
 
   formError: boolean = false;
   formValues: IMedalSearch = {
@@ -65,22 +65,22 @@ export class MedalSearchFormComponent implements OnInit {
 
   async getFormOptions(){
 
-    const res1 = await this.champsService.List(['id', 'name', 'category', 'events'], 'name');
+    const res1 = await this.champsService.List(['id', 'name', 'category', 'countries', 'events'], 'name');
     if (res1.success){
       this.champs = res1.data.rows;
-      this.allChamps = res1.data.rows;
+      this._allChamps = res1.data.rows;
       this.loadingChamps = false;
     }
     const res2 = await this.countryService.List(null, ['code', 'name', 'categories']);
     if (res2.success){
       this.countries = res2.data.rows;
-      this.allCountries = res2.data.rows;
+      this._allCountries = res2.data.rows;
       this.loadingCountries = false;
     }
     const res3 = await this.eventService.List();
     if (res3.success){
       this.events = res3.data.rows;
-      this.allEvents = res3.data.rows;
+      this._allEvents = res3.data.rows;
       this.loadingEvents = false;
     }
 
@@ -89,12 +89,22 @@ export class MedalSearchFormComponent implements OnInit {
   changeChamps(){
     
     if (this.formValues.champs){
-      const champ = this.allChamps.find(i => i.id === parseInt(this.formValues.champs));
-      this.countries = this.allCountries.filter(i => i.categories.includes(champ.category));
-      this.events = this.allEvents.filter(i => champ.events.includes(i.id));
+      
+      const champ = this._allChamps.find(i => i.id === parseInt(this.formValues.champs));
+      
+      if (champ.countries.length){
+        this.countries = this._allCountries.filter(i => champ.countries.includes(i.code));
+      } else {
+        this.countries = this._allCountries.filter(i => i.categories.includes(champ.category));
+      }
+      
+      if (champ.events.length){
+        this.events = this._allEvents.filter(i => champ.events.includes(i.id));
+      }
+
     } else {
-      this.countries = this.allCountries;
-      this.events = this.allEvents;
+      this.countries = this._allCountries;
+      this.events = this._allEvents;
     }
 
   }
@@ -104,10 +114,10 @@ export class MedalSearchFormComponent implements OnInit {
     if (!this.formValues.champs){
 
       if (this.formValues.country){
-        const country = this.allCountries.find(i => i.code === this.formValues.country);
-        this.champs = this.allChamps.filter(i => country.categories.includes(i.category));  
+        const country = this._allCountries.find(i => i.code === this.formValues.country);
+        this.champs = this._allChamps.filter(i => country.categories.includes(i.category));  
       } else {
-        this.champs = this.allChamps;
+        this.champs = this._allChamps;
       }
 
     }

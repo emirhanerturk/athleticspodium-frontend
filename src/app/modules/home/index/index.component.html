@@ -28,16 +28,20 @@
             <table class="table-medals">
                 <thead>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <th>Meeting</th>
+                        <th>Created Date</th>
+                        <th>Medals</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let meeting of lastMeetings">
+                        <td>
+                            <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                {{ meeting.name }}
+                            </a>
+                        </td>
+                        <td>{{ meeting.created_date | date }}</td>
+                        <td>{{ meeting.medalCount }}</td>
                     </tr>
                 </tbody>
             </table>

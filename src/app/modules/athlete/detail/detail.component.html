@@ -8,7 +8,7 @@
 
             <section class="card mb-4">
 
-                <img src="/assets/media/flags/eth.svg" alt="">
+                <img src="/assets/flags/eth.svg" alt="">
 
             </section>
             
@@ -33,8 +33,8 @@
                         <span>Country</span>
                         <span>
                             <a [routerLink]="'/country/' + athlete.country_code">
-                                <img style="width: 18px" [attr.src]="'/assets/media/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
-                                {{ athlete.country_code }}
+                                <img style="width: 18px" [attr.src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
+                                {{ athlete.country.name }}
                             </a>
                         </span>
                     </li>
@@ -111,7 +111,7 @@
                                 {{ medal.event.name }}
                             </td>
                             <td class="text-center">
-                                <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country_code" data-balloon-pos="up">
+                                <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                     <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                                 </a>
                             </td>

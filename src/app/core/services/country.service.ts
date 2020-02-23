@@ -47,9 +47,9 @@ export class CountryService {
    * Get top athletes by country
    * @param country_code country code
    */
-  async GetTopAthletes(country_code: string): Promise<IResponse> {
+  async GetTopAthletes(country_code: string, limit: number = 10): Promise<IResponse> {
 
-    return await this.apiService.get(`/countries/${country_code}/top-athletes`);
+    return await this.apiService.get(`/countries/${country_code}/top-athletes?limit=${limit}`);
 
   }
 

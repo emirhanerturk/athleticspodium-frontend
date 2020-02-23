@@ -7,9 +7,10 @@ export interface IChamps {
     name: string,
     slug: string,
     category: EChampsCategory,
+    countries: string[],
+    events: number[],
     content?: string,
     rank: number,
-    events: number[],
     created_date: Date,
     updated_date?: Date,
     // includes
@@ -79,12 +80,14 @@ export interface IAthlete {
     birth_place: string,
     biography: string,
     created_date: Date,
-    updated_date: Date
+    updated_date: Date,
+    // includes
+    country: ICountry
 }
 
 export interface ICountry {
     code: string,
-    name?: string,
+    name: string,
     content?: string,
     categories: EChampsCategory[],
     is_country: boolean,
