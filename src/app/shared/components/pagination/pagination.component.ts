@@ -45,6 +45,7 @@ export class PaginationComponent implements OnInit {
     this.pages = [];
     this.pageCount = Math.ceil(this.total / this.pageSize);
 
+    this.scenario = 'normal';
     let beginPage = 1;
     let endPage = this.pageCount;
     if (this.pageCount > this.maxPageShows){
