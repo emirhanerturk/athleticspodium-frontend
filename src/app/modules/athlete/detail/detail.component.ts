@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";
 
+import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IAthlete, IMedal } from "@interfaces/models.interface";
 
 @Component({
@@ -14,7 +15,8 @@ import { IAthlete, IMedal } from "@interfaces/models.interface";
 export class DetailComponent implements OnInit {
 
   loading: boolean = true;
-  error: any;
+  error: any;  
+  breadcrumbs: IBreadcrumb[];
 
   athlete_id: number;
   athlete: IAthlete;
@@ -45,7 +47,11 @@ export class DetailComponent implements OnInit {
     if (res.success){
       this.athlete = res.data;
 
-      this.appService.setTitle(this.athlete.first_name + ' ' + this.athlete.last_name);
+      this.appService.setTitle(`${this.athlete.first_name} ${this.athlete.last_name}`);
+      this.breadcrumbs = [
+        { name: 'Athletes', uri: `/athlete` },
+        { name: `${this.athlete.first_name} ${this.athlete.last_name}`, uri: `/athlete/${this.athlete.id}/${this.athlete.slug}` },
+      ];
 
       const res2 = await this.athleteService.GetAthleteAllMedals(athlete_id);
       if (res2.success){

@@ -63,13 +63,15 @@
                             </p>
                         </td>
                         <td *ngIf="medal.athlete">
-                            <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.first_name }} {{ medal.athlete.last_name }}</a>
+                            <a [routerLink]="'/athlete/' + medal.athlete_id + '/' + medal.athlete.slug">
+                                {{ medal.athlete.first_name }} {{ medal.athlete.last_name }}
+                            </a>
                         </td>
                         <td *ngIf="!medal.athlete">
                             -
                         </td>
                         <td class="text-center">
-                            <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
+                            <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                 <img class="country-flag" [src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                             </a>
                         </td>

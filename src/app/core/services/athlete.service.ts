@@ -31,4 +31,15 @@ export class AthleteService {
 
   }
 
+    /**
+   * Get all athletes by first letter in last name
+   * @param letter
+   * @param page
+   */
+  async GetAthleteByFirstLetter(letter: string, page: number = 1): Promise<IResponse> {
+
+    return await this.apiService.get(`/athletes/first-letter/${letter}/${page}`);
+
+  }
+
 }

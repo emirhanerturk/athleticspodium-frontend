@@ -1,6 +1,8 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
+<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">
@@ -111,7 +113,7 @@
                                 {{ medal.event.name }}
                             </td>
                             <td class="text-center">
-                                <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
+                                <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                     <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                                 </a>
                             </td>

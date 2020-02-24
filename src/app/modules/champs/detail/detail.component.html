@@ -18,7 +18,7 @@
                     
                     <ul class="meetings">
                         <li *ngFor="let meeting of champs.meetings">
-                            <a routerLink="/champs/{{ champs.slug }}/{{ meeting.slug }}" routerLinkActive="active">
+                            <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
                                 {{ meeting.year }}
                             </a>
                         </li>
@@ -117,13 +117,13 @@
                                     </span>
                                 </td>
                                 <td *ngIf="medal.athlete">
-                                    <a routerLink="/athlete/{{ medal.athlete_id }}/{{ medal.athlete.slug }}">{{ medal.athlete.fullname }}</a>
+                                    <a [routerLink]="'/athlete/' + medal.athlete_id + '/' + medal.athlete.slug">{{ medal.athlete.fullname }}</a>
                                 </td>
                                 <td *ngIf="!medal.athlete">
                                     -
                                 </td>
                                 <td class="text-center">
-                                    <a routerLink="/country/{{ medal.country_code }}" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
+                                    <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                         <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
                                     </a>
                                 </td>

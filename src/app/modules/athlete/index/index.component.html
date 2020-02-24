@@ -7,17 +7,47 @@
     
 
     <h2 class="h2-yellow">Athletes by Alphabet</h2>
-    <section class="card p-0">
+    <section>
 
         <ul class="alphabet">
-            <li *ngFor="let letter of alphabet" [class.active]="selectedLetter === letter">
+            <li *ngFor="let letter of alphabet" (click)="onChangeLetter(letter)" [class.active]="selectedLetter === letter">
                 {{ letter }}
             </li>
         </ul>
 
-        <div class="p-2">
+        <table *ngIf="count" class="table-medals">
+            <thead>
+                <tr>
+                    <th>Athlete Name</th>
+                    <th>Country</th>
+                    <th>Birth Date / Age</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let athlete of athletes">
+                    <td>
+                        <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                            {{ athlete.last_name }}, {{ athlete.first_name }} 
+                        </a>
+                    </td>
+                    <td>
+                        <a [routerLink]="'/country/' + athlete.country_code">
+                            <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
+                            {{ athlete.country.name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ athlete.birth_date | date }}
+                    </td>
+                    <td>
+                        {{ athlete.gender ? 'Men' : 'Women' }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-        </div>
+        <app-pagination *ngIf="count" [pageSize]="50" [total]="count" [currentPage]="page" (changedPage)="onChangePage($event)"></app-pagination>
 
     </section>
 
