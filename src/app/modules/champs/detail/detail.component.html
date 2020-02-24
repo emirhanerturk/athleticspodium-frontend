@@ -46,8 +46,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let country of champs_countries">
-                            <td>
-                                <a [routerLink]="'/country/' + country.country.code">
+                            <td class="font-bold">
+                                <a [routerLink]="'/country/' + country.country.code" [attr.aria-label]="country.country.name" data-balloon-pos="up">
+                                    <img class="country-flag" [attr.src]="'/assets/flags/' + country.country.code.toLowerCase() + '.svg'" alt="">
                                     {{ country.country.code }}
                                 </a>
                             </td>
@@ -99,7 +100,7 @@
                             <tr>
                                 <th style="width: 60px" class="text-center">Medal</th>
                                 <th>Athlete</th>
-                                <th style="width: 70px" class="text-center">Country</th>
+                                <th style="width: 90px" class="text-center">Country</th>
                                 <th style="width: 100px" class="text-right">Mark</th>
                                 <th style="width: 80px">W/I</th>
                                 <th style="width: 80px">Record</th>
@@ -124,7 +125,8 @@
                                 </td>
                                 <td class="text-center">
                                     <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
-                                        <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
+                                        <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" alt="">
+                                        {{ medal.country_code }}
                                     </a>
                                 </td>
                                 <td class="text-right font-bold">

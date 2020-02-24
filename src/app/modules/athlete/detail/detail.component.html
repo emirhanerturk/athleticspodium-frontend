@@ -35,7 +35,7 @@
                         <span>Country</span>
                         <span>
                             <a [routerLink]="'/country/' + athlete.country_code">
-                                <img style="width: 18px" [attr.src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
+                                <img style="width: 18px" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
                                 {{ athlete.country.name }}
                             </a>
                         </span>

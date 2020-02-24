@@ -15,7 +15,7 @@
             <label class="form-label" for="">* Country:</label>
             <select name="country" class="form-select" [disabled]="loadingCountries" [(ngModel)]="formValues.country" (change)="changeCountry()">
                 <option value="">Select a Country</option>
-                <option *ngFor="let country of countries" [value]="country.code">{{ country.code }}</option>
+                <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
             </select>
         </div>
     
