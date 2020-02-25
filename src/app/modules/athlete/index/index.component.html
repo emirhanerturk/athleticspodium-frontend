@@ -15,39 +15,80 @@
             </li>
         </ul>
 
-        <table *ngIf="count" class="table-medals">
-            <thead>
-                <tr>
-                    <th>Athlete Name</th>
-                    <th>Country</th>
-                    <th>Birth Date / Age</th>
-                    <th>Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let athlete of athletes">
-                    <td>
-                        <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
-                            {{ athlete.last_name }}, {{ athlete.first_name }} 
-                        </a>
-                    </td>
-                    <td>
-                        <a [routerLink]="'/country/' + athlete.country_code">
-                            <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" [attr.alt]="athlete.country_code">
-                            {{ athlete.country.name }}
-                        </a>
-                    </td>
-                    <td>
-                        {{ athlete.birth_date | date }}
-                    </td>
-                    <td>
-                        {{ athlete.gender ? 'Men' : 'Women' }}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-6">
 
-        <app-pagination *ngIf="count" [pageSize]="50" [total]="count" [currentPage]="page" (changedPage)="onChangePage($event)"></app-pagination>
+                <table *ngIf="count" class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Athlete Name</th>
+                            <th style="width: 90px" class="text-center">Country</th>
+                            <th>Birth Date</th>
+                            <th style="width: 56px" class="text-center">Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let athlete of athletesL">
+                            <td>
+                                <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                                    {{ athlete.last_name }}, {{ athlete.first_name }} 
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a [routerLink]="'/country/' + athlete.country_code" [attr.aria-label]="athlete.country.name" data-balloon-pos="up">
+                                    <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                    {{ athlete.country.code }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ athlete.birth_date | date }}
+                            </td>
+                            <td class="text-center">
+                                {{ athlete.gender ? 'M' : 'W' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-6">
+
+                <table *ngIf="count" class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Athlete Name</th>
+                            <th style="width: 90px" class="text-center">Country</th>
+                            <th>Birth Date</th>
+                            <th style="width: 56px" class="text-center">Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let athlete of athletesR">
+                            <td>
+                                <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                                    {{ athlete.last_name }}, {{ athlete.first_name }} 
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a [routerLink]="'/country/' + athlete.country_code" [attr.aria-label]="athlete.country.name" data-balloon-pos="up">
+                                    <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                    {{ athlete.country.code }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ athlete.birth_date | date }}
+                            </td>
+                            <td class="text-center">
+                                {{ athlete.gender ? 'M' : 'W' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <app-pagination *ngIf="count" [pageSize]="pageSize" [total]="count" [currentPage]="page" (changedPage)="onChangePage($event)"></app-pagination>
 
     </section>
 

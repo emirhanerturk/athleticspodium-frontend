@@ -65,7 +65,7 @@ export class MedalSearchFormComponent implements OnInit {
 
   async getFormOptions(){
 
-    const res1 = await this.champsService.List(['id', 'name', 'category', 'countries', 'events'], 'name');
+    const res1 = await this.champsService.List(['id', 'name', 'category', 'countries', 'events_men', 'events_men', 'events_mixed'], 'name');
     if (res1.success){
       this.champs = res1.data.rows;
       this._allChamps = res1.data.rows;
@@ -98,9 +98,9 @@ export class MedalSearchFormComponent implements OnInit {
         this.countries = this._allCountries.filter(i => i.categories.includes(champ.category));
       }
       
-      if (champ.events.length){
-        this.events = this._allEvents.filter(i => champ.events.includes(i.id));
-      }
+      // if (champ.events.length){
+      //   this.events = this._allEvents.filter(i => champ.events.includes(i.id));
+      // }
 
     } else {
       this.countries = this._allCountries;

@@ -14,8 +14,10 @@ export class IndexComponent implements OnInit {
   alphabet: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   selectedLetter: string = 'A';
 
-  athletes: IAthlete[];
+  athletesL: IAthlete[];
+  athletesR: IAthlete[];
   page: number = 1;
+  pageSize: number = 100;
   count: number = 0;
 
   constructor(private appService: AppService, private athleteService: AthleteService) { }
@@ -33,7 +35,8 @@ export class IndexComponent implements OnInit {
 
     const res = await this.athleteService.GetAthleteByFirstLetter(this.selectedLetter, this.page);
     if (res.success){
-      this.athletes = res.data.rows;
+      this.athletesL = res.data.rows.filter((r: IAthlete, i: number) => i < 50)
+      this.athletesR = res.data.rows.filter((r: IAthlete, i: number) => i > 49)
       this.count = res.data.count;
     }
 
