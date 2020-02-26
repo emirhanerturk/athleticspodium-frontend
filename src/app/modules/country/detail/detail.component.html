@@ -26,9 +26,12 @@
         </div>
         <div class="col-9">
 
-            <section>
+            <section class="mb-4">
 
-                <h2 class="h2-yellow">{{ country.name || country.code }}'s Medals</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="h2-yellow">{{ country.name || country.code }}'s Medals</h2>
+                    <a [routerLink]="['/medals/search', { country: country_code }]">View all &rarr;</a>
+                </div>
 
                 <table class="table-medals mb-2">
                     <thead>
@@ -62,15 +65,14 @@
                     </tbody>
                 </table>
 
-                <div class="mb-4 text-right">
-                    <a [routerLink]="['/medals/search', { country: country_code }]">View all {{ country.name || country.code }}'s medals &rarr;</a>
-                </div>
-
             </section>
 
             <section>
 
-                <h2 class="h2-yellow">{{ country.name || country.code }}'s Top Athletes</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="h2-yellow">{{ country.name || country.code }}'s Top Athletes</h2>
+                    <a [routerLink]="['/country/' + country.code + '/athletes']">View all &rarr;</a>
+                </div>
 
                 <table class="table-medals">
                     <thead>

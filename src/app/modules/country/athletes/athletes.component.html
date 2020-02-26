@@ -1,0 +1,36 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+
+<section *ngIf="!loading" class="main-container">
+
+    <h1 class="h1">{{ country.name }}'s All Athletes</h1>
+
+    <table class="table-medals">
+        <thead>
+            <tr>
+                <th>Athlete</th>
+                <th class="text-center">Gold</th>
+                <th class="text-center">Silver</th>
+                <th class="text-center">Bronze</th>
+                <th class="text-center">Total</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            <tr *ngFor="let row of athletes">
+                <td>
+                    <a [routerLink]="'/athlete/' + row.athlete.id + '/' + row.athlete.slug">
+                        {{ row.athlete.first_name }} {{ row.athlete.last_name }}
+                    </a>
+                </td>
+                <td class="text-center">{{ row.gold }}</td>
+                <td class="text-center">{{ row.silver }}</td>
+                <td class="text-center">{{ row.bronze }}</td>
+                <td class="text-center font-bold">{{ row.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</section>
