@@ -4,6 +4,10 @@
 @import 'bootstrap.grid';
 @import 'tooltips';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #f9f9f9;
     color: #4b4f54;
@@ -157,6 +161,11 @@ body {
     .medal-icon {
         width: 24px;
     }
+
+    .olympic-rings {
+        width: 24px;
+        height: 12px;
+    }
 }
 
 /* forms */
@@ -204,6 +213,10 @@ body {
     &:disabled {
         background-color: #f3f3f3;
         cursor: not-allowed;
+    }
+
+    &::placeholder {
+        color: #aaa;
     }
     
 }

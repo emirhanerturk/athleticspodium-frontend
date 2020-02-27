@@ -14,7 +14,7 @@
                 <span class="country-code">{{ country.code }}</span>
 
                 <h1 class="h1">
-                    {{ country.name || country.code }}
+                    {{ country.name }}
                 </h1>
 
                 <p class="country-content" *ngIf="country.content">
@@ -78,6 +78,7 @@
                     <thead>
                         <tr>
                             <th>Athlete</th>
+                            <th class="text-center" style="width: 70px;">Gender</th>
                             <th class="text-center">Gold</th>
                             <th class="text-center">Silver</th>
                             <th class="text-center">Bronze</th>
@@ -89,8 +90,10 @@
                             <td>
                                 <a [routerLink]="'/athlete/' + row.athlete.id + '/' + row.athlete.slug">
                                     {{ row.athlete.first_name }} {{ row.athlete.last_name }}
+                                    <img *ngIf="row.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
                                 </a>
                             </td>
+                            <td class="text-center">{{ row.athlete.gender ? 'M' : 'W' }}</td>
                             <td class="text-center">{{ row.gold }}</td>
                             <td class="text-center">{{ row.silver }}</td>
                             <td class="text-center">{{ row.bronze }}</td>

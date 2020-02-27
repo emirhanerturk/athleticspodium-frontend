@@ -76,6 +76,7 @@ export interface IAthlete {
     slug: string,
     country_code: string,
     gender: EGender,
+    olympic_mark: boolean,
     birth_date: Date,
     birth_place: string,
     biography: string,

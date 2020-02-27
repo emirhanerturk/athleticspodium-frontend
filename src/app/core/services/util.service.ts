@@ -1,5 +1,5 @@
 
-export function GenerateQuerySring(queries: Object){
+export function GenerateQuerySring(queries: Object): string {
 
   if (queries){
     return Object.keys(queries).filter(key => queries[key] !== undefined).map(key => key + '=' + queries[key]).join('&');
@@ -7,4 +7,20 @@ export function GenerateQuerySring(queries: Object){
     return '';
   }
   
+}
+
+export function ArrayPaginate(array: any[], pageSize: number, page: number): any[] {
+
+  return array.slice((page - 1) * pageSize, page * pageSize);
+
+}
+
+export function WindowScroll(top: number = 0): void {
+
+  window.scroll({
+    top: top, 
+    left: 0, 
+    behavior: 'smooth'
+  });
+
 }

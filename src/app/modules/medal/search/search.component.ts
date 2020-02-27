@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { AppService } from '@services/app.service';
 import { MedalService } from "@services/medal.service";
+import { WindowScroll } from "@services/util.service";
 import { IError } from '@interfaces/response.interface';
 import { IMedal } from '@interfaces/models.interface';
 import { IMedalSearch } from '@interfaces/medal-search.interface';
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
 
     this.appService.setNavigation(null);
+    this.appService.setTitle('Medal Search');
 
     this.route.params.subscribe((queries: IMedalSearch) => {
       if (Object.keys(queries).length) {
@@ -74,8 +76,9 @@ export class SearchComponent implements OnInit {
 
   changedPage(page: number){
 
+    WindowScroll();
     this.queries.page = page;
-    this.router.navigate(['/medals/search', this.queries])
+    this.router.navigate(['/medals/search', this.queries]);
 
   }
 

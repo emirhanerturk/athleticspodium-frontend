@@ -13,7 +13,7 @@
             <br><br>
             <a routerLink="/champs/african-champs">/champs/african-champs</a>
             <br><br>
-            <a routerLink="/athlete/709/ben-youssef-meite">/athlete/709/ben-youssef-meite</a>
+            <a routerLink="/athlete/14606/andre-domingos">/athlete/14606/andre-domingos</a>
 
         </div>
         <div class="col-4">
@@ -40,8 +40,8 @@
                                 {{ meeting.name }}
                             </a>
                         </td>
-                        <td>{{ meeting.created_date | date }}</td>
-                        <td>{{ meeting.medalCount }}</td>
+                        <td class="text-nowrap">{{ meeting.created_date | date }}</td>
+                        <td class="text-center">{{ meeting.medalCount }}</td>
                     </tr>
                 </tbody>
             </table>

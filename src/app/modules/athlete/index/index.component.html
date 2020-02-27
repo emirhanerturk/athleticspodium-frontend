@@ -31,7 +31,8 @@
                         <tr *ngFor="let athlete of athletesL">
                             <td>
                                 <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
-                                    {{ athlete.last_name }}, {{ athlete.first_name }} 
+                                    {{ athlete.last_name }}, {{ athlete.first_name }}
+                                    <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
                                 </a>
                             </td>
                             <td class="text-center">
@@ -66,7 +67,8 @@
                         <tr *ngFor="let athlete of athletesR">
                             <td>
                                 <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
-                                    {{ athlete.last_name }}, {{ athlete.first_name }} 
+                                    {{ athlete.last_name }}, {{ athlete.first_name }}
+                                    <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
                                 </a>
                             </td>
                             <td class="text-center">

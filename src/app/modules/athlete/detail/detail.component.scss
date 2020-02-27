@@ -1,19 +1,25 @@
 
+.athlete-left {
+    padding: 0;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 16px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+}
+
 .athlete-header {
 
     .athlete-name {
         margin-bottom: 30px;
 
-        span {
-            display: inline-block;
-            margin-left: 10px;
-            font-size: 60%;
-
-            img {
-                width: 18px;
-                display: inline-block;
-                margin-right: 4px;
-            }
+        .olympic-rings {
+            width: 32px;
         }
     }
 
@@ -46,5 +52,11 @@
 
     }
 
+}
+
+.athlete-bio > div {
+    font-family: 'Lato';
+    font-size: 13px;
+    line-height: 20px;
 }
 

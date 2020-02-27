@@ -24,6 +24,7 @@ hr {
 .text-right { text-align: right !important; }
 
 .text-upper { text-transform: uppercase; }
+.text-nowrap { white-space: nowrap; }
 
 .font-bold { font-weight: bold; }
 
@@ -63,6 +64,7 @@ hr {
 .m-15 { margin-left: 15px; margin-right: 15px; }
 .m--15 { margin-left: -15px; margin-right: -15px; }
 
+.p-10 { padding: 10px; }
 .p-15 { padding-left: 15px; padding-right: 15px; }
 
 .no-margin { margin: 0 !important; }

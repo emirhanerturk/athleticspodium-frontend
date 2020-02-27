@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";
+import { WindowScroll } from "@services/util.service";
 import { IAthlete } from '@core/interfaces/models.interface';
 
 @Component({
@@ -52,6 +53,7 @@ export class IndexComponent implements OnInit {
 
   onChangePage(page){
 
+    WindowScroll()
     this.page = page;
     this.getAthletes();
 

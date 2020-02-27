@@ -8,14 +8,24 @@
     <div class="row">
         <div class="col-3">
 
-            <section class="card mb-4">
+            <section class="card mb-4 athlete-left">
 
-                <img src="/assets/flags/eth.svg" alt="">
+                <img src="/assets/media/andre-domingos.jpg" alt="">
+
+                <!-- <div class="p-10">
+                    
+                </div> -->
 
             </section>
+
+            <h2 class="h2-yellow">Bio</h2>
+            <section class="card athlete-bio mb-4" *ngIf="athlete.biography">
+                
+                <div [innerHTML]="athlete.biography"></div>
+            </section>
             
+            <h2 class="h2-yellow">Related Articles</h2>
             <section>
-                <h2 class="h2-yellow">Related Articles</h2>
 
                 <p>There is no articles yet.</p>
 
@@ -28,6 +38,9 @@
 
                 <h1 class="h1 athlete-name">
                     {{ athlete.first_name }} {{ athlete.last_name }}
+                    <span aria-label="Olympic gold medal" data-balloon-pos="up">
+                        <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                    </span>
                 </h1>
 
                 <ul class="athlete-info">
@@ -50,7 +63,7 @@
                     </li>
                     <li>
                         <span>Aka</span>
-                        <span>{{ athlete.aka || '-' }}</span>
+                        <span>{{ athlete.aka && athlete.aka.length ? athlete.aka.join(', ') : '-' }}</span>
                     </li>
                     <li>
                         <span>Events</span>
@@ -58,15 +71,6 @@
                     </li>
                 </ul>
 
-            </section>
-
-            <section class="athlete-bio mb-4" *ngIf="athlete.biography">
-                <h2 class="h2-yellow">
-                    {{ athlete.first_name }} {{ athlete.last_name }}'s Bio
-                </h2>
-                <p>
-                    {{ athlete.biography }}
-                </p>
             </section>
 
             <section class="athlete-medals mb-4">
@@ -157,16 +161,16 @@
                         </tr>
                     </thead>
                     <tbody style="text-align: center;">
-                        <tr *ngFor="let champ of medals_counts | keyvalue">
+                        <tr *ngFor="let champ of medals_counts">
                             <td>
-                                <a [routerLink]="'/champs/' + champ.value.slug">
-                                    {{ champ.value.name }}
+                                <a [routerLink]="'/champs/' + champ.slug">
+                                    {{ champ.name }}
                                 </a>
                             </td>
-                            <td class="text-center">{{ champ.value.medals.gold }}</td>
-                            <td class="text-center">{{ champ.value.medals.silver }}</td>
-                            <td class="text-center">{{ champ.value.medals.bronze }}</td>
-                            <td class="text-center font-bold">{{ champ.value.medals.total }}</td>
+                            <td class="text-center">{{ champ.medals.gold }}</td>
+                            <td class="text-center">{{ champ.medals.silver }}</td>
+                            <td class="text-center">{{ champ.medals.bronze }}</td>
+                            <td class="text-center font-bold">{{ champ.medals.total }}</td>
                         </tr>
                         <tr>
                             <td>Total</td>
