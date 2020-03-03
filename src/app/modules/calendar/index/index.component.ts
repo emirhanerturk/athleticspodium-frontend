@@ -56,8 +56,6 @@ export class IndexComponent implements OnInit {
 
     this.loading = false;
 
-    console.log(this.active_year, this.meetings)
-
   }
 
 }

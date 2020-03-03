@@ -53,12 +53,14 @@ export class MedalSearchFormComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
 
-    this.getFormOptions();
+    await this.getFormOptions();
 
     if (this.values){
       this.formValues = { ...this.values };
+      this.changeChamps();
+      this.changeCountry();
     }
 
   }
@@ -88,6 +90,7 @@ export class MedalSearchFormComponent implements OnInit {
 
   changeChamps(){
     
+    console.log(this.formValues);
     if (this.formValues.champs){
       
       const champ = this._allChamps.find(i => i.id === parseInt(this.formValues.champs));

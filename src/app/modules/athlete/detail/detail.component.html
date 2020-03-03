@@ -12,16 +12,6 @@
 
                 <img src="/assets/media/andre-domingos.jpg" alt="">
 
-                <!-- <div class="p-10">
-                    
-                </div> -->
-
-            </section>
-
-            <h2 class="h2-yellow">Bio</h2>
-            <section class="card athlete-bio mb-4" *ngIf="athlete.biography">
-                
-                <div [innerHTML]="athlete.biography"></div>
             </section>
             
             <h2 class="h2-yellow">Related Articles</h2>
@@ -48,7 +38,7 @@
                         <span>Country</span>
                         <span>
                             <a [routerLink]="'/country/' + athlete.country_code">
-                                <img style="width: 18px" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                <img [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
                                 {{ athlete.country.name }}
                             </a>
                         </span>
@@ -71,6 +61,20 @@
                     </li>
                 </ul>
 
+            </section>
+
+            <section *ngIf="athlete.biography">
+                <h2 class="h2-yellow">Bio</h2>
+                <div class="card athlete-bio mb-4">
+                    <div *ngIf="!expandBio" class="line-champ">
+                        {{ athlete.biography | stripHtmlTags | stringSlice: 200 }}...
+                        <button type="button" class="btn btn-sm ml-2" (click)="expandBio = true">More &rarr;</button>
+                    </div>
+                    <div *ngIf="expandBio">
+                        <div [innerHTML]="athlete.biography"></div>
+                        <button type="button" class="btn btn-sm mt-2" (click)="expandBio = false">&larr; Less</button>
+                    </div>
+                </div>
             </section>
 
             <section class="athlete-medals mb-4">

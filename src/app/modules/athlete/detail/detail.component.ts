@@ -24,6 +24,8 @@ export class DetailComponent implements OnInit {
   medals_counts: any;
   medals_counts_total: any;
 
+  expandBio: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private appService: AppService,
@@ -122,6 +124,13 @@ export class DetailComponent implements OnInit {
     this.medals_counts = counts_obj;
     this.medals_counts_total = total;
     
+  }
+
+  toggleBio(e: Event){
+
+    e.preventDefault();
+    this.expandBio = !this.expandBio;
+
   }
 
 }

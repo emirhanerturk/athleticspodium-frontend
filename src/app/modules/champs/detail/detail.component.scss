@@ -1,4 +1,6 @@
 
+@import 'variables';
+
 .champs-detail {
 
     figure {
@@ -19,7 +21,7 @@
 
     .champs-content {
         padding: 20px;
-        font-family: 'Lato';
+        font-family: $font-ubuntu;
         font-size: 13px;
         line-height: 20px;
     }

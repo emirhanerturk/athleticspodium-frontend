@@ -24,3 +24,9 @@ export function WindowScroll(top: number = 0): void {
   });
 
 }
+
+export function StripHtmlTags(value: string): string {
+
+  return value.replace(/(<([^>]+)>)/ig,"");
+
+}
