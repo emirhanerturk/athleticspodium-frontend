@@ -14,6 +14,7 @@ const routes: Routes = [
         { path: 'athlete', loadChildren: () => import('./modules/athlete/athlete.module').then(m => m.AthleteModule) },
         { path: 'calendar', loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule) },
         { path: 'medals', loadChildren: () => import('./modules/medal/medal.module').then(m => m.MedalModule) },
+        { path: 'articles', loadChildren: () => import('./modules/articles/articles.module').then(m => m.ArticlesModule) },
     ]
   },
 ];

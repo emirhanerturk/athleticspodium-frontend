@@ -52,7 +52,7 @@ export class DetailComponent implements OnInit {
       this.appService.setTitle(`${this.athlete.first_name} ${this.athlete.last_name}`);
       this.breadcrumbs = [
         { name: 'Athletes', uri: `/athlete` },
-        { name: `${this.athlete.first_name} ${this.athlete.last_name}`, uri: `/athlete/${this.athlete.id}/${this.athlete.slug}` },
+        { name: `${this.athlete.first_name} ${this.athlete.last_name} (${this.athlete.country_code})`, uri: `/athlete/${this.athlete.id}/${this.athlete.slug}` },
       ];
 
       const res2 = await this.athleteService.GetAthleteAllMedals(athlete_id);
