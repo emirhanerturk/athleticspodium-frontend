@@ -1,7 +1,7 @@
 @import 'reset';
 @import 'variables';
-@import 'bootstrap';
 @import 'bootstrap.grid';
+@import 'bootstrap';
 @import 'tooltips';
 
 html {
@@ -24,7 +24,11 @@ body {
 
     @media #{$responsive-lg} {
         width: 100%;
-        padding: 15px 4px;
+        padding: 15px 10px;
+    }
+
+    @media #{$responsive-sm} {
+        padding: 15px 6px;
     }
 
 }

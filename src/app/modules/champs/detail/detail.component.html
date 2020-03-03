@@ -6,7 +6,7 @@
 <section *ngIf="!loading" class="main-container">
     
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
 
             <section>
 
@@ -46,7 +46,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let country of champs_countries">
-                            <td class="font-bold">
+                            <td class="font-bold text-nowrap">
                                 <a [routerLink]="'/country/' + country.country.code" [attr.aria-label]="country.country.name" data-balloon-pos="up">
                                     <img class="country-flag" [attr.src]="'/assets/flags/' + country.country.code.toLowerCase() + '.svg'" alt="">
                                     {{ country.country.code }}
@@ -63,7 +63,7 @@
             </section>
 
         </div>
-        <div class="col-9">
+        <div class="col-md-9">
 
             <app-loader *ngIf="loading_meetings"></app-loader>
 
@@ -126,13 +126,13 @@
                                 <td *ngIf="!medal.athlete">
                                     -
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center text-nowrap">
                                     <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                         <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" alt="">
                                         {{ medal.country_code }}
                                     </a>
                                 </td>
-                                <td class="text-right font-bold">
+                                <td class="text-right font-bold text-nowrap">
                                     {{ medal.mark_display }}
                                 </td>
                                 <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="medal.wind > 2">

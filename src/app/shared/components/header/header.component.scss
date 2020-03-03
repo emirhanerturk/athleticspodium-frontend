@@ -7,6 +7,11 @@
     height: 100px;
     background-color: #313339;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    transition: height .3s ease;
+
+    @media #{$responsive-md} {
+        height: 60px;
+    }
 
     .header-container {
         width: 1200px;
@@ -18,6 +23,7 @@
 
         @media #{$responsive-lg} {
             width: 100%;
+            padding: 0 10px;
         }
 
         h1 {
@@ -26,7 +32,7 @@
             font-size: 38px;
             line-height: 100px;
 
-            @media #{$responsive-sm} {
+            @media #{$responsive-md} {
                 font-size: 22px;
             }
 
@@ -54,6 +60,11 @@
     width: 100%;
     height: 50px;
     background-color: #ffdd00;
+    transition: height .3s ease;
+
+    @media #{$responsive-lg} {
+        height: 40px;
+    }
 
     @media #{$responsive-md} {
         display: none;
@@ -61,15 +72,16 @@
 
     .nav-container {
         width: 1200px;
-        height: 50px;
+        height: 100%;
         margin: 0 auto;
 
         @media #{$responsive-lg} {
             width: 100%;
+            padding: 0 6px;
         }
 
         ul.menu {
-            height: 50px;
+            height: 100%;
             display: flex;
             justify-content: left;
             align-items: center;
@@ -82,24 +94,38 @@
             text-align: center;
             margin-left: 15px;
 
+            @media #{$responsive-lg} {
+                font-size: 14px;
+                padding: 0 5px;
+            }
+
             li {
-                height: 50px;
+                height: 100%;
                 margin-right: 32px;
                 transform: skewX(-30deg);
                 transition: all .2s ease;
 
+                @media #{$responsive-lg} {
+                    margin-right: 16px;
+                }
+
                 a {
                     display: block;
-                    height: 50px;
+                    height: 100%;
                     line-height: 50px;
                     padding: 0 20px;
                     transform: skewX(30deg);
+
+                    @media #{$responsive-lg} {
+                        padding: 0 16px;
+                        line-height: 40px;
+                    }
                 }
 
                 &:hover, &.active {
                     background-color: #313339;
                     color: #ffdd00;
-                    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
                 }
             }
         }

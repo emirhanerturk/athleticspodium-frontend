@@ -6,9 +6,9 @@
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
     
-            <div class="card country-info">
+            <div class="card country-info mb-4">
 
                 <img class="country-flag" [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
                 <span class="country-code">{{ country.code }}</span>
@@ -24,7 +24,7 @@
             </div>
     
         </div>
-        <div class="col-9">
+        <div class="col-md-9">
 
             <section class="mb-4">
 

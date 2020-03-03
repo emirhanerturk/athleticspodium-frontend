@@ -6,7 +6,7 @@
 <section *ngIf="!loading" class="main-container">
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
 
             <section class="card mb-4 athlete-left">
 
@@ -14,15 +14,13 @@
 
             </section>
             
-            <h2 class="h2-yellow">Related Articles</h2>
-            <section>
-
+            <section class="mb-4">
+                <h2 class="h2-yellow">Related Articles</h2>
                 <p>There is no articles yet.</p>
-
             </section>
 
         </div>
-        <div class="col-9">
+        <div class="col-md-9">
 
             <section class="athlete-header mb-4">
 
@@ -66,9 +64,11 @@
             <section *ngIf="athlete.biography">
                 <h2 class="h2-yellow">Bio</h2>
                 <div class="card athlete-bio mb-4">
-                    <div *ngIf="!expandBio" class="line-champ">
-                        {{ athlete.biography | stripHtmlTags | stringSlice: 200 }}...
-                        <button type="button" class="btn btn-sm ml-2" (click)="expandBio = true">More &rarr;</button>
+                    <div *ngIf="!expandBio">
+                        <div class="line-champ">
+                            {{ athlete.biography | stripHtmlTags | stringSlice: 200 }}...
+                        </div>
+                        <button type="button" class="btn btn-sm mt-2" (click)="expandBio = true">More &rarr;</button>
                     </div>
                     <div *ngIf="expandBio">
                         <div [innerHTML]="athlete.biography"></div>
