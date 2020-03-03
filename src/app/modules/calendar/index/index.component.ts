@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
   years: number[] = [];
   current_year: number = new Date().getFullYear();
   active_year: number = this.current_year;
-  meetings: IMeeting[];
+  meetings: IMeeting[] = [];
 
   constructor(
     private route: ActivatedRoute,

@@ -26,7 +26,7 @@
                 {{ active_year }} Calendar
             </h1>
 
-            <table class="table-medals">
+            <table *ngIf="meetings.length" class="table-medals">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -46,6 +46,10 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div *ngIf="meetings.length === 0">
+                Not found any meeting in this year.
+            </div>
     
         </div>
     </div>
