@@ -4,17 +4,17 @@
     <form (ngSubmit)="formSubmit(form)" #form="ngForm" [class.form-horizontal]="direction === 'H'" [class.align-items-end]="direction === 'H'">
     
         <div class="form-group">
-            <label class="form-label" for="">* Championship:</label>
+            <label class="form-label" for="">{{ required.champs ? '*' : '' }} Championship:</label>
             <select name="champs" class="form-select" [disabled]="loadingChamps" [(ngModel)]="formValues.champs" (change)="changeChamps()">
-                <option value="">Select a Championship</option>
+                <option value="">{{ required.champs ? 'Select a Championship' : 'All' }}</option>
                 <option *ngFor="let champ of champs" [value]="champ.id">{{ champ.name }}</option>
             </select>
         </div>
     
         <div class="form-group">
-            <label class="form-label" for="">* Country:</label>
+            <label class="form-label" for="">{{ required.country ? '*' : '' }} Country:</label>
             <select name="country" class="form-select" [disabled]="loadingCountries" [(ngModel)]="formValues.country" (change)="changeCountry()">
-                <option value="">Select a Country</option>
+                <option value="">{{ required.country ? 'Select a Country' : 'All' }}</option>
                 <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
             </select>
         </div>
