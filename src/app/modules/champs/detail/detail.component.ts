@@ -16,7 +16,7 @@ import { IChamps, IMeeting } from "@interfaces/models.interface";
 export class DetailComponent implements OnInit {
 
   loading: boolean = true;
-  loading_meetings: boolean = true;
+  loading_meeting: boolean = true;
   error: any;
   first_loaded: boolean = false;
   breadcrumbs: IBreadcrumb[];
@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
   meeting: IMeeting;
   meeting_events: any[];
   champs_countries: any[];
+  meeting_countries: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,10 +44,10 @@ export class DetailComponent implements OnInit {
       if (!this.first_loaded){
         this.first_loaded = true;
         await this.getChamps(data.champ_slug);
-        await this.getMeetings(data.meeting_slug);
+        await this.getMeeting(data.meeting_slug);
       } else {
         this.first_loaded = true;
-        this.getMeetings(data.meeting_slug);
+        this.getMeeting(data.meeting_slug);
       }
     })
 
@@ -69,10 +70,7 @@ export class DetailComponent implements OnInit {
         { name: this.champs.name, uri: `/champs/${this.champs.slug}` },
       ];
 
-      const res2 = await this.champsService.GetMedals(this.champs.id);
-      if (res2){
-        this.champs_countries = res2.data;
-      }
+      this.getChampsTotals();
 
     } else {
       this.error = res.error
@@ -82,11 +80,12 @@ export class DetailComponent implements OnInit {
 
   }
 
-  async getMeetings(meeting_slug: string){
+  async getMeeting(meeting_slug: string){
 
-    this.loading_meetings = true;
+    this.loading_meeting = true;
 
     if (meeting_slug){
+
 
       this.meeting = this.champs.meetings.find(item => item.slug === meeting_slug);
 
@@ -100,13 +99,34 @@ export class DetailComponent implements OnInit {
       const res = await this.meetingService.GetMedals(this.meeting.id, 0);
       if (res.success){
         this.meeting_events = res.data;
+
+        this.getMeetingTotals();
+
       } else {
         this.error = res.error;
       }
 
     }
 
-    this.loading_meetings = false;
+    this.loading_meeting = false;
+    
+  }
+
+  async getChampsTotals(){
+
+    const res = await this.champsService.GetCounts(this.champs.id);
+    if (res){
+      this.champs_countries = res.data;
+    }
+
+  }
+
+  async getMeetingTotals(){
+
+    const res = await this.meetingService.GetCounts(this.meeting.id);
+    if (res){
+      this.meeting_countries = res.data;
+    }
     
   }
 

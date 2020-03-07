@@ -37,14 +37,13 @@ export class ChampsService {
   /**
    * Get counts group by country
    * @param champs_id
-   * @param gender
    * @param limit
    */
-  async GetMedals(champs_id: number, gender?: EGender, limit?: number): Promise<IResponse> {
+  async GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ gender, limit });
+    const qs = GenerateQuerySring({ limit });
     
-    return await this.apiService.get(`/champs/${champs_id}/medals?${qs}`);
+    return await this.apiService.get(`/champs/${champs_id}/counts?${qs}`);
 
   }
 

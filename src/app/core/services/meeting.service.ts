@@ -37,6 +37,19 @@ export class MeetingService {
   }
 
   /**
+   * Get counts group by country
+   * @param meeting_id
+   * @param limit
+   */
+  async GetCounts(meeting_id: number, limit?: number): Promise<IResponse> {
+
+    const qs = GenerateQuerySring({ limit });
+    
+    return await this.apiService.get(`/meetings/${meeting_id}/counts?${qs}`);
+
+  }
+
+  /**
    * Get last added 10 meetings
    */
   async GetLastMeetings(): Promise<IResponse> {
