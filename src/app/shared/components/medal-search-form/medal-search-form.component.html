@@ -5,7 +5,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">{{ required.champs ? '*' : '' }} Championship:</label>
-            <select name="champs" class="form-select" [disabled]="loadingChamps" [(ngModel)]="formValues.champs" (change)="changeChamps()">
+            <select name="champs" class="form-select" [disabled]="loadingChamps" [(ngModel)]="formValues.champs" (change)="formValuesChanges()">
                 <option value="">{{ required.champs ? 'Select a Championship' : 'All' }}</option>
                 <option *ngFor="let champ of champs" [value]="champ.id">{{ champ.name }}</option>
             </select>
@@ -13,7 +13,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">{{ required.country ? '*' : '' }} Country:</label>
-            <select name="country" class="form-select" [disabled]="loadingCountries" [(ngModel)]="formValues.country" (change)="changeCountry()">
+            <select name="country" class="form-select" [disabled]="loadingCountries" [(ngModel)]="formValues.country" (change)="formValuesChanges()">
                 <option value="">{{ required.country ? 'Select a Country' : 'All' }}</option>
                 <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
             </select>
@@ -37,7 +37,7 @@
     
         <div class="form-group">
             <label class="form-label" for="">Gender:</label>
-            <select name="gender" class="form-select" [(ngModel)]="formValues.gender">
+            <select name="gender" class="form-select" [(ngModel)]="formValues.gender" (change)="formValuesChanges()">
                 <option value="">All</option>
                 <option value="0">Men</option>
                 <option value="1">Women</option>

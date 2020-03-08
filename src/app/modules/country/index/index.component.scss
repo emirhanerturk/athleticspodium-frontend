@@ -1,7 +1,33 @@
 
+@import 'variables';
+
 h1 small {
     font-size: 12px;
     font-weight: normal;
+}
+
+.filters {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+
+    li {
+        display: block;
+        font-weight: bold;
+        height: 24px;
+        padding: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: all .2s ease;
+        border-bottom: 0px solid transparent;
+
+        &.active {
+            border-bottom: 4px solid $color-yellow;
+        }
+
+    }
 }
 
 .countries {

@@ -7,7 +7,8 @@ import { CountryService } from "@services/country.service";
 import { EventService } from "@services/event.service";
 import { IMedalSearch } from '@interfaces/medal-search.interface';
 import { IChamps, ICountry, IEvent } from '@interfaces/models.interface';
-import { EChampsCategory } from "@enums/champs-category.enum";
+import { ECategory } from "@core/enums/category.enum";
+import { EGender } from '@core/enums/gender.enum';
 
 @Component({
   selector: 'app-medal-search-form',
@@ -28,9 +29,10 @@ export class MedalSearchFormComponent implements OnInit {
   events: IEvent[] = [];
   years: number[] = [];
 
-  private _allChamps: IChamps[] = [];
-  private _allCountries: ICountry[] = [];
-  private _allEvents: IEvent[] = [];
+  private _champs: IChamps[] = [];
+  private _countries: ICountry[] = [];
+  private _events: IEvent[] = [];
+  private _years: number[] = [];
 
   formError: boolean = false;
   formValues: IMedalSearch = {
@@ -54,8 +56,9 @@ export class MedalSearchFormComponent implements OnInit {
     private eventService: EventService) {
     
     for (let i = new Date().getFullYear(); i > 1919; i--) {
-      this.years.push(i);
+      this._years.push(i);
     }
+    this.years = this._years;
 
   }
 
@@ -65,76 +68,77 @@ export class MedalSearchFormComponent implements OnInit {
 
     if (this.values){
       this.formValues = { ...this.values };
-      this.changeChamps();
-      this.changeCountry();
+      this.formValuesChanges();
     }
 
   }
 
   async getFormOptions(){
 
-    const res1 = await this.champsService.List(['id', 'name', 'category', 'countries', 'events_men', 'events_men', 'events_mixed'], 'name');
+    const res1 = await this.champsService.List(['id', 'name', 'category', 'countries', 'events_men', 'events_women', 'events_mixed'], 'name');
     if (res1.success){
+      this._champs = res1.data.rows;
       this.champs = res1.data.rows;
-      this._allChamps = res1.data.rows;
       this.loadingChamps = false;
     }
     const res2 = await this.countryService.List(null, ['code', 'name', 'categories'], 'name');
     if (res2.success){
+      this._countries = res2.data.rows;
       this.countries = res2.data.rows;
-      this._allCountries = res2.data.rows;
       this.loadingCountries = false;
     }
     const res3 = await this.eventService.List();
     if (res3.success){
+      this._events = res3.data.rows;
       this.events = res3.data.rows;
-      this._allEvents = res3.data.rows;
       this.loadingEvents = false;
     }
 
   }
 
-  changeChamps(){
-    
-    this.setRequires();
+  formValuesChanges(){
 
     if (this.formValues.champs){
       
-      const champ = this._allChamps.find(i => i.id === parseInt(this.formValues.champs));
+      const champ = this._champs.find(i => i.id === parseInt(this.formValues.champs));
       
       if (champ.countries.length){
-        this.countries = this._allCountries.filter(i => champ.countries.includes(i.code));
-      } else if (EChampsCategory.UNIVERSAL == champ.category) {
-        this.countries = this._allCountries;
+        this.countries = this._countries.filter(i => champ.countries.includes(i.code));
+      } else if (ECategory.UNIVERSAL == champ.category) {
+        this.countries = this._countries;
       } else {
-        this.countries = this._allCountries.filter(i => i.categories.includes(champ.category));
+        this.countries = this._countries.filter(i => i.categories.includes(champ.category));
       }
-      
-      // if (champ.events.length){
-      //   this.events = this._allEvents.filter(i => champ.events.includes(i.id));
-      // }
+
+      this.years = this._years.filter(i => champ.years.includes(i));
+
+      if (!isNaN(parseInt(this.formValues.gender))){
+
+        let field_name = '';
+        switch(parseInt(this.formValues.gender)){
+          case EGender.MEN: field_name = 'events_men'; break;
+          case EGender.WOMEN: field_name = 'events_women'; break;
+          case EGender.MIXED: field_name = 'events_mixed'; break;
+        }
+        this.events = this._events.filter(i => champ[field_name].includes(i.id));
+  
+      } else {
+        this.events = this._events;
+      }
 
     } else {
-      this.countries = this._allCountries;
-      this.events = this._allEvents;
-    }
-
-  }
-
-  changeCountry(){
-
-    this.setRequires();
-
-    if (!this.formValues.champs){
+      this.countries = this._countries;
 
       if (this.formValues.country){
-        const country = this._allCountries.find(i => i.code === this.formValues.country);
-        this.champs = this._allChamps.filter(i => country.categories.includes(i.category));  
+        const country = this._countries.find(i => i.code === this.formValues.country);
+        this.champs = this._champs.filter(i => country.categories.includes(i.category));  
       } else {
-        this.champs = this._allChamps;
+        this.champs = this._champs;
       }
 
     }
+
+    this.setRequires();
 
   }
 

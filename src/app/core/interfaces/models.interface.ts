@@ -1,14 +1,17 @@
 
 import { EGender } from "@enums/gender.enum";
-import { EChampsCategory } from "@enums/champs-category.enum";
+import { ECategory } from "@enums/category.enum";
 
 export interface IChamps {
     id: number,
     name: string,
     slug: string,
-    category: EChampsCategory,
+    category: ECategory,
     countries: string[],
-    events: number[],
+    years: number[],
+    events_men: number[],
+    events_women: number[],
+    events_mixed: number[],
     content?: string,
     rank: number,
     created_date: Date,
@@ -20,15 +23,16 @@ export interface IChamps {
 export interface IMeeting {
     id: number,
     champs_id: number,
+    year: number,
     edition: number,
+    short_name: string,
     name: string,
     slug: string,
-    year: number,
     country_code: string,
     city: string,
-    content: string,
+    content?: string,
     created_date: Date,
-    updated_date: Date,
+    updated_date?: Date,
     // includes
     champ?: IChamps,
 }
@@ -37,7 +41,6 @@ export interface IEvent {
     id: number,
     name: string,
     rank: number,
-    gender: EGender
 }
 
 export interface IMedal {
@@ -47,7 +50,9 @@ export interface IMedal {
     event_id: number,
     medal: number,
     athlete_id: number,
+    athlete_name: string,
     country_code: string,
+    gender: EGender,
     mark: number,
     mark_format: string,
     mark_display: string,
@@ -55,10 +60,11 @@ export interface IMedal {
     wind: number,
     info: string,
     record: string,
+    is_team: boolean,
     is_canceled: boolean,
     notes: string,
     created_date: Date,
-    updated_date: Date,
+    updated_date?: Date,
     // includes
     champ?: IChamps
     meeting?: IMeeting
@@ -71,7 +77,6 @@ export interface IAthlete {
     id: number,
     first_name: string,
     last_name: string,
-    fullname: string,
     aka: string[],
     slug: string,
     country_code: string,
@@ -81,7 +86,7 @@ export interface IAthlete {
     birth_place: string,
     biography: string,
     created_date: Date,
-    updated_date: Date,
+    updated_date?: Date,
     // includes
     country: ICountry
 }
@@ -90,6 +95,8 @@ export interface ICountry {
     code: string,
     name: string,
     content?: string,
-    categories: EChampsCategory[],
+    categories: ECategory[],
     is_country: boolean,
+    created_date: Date,
+    updated_date?: Date,
 }

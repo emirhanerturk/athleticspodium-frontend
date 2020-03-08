@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
@@ -9,7 +10,21 @@ import { IError } from '@interfaces/response.interface';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+  styleUrls: ['./index.component.scss'],
+  animations: [
+    trigger(
+      'fadeIn', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({ opacity: 0 }),
+            animate('.2s ease-out', style({ opacity: 1 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class IndexComponent implements OnInit {
 
@@ -17,18 +32,22 @@ export class IndexComponent implements OnInit {
   error: IError | IError[];
 
   countries: ICountry[];
-  filteredCountries: ICountry[];
+  private _countries: ICountry[];
+  categories: any = [];
+  selectedCategory: number = null;
   searchKey: string = '';
 
   constructor(
     private appService: AppService,
-    private countryService: CountryService,
+    private countryService: CountryService
   ) { }
 
   ngOnInit() {
 
     this.appService.setNavigation(ENavigation.COUNTRIES)
     this.appService.setTitle('Countries');
+
+    this.categories = this.countryService.GetCategories();
 
     this.getCountries();
 
@@ -40,7 +59,8 @@ export class IndexComponent implements OnInit {
 
     const res = await this.countryService.List({ is_country: 1 }, ['code', 'name', 'categories']);
     if (res.success){
-      this.countries = res.data.rows;
+      this._countries = res.data.rows
+      this.countries = this._countries;
     } else {
       this.error = res.error;
     }
@@ -51,12 +71,18 @@ export class IndexComponent implements OnInit {
 
   filterCountries(){
 
-    const searchKey = this.searchKey.toLowerCase();
-    this.filteredCountries = this.countries.filter(i => {
-      const code = i.code.toLowerCase();
-      const name = i.name ? i.name.toLowerCase() : '';
-      return code.indexOf(searchKey) !== -1 || name.indexOf(searchKey) !== -1
-    })
+    let countries = this._countries;
+
+    if (this.selectedCategory !== null){
+      countries = countries.filter(i => i.categories.includes(this.selectedCategory))
+    }
+
+    if (this.searchKey){
+      const searchKey = this.searchKey.toLowerCase();
+      countries = countries.filter(i => i.code.toLowerCase().indexOf(searchKey) !== -1 || i.name.toLowerCase().indexOf(searchKey) !== -1)
+    }
+
+    this.countries = countries;
 
   }
 
@@ -65,11 +91,21 @@ export class IndexComponent implements OnInit {
     const value = e.target.value;
     if (value){
       this.searchKey = value;
-      this.filterCountries();
     } else {
       this.searchKey = null;
-      this.filteredCountries = null;
     }
+    this.filterCountries();
+
+  }
+
+  selectCategory(id: number){
+
+    if (this.selectedCategory === id){
+      this.selectedCategory = null;
+    } else {
+      this.selectedCategory = id;
+    }
+    this.filterCountries();
 
   }
 

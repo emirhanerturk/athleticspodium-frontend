@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { GenerateQuerySring } from '@services/util.service';
 import { IResponse } from '@interfaces/response.interface';
+import { ECategoryInfo } from '@enums/category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,12 @@ export class CountryService {
     const qs = GenerateQuerySring({ limit });
 
     return await this.apiService.get(`/countries/${country_code}/athletes?${qs}`);
+
+  }
+
+  GetCategories(): { id: any, name: any }[] {
+
+    return ECategoryInfo.filter(i => i.country);
 
   }
 

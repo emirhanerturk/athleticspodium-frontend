@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { GenerateQuerySring } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
-import { EGender } from '@enums/gender.enum';
-import { EChampsCategory } from '@enums/champs-category.enum';
+import { ECategoryInfo } from '@enums/category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -47,9 +46,9 @@ export class ChampsService {
 
   }
 
-  GetCategories(){
+  GetCategories(): { id: any, name: any }[] {
 
-    return Object.values(EChampsCategory).filter(i => typeof i === 'number').map(i => ({ id: i, name: EChampsCategory[i] }));
+    return ECategoryInfo.filter(i => i.champs);
 
   }
 

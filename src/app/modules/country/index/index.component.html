@@ -14,8 +14,15 @@
         
     </div>
 
+    <ul class="filters">
+        <li [class.active]="selectedCategory === null" (click)="selectCategory(selectedCategory)">All</li>
+        <li *ngFor="let category of categories" [class.active]="selectedCategory === category.id" (click)="selectCategory(category.id)">
+            {{ category.name }}
+        </li>
+    </ul>
+
     <ul class="row countries">
-        <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of filteredCountries || countries">
+        <li class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1" *ngFor="let item of countries" @fadeIn>
             <a [routerLink]="'/country/' + item.code" [attr.aria-label]="item.name" data-balloon-pos="up">
                 <img [attr.src]="'/assets/flags/' + item.code.toLowerCase() + '.svg'" alt="">
                 <h6>{{ item.code }}</h6>
@@ -23,7 +30,7 @@
         </li>        
     </ul>
 
-    <div *ngIf="filteredCountries && filteredCountries.length === 0">
+    <div *ngIf="countries.length === 0">
         Not matched any country with your search.
     </div>
 
