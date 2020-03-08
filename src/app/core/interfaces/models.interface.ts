@@ -59,7 +59,7 @@ export interface IMedal {
     order: number,
     wind: number,
     info: string,
-    record: string,
+    records: string,
     is_team: boolean,
     is_canceled: boolean,
     notes: string,
