@@ -125,11 +125,11 @@
 
                 <h2 class="h2-yellow gender-name">MENS</h2>
 
-                <div *ngFor="let event of meeting_events">
+                <div *ngFor="let event of meeting_events" class="event">
 
                     <h3 class="event-name">{{ event.name }}</h3>
 
-                    <table class="table-medals">
+                    <table class="table-medals mb-0">
                         <thead>
                             <tr>
                                 <th style="width: 60px" class="text-center">Medal</th>
@@ -186,6 +186,10 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div *ngIf="event.notes" class="event-notes">
+                        * {{ event.notes }}
+                    </div>
 
                 </div>
 
