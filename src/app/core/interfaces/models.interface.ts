@@ -22,7 +22,7 @@ export interface IChamps {
 
 export interface IMeeting {
     id: number,
-    champs_id: number,
+    champ_id: number,
     year: number,
     edition: number,
     short_name: string,
@@ -30,11 +30,14 @@ export interface IMeeting {
     slug: string,
     country_code: string,
     city: string,
+    start_date: Date,
+    end_date: Date,
     content?: string,
     created_date: Date,
     updated_date?: Date,
     // includes
     champ?: IChamps,
+    country?: ICountry,
 }
 
 export interface IEvent {

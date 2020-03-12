@@ -29,20 +29,28 @@
             <table *ngIf="meetings.length" class="table-medals">
                 <thead>
                     <tr>
-                        <th>Date</th>
                         <th>Event</th>
+                        <th>Country</th>
                         <th>Venue</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let meeting of meetings">
-                        <td>{{ meeting.year }}</td>
                         <td>
                             <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
-                                {{ meeting.name }}
+                                {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
                             </a>
                         </td>
-                        <td>{{ meeting.city }} - {{ meeting.country_code }}</td>
+                        <td>
+                            <a [routerLink]="'/country/' + meeting.country_code" [attr.aria-label]="meeting.country.name" data-balloon-pos="up">
+                                <img class="country-flag" [attr.src]="'/assets/flags/' + meeting.country_code.toLowerCase() + '.svg'" alt="">
+                                {{ meeting.country_code }}
+                            </a>
+                        </td>
+                        <td>{{ meeting.city }}</td>
+                        <td *ngIf="meeting.start_date">{{ meeting.start_date | date }} {{ meeting.end_date ? '- ' + (meeting.end_date | date) : '' }}</td>
+                        <td *ngIf="!meeting.start_date">{{ meeting.year }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -19,7 +19,7 @@
                     <ul class="meetings">
                         <li *ngFor="let meeting of champs.meetings">
                             <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
-                                {{ meeting.year }}
+                                {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name  }})</span>
                             </a>
                         </li>
                     </ul>
