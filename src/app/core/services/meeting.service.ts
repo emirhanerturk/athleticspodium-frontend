@@ -50,11 +50,20 @@ export class MeetingService {
   }
 
   /**
-   * Get last added 10 meetings
+   * Get last added 5 meetings
    */
   async GetLastMeetings(): Promise<IResponse> {
 
     return await this.apiService.get(`/meetings/last-meetings`);
+
+  }
+
+  /**
+   * Get upcoming meetings
+   */
+  async GetUpcomingMeetings(): Promise<IResponse> {
+
+    return await this.apiService.get(`/meetings/upcoming-meetings`);
 
   }
 

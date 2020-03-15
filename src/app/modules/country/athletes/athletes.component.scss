@@ -4,9 +4,14 @@
 .country-info {
     position: relative;
 
-    .country-flag {
+    figure {
+        display: block;
         margin: -10px;
         margin-bottom: 16px;
+    }
+
+    .country-flag {
+        width: 100%;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
 

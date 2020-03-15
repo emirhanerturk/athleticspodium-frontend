@@ -12,6 +12,7 @@ import { IMeeting } from '@core/interfaces/models.interface';
 })
 export class IndexComponent implements OnInit {
 
+  upcomingMeetings: any[];
   lastMeetings: any[];
   totalCount: number;
 
@@ -26,8 +27,18 @@ export class IndexComponent implements OnInit {
     this.appService.setNavigation(ENavigation.HOME);
     this.appService.setTitle('Athletics Podium', false);
 
+    this.getUpcomingMeetings();
     this.getLastMeetings();
     this.getTotalCount();
+
+  }
+
+  async getUpcomingMeetings(){
+
+    const res = await this.meetingService.GetUpcomingMeetings();
+    if (res.success){
+      this.upcomingMeetings = res.data;
+    }
 
   }
 

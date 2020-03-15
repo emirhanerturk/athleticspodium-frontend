@@ -10,8 +10,10 @@
 
             <div class="card country-info mb-4">
 
-                <img class="country-flag" [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
-                <span class="country-code">{{ country.code }}</span>
+                <figure>
+                    <img class="country-flag" [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
+                    <span class="country-code">{{ country.code }}</span>
+                </figure>
 
                 <h1 class="h1 mb-2">
                     {{ country.name }}

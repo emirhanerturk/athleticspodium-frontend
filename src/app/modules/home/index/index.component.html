@@ -27,6 +27,32 @@
 
             <section>
 
+                <h2 class="h2-yellow">Upcoming Meetings</h2>
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Date</th>
+                            <th>Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let meeting of upcomingMeetings">
+                            <td>
+                                <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                    {{ meeting.name }}
+                                </a>
+                            </td>
+                            <td class="text-nowrap">{{ meeting.start_date | date }}</td>
+                            <td>{{ meeting.city }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <section>
+
                 <h2 class="h2-yellow">Latest Adds</h2>
                 <table class="table-medals">
                     <thead>
