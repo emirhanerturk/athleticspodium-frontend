@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { MeetingService } from "@services/meeting.service";
+import { MedalService } from "@services/medal.service";
 import { IMeeting } from '@core/interfaces/models.interface';
 
 @Component({
@@ -12,10 +13,12 @@ import { IMeeting } from '@core/interfaces/models.interface';
 export class IndexComponent implements OnInit {
 
   lastMeetings: any[];
+  totalCount: number;
 
   constructor(
     private appService: AppService,
-    private meetingService: MeetingService
+    private meetingService: MeetingService,
+    private medalService: MedalService
   ) { }
 
   ngOnInit() {
@@ -24,6 +27,7 @@ export class IndexComponent implements OnInit {
     this.appService.setTitle('Athletics Podium', false);
 
     this.getLastMeetings();
+    this.getTotalCount();
 
   }
 
@@ -32,6 +36,15 @@ export class IndexComponent implements OnInit {
     const res = await this.meetingService.GetLastMeetings();
     if (res.success){
       this.lastMeetings = res.data;
+    }
+
+  }
+
+  async getTotalCount(){
+
+    const res = await this.medalService.TotalCount();
+    if (res.success){
+      this.totalCount = res.data;
     }
 
   }

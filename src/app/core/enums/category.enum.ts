@@ -42,7 +42,7 @@ export const ECategoryInfo = [
     },
     {
         id: 5,
-        name: 'Ocenia',
+        name: 'Oceania',
         champs: true,
         country: true
     },

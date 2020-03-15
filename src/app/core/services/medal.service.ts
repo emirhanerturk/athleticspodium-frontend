@@ -22,4 +22,13 @@ export class MedalService {
 
   }
 
+  /**
+   * Total count for medals
+   */
+  async TotalCount (): Promise<IResponse> {
+
+    return await this.apiService.get(`/medals/total-count`);
+
+  }
+
 }

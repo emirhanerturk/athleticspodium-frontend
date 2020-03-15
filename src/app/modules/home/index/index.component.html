@@ -18,33 +18,48 @@
         </div>
         <div class="col-md-4">
 
-            <h2 class="h2-yellow">Medal Tracker</h2>
-            <div class="mb-4">
-                <app-medal-search-form></app-medal-search-form>
-            </div>
+            <section>
+                <h2 class="h2-yellow">Medal Tracker</h2>
+                <div class="mb-4">
+                    <app-medal-search-form></app-medal-search-form>
+                </div>
+            </section>
 
-            <h2 class="h2-yellow">Latest Adds</h2>
+            <section>
 
-            <table class="table-medals">
-                <thead>
-                    <tr>
-                        <th>Meeting</th>
-                        <th>Created Date</th>
-                        <th>Medals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let meeting of lastMeetings">
-                        <td>
-                            <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
-                                {{ meeting.name }}
-                            </a>
-                        </td>
-                        <td class="text-nowrap">{{ meeting.created_date | date }}</td>
-                        <td class="text-center">{{ meeting.medalCount }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                <h2 class="h2-yellow">Latest Adds</h2>
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Created Date</th>
+                            <th>Medals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let meeting of lastMeetings">
+                            <td>
+                                <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                    {{ meeting.name }}
+                                </a>
+                            </td>
+                            <td class="text-nowrap">{{ meeting.created_date | date }}</td>
+                            <td class="text-center">{{ meeting.medalCount }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <section>
+                <h2 class="h2-yellow">Total Medal Count</h2>
+                <div class="card total-medal-card">
+                    <h6>
+                        {{ totalCount }}
+                    </h6>
+                    <p>Number of medals currently available on the site.</p>
+                </div>
+            </section>
 
         </div>
 
