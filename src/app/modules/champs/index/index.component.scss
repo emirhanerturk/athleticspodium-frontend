@@ -5,18 +5,7 @@
     line-height: 22px;
 
     li {
-        display: inline-block;
-
-        &:after {
-            content: ',';
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        &:last-child:after {
-            display: none;
-        }
-
+        display: block;
     }
 
 }
