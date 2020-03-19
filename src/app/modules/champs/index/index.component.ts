@@ -5,6 +5,7 @@ import { ChampsService } from "@services/champs.service";
 
 import { IChamps } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
+import { ICategoryInfo } from '@enums/category.enum';
 
 @Component({
   selector: 'app-index',
@@ -16,7 +17,7 @@ export class IndexComponent implements OnInit {
   loading: boolean = true;
   error: IError | IError[];
 
-  categories: any[];
+  categories: ICategoryInfo[];
 
   constructor(
     private appService: AppService,

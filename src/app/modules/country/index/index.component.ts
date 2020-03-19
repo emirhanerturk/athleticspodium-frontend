@@ -6,6 +6,7 @@ import { CountryService } from "@services/country.service";
 
 import { ICountry } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
+import { ICategoryInfo } from '@enums/category.enum';
 
 @Component({
   selector: 'app-index',
@@ -33,7 +34,7 @@ export class IndexComponent implements OnInit {
 
   countries: ICountry[];
   private _countries: ICountry[];
-  categories: any = [];
+  categories: ICategoryInfo[] = [];
   selectedCategory: number = null;
   searchKey: string = '';
 

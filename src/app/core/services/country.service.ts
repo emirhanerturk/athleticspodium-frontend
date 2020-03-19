@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { GenerateQuerySring } from '@services/util.service';
 import { IResponse } from '@interfaces/response.interface';
-import { ECategoryInfo } from '@enums/category.enum';
+import { ICategoryInfo, ECategoryInfo } from '@enums/category.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +56,7 @@ export class CountryService {
 
   }
 
-  GetCategories(): { id: any, name: any }[] {
+  GetCategories(): ICategoryInfo[] {
 
     return ECategoryInfo.filter(i => i.country);
 

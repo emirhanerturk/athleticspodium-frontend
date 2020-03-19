@@ -8,7 +8,9 @@ import { StripHtmlTags } from "@services/util.service";
 export class StripHtmlTagsPipe implements PipeTransform {
 
   transform(value: string): any {
+
     return StripHtmlTags(value);
+    
   }
 
 }

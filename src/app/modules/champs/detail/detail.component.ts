@@ -96,7 +96,7 @@ export class DetailComponent implements OnInit {
         { name: this.meeting.name, uri: `/champs/${this.champs.slug}/${this.meeting.slug}` },
       ];
 
-      const res = await this.meetingService.GetMedals(this.meeting.id, 0);
+      const res = await this.meetingService.GetMedals(this.meeting.id);
       if (res.success){
         this.meeting_events = res.data;
 

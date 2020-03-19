@@ -1,4 +1,98 @@
 
+@import 'variables';
+
+.articles {
+    margin-bottom: 30px;
+
+    > .row {
+        margin-left: -10px;
+        margin-right: -10px;
+
+        > .col-6 {
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+    }
+
+    .article {
+        display: block;
+        position: relative;
+        margin-bottom: 20px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        aside {
+            display: block;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 10px 20px;
+
+            h1 {
+                display: block;
+                margin-left: 8px;
+                margin-bottom: 12px;
+                font-family: $font-ubuntu;
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 40px;
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s;
+                color: #313339;
+
+                span {
+                    padding: 4px 0;
+                    box-shadow: 8px 0 0 #ffdd00, -8px 0 0 #ffdd00;
+                    background-color: #ffdd00;
+                    box-decoration-break: clone
+                }
+            }
+
+            p {
+                margin-left: 8px;
+                color: #fff;
+                font-family: $font-roboto;
+                font-size: 14px;
+                line-height: 22px;
+
+                span {
+                    padding: 4px 0;
+                    box-shadow: 8px 0 0 #111, -8px 0 0 #111;
+                    background-color: #111;
+                    box-decoration-break: clone
+                }
+            }
+        }
+
+
+        &.article-small {
+
+            aside {
+                padding: 10px;
+
+                h1 {
+                    font-size: 22px;
+                    margin-bottom: 0;
+                }
+
+                p {
+                    display: none;
+                }
+
+            }
+        }
+
+    }
+
+}
+
 .total-medal-card {
     text-align: center;
     padding: 20px;

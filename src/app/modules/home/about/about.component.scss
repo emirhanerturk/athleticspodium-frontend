@@ -1,0 +1,17 @@
+
+@import 'variables';
+
+.about-content {
+    text-align: justify;
+
+    h2 {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-family: $font-ubuntu;
+        line-height: 24px;
+        margin-bottom: 15px;
+    }
+}

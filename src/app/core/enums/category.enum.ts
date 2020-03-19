@@ -9,7 +9,14 @@ export enum ECategory {
     REGIONAL,
 }
 
-export const ECategoryInfo = [
+export interface ICategoryInfo {
+    id: number,
+    name: string,
+    champs: boolean,
+    country: boolean
+} 
+
+export const ECategoryInfo: ICategoryInfo[] = [
     {
         id: 0,
         name: 'Universal',

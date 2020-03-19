@@ -28,11 +28,9 @@ export class MeetingService {
    * Get the meeting's medals
    * @param meeting_id
    */
-  async GetMedals(meeting_id: number, gender: EGender): Promise<IResponse> {
+  async GetMedals(meeting_id: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ gender });
-
-    return await this.apiService.get(`/meetings/${meeting_id}/medals?${qs}`);
+    return await this.apiService.get(`/meetings/${meeting_id}/medals`);
 
   }
 

@@ -1,18 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { EMedal, IMedalInfo, EMedalInfo } from '@enums/medal.enum';
 
 @Pipe({
   name: 'medal'
 })
 export class MedalPipe implements PipeTransform {
 
-  transform(medal_code: number): { name: string, icon: string } {
+  transform(value: EMedal): IMedalInfo {
 
-    switch(medal_code){
-      case 1: return { name: 'Gold', icon: '/assets/medals/gold.svg' }
-      case 2: return { name: 'Silver', icon: '/assets/medals/silver.svg' }
-      case 3: return { name: 'Bronze', icon: '/assets/medals/bronze.svg' }
-      default: return { name: '#', icon: '/assets/medals/non-medal.svg' }
+    const medal = EMedalInfo.find(m => m.id === value);
+    if (medal){
+      return medal;
     }
+
+    return { id: 0, name: '#', icon: '/assets/medals/non-medal.svg' }
 
   }
 
