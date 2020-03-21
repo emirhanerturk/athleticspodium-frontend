@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IndexComponent } from './index/index.component';
 import { DetailComponent } from './detail/detail.component';
+import { MeetingComponent } from './meeting/meeting.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: ':champ_slug/:meeting_slug',
-    component: DetailComponent,
+    component: MeetingComponent,
     pathMatch: 'full'
   },
 ];

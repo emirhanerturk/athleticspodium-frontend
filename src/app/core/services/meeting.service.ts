@@ -25,6 +25,16 @@ export class MeetingService {
   }
 
   /**
+   * Get the meeting details
+   * @param meeting meeting id or slug
+   */
+  async GetMeeting(meeting: string|number): Promise<IResponse>{
+
+    return await this.apiService.get(`/meetings/${meeting}`);
+
+  }
+
+  /**
    * Get the meeting's medals
    * @param meeting_id
    */
