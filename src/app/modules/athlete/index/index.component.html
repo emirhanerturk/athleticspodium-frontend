@@ -44,8 +44,8 @@
                             <td>
                                 {{ athlete.birth_date | date }}
                             </td>
-                            <td class="text-center">
-                                {{ athlete.gender ? 'M' : 'W' }}
+                            <td class="text-center p-0">
+                                <img class="gender-icon" [src]="'/assets/icons/gender-' + (athlete.gender ? 'men' : 'women') + '.svg'" alt="">
                             </td>
                         </tr>
                     </tbody>
@@ -80,8 +80,8 @@
                             <td>
                                 {{ athlete.birth_date | date }}
                             </td>
-                            <td class="text-center">
-                                {{ athlete.gender ? 'M' : 'W' }}
+                            <td class="text-center p-0">
+                                <img class="gender-icon" [src]="'/assets/icons/gender-' + (athlete.gender ? 'men' : 'women') + '.svg'" alt="">
                             </td>
                         </tr>
                     </tbody>

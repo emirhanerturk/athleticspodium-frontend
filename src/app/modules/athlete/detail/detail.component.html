@@ -10,7 +10,9 @@
 
             <section class="card mb-4 athlete-left">
 
-                <img src="/assets/media/andre-domingos.jpg" alt="">
+                <img *ngIf="athlete.image" src="/assets/media/andre-domingos.jpg" alt="">
+
+                <img *ngIf="!athlete.image" [src]="'/assets/placeholders/athlete-' + (athlete.gender ? 'men' : 'women') + '.jpg'" alt="">
 
             </section>
             

@@ -95,7 +95,9 @@
                                     <img *ngIf="row.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
                                 </a>
                             </td>
-                            <td class="text-center">{{ row.athlete.gender ? 'M' : 'W' }}</td>
+                            <td class="text-center">
+                                <img class="gender-icon" [src]="'/assets/icons/gender-' + (row.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                            </td>
                             <td class="text-center">{{ row.gold }}</td>
                             <td class="text-center">{{ row.silver }}</td>
                             <td class="text-center">{{ row.bronze }}</td>

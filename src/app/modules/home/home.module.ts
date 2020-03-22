@@ -8,9 +8,10 @@ import { AboutComponent } from './about/about.component';
 import { ComponentsModule } from '@shared/modules/components/components.module';
 import { DirectivesModule } from '@shared/modules/directives/directives.module';
 import { PipesModule } from '@shared/modules/pipes/pipes.module';
+import { SimpleNotesComponent } from './simple-notes/simple-notes.component';
 
 @NgModule({
-  declarations: [IndexComponent, AboutComponent],
+  declarations: [IndexComponent, AboutComponent, SimpleNotesComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

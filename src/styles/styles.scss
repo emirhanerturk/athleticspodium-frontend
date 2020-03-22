@@ -20,7 +20,7 @@ body {
     width: 1200px;
     margin: 0 auto;
     padding: 20px 0;
-    min-height: 600px;
+    min-height: calc(100vh - 330px);
 
     @media #{$responsive-lg} {
         width: 100%;
@@ -95,6 +95,7 @@ body {
                 color: #999;
                 font-size: 11px;
                 text-transform: uppercase;
+                vertical-align: middle;
             }
         }
     }
@@ -106,6 +107,7 @@ body {
                 height: 30px;
                 padding: 8px;
                 border: 1px solid #eee;
+                vertical-align: middle;
             }
         }
     }
@@ -160,6 +162,12 @@ body {
             font-size: 12px;
             line-height: 12px;
         }
+    }
+
+    .gender-icon {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
     }
 
     .medal-icon {

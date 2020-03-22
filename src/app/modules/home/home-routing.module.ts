@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IndexComponent } from './index/index.component';
 import { AboutComponent } from './about/about.component';
+import { SimpleNotesComponent } from './simple-notes/simple-notes.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
+  {
+    path: 'simple-notes',
+    component: SimpleNotesComponent
+  }
 ];
 
 @NgModule({

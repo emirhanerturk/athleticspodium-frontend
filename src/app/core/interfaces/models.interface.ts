@@ -87,6 +87,7 @@ export interface IAthlete {
     olympic_mark: boolean,
     birth_date: Date,
     birth_place: string,
+    image?: IImage[],
     biography: string,
     created_date: Date,
     updated_date?: Date,
@@ -102,4 +103,10 @@ export interface ICountry {
     is_country: boolean,
     created_date: Date,
     updated_date?: Date,
+}
+
+export interface IImage {
+    uri: string,
+    caption?: string,
+    cover: boolean,
 }
