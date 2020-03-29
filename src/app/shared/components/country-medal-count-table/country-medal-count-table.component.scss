@@ -1,0 +1,12 @@
+
+.table-medals {
+    margin-bottom: 10px;
+}
+
+.btn {
+    float: right;
+
+    &:after {
+        clear: both;
+    }
+}

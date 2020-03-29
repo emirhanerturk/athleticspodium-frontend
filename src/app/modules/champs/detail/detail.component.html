@@ -34,31 +34,7 @@
                     Total Medals
                 </h4>
 
-                <table class="table-medals">
-                    <thead>
-                        <tr>
-                            <th>Country</th>
-                            <th class="text-center">G</th>
-                            <th class="text-center">S</th>
-                            <th class="text-center">B</th>
-                            <th class="text-center">T</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let country of totals">
-                            <td class="font-bold text-nowrap">
-                                <a [routerLink]="'/country/' + country.country.code" [attr.aria-label]="country.country.name" data-balloon-pos="up">
-                                    <img class="country-flag" [attr.src]="'/assets/flags/' + country.country.code.toLowerCase() + '.svg'" alt="">
-                                    {{ country.country.code }}
-                                </a>
-                            </td>
-                            <td class="text-center">{{ country.gold }}</td>
-                            <td class="text-center">{{ country.silver }}</td>
-                            <td class="text-center">{{ country.bronze }}</td>
-                            <td class="text-center font-bold">{{ country.total }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
 
             </section>
 

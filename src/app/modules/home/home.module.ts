@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { IndexComponent } from './index/index.component';
 import { AboutComponent } from './about/about.component';
+import { SimpleNotesComponent } from './simple-notes/simple-notes.component';
+import { MissingInformationsComponent } from './missing-informations/missing-informations.component';
 
 import { ComponentsModule } from '@shared/modules/components/components.module';
 import { DirectivesModule } from '@shared/modules/directives/directives.module';
 import { PipesModule } from '@shared/modules/pipes/pipes.module';
-import { SimpleNotesComponent } from './simple-notes/simple-notes.component';
 
 @NgModule({
-  declarations: [IndexComponent, AboutComponent, SimpleNotesComponent],
+  declarations: [IndexComponent, AboutComponent, SimpleNotesComponent, MissingInformationsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
