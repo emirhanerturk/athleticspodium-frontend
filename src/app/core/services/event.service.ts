@@ -22,14 +22,4 @@ export class EventService {
 
   }
 
-  /**
-   * Get the event details
-   * @param event_id
-   */
-  async GetCountry(event_id: number): Promise<IResponse> {
-
-    return await this.apiService.get(`/events/${event_id}`);
-
-  }
-
 }

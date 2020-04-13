@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { GenerateQuerySring } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
-import { EGender } from '@enums/gender.enum';
 
 @Injectable({
   providedIn: 'root'

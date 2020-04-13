@@ -106,12 +106,12 @@
                                         </td>
                                         <td *ngIf="medal.athlete">
                                             <a [routerLink]="'/athlete/' + medal.athlete_id + '/' + medal.athlete.slug">
-                                                {{ medal.athlete.first_name }} {{ medal.athlete.last_name }}
+                                                {{ medal.athlete_name ? medal.athlete_name : medal.athlete.first_name + ' ' + medal.athlete.last_name }}
                                                 <img *ngIf="medal.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
                                             </a>
                                         </td>
                                         <td *ngIf="!medal.athlete">
-                                            -
+                                            {{ medal.athlete_name ? medal.athlete_name : '-' }}
                                         </td>
                                         <td class="text-center text-nowrap">
                                             <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
