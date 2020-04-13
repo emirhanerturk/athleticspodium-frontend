@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
-export { ENavigation } from '@enums/navigation.enum';
 
 @Injectable({
   providedIn: 'root'

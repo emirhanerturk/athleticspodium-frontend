@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
 import { GenerateQuerySring } from "@services/util.service";
-import { IResponse } from '@core/interfaces/response.interface';
+import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root'
