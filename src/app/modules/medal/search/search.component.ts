@@ -48,6 +48,7 @@ export class SearchComponent implements OnInit {
           year: '',
           gender: '',
           medal: '',
+          is_canceled: '0',
           page: 1,
         }
         this.queries = { ...this.queries, ...queries };

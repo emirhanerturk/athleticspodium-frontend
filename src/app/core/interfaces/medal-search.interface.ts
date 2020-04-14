@@ -5,5 +5,6 @@ export interface IMedalSearch {
     year: string,
     gender: string,
     medal: string,
+    is_canceled?: string,
     page?: number
 }
