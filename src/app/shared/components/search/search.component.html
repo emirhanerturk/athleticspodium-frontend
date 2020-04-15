@@ -7,11 +7,11 @@
             <input [value]="key" type="text" placeholder="Type something..." (keyup)="search($event)" maxlength="20" autocomplete="off" spellcheck="false" autofocus>
         </div>
 
-        <div *ngIf="loading" class="loading">
+        <div *ngIf="loading" class="loading" @fadeInInner>
             Loading...
         </div>
 
-        <div *ngIf="!loading" class="search-content scroll">
+        <div *ngIf="!loading" class="search-content scroll" @fadeInInner>
             <div class="row">
                 <div class="col-8">
 

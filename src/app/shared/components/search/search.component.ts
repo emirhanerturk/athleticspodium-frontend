@@ -27,6 +27,18 @@ import { ICountry, IAthlete, IChamps } from '@core/interfaces/models.interface';
           ]
         )
       ]
+    ),
+    trigger(
+      'fadeInInner', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({ opacity: 0 }),
+            animate('.3s ease-out', style({ opacity: 1 }))
+          ]
+        )
+      ]
     )
   ]
 })
