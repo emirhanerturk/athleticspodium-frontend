@@ -12,13 +12,13 @@ export class MedalService {
   constructor(private apiService: ApiService) { }
 
   /**
-   * Search from medals
+   * Get all medals
    */
-  async Search (query: Object): Promise<IResponse> {
+  async List (query: Object): Promise<IResponse> {
 
     const qs = GenerateQuerySring(query);
 
-    return await this.apiService.get(`/medals/search?` + qs);
+    return await this.apiService.get(`/medals?` + qs);
 
   }
 
