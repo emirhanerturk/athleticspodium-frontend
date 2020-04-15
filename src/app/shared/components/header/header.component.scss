@@ -70,6 +70,9 @@
     .nav-container {
         width: 1200px;
         height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin: 0 auto;
 
         @media #{$responsive-lg} {
@@ -124,6 +127,16 @@
                     color: #ffdd00;
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
                 }
+            }
+        }
+
+        .search {
+            padding-right: 10px;
+            cursor: pointer;
+
+            img {
+                width: 20px;
+                height: 20px;
             }
         }
 

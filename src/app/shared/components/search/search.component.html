@@ -1,0 +1,77 @@
+
+<div *ngIf="opened" class="search-container" @fadeIn>
+    <button type="button" class="close-button" (click)="close()">X</button>
+    <div class="search container">
+
+        <div class="search-header">
+            <input [value]="key" type="text" placeholder="Type something..." (keyup)="search($event)" maxlength="20" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+
+        <div *ngIf="loading" class="loading">
+            Loading...
+        </div>
+
+        <div *ngIf="!loading" class="search-content scroll">
+            <div class="row">
+                <div class="col-8">
+
+                    <h4>{{ popular ? 'Popular ' : '' }}Athletes</h4>
+
+                    <div *ngIf="athletes.length === 0">Not found any athlete.</div>
+
+                    <table *ngIf="athletes.length" class="athletes">
+                        <thead>
+                            <tr>
+                                <th>Athlete</th>
+                                <th>Country</th>
+                                <th>Gender</th>
+                                <th>Birth Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let athlete of athletes; let i = index" [class.highlight]="i < 3">
+                                <td class="name">
+                                    <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug" (click)="close()">
+                                        {{ athlete.first_name }} <br>{{ athlete.last_name }}
+                                    </a>
+                                </td>
+                                <td>{{ athlete.country_code }}</td>
+                                <td>{{ athlete.gender ? 'Men' : 'Women' }}</td>
+                                <td>{{ athlete.date_of_birth ? (athlete.date_of_birth | date) : '-' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-4">
+
+                    <h4>{{ popular ? 'Popular ' : '' }}Countries</h4>
+
+                    <div *ngIf="countries.length === 0">Not found any country.</div>
+
+                    <div *ngIf="countries.length" class="countries">
+                        <a *ngFor="let country of countries" [routerLink]="'/country/' + country.code" (click)="close()">
+                            <img [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" alt="">
+                            <span>{{ country.name }}</span>
+                        </a>
+                    </div>
+
+                    <h4 class="mt-5">{{ popular ? 'Popular ' : '' }}Champs</h4>
+
+                    <div *ngIf="champs.length === 0">Not found any champs.</div>
+
+                    <div *ngIf="champs.length" class="champs mb-5">
+                        <div *ngFor="let champ of champs">
+                            <a [routerLink]="'/champs/' + champ.slug" (click)="close()">
+                                <span>{{ champ.name }}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

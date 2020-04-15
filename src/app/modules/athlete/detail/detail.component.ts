@@ -35,17 +35,20 @@ export class DetailComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.ATHLETES);
 
-    this.athlete_id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.route.params.subscribe(params => {
 
-    this.getAthlete(this.athlete_id);
+      this.athlete_id = parseInt(params.id);
+      this.getAthlete();
+
+    });
 
   }
 
-  async getAthlete(athlete_id: number){
+  async getAthlete(){
 
     this.loading = true;
 
-    const res = await this.athleteService.GetAthlete(athlete_id);
+    const res = await this.athleteService.GetAthlete(this.athlete_id);
     if (res.success){
       this.athlete = res.data;
 
@@ -55,7 +58,7 @@ export class DetailComponent implements OnInit {
         { name: `${this.athlete.first_name} ${this.athlete.last_name} (${this.athlete.country_code})`, uri: `/athlete/${this.athlete.id}/${this.athlete.slug}` },
       ];
 
-      const res2 = await this.athleteService.GetAthleteAllMedals(athlete_id);
+      const res2 = await this.athleteService.GetAthleteAllMedals(this.athlete_id);
       if (res2.success){
         this.medals = res2.data;
 

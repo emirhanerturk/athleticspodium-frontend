@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
+import { ApiService } from './api.service';
 export { ENavigation } from '@enums/navigation.enum';
 
 @Injectable({
@@ -11,8 +12,11 @@ export { ENavigation } from '@enums/navigation.enum';
 export class AppService {
 
   @Output() navigation: EventEmitter<ENavigation> = new EventEmitter();
+  @Output() search: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private titleService: Title) { }
+  constructor(
+    private titleService: Title,
+    private apiService: ApiService) { }
 
   setNavigation(nav: ENavigation) {
     
@@ -24,6 +28,19 @@ export class AppService {
     if (suffix) title += ' - Athletics Podium';
     this.titleService.setTitle(title);
   }
+
+  openSearch(){
+
+    this.search.emit(true);
+
+  }
+
+  async searchOnSite(q: string){
+
+    return await this.apiService.get(`/search?q=${q}`);
+
+  }
+
 
   logError(error: IError|IError[], point?: string){
 

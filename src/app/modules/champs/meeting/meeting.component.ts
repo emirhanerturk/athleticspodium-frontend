@@ -36,7 +36,7 @@ export class MeetingComponent implements OnInit {
 
   async ngOnInit() {
 
-    this.appService.setNavigation(ENavigation.CHAMPS)
+    this.appService.setNavigation(ENavigation.CHAMPS);
 
     this.route.params.subscribe(async data => {
       if(this.firstLoad){

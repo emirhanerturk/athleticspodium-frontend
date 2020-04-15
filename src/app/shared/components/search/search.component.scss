@@ -1,0 +1,171 @@
+
+@import 'variables';
+
+.search-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.9);
+    border: 10px solid var(--yellow);
+
+    .close-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        font-family: $font-ubuntu;
+        font-size: 64px;
+        font-weight: bold;
+        line-height: 100px;
+        color: rgb(255, 221, 0);
+        border: none;
+        text-align: center;
+        background-color: transparent;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: rgb(255, 221, 0, .8);
+        }
+    }
+
+    .search {
+        position: relative;
+        margin-top: 60px;
+        margin-bottom: 20px;
+
+        .search-header {
+            position: relative;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+
+            input {
+                width: 100%;
+                font-family: $font-roboto;
+                font-size: 64px;
+                font-weight: bold;
+                line-height: 64px;
+                background-color: transparent;
+                color: #eee;
+                border: none;
+                
+                &::placeholder{
+                    color: #444;
+                }
+
+                &::selection{
+                    background: var(--yellow);
+                    color: #444;
+                }
+
+            }
+
+        }
+
+        .loading {
+            margin: 40px;
+            text-align: center;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .search-content {
+            margin-top: 40px;
+            color: #ccc;
+            font-size: 16px;
+            height: calc(100vh - 250px);
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+        
+            &::-webkit-scrollbar-track {
+                background: rgba(255,255,55,.2);
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background: var(--yellow);
+                border-radius: 4px;
+            }
+
+            h4 {
+                font-weight: bold;
+                font-size: 20px;            
+                margin-bottom: 20px;
+            }
+
+            .athletes {
+                width: 100%;
+
+                thead > tr > th {
+                    text-align: left;
+                    color: #999;
+                    padding: 8px;
+                    padding-left: 0;
+                }
+
+                tbody > tr td {
+                    padding: 5px 8px;
+                    padding-left: 0;
+                    vertical-align: middle;
+                    
+                    br {
+                        display: none;
+                    }
+                }
+
+                // tbody > tr.highlight {
+
+                //     .name {
+                //         font-size: 32px;
+                //         font-weight: bold;
+                //     }
+
+                //     br {
+                //         display: block;
+                //     }
+
+                // }
+            }
+
+            .countries {
+                width: 100%;
+
+                a {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding: 10px 0;
+
+                    img {
+                        width: 32px;
+                        height: 24px;
+                        background-color: #eee;
+                    }
+
+                    span {
+                        font-weight: bold;
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+            .champs {
+
+                a {
+                    display: inline-block;
+                    padding: 10px 0;
+                }
+            }
+
+        }
+
+    }
+
+}

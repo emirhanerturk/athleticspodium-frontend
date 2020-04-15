@@ -25,17 +25,18 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private appService: AppService,
     private champsService: ChampsService,
-    ) {
-
-    }
+  ) { }
 
   ngOnInit() {
 
-    this.appService.setNavigation(ENavigation.CHAMPS)
+    this.appService.setNavigation(ENavigation.CHAMPS);
 
-    const champ_slug = this.route.snapshot.paramMap.get('champ_slug');
+    this.route.params.subscribe(params => {
+      
+      const champ_slug = params.champ_slug;
+      this.getChamps(champ_slug);
 
-    this.getChamps(champ_slug);
+    })
 
   }
 

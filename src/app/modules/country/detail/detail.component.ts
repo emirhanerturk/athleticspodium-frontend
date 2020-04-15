@@ -14,7 +14,7 @@ import { ICountry } from "@interfaces/models.interface";
 })
 export class DetailComponent implements OnInit {
 
-  loading: boolean = true;
+  loading: boolean = false;
   error: any;
   breadcrumbs: IBreadcrumb[];
 
@@ -34,7 +34,18 @@ export class DetailComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.COUNTRIES);
 
-    this.country_code = this.route.snapshot.paramMap.get('code');
+    this.route.params.subscribe(params => {
+
+      this.country_code = params.code;
+      this.getCountry();
+
+    });
+    
+  }
+
+  async getCountry(){
+
+    this.loading = true;
 
     const res = await this.countryService.GetCountry(this.country_code);
     if (res.success){
@@ -80,7 +91,7 @@ export class DetailComponent implements OnInit {
     }
 
     this.loading = false;
-    
+
   }
 
 }

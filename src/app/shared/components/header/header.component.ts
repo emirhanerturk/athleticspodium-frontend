@@ -25,4 +25,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  openSearch(){
+    this.appService.openSearch();
+  }
+
 }

@@ -24,7 +24,13 @@ export class IndexComponent implements OnInit {
     private route: ActivatedRoute,
     private appService: AppService,
     private meetingService: MeetingService,
-  ) { }
+  ) {
+    
+    for (let i = this.current_year + 5; i > 1919; i--) {
+      this.years.push(i);
+    }
+
+  }
 
   ngOnInit() {
 
@@ -34,20 +40,16 @@ export class IndexComponent implements OnInit {
       if (data.year){
         this.active_year = parseInt(data.year) 
       }
-      this.getByYear(this.active_year);
+      this.getByYear();
     });
-
-    for (let i = this.current_year + 5; i > 1919; i--) {
-      this.years.push(i);
-    }
 
   }
 
-  async getByYear(year: number){
+  async getByYear(){
 
     this.loading = true;
 
-    const res = await this.meetingService.List(year);
+    const res = await this.meetingService.List(this.active_year);
     if (res.success){
       this.meetings = res.data;
     } else {

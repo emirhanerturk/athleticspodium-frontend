@@ -7,9 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LayoutComponent } from '@layouts/layout/layout.component';
-
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
+import { SearchComponent } from '@shared/components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { FooterComponent } from '@shared/components/footer/footer.component';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
