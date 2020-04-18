@@ -61,14 +61,14 @@ export class SearchComponent implements OnInit {
   ) {
     
     this.countries = [{
-      code: 'TUR',
-      name: 'Turkey'
-    },{
       code: 'KEN',
       name: 'Kenya'
     },{
-      code: 'BRA',
-      name: 'Brazil'
+      code: 'JAM',
+      name: 'Jamaica'
+    },{
+      code: 'TUR',
+      name: 'Turkey'
     }];
 
     this.champs = [{
