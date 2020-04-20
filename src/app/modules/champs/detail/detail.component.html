@@ -52,7 +52,7 @@
                     <h1 class="h1 h1-larger">
                         {{ champs.name }}
                     </h1>
-                    <div class="champs-content" [innerHTML]="champs.content"></div>
+                    <div class="champs-content" [innerHTML]="champs.content | safeHtml"></div>
                 </section>
 
             </ng-container>

@@ -77,7 +77,7 @@
                         <button type="button" class="btn btn-sm mt-2" (click)="expandBio = true">More &rarr;</button>
                     </div>
                     <div *ngIf="expandBio">
-                        <div [innerHTML]="athlete.biography"></div>
+                        <div [innerHTML]="athlete.biography | safeHtml"></div>
                         <button type="button" class="btn btn-sm mt-2" (click)="expandBio = false">&larr; Less</button>
                     </div>
                 </div>
