@@ -35,6 +35,7 @@
                         <th>Event</th>
                         <th style="width: 60px" class="text-center">Medal</th>
                         <th>Athlete</th>
+                        <th style="width: 60px" class="text-center">Gender</th>
                         <th style="width: 90px" class="text-center">Country</th>
                         <th style="width: 100px" class="text-right">Mark</th>
                         <th style="width: 80px">W/I</th>
@@ -71,6 +72,9 @@
                         <td *ngIf="!medal.athlete">
                             {{ medal.athlete_name ? medal.athlete_name : '-' }}
                         </td>
+                        <td class="text-center p-0">
+                            <img class="gender-icon" [src]="'/assets/icons/gender-' + (medal.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                        </td>
                         <td class="text-center">
                             <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                 <img class="country-flag" [src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" alt="">
@@ -81,7 +85,7 @@
                             {{ medal.mark_display }}
                         </td>
                         <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
-                            {{ medal.wind }}
+                            {{ medal.wind | number: '1.1-1' }}
                         </td>
                         <td *ngIf="!medal.wind" class="font-smaller">
                             {{ medal.info }}

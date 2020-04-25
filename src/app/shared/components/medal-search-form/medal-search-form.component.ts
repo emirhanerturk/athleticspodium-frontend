@@ -134,7 +134,15 @@ export class MedalSearchFormComponent implements OnInit {
 
       if (this.formValues.country){
         const country = this._countries.find(i => i.code === this.formValues.country);
-        this.champs = this._champs.filter(i => country.categories.includes(i.category));  
+        this.champs = this._champs.filter(champ => {
+          if (champ.countries.length){
+            return champ.countries.includes(country.code);
+          } else if (ECategory.UNIVERSAL == champ.category){
+            return true;
+          } else {
+            return country.categories.includes(champ.category);
+          }
+        });  
       } else {
         this.champs = this._champs;
         this.events = this._events;

@@ -25,6 +25,7 @@ export class CountryMedalCountTableComponent implements OnInit {
     if (changes.data && !changes.data.firstChange){
       this.data = changes.data.currentValue;
       this.showingData = this.data.slice(0, 10);
+      this.showMore = false;
     }
 
   }

@@ -135,7 +135,7 @@
                                 {{ medal.mark_display }}
                             </td>
                             <td *ngIf="medal.wind" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
-                                {{ medal.wind }}
+                                {{ medal.wind | number: '1.1-1' }}
                             </td>
                             <td *ngIf="!medal.wind" class="font-smaller">
                                 {{ medal.info }}
