@@ -7,6 +7,9 @@ export const environment = {
   api: {
     host: 'http://localhost:3001',
     version: '1.0',
+  },
+  analytics: {
+    trackerId: 'G-7EDH9146FP'
   }
 };
 

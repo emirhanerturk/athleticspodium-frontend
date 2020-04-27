@@ -1,10 +1,13 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { environment } from '../../../environments/environment';
 
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
 import { ApiService } from './api.service';
 export { ENavigation } from '@enums/navigation.enum';
+
+declare var gtag: any;
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +30,14 @@ export class AppService {
   setTitle(title: string, suffix: boolean = true){
     if (suffix) title += ' - Athletics Podium';
     this.titleService.setTitle(title);
+  }
+
+  analytics(url: string){
+
+    gtag('config', environment.analytics.trackerId, {
+      page_path: url,
+    });
+
   }
 
   openSearch(){
