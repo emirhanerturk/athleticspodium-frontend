@@ -25,6 +25,6 @@
     </tbody>
 </table>
 
-<button type="button" class="btn btn-sm mb-4" (click)="showMoreOrLess()">
+<button *ngIf="data.length > 10" type="button" class="btn btn-sm mb-4" (click)="showMoreOrLess()">
     {{ showMore ? '&larr; Less' : 'More &rarr;' }}
 </button>
