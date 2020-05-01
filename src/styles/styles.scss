@@ -28,11 +28,7 @@ body {
 
     @media #{$responsive-lg} {
         width: 100%;
-        padding: 15px 10px;
-    }
-
-    @media #{$responsive-sm} {
-        padding: 15px 6px;
+        padding: 15px;
     }
 
 }
@@ -81,6 +77,15 @@ body {
 
 /* tables */
 
+.table-responsive {
+    display: block;
+    width: 100%;
+
+    @media #{$responsive-sm} {
+        overflow-x: auto;
+    }
+}
+
 .table-medals {
     width: 100%;
     text-align: left;
@@ -88,6 +93,10 @@ body {
     background-color: #fff;
     font-family: $font-roboto;
     font-size: 14px;
+
+    &.table-medals-min-width {
+        min-width: 600px;
+    }
 
     thead {
         tr {

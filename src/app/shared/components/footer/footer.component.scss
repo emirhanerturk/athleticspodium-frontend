@@ -10,6 +10,10 @@
     border-top: 6px solid #ffdd00;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
 
+    @media #{$responsive-lg} {
+        height: auto;
+    }
+
     .footer-container {
         width: 1200px;
         padding: 20px 0;
@@ -17,6 +21,7 @@
 
         @media #{$responsive-lg} {
             width: 100%;
+            padding: 15px;
         }
 
         .info {

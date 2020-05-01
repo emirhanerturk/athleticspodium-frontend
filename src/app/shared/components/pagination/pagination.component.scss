@@ -2,6 +2,13 @@
 @import 'variables';
 
 .pagination-container {
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+
+    @media #{$responsive-lg} {
+        overflow-x: auto;
+    }
 
     .pagination {
         display: inline-flex;
@@ -14,12 +21,22 @@
         color: #4b4f54;
         user-select: none;
 
+        @media #{$responsive-lg} {
+            font-size: 12px;
+            line-height: 30px;
+        }
+
         .page {
             width: 36px;
             height: 36px;
             border-right: 1px solid #eee;
             cursor: pointer;
             transition: all .2s ease;
+
+            @media #{$responsive-lg} {
+                width: 32px;
+                height: 32px;
+            }
 
             &:last-child {
                 border-right: none;
@@ -42,6 +59,10 @@
             border-right: 1px solid #eee;
             cursor: pointer;
             transition: all .2s ease;
+
+            @media #{$responsive-lg} {
+                height: 32px;
+            }
 
             &.disabled {
                 color: #ccc;

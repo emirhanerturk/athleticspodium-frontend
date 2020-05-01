@@ -57,12 +57,23 @@
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 32px;
+    
+    @media #{$responsive-sm} {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
 
     li {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         margin-right: 20px;
+
+        @media #{$responsive-sm} {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
 
         img {
             height: 18px;
@@ -100,6 +111,7 @@
 
     li {
         width: 110px;
+        min-width: 80px;
         color: #ccc;
         cursor: pointer;
 
@@ -109,6 +121,7 @@
 
         &:nth-child(2){
             width: 140px;
+            min-width: 100px;
         }
 
         &:before {

@@ -23,14 +23,21 @@
         }
     
         li {
+            position: relative;
+            padding-right: 22px;
+            height: 14px;
             margin-right: 10px;
+
+            @media #{$responsive-sm} {
+                height: unset;
+            }
     
             &:after {
                 content: '\21E2';
                 display: inline-block;
-                position: relative;
-                bottom: 2px;
-                margin-left: 10px;    
+                position: absolute;
+                top: 0;
+                right: 0;    
             }
     
             &:last-child:after {

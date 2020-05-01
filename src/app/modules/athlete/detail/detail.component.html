@@ -89,68 +89,70 @@
                     {{ athlete.first_name }} {{ athlete.last_name }}'s Medals
                 </h2>
 
-                <table class="table-medals">
-                    <thead>
-                        <tr>
-                            <th style="width: 60px">Year</th>
-                            <th>Champs</th>
-                            <th style="width: 60px" class="text-center">Medal</th>
-                            <th style="width: 100px">Event</th>
-                            <th style="width: 70px" class="text-center">Country</th>
-                            <th style="width: 100px" class="text-right">Mark</th>
-                            <th style="width: 80px">W/I</th>
-                            <th style="width: 80px">Record</th>
-                            <th style="width: 60px" class="text-center">Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let medal of medals" [class.canceled]="medal.is_canceled">
-                            <td>
-                                <a [routerLink]="'/champs/' + medal.champ.slug + '/' + medal.meeting.slug">
-                                    {{ medal.meeting.year }}
-                                </a>
-                            </td>
-                            <td>
-                                <a [routerLink]="'/champs/' + medal.champ.slug">
-                                    {{ medal.champ.name }}
-                                </a>
-                            </td>
-                            <td class="p-0 text-center">
-                                <p *ngIf="!medal.is_canceled" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
-                                    <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
-                                </p>
-                                <span *ngIf="medal.is_canceled">
-                                    {{ medal.medal ? medal.medal + '.' : '-'}}
-                                </span>
-                            </td>
-                            <td>
-                                {{ medal.event.name }}
-                            </td>
-                            <td class="text-center">
-                                <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
-                                    <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
-                                </a>
-                            </td>
-                            <td class="text-right font-bold">
-                                {{ medal.mark_display }}
-                            </td>
-                            <td *ngIf="medal.wind !== null" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
-                                {{ medal.wind | number: '1.1-1' }}
-                            </td>
-                            <td *ngIf="medal.wind === null" class="font-smaller">
-                                {{ medal.info }}
-                            </td>
-                            <td>
-                                {{ medal.records }}
-                            </td>
-                            <td class="text-center">
-                                <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
-                                    <img src="/assets/icons/info.svg" class="info-circle" alt="">                                        
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table-medals table-medals-min-width">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px">Year</th>
+                                <th>Champs</th>
+                                <th style="width: 60px" class="text-center">Medal</th>
+                                <th style="width: 100px">Event</th>
+                                <th style="width: 70px" class="text-center">Country</th>
+                                <th style="width: 100px" class="text-right">Mark</th>
+                                <th style="width: 80px">W/I</th>
+                                <th style="width: 80px">Record</th>
+                                <th style="width: 60px" class="text-center">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let medal of medals" [class.canceled]="medal.is_canceled">
+                                <td>
+                                    <a [routerLink]="'/champs/' + medal.champ.slug + '/' + medal.meeting.slug">
+                                        {{ medal.meeting.year }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a [routerLink]="'/champs/' + medal.champ.slug">
+                                        {{ medal.champ.name }}
+                                    </a>
+                                </td>
+                                <td class="p-0 text-center">
+                                    <p *ngIf="!medal.is_canceled" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                        <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
+                                    </p>
+                                    <span *ngIf="medal.is_canceled">
+                                        {{ medal.medal ? medal.medal + '.' : '-'}}
+                                    </span>
+                                </td>
+                                <td>
+                                    {{ medal.event.name }}
+                                </td>
+                                <td class="text-center">
+                                    <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
+                                        <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" [attr.alt]="medal.country_code">
+                                    </a>
+                                </td>
+                                <td class="text-right font-bold text-nowrap">
+                                    {{ medal.mark_display }}
+                                </td>
+                                <td *ngIf="medal.wind !== null" class="font-smaller" [class.invalid-wind]="medal.wind > 2">
+                                    {{ medal.wind | number: '1.1-1' }}
+                                </td>
+                                <td *ngIf="medal.wind === null" class="font-smaller">
+                                    {{ medal.info }}
+                                </td>
+                                <td>
+                                    {{ medal.records }}
+                                </td>
+                                <td class="text-center">
+                                    <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
+                                        <img src="/assets/icons/info.svg" class="info-circle" alt="">                                        
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </section>
 

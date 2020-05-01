@@ -37,3 +37,23 @@
     }
 
 }
+
+.country-athletes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media #{$responsive-sm} {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .search-wrapper {
+        width: 240px;
+        
+        @media #{$responsive-sm} {
+            width: 100%;
+        }
+    }
+}

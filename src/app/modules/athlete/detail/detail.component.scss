@@ -54,6 +54,8 @@
             img {
                 width: 20px;
                 display: inline-block;
+                position: relative;
+                top: -2px;
             }
 
         }
@@ -63,10 +65,14 @@
 }
 
 .athlete-bio {
-    font-family: 'Ubuntu';
-    font-size: 14px;
+    font-family: $font-ubuntu;
+    font-size: 15px;
     line-height: 22px;
     padding: 20px;
+
+    @media #{$responsive-sm} {
+        padding: 15px;
+    }
 
     .line-champ {
         display: -webkit-box;

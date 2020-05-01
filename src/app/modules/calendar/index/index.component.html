@@ -3,7 +3,7 @@
 <section class="main-container">
 
     <div class="row">
-        <div class="col-4 col-sm-3 col-md-2">
+        <div class="col-md-2 d-none d-md-block">
 
             <h4 class="h2-yellow">
                 Years
@@ -20,40 +20,48 @@
             </div>
     
         </div>
-        <div class="col-8 col-sm-9 col-md-10">
+        <div class="col-12 col-md-10">
     
             <h1 class="h1">
                 {{ active_year }} Calendar
             </h1>
 
-            <table *ngIf="meetings.length" class="table-medals">
-                <thead>
-                    <tr>
-                        <th>Event</th>
-                        <th>Country</th>
-                        <th>Venue</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let meeting of meetings">
-                        <td>
-                            <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
-                                {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
-                            </a>
-                        </td>
-                        <td>
-                            <a [routerLink]="'/country/' + meeting.country_code" [attr.aria-label]="meeting.country.name" data-balloon-pos="up">
-                                <img class="country-flag" [attr.src]="'/assets/flags/' + meeting.country_code.toLowerCase() + '.svg'" alt="">
-                                {{ meeting.country_code }}
-                            </a>
-                        </td>
-                        <td>{{ meeting.city }}</td>
-                        <td *ngIf="meeting.start_date">{{ meeting.start_date | date }} {{ meeting.end_date ? '- ' + (meeting.end_date | date) : '' }}</td>
-                        <td *ngIf="!meeting.start_date">{{ meeting.year }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table *ngIf="meetings.length" class="table-medals table-medals-min-width">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Country</th>
+                            <th>Venue</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let meeting of meetings">
+                            <td>
+                                <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                    {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
+                                </a>
+                            </td>
+                            <td class="text-nowrap">
+                                <a [routerLink]="'/country/' + meeting.country_code" [attr.aria-label]="meeting.country.name" data-balloon-pos="up">
+                                    <img class="country-flag" [attr.src]="'/assets/flags/' + meeting.country_code.toLowerCase() + '.svg'" alt="">
+                                    {{ meeting.country_code }}
+                                </a>
+                            </td>
+                            <td>{{ meeting.city }}</td>
+                            <td>
+                                <ng-container *ngIf="meeting.start_date">
+                                    {{ meeting.start_date | date }} {{ meeting.end_date ? '- ' + (meeting.end_date | date) : '' }}
+                                </ng-container>
+                                <ng-container *ngIf="!meeting.start_date">
+                                    {{ meeting.year }}
+                                </ng-container>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div *ngIf="meetings.length === 0">
                 Not found any meeting in this year.
