@@ -1,0 +1,19 @@
+
+@import 'variables';
+
+.card {
+    padding: 15px 10px;
+}
+
+.form-horizontal {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.form-group {
+    min-width: 120px;
+
+    @media #{$responsive-md} {
+        margin-bottom: 12px;
+    }
+}
