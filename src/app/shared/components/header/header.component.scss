@@ -37,20 +37,24 @@
                 width: auto;
             }
 
-        }        
+        }
 
-        svg {
-            width: 32px;
-            height: 32px;
+        .social-media {
 
-            path {
-                fill: #fff;
-                transition: all .3s ease;
-
-                &:hover {
-                    fill: #76A9EA;
+            svg {
+                width: 32px;
+                height: 32px;
+    
+                path {
+                    fill: #fff;
+                    transition: all .3s ease;
+    
+                    &:hover {
+                        fill: #76A9EA;
+                    }
                 }
             }
+
         }
 
     }
@@ -134,15 +138,16 @@
             }
         }
 
-        .search {
-            padding-right: 10px;
-            cursor: pointer;
+    }
 
-            img {
-                width: 20px;
-                height: 20px;
-            }
-        }
+}
 
+.search-icon {
+    padding-right: 10px;
+    cursor: pointer;
+
+    svg {
+        width: 20px;
+        height: 20px;
     }
 }

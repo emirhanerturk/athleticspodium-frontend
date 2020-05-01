@@ -27,6 +27,13 @@
         background-color: transparent;
         transition: color .2s ease-in-out;
 
+        @media #{$responsive-md} {
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            line-height: 40px;
+        }
+
         &:hover {
             color: rgb(255, 221, 0, .8);
         }
@@ -37,10 +44,18 @@
         margin-top: 60px;
         margin-bottom: 20px;
 
+        @media #{$responsive-md} {
+            margin-top: 40px;
+        }
+
         .search-header {
             position: relative;
             padding-bottom: 40px;
             border-bottom: 1px solid #333;
+
+            @media #{$responsive-md} {
+                padding-bottom: 20px;
+            }
 
             input {
                 width: 100%;
@@ -51,6 +66,11 @@
                 background-color: transparent;
                 color: #eee;
                 border: none;
+
+                @media #{$responsive-md} {
+                    font-size: 32px;
+                    line-height: 32px;
+                }
                 
                 &::placeholder{
                     color: #444;
@@ -83,6 +103,11 @@
             overflow-y: auto;
             overflow-x: hidden;
 
+            @media #{$responsive-md} {
+                height: calc(100vh - 190px);
+                font-size: 15px;
+            }
+
             &::-webkit-scrollbar {
                 width: 4px;
             }
@@ -113,7 +138,7 @@
                 }
 
                 tbody > tr td {
-                    padding: 5px 8px;
+                    padding: 6px 8px;
                     padding-left: 0;
                     vertical-align: middle;
                     
