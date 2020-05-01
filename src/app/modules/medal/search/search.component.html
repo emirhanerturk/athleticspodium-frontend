@@ -74,7 +74,7 @@
                                 {{ medal.athlete_name ? medal.athlete_name : '-' }}
                             </td>
                             <td class="text-center p-0">
-                                <img class="gender-icon" [src]="'/assets/icons/gender-' + (medal.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                                <img *ngIf="medal.athlete" class="gender-icon" [src]="'/assets/icons/gender-' + (medal.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
                             </td>
                             <td class="text-center text-nowrap">
                                 <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
