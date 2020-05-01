@@ -1,5 +1,6 @@
 
 @import 'variables';
+@import 'hamburger';
 
 .header {
     position: relative;
@@ -8,6 +9,10 @@
     background-color: #313339;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
     transition: height .3s ease;
+
+    @media #{$responsive-lg} {
+        height: 80px;
+    }
 
     @media #{$responsive-md} {
         height: 60px;
@@ -23,6 +28,10 @@
 
         @media #{$responsive-lg} {
             width: 100%;
+            padding: 0 15px;
+        }
+
+        @media #{$responsive-md} {
             padding: 0 10px;
         }
 
@@ -56,6 +65,35 @@
             }
 
         }
+
+        .search-icon {
+            padding-right: 10px;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity .2s ease;
+        
+            svg {
+                width: 32px;
+                height: 32px;
+
+                @media #{$responsive-md} {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+
+    }
+
+    &.mobile-nav-open {
+
+        @media #{$responsive-md} {
+
+            .search-icon {
+                opacity: 0 !important;
+            }
+
+        }    
 
     }
 
@@ -138,16 +176,76 @@
             }
         }
 
+        .search-icon {
+            padding-right: 10px;
+            cursor: pointer;
+        
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
     }
 
 }
 
-.search-icon {
-    padding-right: 10px;
-    cursor: pointer;
+.mobile-nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 0;
+    padding: 0;
+    background-color: #313339;
+    overflow: hidden;
+    transition: all .2s ease;
+    z-index: 900;
+    
+    @media #{$responsive-md} {
+        &.opened {
+            height: calc(100% - 60px);
+            padding: 20px;
+        }
+    }
 
-    svg {
-        width: 20px;
-        height: 20px;
+    ul.menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-family: 'Allerta Stencil', sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #eee;
+
+
+        li {
+            margin-bottom: 20px;
+
+            &.active {
+                color: #ffdd00;
+            }
+        }
+    }
+
+    .mobile-nav-footer {
+        margin-top: auto;
+        text-align: center;
+
+        a {
+            display: block;
+            color: #eee;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 12px;
+            line-height: 16px;
+            color: #888;
+        }
     }
 }

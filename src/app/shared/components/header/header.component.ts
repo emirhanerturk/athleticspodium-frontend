@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 import { AppService } from "@services/app.service";
 
@@ -14,8 +14,12 @@ export class HeaderComponent implements OnInit {
   ENavigation = ENavigation;
 
   activeNav: ENavigation = ENavigation.HOME;
+  mobileMenuOpened: boolean = false;
 
-  constructor(private appService: AppService) { }
+  constructor(
+    private appService: AppService,
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit() {
 
@@ -27,6 +31,22 @@ export class HeaderComponent implements OnInit {
 
   openSearch(){
     this.appService.openSearch();
+  }
+
+  mobileMenuToggler(open?: boolean){
+
+    if (typeof open === 'undefined'){
+      open = !this.mobileMenuOpened;
+    }
+
+    if (open){
+      this.mobileMenuOpened = true;
+      this.renderer.addClass(document.body, 'fixed-body');
+    } else {
+      this.mobileMenuOpened = false;
+      this.renderer.removeClass(document.body, 'fixed-body');
+    }
+
   }
 
 }

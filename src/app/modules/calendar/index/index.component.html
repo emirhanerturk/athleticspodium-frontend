@@ -21,6 +21,20 @@
     
         </div>
         <div class="col-12 col-md-10">
+
+            <section class="d-block d-md-none mb-4">
+
+                <h4 class="h2-yellow">
+                    Years
+                </h4>
+
+                <select class="form-select" name="years" [value]="active_year" (change)="changeYear($event)">
+                    <ng-container *ngFor="let year of years">
+                        <option [value]="year">{{ year }}</option>
+                    </ng-container>
+                </select>
+
+            </section>
     
             <h1 class="h1">
                 {{ active_year }} Calendar

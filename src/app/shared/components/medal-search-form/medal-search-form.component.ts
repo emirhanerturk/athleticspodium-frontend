@@ -169,7 +169,7 @@ export class MedalSearchFormComponent implements OnInit {
     }
 
     this.formError = false;
-    this.router.navigate(['/medals/search', form.value])
+    this.router.navigate(['/medals/search', form.value]);
 
   }
 

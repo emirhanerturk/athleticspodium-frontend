@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppService, ENavigation } from '@core/services/app.service';
 import { MeetingService } from '@core/services/meeting.service';
@@ -22,6 +22,7 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private meetingService: MeetingService,
   ) {
@@ -57,6 +58,13 @@ export class IndexComponent implements OnInit {
     }
 
     this.loading = false;
+
+  }
+
+  changeYear(event: any){
+
+    const year = event.target.value;
+    this.router.navigateByUrl(`/calendar/${year}`);
 
   }
 
