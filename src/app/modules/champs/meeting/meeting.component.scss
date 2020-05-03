@@ -82,10 +82,8 @@
     }
 }
 
-.meeting-content {
-    font-family: $font-ubuntu;
-    font-size: 15px;
-    line-height: 22px;
+.meeting-content::ng-deep {
+    @include text-content();
     margin-bottom: 32px;
 }
 

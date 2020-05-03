@@ -37,9 +37,7 @@
     }
 
     .country-content {
-        font-family: $font-ubuntu;
-        font-size: 15px;
-        line-height: 22px;
+        @include text-content();
     }
 
 }

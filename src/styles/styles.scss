@@ -303,3 +303,7 @@ body {
 strong {
     font-weight: bold;
 }
+
+.text-content {
+    @include text-content();
+}

@@ -19,10 +19,8 @@
         margin: 0 20px;
     }
 
-    .champs-content {
-        font-family: $font-ubuntu;
-        font-size: 15px;
-        line-height: 22px;
+    .champs-content::ng-deep {
+        @include text-content();
         padding: 20px;
 
         @media #{$responsive-sm} {

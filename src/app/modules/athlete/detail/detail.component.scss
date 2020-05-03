@@ -64,10 +64,8 @@
 
 }
 
-.athlete-bio {
-    font-family: $font-ubuntu;
-    font-size: 15px;
-    line-height: 22px;
+.athlete-bio::ng-deep {
+    @include text-content();
     padding: 20px;
 
     @media #{$responsive-sm} {
