@@ -10,6 +10,10 @@ export const environment = {
   },
   analytics: {
     trackerId: 'G-7EDH9146FP'
+  },
+  socialMedia: {
+    twitter: 'athleticspodium',
+    facebook: 'athleticspodium'
   }
 };
 

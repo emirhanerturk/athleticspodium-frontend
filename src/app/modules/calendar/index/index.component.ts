@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService, ENavigation } from '@core/services/app.service';
 import { MeetingService } from '@core/services/meeting.service';
 import { IMeeting } from '@core/interfaces/models.interface';
+import { IError } from '@core/interfaces/response.interface';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ import { IMeeting } from '@core/interfaces/models.interface';
 export class IndexComponent implements OnInit {
 
   loading: boolean = true;
-  error: any;
+  error: IError | IError[];
 
   years: number[] = [];
   current_year: number = new Date().getFullYear();
@@ -49,6 +50,7 @@ export class IndexComponent implements OnInit {
   async getByYear(){
 
     this.loading = true;
+    this.error = null;
 
     const res = await this.meetingService.List(this.active_year);
     if (res.success){

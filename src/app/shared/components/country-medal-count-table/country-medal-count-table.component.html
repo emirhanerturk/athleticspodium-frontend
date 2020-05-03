@@ -1,5 +1,5 @@
 
-<table class="table-medals">
+<table *ngIf="data.length" class="table-medals">
     <thead>
         <tr>
             <th>Country</th>
@@ -24,6 +24,10 @@
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="data.length === 0">
+    Not found any medal.
+</div>
 
 <button *ngIf="data.length > 10" type="button" class="btn btn-sm mb-4" (click)="showMoreOrLess()">
     {{ showMore ? '&larr; Less' : 'More &rarr;' }}

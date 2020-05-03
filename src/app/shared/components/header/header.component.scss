@@ -53,14 +53,15 @@
             svg {
                 width: 32px;
                 height: 32px;
+                margin-right: 20px;
     
                 path {
                     fill: #fff;
                     transition: all .3s ease;
-    
-                    &:hover {
-                        fill: #76A9EA;
-                    }
+                }
+
+                &:hover path {
+                    fill: #ffdd00;
                 }
             }
 
@@ -79,6 +80,14 @@
                 @media #{$responsive-md} {
                     width: 22px;
                     height: 22px;
+                }
+
+                path {
+                    transition: all .3s ease;
+                }
+
+                &:hover path {
+                    fill: #ffdd00;
                 }
             }
         }
@@ -246,6 +255,14 @@
             font-size: 12px;
             line-height: 16px;
             color: #888;
+
+            .copyleft {
+                display: inline-block;
+                font-size: 20px;
+                transform: rotate(180deg);
+                position: relative;
+                top: 6px;
+            }
         }
     }
 }

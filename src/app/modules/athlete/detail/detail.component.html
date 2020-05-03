@@ -1,9 +1,11 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
-<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+<app-error *ngIf="error" [error]="error"></app-error>
 
-<section *ngIf="!loading" class="main-container">
+<app-breadcrumb *ngIf="!loading && !error" [data]="breadcrumbs"></app-breadcrumb>
+
+<section *ngIf="!loading && !error" class="main-container">
 
     <div class="row">
         <div class="col-md-3">

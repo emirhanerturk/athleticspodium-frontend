@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { ChampsService } from "@services/champs.service";
@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private champsService: ChampsService,
   ) { }
@@ -43,6 +44,7 @@ export class DetailComponent implements OnInit {
   async getChamps(champs_slug: string){
 
     this.loading = true;
+    this.error = null;
 
     const res = await this.champsService.GetChamps(champs_slug);
     if (res.success){
@@ -70,6 +72,13 @@ export class DetailComponent implements OnInit {
     if (res){
       this.totals = res.data;
     }
+
+  }
+
+  changeMeeting(e: any){
+
+    const value = e.target.value;
+    this.router.navigateByUrl(`/champs/${this.champs.slug}/${value}`);
 
   }
 

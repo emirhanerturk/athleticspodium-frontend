@@ -1,6 +1,12 @@
 
-<div class="error-container" [class.fullscreen]="fullscreen">
+<div class="error-container" [class.main-container]="fullscreen">
+
     <img src="/assets/icons/warning.svg" alt="">
+
     <h6>Opps! Something went wrong.</h6>
-    <p>Error Code: {{ data.code }} - Message: {{ data.message }}</p>
+
+    <p *ngIf="fullscreen">
+        Error Code: {{ data.code }} - Message: {{ data.message }}
+    </p>
+
 </div>

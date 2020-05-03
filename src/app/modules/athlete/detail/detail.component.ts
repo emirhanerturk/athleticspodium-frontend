@@ -47,6 +47,7 @@ export class DetailComponent implements OnInit {
   async getAthlete(){
 
     this.loading = true;
+    this.error = null;
 
     const res = await this.athleteService.GetAthlete(this.athlete_id);
     if (res.success){

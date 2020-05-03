@@ -39,15 +39,18 @@ export class AthletesComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.COUNTRIES);
 
-    this.country_code = this.route.snapshot.paramMap.get('code');
+    this.route.params.subscribe(params => {
 
-    this.getCountry();
+      this.country_code = params.code;
+      this.getCountry();
 
-    this.getAthletes();
+    });
 
   }
 
   async getCountry(){
+
+    this.loading = true;
 
     const res = await this.countryService.GetCountry(this.country_code);
     if (res.success){
@@ -60,11 +63,13 @@ export class AthletesComponent implements OnInit {
         { name: 'Athletes', uri: `/country/${this.country.code}/athletes` },
       ];
 
-      this.loading = false;
+      await this.getAthletes();
     
     } else {
-      // Important error
+      this.error = res.error;
     }
+
+    this.loading = false;
 
   }
 
@@ -79,7 +84,8 @@ export class AthletesComponent implements OnInit {
       this.pagination();
 
     } else {
-      // Necessary error
+      this.error = res.error;
+      this.loading = false;
     }
 
   }

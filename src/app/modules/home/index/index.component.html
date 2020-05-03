@@ -3,6 +3,12 @@
     <div class="row">
         <div class="col-12 col-md-8">
 
+            <section class="intro card p-0 mb-4">
+                <a routerLink="/about">
+                    <img src="/assets/media/home-intro.jpg" class="img-fluid border-radius-2" alt="">
+                </a>
+            </section>
+
             <!-- <section class="articles">
 
                 <a href="#" class="article">
@@ -94,14 +100,15 @@
 
             <section class="card p-0 mb-4">
                 <a routerLink="/missing-informations">
-                    <img class="img-fluid" src="/assets/media/missing-information.png" alt="">
+                    <img src="/assets/media/missing-information.png" class="img-fluid border-radius-2" alt="">
                 </a>
             </section>
 
-            <section>
+            <section *ngIf="upcomingMeetings">
 
                 <h2 class="h2-yellow">Upcoming Meetings</h2>
-                <table class="table-medals">
+
+                <table *ngIf="upcomingMeetings.length" class="table-medals">
                     <thead>
                         <tr>
                             <th>Meeting</th>
@@ -122,9 +129,13 @@
                     </tbody>
                 </table>
 
+                <div *ngIf="upcomingMeetings.length === 0">
+                    Not found any upcoming meeting.
+                </div>
+
             </section>
 
-            <section>
+            <section *ngIf="lastMeetings">
 
                 <h2 class="h2-yellow">Latest Adds</h2>
                 <table class="table-medals">
@@ -150,7 +161,7 @@
 
             </section>
 
-            <section>
+            <section *ngIf="totalCount">
                 <h2 class="h2-yellow">Total Medal Count</h2>
                 <div class="card total-medal-card">
                     <h6>

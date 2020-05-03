@@ -1,5 +1,6 @@
 
 
+
 <section class="main-container">
 
     <div class="row">
@@ -40,46 +41,54 @@
                 {{ active_year }} Calendar
             </h1>
 
-            <div class="table-responsive">
-                <table *ngIf="meetings.length" class="table-medals table-medals-min-width">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Country</th>
-                            <th>Venue</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let meeting of meetings">
-                            <td>
-                                <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
-                                    {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
-                                </a>
-                            </td>
-                            <td class="text-nowrap">
-                                <a [routerLink]="'/country/' + meeting.country_code" [attr.aria-label]="meeting.country.name" data-balloon-pos="up">
-                                    <img class="country-flag" [attr.src]="'/assets/flags/' + meeting.country_code.toLowerCase() + '.svg'" alt="">
-                                    {{ meeting.country_code }}
-                                </a>
-                            </td>
-                            <td>{{ meeting.city }}</td>
-                            <td>
-                                <ng-container *ngIf="meeting.start_date">
-                                    {{ meeting.start_date | date }} {{ meeting.end_date ? '- ' + (meeting.end_date | date) : '' }}
-                                </ng-container>
-                                <ng-container *ngIf="!meeting.start_date">
-                                    {{ meeting.year }}
-                                </ng-container>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <app-loader *ngIf="loading" size="partial"></app-loader>
 
-            <div *ngIf="meetings.length === 0">
-                Not found any meeting in this year.
-            </div>
+            <app-error *ngIf="error" [error]="error" [fullscreen]="false"></app-error>
+
+            <section *ngIf="!loading && !error">
+
+                <div class="table-responsive">
+                    <table *ngIf="meetings.length" class="table-medals table-medals-min-width">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Country</th>
+                                <th>Venue</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let meeting of meetings">
+                                <td>
+                                    <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
+                                        {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
+                                    </a>
+                                </td>
+                                <td class="text-nowrap">
+                                    <a [routerLink]="'/country/' + meeting.country_code" [attr.aria-label]="meeting.country.name" data-balloon-pos="up">
+                                        <img class="country-flag" [attr.src]="'/assets/flags/' + meeting.country_code.toLowerCase() + '.svg'" alt="">
+                                        {{ meeting.country_code }}
+                                    </a>
+                                </td>
+                                <td>{{ meeting.city }}</td>
+                                <td>
+                                    <ng-container *ngIf="meeting.start_date">
+                                        {{ meeting.start_date | date }} {{ meeting.end_date ? '- ' + (meeting.end_date | date) : '' }}
+                                    </ng-container>
+                                    <ng-container *ngIf="!meeting.start_date">
+                                        {{ meeting.year }}
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div *ngIf="meetings.length === 0">
+                    Not found any meeting in this year.
+                </div>
+
+            </section>
     
         </div>
     </div>

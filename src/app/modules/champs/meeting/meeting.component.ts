@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
 import { AppService, ENavigation } from "@services/app.service";
@@ -29,6 +29,7 @@ export class MeetingComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private champsService: ChampsService,
     private meetingService: MeetingService,
@@ -53,6 +54,7 @@ export class MeetingComponent implements OnInit {
   async getChamps(champs_slug: string){
 
     this.loading = true;
+    this.error = null;
 
     const res = await this.champsService.GetChamps(champs_slug);
     if (res.success){
@@ -116,6 +118,13 @@ export class MeetingComponent implements OnInit {
 
     this.viewportScroller.scrollToAnchor(`section-${gender}`);
   
+  }
+
+  changeMeeting(e: any){
+
+    const value = e.target.value;
+    this.router.navigateByUrl(`/champs/${this.champs.slug}/${value}`);
+
   }
 
 }

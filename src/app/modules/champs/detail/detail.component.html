@@ -1,9 +1,11 @@
 
 <app-loader *ngIf="loading"></app-loader>
 
-<app-breadcrumb *ngIf="!loading" [data]="breadcrumbs"></app-breadcrumb>
+<app-error *ngIf="error" [error]="error"></app-error>
 
-<section *ngIf="!loading" class="main-container">
+<app-breadcrumb *ngIf="!loading && !error" [data]="breadcrumbs"></app-breadcrumb>
+
+<section *ngIf="!loading && !error" class="main-container">
     
     <div class="row">
         <div class="col-md-3">
@@ -16,19 +18,26 @@
     
                 <div class="card mb-4">
                     
-                    <ul class="meetings">
+                    <ul class="meetings d-none d-md-block">
                         <li *ngFor="let meeting of champs.meetings">
                             <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
-                                {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name  }})</span>
+                                {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name }})</span>
                             </a>
                         </li>
                     </ul>
+
+                    <select class="form-select d-block d-md-none" name="years" (change)="changeMeeting($event)">
+                        <option value="">Meetings</option>
+                        <ng-container *ngFor="let meeting of champs.meetings">
+                            <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}}</option>
+                        </ng-container>
+                    </select>
     
                 </div>
 
             </section>
 
-            <section *ngIf="!loading && totals">
+            <section *ngIf="!loading && totals" class="d-none d-md-block">
 
                 <h4 class="h2-yellow">
                     Total Medals
@@ -45,7 +54,7 @@
 
             <ng-container *ngIf="!loading">
 
-                <section class="card champs-detail">
+                <section class="card champs-detail mb-4">
                     <figure>
                         <img [attr.src]="'/assets/media/african-champs.jpg'" class="img-cover" [attr.alt]="champs.name">
                     </figure>
@@ -56,6 +65,16 @@
                 </section>
 
             </ng-container>
+
+            <section *ngIf="!loading && totals" class="d-block d-md-none">
+
+                <h4 class="h2-yellow">
+                    Total Medals
+                </h4>
+
+                <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
+
+            </section>
 
         </div>
     </div>

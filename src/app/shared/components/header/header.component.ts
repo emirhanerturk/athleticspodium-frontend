@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 import { AppService } from "@services/app.service";
 
@@ -11,6 +12,7 @@ import { ENavigation } from '@core/enums/navigation.enum';
 })
 export class HeaderComponent implements OnInit {
 
+  env = environment;
   ENavigation = ENavigation;
 
   activeNav: ENavigation = ENavigation.HOME;

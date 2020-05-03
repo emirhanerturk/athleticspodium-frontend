@@ -61,6 +61,7 @@ export class SearchComponent implements OnInit {
   async searchMedals(){
 
     this.loading = true;
+    this.error = null;
 
     const res = await this.medalService.List(this.queries);
     if (res.success){

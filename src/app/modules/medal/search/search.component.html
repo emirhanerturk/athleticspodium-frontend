@@ -13,9 +13,11 @@
     <section class="medals-content">
         <h2 class="h2-yellow">Medals</h2>
 
-        <app-loader *ngIf="loading"></app-loader>
+        <app-loader *ngIf="loading" [size]="'partial'"></app-loader>
 
-        <ng-container *ngIf="!loading">
+        <app-error *ngIf="error" [error]="error" [fullscreen]="false"></app-error>
+
+        <ng-container *ngIf="!loading && !error">
 
             <p *ngIf="count" class="mb-4">
                 Total <strong [class.font-bold]="count > 0">{{ count }} {{ count > 1 ? 'medals' : 'medal' }}</strong> found.
@@ -104,9 +106,9 @@
                 </table>
             </div>
 
-        </ng-container>
+            <app-pagination *ngIf="count" [pageSize]="50" [total]="count" [currentPage]="queries.page" (changedPage)="changedPage($event)"></app-pagination>
 
-        <app-pagination *ngIf="count" [pageSize]="50" [total]="count" [currentPage]="queries.page" (changedPage)="changedPage($event)"></app-pagination>
+        </ng-container>
 
     </section>
 
