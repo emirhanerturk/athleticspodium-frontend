@@ -76,11 +76,14 @@
                     <section [id]="'section-' + (gender.key | gender).name.toLowerCase()" *ngIf="gender.value.length">
 
                         <ul class="gender-bar">
-                            <li [class.active]="gender.key === '0'" (click)="scrollToGender('men')">
+                            <li *ngIf="events[EGender.MEN].length" [class.active]="gender.key == EGender.MEN" (click)="scrollToGender('men')">
                                 Men
                             </li>
-                            <li [class.active]="gender.key === '1'" (click)="scrollToGender('women')">
+                            <li *ngIf="events[EGender.WOMEN].length" [class.active]="gender.key == EGender.WOMEN" (click)="scrollToGender('women')">
                                 Women
+                            </li>
+                            <li *ngIf="events[EGender.MIXED].length" [class.active]="gender.key == EGender.MIXED" (click)="scrollToGender('mixed')">
+                                Mixed
                             </li>
                         </ul>
 

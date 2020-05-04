@@ -5,9 +5,9 @@ import { ViewportScroller } from '@angular/common';
 import { AppService, ENavigation } from "@services/app.service";
 import { ChampsService } from "@services/champs.service";
 import { MeetingService } from "@services/meeting.service";
-
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IChamps, IMeeting } from "@interfaces/models.interface";
+import { EGender } from "@enums/gender.enum";
 
 @Component({
   selector: 'app-meeting',
@@ -21,6 +21,7 @@ export class MeetingComponent implements OnInit {
   error: any;
   breadcrumbs: IBreadcrumb[];
   firstLoad: boolean = false;
+  EGender = EGender;
 
   champs: IChamps;
   meeting: IMeeting;
