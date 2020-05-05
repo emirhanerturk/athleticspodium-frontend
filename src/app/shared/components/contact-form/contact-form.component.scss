@@ -1,0 +1,86 @@
+
+.contact-result {
+    text-align: center;
+    padding: 10px 20px;
+
+    p {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+$circle-length: 300px;
+$check-length: 35px;
+
+@keyframes scaleAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+0% {
+    stroke-dashoffset: $circle-length;
+}
+100% {
+    stroke-dashoffset: 0;
+}
+}
+
+@keyframes drawCheck {
+0% {
+    stroke-dashoffset: $check-length;
+}
+100% {
+    stroke-dashoffset: 0;
+}
+}
+
+@keyframes drawLine {
+from {
+    stroke-dashoffset: 100;
+}
+to {
+    stroke-dashoffset: 0;
+}
+}
+
+.success-anim-circle,
+.failure-anim-circle {
+    stroke-dasharray: $circle-length $circle-length;
+    stroke: #62d118;
+}
+
+.success-anim-check,
+.failure-anim-check {
+    stroke-dasharray: $check-length $check-length;
+    stroke: #62d118;
+}
+
+.success-anim.animated,
+.failure-anim.animated {
+    animation: 1s ease-out 0s 1 both scaleAnimation;
+
+    .success-anim-circle,
+    .failure-anim-circle {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle;
+    }
+
+    .success-anim-check {
+        animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck;
+    }
+
+    .failure-anim-check-line {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: drawLine 1s cubic-bezier(1, 0.2, 0.1, 1) forwards;
+    }
+
+}

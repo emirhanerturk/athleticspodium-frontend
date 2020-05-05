@@ -1,0 +1,83 @@
+
+<div class="card">
+
+    <form *ngIf="result === null" (ngSubmit)="formSubmit(form)" #form="ngForm">
+
+        <div class="form-group">
+            <label class="form-label">Name:</label>
+            <input
+                type="text"
+                #name="ngModel"
+                [(ngModel)]="formValues.name"
+                name="name"
+                class="form-input"
+                autocomplete="off"
+                maxlength="100"
+                [class.form-error]="form.submitted && name.invalid"
+                required />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">E-mail:</label>
+            <input
+                type="email"
+                #email="ngModel"
+                [(ngModel)]="formValues.email"
+                name="email"
+                class="form-input"
+                autocomplete="off"
+                maxlength="100"
+                [class.form-error]="form.submitted && email.invalid"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                required />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Subject:</label>
+            <select name="subject" [(ngModel)]="formValues.subject" name="subject" class="form-select" required>
+                <option [value]="EContactSubject.GENERAL_MESSAGE">General message</option>
+                <option [value]="EContactSubject.TECHNICAL_ERROR">Technical error</option>
+                <option [value]="EContactSubject.SUGGESTION">Suggestion</option>
+                <option [value]="EContactSubject.MISSING_INFORMATION">Missing information</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Message:</label>
+            <textarea
+                name="message"
+                #message="ngModel"
+                [(ngModel)]="formValues.message"
+                name="message"
+                class="form-input"
+                rows="4"
+                [class.form-error]="form.submitted && message.invalid"
+                required>
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-block" [disabled]="loading">
+                <span>Submit</span>
+            </button>
+        </div>
+
+    </form>
+
+    <div *ngIf="result === true" class="contact-result">
+
+        <svg class="success-anim animated" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 70 70">
+            <circle class="success-anim-circle" cx="35" cy="35" r="24" stroke="#005596" stroke-width="2" stroke-linecap="round" fill="transparent"/>
+            <polyline class="success-anim-check" stroke="#005596" stroke-width="2" points="23 34 34 43 47 27" fill="transparent"/>
+        </svg>
+
+        <p>
+            Thank you!
+        </p>
+        <p>
+            Your message has been sent successfully!
+        </p>
+
+    </div>
+
+</div>

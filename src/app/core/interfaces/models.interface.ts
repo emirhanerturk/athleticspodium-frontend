@@ -1,6 +1,7 @@
 
 import { EGender } from "@enums/gender.enum";
 import { ECategory } from "@enums/category.enum";
+import { EContactSubject } from "@enums/contact-subject.enum";
 
 export interface IChamps {
     id: number,
@@ -111,4 +112,17 @@ export interface IImage {
     uri: string,
     caption?: string,
     cover: boolean,
+}
+
+export interface IContact {
+    id?: number,
+    name: string,
+    email: string,
+    subject: EContactSubject,
+    message: string,
+    file?: string,
+    ip_address?: string,
+    user_info?: string,
+    created_date?: Date,
+    updated_date?: Date
 }

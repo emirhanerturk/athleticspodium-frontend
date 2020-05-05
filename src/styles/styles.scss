@@ -243,7 +243,16 @@ body {
     &::placeholder {
         color: #aaa;
     }
+
+    &.form-error {
+        border-color: #de2d2d;
+    }
     
+}
+
+textarea.form-input {
+    height: auto;
+    resize: vertical;
 }
 
 .btn {
@@ -286,8 +295,9 @@ body {
         top: 2px;
     }
 
-    .btn-link {
-
+    &:disabled {
+        opacity: .5;
+        pointer-events: none;
     }
     
 }

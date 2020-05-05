@@ -15,7 +15,7 @@ export class ChampsService {
   /**
    * Get all champs
    */
-  async List(fields?: string[], order?: string, limit?: number){
+  async List(fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQuerySring({ fields, order, limit });
 
@@ -27,7 +27,7 @@ export class ChampsService {
    * Get the champs details
    * @param champs champ id or slug
    */
-  async GetChamps(champs: string|number): Promise<IResponse>{
+  async GetChamps(champs: string|number): Promise<IResponse> {
 
     return await this.apiService.get(`/champs/${champs}`);
 

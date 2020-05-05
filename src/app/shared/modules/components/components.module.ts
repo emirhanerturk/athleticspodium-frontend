@@ -9,6 +9,7 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
 import { MedalSearchFormComponent } from '@shared/components/medal-search-form/medal-search-form.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { CountryMedalCountTableComponent } from '@shared/components/country-medal-count-table/country-medal-count-table.component';
+import { ContactFormComponent } from '@shared/components/contact-form/contact-form.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { CountryMedalCountTableComponent } from '@shared/components/country-meda
     MedalSearchFormComponent,
     PaginationComponent,
     CountryMedalCountTableComponent,
+    ContactFormComponent,
   ],
   exports: [
     LoaderComponent,
@@ -31,6 +33,7 @@ import { CountryMedalCountTableComponent } from '@shared/components/country-meda
     MedalSearchFormComponent,
     PaginationComponent,
     CountryMedalCountTableComponent,
+    ContactFormComponent,
   ]
 })
 export class ComponentsModule { }

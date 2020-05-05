@@ -1,0 +1,7 @@
+
+export enum EContactSubject {
+    GENERAL_MESSAGE,
+    TECHNICAL_ERROR,
+    SUGGESTION,
+    MISSING_INFORMATION,
+}
