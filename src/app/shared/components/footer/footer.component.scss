@@ -7,7 +7,7 @@
     height: 180px;
     color: #ddd;
     background-color: #313339;
-    border-top: 6px solid #ffdd00;
+    border-top: 10px solid $color-yellow;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
 
     @media #{$responsive-lg} {

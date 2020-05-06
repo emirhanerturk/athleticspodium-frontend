@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { ContactService } from "@services/contact.service";
@@ -10,6 +10,8 @@ import { EContactSubject } from "@enums/contact-subject.enum";
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent implements OnInit {
+
+  @Input() subject: EContactSubject = null;
 
   loading: boolean = false;
   result: boolean = null;
@@ -29,6 +31,11 @@ export class ContactFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    if(this.subject !== null){
+      this.formValues.subject = this.subject;
+    }
+
   }
 
   async formSubmit(form: NgForm){

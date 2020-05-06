@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/app.service";
+import { AppService } from "@services/app.service";
 
 @Component({
   selector: 'app-missing-informations',
@@ -8,6 +8,8 @@ import { AppService, ENavigation } from "@services/app.service";
   styleUrls: ['./missing-informations.component.scss']
 })
 export class MissingInformationsComponent implements OnInit {
+
+  tab: 'medallist'|'marks'|'names'|'relays' = 'medallist';
 
   constructor(
     private appService: AppService

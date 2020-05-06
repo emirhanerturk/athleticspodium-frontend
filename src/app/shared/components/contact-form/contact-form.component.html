@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label class="form-label">Subject:</label>
-            <select name="subject" [(ngModel)]="formValues.subject" name="subject" class="form-select" required>
+            <select name="subject" [(ngModel)]="formValues.subject" name="subject" class="form-select" [disabled]="subject !== null" required>
                 <option [value]="EContactSubject.GENERAL_MESSAGE">General message</option>
                 <option [value]="EContactSubject.TECHNICAL_ERROR">Technical error</option>
                 <option [value]="EContactSubject.SUGGESTION">Suggestion</option>
