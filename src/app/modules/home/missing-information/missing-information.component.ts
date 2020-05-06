@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from "@services/app.service";
 
 @Component({
-  selector: 'app-missing-informations',
-  templateUrl: './missing-informations.component.html',
-  styleUrls: ['./missing-informations.component.scss']
+  selector: 'app-missing-information',
+  templateUrl: './missing-information.component.html',
+  styleUrls: ['./missing-information.component.scss']
 })
-export class MissingInformationsComponent implements OnInit {
+export class MissingInformationComponent implements OnInit {
 
   tab: 'medallist'|'marks'|'names'|'relays' = 'medallist';
 
@@ -18,7 +18,7 @@ export class MissingInformationsComponent implements OnInit {
   ngOnInit() {
 
     this.appService.setNavigation(null);
-    this.appService.setTitle('Missing Informations');
+    this.appService.setTitle('Missing Information');
 
   }
 

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { AboutComponent } from './about/about.component';
 import { SimpleNotesComponent } from './simple-notes/simple-notes.component';
-import { MissingInformationsComponent } from './missing-informations/missing-informations.component';
+import { MissingInformationComponent } from './missing-information/missing-information.component';
 
 const routes: Routes = [
   {
@@ -21,8 +21,8 @@ const routes: Routes = [
     component: SimpleNotesComponent
   },
   {
-    path: 'missing-informations',
-    component: MissingInformationsComponent
+    path: 'missing-information',
+    component: MissingInformationComponent
   }
 ];
 
