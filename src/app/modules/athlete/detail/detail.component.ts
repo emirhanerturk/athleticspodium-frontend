@@ -54,6 +54,8 @@ export class DetailComponent implements OnInit {
       this.athlete = res.data;
 
       this.appService.setTitle(`${this.athlete.first_name} ${this.athlete.last_name}`);
+      this.appService.setMeta(`This page is containing career information about international athlete ${this.athlete.first_name} ${this.athlete.last_name} (${this.athlete.country_code}).`);
+
       this.breadcrumbs = [
         { name: 'Athletes', uri: `/athlete` },
         { name: `${this.athlete.first_name} ${this.athlete.last_name} (${this.athlete.country_code})`, uri: `/athlete/${this.athlete.id}/${this.athlete.slug}` },

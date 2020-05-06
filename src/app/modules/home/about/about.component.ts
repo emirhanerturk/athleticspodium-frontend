@@ -17,7 +17,8 @@ export class AboutComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.ABOUT);
     this.appService.setTitle('About');
-
+    this.appService.setMeta('This page about Athleticspodium.com project and collaborators.');
+    
   }
 
 }

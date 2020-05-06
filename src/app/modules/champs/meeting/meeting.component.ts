@@ -78,6 +78,8 @@ export class MeetingComponent implements OnInit {
       this.meeting = res.data;
 
       this.appService.setTitle(this.meeting.name);
+      this.appService.setMeta(`You can find here all distributed medals in ${this.meeting.name}.`);
+
       this.breadcrumbs = [
         { name: 'Champs', uri: `/champs` },
         { name: this.champs.name, uri: `/champs/${this.champs.slug}` },

@@ -57,6 +57,8 @@ export class AthletesComponent implements OnInit {
       this.country = res.data;
 
       this.appService.setTitle(`${this.country.name}'s All Athletes`);
+      this.appService.setMeta(`This page is containing all international championship medals in athletics for ${this.country.name} (${this.country.code}).`);
+
       this.breadcrumbs = [
         { name: 'Countries', uri: `/country` },
         { name: `${this.country.name} (${this.country.code})`, uri: `/country/${this.country.code}` },

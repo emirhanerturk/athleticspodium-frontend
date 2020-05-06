@@ -39,10 +39,18 @@ export class IndexComponent implements OnInit {
     this.appService.setNavigation(ENavigation.CALENDAR);
 
     this.route.params.subscribe(async data => {
+      
       if (data.year){
-        this.active_year = parseInt(data.year) 
+        this.active_year = parseInt(data.year);
+        this.appService.setTitle(`${this.active_year} Calendar`);
+        this.appService.setMeta(`You can find here international athletics calendar of ${this.active_year}.`);
+      } else {
+        this.appService.setTitle(`Calendar`);
+        this.appService.setMeta(`You can find here all international athletics championships by dates and venues starting from very beginning.`);
       }
+      
       this.getByYear();
+      
     });
 
   }

@@ -26,6 +26,7 @@ export class IndexComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.HOME);
     this.appService.setTitle('Athletics Podium', false);
+    this.appService.setMeta('Athletics Podium is an international medallist database covering track and field events. All open track, indoor and XC medals in any age groups are included.');
 
     this.getUpcomingMeetings();
     this.getLastMeetings();

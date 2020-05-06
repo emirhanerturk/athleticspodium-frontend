@@ -17,6 +17,7 @@ export class IndexComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.ARTICLES);
     this.appService.setTitle('Articles');
+    this.appService.setMeta('You can read here about athletics history, championship reviews, detailed reports.');
 
   }
 

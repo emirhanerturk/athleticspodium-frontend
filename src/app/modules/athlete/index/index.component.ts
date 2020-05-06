@@ -27,6 +27,7 @@ export class IndexComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.ATHLETES)
     this.appService.setTitle('Athletes');
+    this.appService.setMeta('This page listed all athletes who owns international competition medals from all over the World.');
 
     this.getAthletes();
 

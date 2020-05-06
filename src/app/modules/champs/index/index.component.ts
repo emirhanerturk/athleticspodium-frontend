@@ -26,8 +26,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appService.setNavigation(ENavigation.CHAMPS)
+    this.appService.setNavigation(ENavigation.CHAMPS);
     this.appService.setTitle('Champs');
+    this.appService.setMeta('You can list here for all historic athletics events and its editions.');
 
     this.getCategories();
     this.getChamps();

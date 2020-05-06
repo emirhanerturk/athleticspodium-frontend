@@ -51,6 +51,8 @@ export class DetailComponent implements OnInit {
       this.champs = res.data;
 
       this.appService.setTitle(this.champs.name);
+      this.appService.setMeta(`This page is compiling all medals which is distributed in ${this.champs.name}.`);
+
       this.breadcrumbs = [
         { name: 'Champs', uri: `/champs` },
         { name: this.champs.name, uri: `/champs/${this.champs.slug}` },

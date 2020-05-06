@@ -47,6 +47,7 @@ export class IndexComponent implements OnInit {
 
     this.appService.setNavigation(ENavigation.COUNTRIES)
     this.appService.setTitle('Countries');
+    this.appService.setMeta('You can list here for all current and non-existing countries who have medals at international athletics.');
 
     this.categories = this.countryService.GetCategories();
 
