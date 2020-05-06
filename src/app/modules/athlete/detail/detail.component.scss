@@ -19,9 +19,14 @@
 
     .athlete-name {
 
+        span {
+            line-height: 16px;
+        }
+
         .olympic-rings {
             width: 32px;
         }
+        
     }
 
     .athlete-info {
