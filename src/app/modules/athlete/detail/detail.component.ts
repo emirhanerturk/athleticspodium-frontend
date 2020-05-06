@@ -117,12 +117,14 @@ export class DetailComponent implements OnInit {
     let counts_obj = Object.values(counts);
     counts_obj = counts_obj.sort((a: any, b: any) => {
 
-      if(a.medals.gold > b.medals.gold) return -1;
-      if(a.medals.gold < b.medals.gold) return 1;
-      if(a.medals.silver > b.medals.silver) return -1;
-      if(a.medals.silver < b.medals.silver) return 1;
-      if(a.medals.bronze > b.medals.bronze) return -1;
-      if(a.medals.bronze < b.medals.bronze) return 1;
+      if(a.rank > b.rank) return 1;
+      if(a.rank < b.rank) return -1;
+      // if(a.medals.gold > b.medals.gold) return -1;
+      // if(a.medals.gold < b.medals.gold) return 1;
+      // if(a.medals.silver > b.medals.silver) return -1;
+      // if(a.medals.silver < b.medals.silver) return 1;
+      // if(a.medals.bronze > b.medals.bronze) return -1;
+      // if(a.medals.bronze < b.medals.bronze) return 1;
       return 0;
 
     });
