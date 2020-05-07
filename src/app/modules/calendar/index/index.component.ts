@@ -62,7 +62,7 @@ export class IndexComponent implements OnInit {
 
     const res = await this.meetingService.List(this.active_year);
     if (res.success){
-      this.meetings = res.data;
+      this.meetings = res.data.rows;
     } else {
       this.error = res.error;
     }

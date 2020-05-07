@@ -86,7 +86,7 @@ export class MeetingComponent implements OnInit {
         { name: this.meeting.name, uri: `/champs/${this.champs.slug}/${this.meeting.slug}` },
       ];
 
-      this.getMedals();
+      await this.getMedals();
       this.getTotals();
 
     } else {
