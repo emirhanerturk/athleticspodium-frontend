@@ -17,6 +17,7 @@ export class SimpleNotesComponent implements OnInit {
 
     this.appService.setNavigation(null);
     this.appService.setTitle('Simple Notes');
+    this.appService.setMeta('These are the rules and simply notes to using in our database.');
 
   }
 

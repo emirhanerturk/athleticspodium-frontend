@@ -38,6 +38,7 @@ export class SearchComponent implements OnInit {
 
     this.appService.setNavigation(null);
     this.appService.setTitle('Medal Search');
+    this.appService.setMeta('You can search any medal in athletics history, sorted by country, type, event, or year.');
 
     this.route.params.subscribe((queries: IMedalSearch) => {
       if (Object.keys(queries).length) {

@@ -19,6 +19,7 @@ export class MissingInformationComponent implements OnInit {
 
     this.appService.setNavigation(null);
     this.appService.setTitle('Missing Information');
+    this.appService.setMeta('You can find here current missing information in Athleticspodium database.');
 
   }
 
