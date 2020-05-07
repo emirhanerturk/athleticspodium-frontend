@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 import { AppService, ENavigation } from "@services/app.service";
 
@@ -8,6 +9,10 @@ import { AppService, ENavigation } from "@services/app.service";
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+
+  env = environment;
+  
+  showPicture: number;
 
   constructor(
     private appService: AppService

@@ -4,89 +4,192 @@
     <h1 class="h1">About Athletics Podium &amp; Me</h1>
     
     <div class="row">
-        <div class="col-12 col-md-8 text-content text-content-static">
+        <div class="col-12 col-md-8">
 
-            <p>
-                We all passionately love athletics, most elegant form of human-kind activity; and probably dearly follow it all life long. With a bunch of wondering, screaming, or crying…
-            </p>
+            <div class="text-content text-content-static mb-4">
 
-            <p>
-                As a keen athletics lover and journalist, I’m compiling lots of results for many years. First, I recorded some lists on my notebook in my school days, then copied all encyclopedia pages which I found some results in. Once I started my current job, journalism, made the compilation process easier to me.
-            </p>
-            
-            <p>
-                Then I decided to gather all medallists from South American juniors to Oceania multi-eventers or African distance kings; at one place. This idea brings about athleticspodium.com. My aim is to have an open database which includes all big championships with all levels of competition types.
-            </p>
+                <p>
+                    We all passionately love athletics, most elegant form of human-kind activity; and probably dearly follow it all life long. With a bunch of wondering, screaming, or crying…
+                </p>
+    
+                <p>
+                    As a keen athletics lover and journalist, I’m compiling lots of results for many years. First, I recorded some lists on my notebook in my school days, then copied all encyclopedia pages which I found some results in. Once I started my current job, journalism, made the compilation process easier to me.
+                </p>
+                
+                <p>
+                    Then I decided to gather all medallists from South American juniors to Oceania multi-eventers or African distance kings; at one place. This idea brings about athleticspodium.com. My aim is to have an open database which includes all big championships with all levels of competition types.
+                </p>
+    
+                <h2>
+                    TARGET: PROPER AND EASY INFO
+                </h2>
+                <p>
+                    Sometimes I spent hours to find correct podium owners after the years of competition ends, which may be changed ‘several’ times for doping offenses or subsequent appeals. It’s really hard to find getting proper information, even from the official web sites or Wikipedia, ‘shortest way’ to have results. The problem is ‘old information’ was always available on the web and mixed with correct ones on digital garbage. So, we’re trying to solve this complexity with help from all athletics lovers over the globe. This project formed by myself but belongs to athletics passionates.
+                </p>
+    
+                <p>
+                    When compiling such big data from very different sources, I learned lots of hidden stories between the pages. Also these stories must not be hidden in history. Athletics Podium will reveal also these finest memories.
+                </p>
+    
+                <h2>
+                    CONTENT: WHAT’S INCLUDED?
+                </h2>
+    
+                <p>
+                    In the first phase of the project, we have mainly ‘championships’. From Europe to Oceania, you can find all the top three medallists, results, technical data (wind, course measurement), and (if needs) some notes about the medal. We have all senior, U23, U20 and U18 level competition podiums on the database. Athletics Podium offering to you easily trace an athlete’s journey in global athletics from the very beginning.
+                </p>
+    
+                <p>
+                    We have the countries on the base of the data. You can select a country to get to know athletics history in one summary page.
+                </p>
+    
+                <p>
+                    Also, Athletics Podium is not only having great names of track and field, but noticing unsung heroes from different nations. It’s impossible to take some articles about all names registered in our database, but we’re sure it will be turning encyclopedia-type biographies during our journey.
+                </p>
+    
+                <p>
+                    Simply, we are aiming six topics at the project: 
+                </p>
+    
+                <p>
+                    - Most importantly, verified information. 
+                    <br>
+                    - Graphics use to easy understanding of data. (On social media posts)
+                    <br>
+                    - Easy and free reach to data. For everybody. 
+                    <br>
+                    - Strong connection between rich athletics history & today. 
+                    <br>
+                    - Broader collaboration for gathering information. 
+                    <br>
+                    - Credited every single contribution.
+                </p>
+    
+                <p>
+                    While I defined myself politically as an 'eco-anarchist' or some kind of collectivist, I'm supporting open knowledge or free sources on the net. I don't think I have a right to copyright such a kind of compiled material which actually belongs to everybody. Therefore, ALL RIGHTS ARE NOT RESERVED on this site. By bona fide effort, if you can put this site name as a source on your work in the case of excerpting data from our page, we'll be glad.
+                </p>
+    
+                <h2>
+                    SHARE YOUR KNOWLEDGE
+                </h2>
+    
+                <p>
+                    We are demanding from you to help us to find missing information which is <a routerLink="/missing-information">listed here</a>. After every single contribution, we put the names who help us by sending missing names, results, biography notes, name correction, or photographs. Please use nearby form to send your contribution to athleticspodium.com.
+                </p>
+    
+                <p>
+                    So, Let’s start to celebrate athletics culture.
+                </p>
+    
+                <p>
+                    Şevket F. ERBAY
+                    <br>
+                    Editor, AthleticsPodium.com
+                </p>
 
-            <h2>
-                TARGET: PROPER AND EASY INFO
-            </h2>
-            <p>
-                Sometimes I spent hours to find correct podium owners after the years of competition ends, which may be changed ‘several’ times for doping offenses or subsequent appeals. It’s really hard to find getting proper information, even from the official web sites or Wikipedia, ‘shortest way’ to have results. The problem is ‘old information’ was always available on the web and mixed with correct ones on digital garbage. So, we’re trying to solve this complexity with help from all athletics lovers over the globe. This project formed by myself but belongs to athletics passionates.
-            </p>
+            </div>
 
-            <p>
-                When compiling such big data from very different sources, I learned lots of hidden stories between the pages. Also these stories must not be hidden in history. Athletics Podium will reveal also these finest memories.
-            </p>
+            <div class="card mb-4 text-content text-content-static">
+                <div class="row">
+                    <div class="col-12 col-sm-4 order-sm-last pictures">
 
-            <h2>
-                CONTENT: WHAT’S INCLUDED?
-            </h2>
+                        <img *ngFor="let i of [1, 2]" (click)="showPicture = i" class="img-fluid" [src]="'/assets/media/sfe-profile-' + i + '.jpg'" alt="">
 
-            <p>
-                In the first phase of the project, we have mainly ‘championships’. From Europe to Oceania, you can find all the top three medallists, results, technical data (wind, course measurement), and (if needs) some notes about the medal. We have all senior, U23, U20 and U18 level competition podiums on the database. Athletics Podium offering to you easily trace an athlete’s journey in global athletics from the very beginning.
-            </p>
+                    </div>
+                    <div class="col-12 col-sm-8">
 
-            <p>
-                We have the countries on the base of the data. You can select a country to get to know athletics history in one summary page.
-            </p>
+                        <h2>
+                            EDITOR - Sevket Furkan ERBAY
+                        </h2>
 
-            <p>
-                Also, Athletics Podium is not only having great names of track and field, but noticing unsung heroes from different nations. It’s impossible to take some articles about all names registered in our database, but we’re sure it will be turning encyclopedia-type biographies during our journey.
-            </p>
+                        <p>
+                            Born in 1981. Turkish sports journalist, media researcher, athletics aficionado. Worked several magazines, journals and TV stations since 1999. Between 2002-2014, works as a commentator in Eurosport Turkey, still part-time works there. Conducted tennis and athletics magazine for 10 years as a chief editor. In athletics, accredited to World & European Championships for eight times in total. Curious about athletics statistics, mainly compiler of Balkan & Turkish athletics. Planned & realized athleticspodium.com in two years.
+                        </p>
 
-            <p>
-                Simply, we are aiming six topics at the project: 
-            </p>
+                        <p>
+                            More on his personal website - <a href="http://www.sferbay.com" target="_blank">www.sferbay.com</a>
+                        </p>
 
-            <p>
-                - Most importantly, verified information. 
-                <br>
-                - Graphics use to easy understanding of data. (On social media posts)
-                <br>
-                - Easy and free reach to data. For everybody. 
-                <br>
-                - Strong connection between rich athletics history & today. 
-                <br>
-                - Broader collaboration for gathering information. 
-                <br>
-                - Credited every single contribution.
-            </p>
+                        <h2>
+                            ATHLETICS PODIUM, All contributors
+                        </h2>
 
-            <p>
-                While I defined myself politically as an 'eco-anarchist' or some kind of collectivist, I'm supporting open knowledge or free sources on the net. I don't think I have a right to copyright such a kind of compiled material which actually belongs to everybody. Therefore, ALL RIGHTS ARE NOT RESERVED on this site. By bona fide effort, if you can put this site name as a source on your work in the case of excerpting data from our page, we'll be glad.
-            </p>
+                        <p>
+                            Şevket F. Erbay, Founder and editor
+                            <br>
+                            Emirhan Ertürk, Programmer-Technical manager
+                            <br>
+                            Evren Özüyener, Contributing editor
+                            <br>
+                            Engin Eryiğit, Contributing editor
+                            <br>
+                            Sencer Yücel, Contributing editor
+                            <br>
+                            Can Korkmazoğlu, Adviser
+                            <br>
+                            Bülent Gürkan, Adviser
+                            <br>
+                            Gökhan Taner, Adviser
+                            <br>
+                            Emir İncegül, Adviser
+                            <br>
+                            Ali Katipoğlu, Adviser
+                            <br>
+                            M.Ali Yaman, Adviser
+                        </p>
 
-            <h2>
-                SHARE YOUR KNOWLEDGE
-            </h2>
-
-            <p>
-                We are demanding from you to help us to find missing information which is <a routerLink="/missing-information">listed here</a>. After every single contribution, we put the names who help us by sending missing names, results, biography notes, name correction, or photographs. Please use nearby form to send your contribution to athleticspodium.com.
-            </p>
-
-            <p>
-                So, Let’s start to celebrate athletics culture.
-            </p>
-
-            <p>
-                Şevket F. ERBAY
-                <br>
-                Editor, AthleticsPodium.com
-            </p>
+                    </div>
+                </div>
+               
+            </div>
             
         </div>
         <div class="col-12 col-md-4">
+            
+            <h2 class="h2-yellow">Social Media</h2>
+            
+            <div class="card mb-4">
+                <ul class="social-media">
+                    <li>
+                        <a [href]="'https://twitter.com/' + env.socialMedia.twitter" target="_blank">
+                            <svg class="twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 410.155 410.155" style="enable-background:new 0 0 410.155 410.155;" xml:space="preserve">
+                                <path d="M403.632,74.18c-9.113,4.041-18.573,7.229-28.28,9.537c10.696-10.164,18.738-22.877,23.275-37.067
+                                    l0,0c1.295-4.051-3.105-7.554-6.763-5.385l0,0c-13.504,8.01-28.05,14.019-43.235,17.862c-0.881,0.223-1.79,0.336-2.702,0.336
+                                    c-2.766,0-5.455-1.027-7.57-2.891c-16.156-14.239-36.935-22.081-58.508-22.081c-9.335,0-18.76,1.455-28.014,4.325
+                                    c-28.672,8.893-50.795,32.544-57.736,61.724c-2.604,10.945-3.309,21.9-2.097,32.56c0.139,1.225-0.44,2.08-0.797,2.481
+                                    c-0.627,0.703-1.516,1.106-2.439,1.106c-0.103,0-0.209-0.005-0.314-0.015c-62.762-5.831-119.358-36.068-159.363-85.14l0,0
+                                    c-2.04-2.503-5.952-2.196-7.578,0.593l0,0C13.677,65.565,9.537,80.937,9.537,96.579c0,23.972,9.631,46.563,26.36,63.032
+                                    c-7.035-1.668-13.844-4.295-20.169-7.808l0,0c-3.06-1.7-6.825,0.485-6.868,3.985l0,0c-0.438,35.612,20.412,67.3,51.646,81.569
+                                    c-0.629,0.015-1.258,0.022-1.888,0.022c-4.951,0-9.964-0.478-14.898-1.421l0,0c-3.446-0.658-6.341,2.611-5.271,5.952l0,0
+                                    c10.138,31.651,37.39,54.981,70.002,60.278c-27.066,18.169-58.585,27.753-91.39,27.753l-10.227-0.006
+                                    c-3.151,0-5.816,2.054-6.619,5.106c-0.791,3.006,0.666,6.177,3.353,7.74c36.966,21.513,79.131,32.883,121.955,32.883
+                                    c37.485,0,72.549-7.439,104.219-22.109c29.033-13.449,54.689-32.674,76.255-57.141c20.09-22.792,35.8-49.103,46.692-78.201
+                                    c10.383-27.737,15.871-57.333,15.871-85.589v-1.346c-0.001-4.537,2.051-8.806,5.631-11.712c13.585-11.03,25.415-24.014,35.16-38.591
+                                    l0,0C411.924,77.126,407.866,72.302,403.632,74.18L403.632,74.18z"/>
+                            </svg>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [href]="'https://www.facebook.com/' + env.socialMedia.facebook" target="_blank">
+                            <svg class="facebook" viewBox="-110 1 511 511.99896" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m207.363281 126.734375c.699219-.789063 3.96875-3.367187 16.808594-3.367187l42.097656-.015626c13.695313 0 24.832031-11.140624 24.832031-24.835937v-73.578125c0-13.671875-11.121093-24.8125-24.792968-24.835938l-62.53125-.101562c-38.59375 0-71.402344 12.730469-94.878906 36.820312-23.371094 23.980469-35.726563 57.457032-35.726563 96.804688v39.683594h-47.835937c-13.695313 0-24.835938 11.140625-24.835938 24.835937v79.242188c0 13.695312 11.140625 24.835937 24.835938 24.835937h47.835937v184.941406c0 13.695313 11.140625 24.835938 24.835937 24.835938h81.992188c13.695312 0 24.835938-11.140625 24.835938-24.835938v-184.9375h58.472656c13.695312 0 24.832031-11.144531 24.832031-24.832031l.03125-79.246093c0-8.996094-4.894531-17.320313-12.777344-21.722657-3.652343-2.039062-7.902343-3.117187-12.285156-3.117187h-58.273437v-31.351563c0-10.21875 1.375-13.917969 2.527343-15.222656zm0 0"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:athleticspodium@gmail.com">
+                            <svg class="email" enable-background="new 0 0 511.996 511.996" height="512" viewBox="0 0 511.996 511.996" width="512" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m230.9 253.371c13.369 8.913 36.827 8.914 50.199-.001.002-.001.005-.003.007-.004l227.865-151.911c-7.474-21.616-28.018-37.188-52.142-37.188h-401.663c-24.125 0-44.668 15.572-52.143 37.188l227.87 151.912c.003.002.005.002.007.004z" />
+                                <path d="m297.746 278.328c-.003.002-.005.004-.007.005-11.702 7.801-26.724 11.702-41.741 11.702-15.02 0-30.036-3.9-41.739-11.703-.002-.001-.003-.002-.005-.003l-214.254-142.835v257.072c0 30.417 24.747 55.163 55.166 55.163h401.666c30.418 0 55.164-24.746 55.164-55.163v-257.072z" />
+                            </svg>
+                            <span>athleticspodium@gmail.com</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <h2 class="h2-yellow">Contact Form</h2>
 
@@ -96,3 +199,7 @@
     </div>
 
 </section>
+
+<div class="picture-overlay" [class.active]="showPicture" (click)="showPicture = null">
+    <img *ngFor="let i of [1, 2]" [class.active]="showPicture === i" [src]="'/assets/media/sfe-profile-' + i + '.jpg'" alt="">
+</div>
