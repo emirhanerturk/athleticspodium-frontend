@@ -7,13 +7,13 @@
         <div class="col-12 col-md-9">
 
           <ul class="tabs">
-            <li [class.active]="tab === 'medallist'" (click)="tab = 'medallist'">Medallist</li>
+            <li [class.active]="tab === 'medallists'" (click)="tab = 'medallists'">Medallists</li>
             <li [class.active]="tab === 'marks'" (click)="tab = 'marks'">Marks</li>
             <li [class.active]="tab === 'names'" (click)="tab = 'names'">Names</li>
             <li [class.active]="tab === 'relays'" (click)="tab = 'relays'">Relays</li>
           </ul>
 
-          <div *ngIf="tab === 'medallist'" class="tab-content text-content text-content-static">
+          <div *ngIf="tab === 'medallists'" class="tab-content text-content text-content-static">
 
             <div class="table-responsive">
               <table class="table-medals">

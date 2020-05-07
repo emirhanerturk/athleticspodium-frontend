@@ -9,7 +9,7 @@ import { AppService } from "@services/app.service";
 })
 export class MissingInformationComponent implements OnInit {
 
-  tab: 'medallist'|'marks'|'names'|'relays' = 'medallist';
+  tab: 'medallists'|'marks'|'names'|'relays' = 'medallists';
 
   constructor(
     private appService: AppService

@@ -20,7 +20,7 @@
         <ng-container *ngIf="!loading && !error">
 
             <p *ngIf="count" class="mb-4">
-                Total <strong [class.font-bold]="count > 0">{{ count }} {{ count > 1 ? 'medals' : 'medal' }}</strong> found.
+                Total <strong [class.font-bold]="count > 0">{{ count }} {{ count > 1 ? 'records' : 'record' }}</strong> found.
                 <strong [class.font-bold]="counts.gold > 0">{{ counts.gold }} gold</strong> {{ counts.gold > 1 ? 'medals' : 'medal' }},
                 <strong [class.font-bold]="counts.silver > 0">{{ counts.silver }} silver</strong> {{ counts.silver > 1 ? 'medals' : 'medal' }} and
                 <strong [class.font-bold]="counts.bronze > 0">{{ counts.bronze }} bronze</strong> {{ counts.silver > 1 ? 'medals' : 'medal' }}.
