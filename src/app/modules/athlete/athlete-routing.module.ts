@@ -14,6 +14,10 @@ const routes: Routes = [
     path: ':id/:slug',
     component: DetailComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

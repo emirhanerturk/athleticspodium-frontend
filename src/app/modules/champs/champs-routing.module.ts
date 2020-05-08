@@ -21,6 +21,10 @@ const routes: Routes = [
     component: MeetingComponent,
     pathMatch: 'full'
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

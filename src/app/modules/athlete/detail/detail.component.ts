@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";
@@ -28,6 +28,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private athleteService: AthleteService) { }
 
@@ -50,7 +51,7 @@ export class DetailComponent implements OnInit {
     this.error = null;
 
     const res = await this.athleteService.GetAthlete(this.athlete_id);
-    if (res.success){
+    if (res.success && res.data){
       this.athlete = res.data;
 
       this.appService.setTitle(`${this.athlete.first_name} ${this.athlete.last_name}`);
@@ -71,6 +72,9 @@ export class DetailComponent implements OnInit {
 
       }
 
+      
+    } else if (res.success){
+      this.router.navigateByUrl('/404');
     } else {
       this.error = res.error;
     }

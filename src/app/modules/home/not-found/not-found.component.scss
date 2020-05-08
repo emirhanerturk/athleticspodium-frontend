@@ -1,0 +1,49 @@
+
+@import 'variables';
+
+.error-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    background-image: url(/assets/media/404.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    div {
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        color: #fff;
+        font-weight: bold;
+
+        @media #{$responsive-sm} {
+            right: unset;
+            left: 5%;
+        }
+
+        h1 {
+            font-size: 124px;
+            line-height: 124px;
+        }
+
+        p {
+            display: block;
+            font-size: 64px;
+            line-height: 64px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            font-size: 16px;
+            line-height: 18px;
+            border-bottom: 3px solid $color-yellow;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                border-bottom-color: #4b4f54;
+            }
+        }
+    }
+
+}

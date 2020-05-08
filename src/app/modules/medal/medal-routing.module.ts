@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'search',
     component: SearchComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

@@ -9,6 +9,10 @@ const routes: Routes = [
     component: IndexComponent,
     pathMatch: 'full'
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

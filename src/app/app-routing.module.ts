@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from "@layouts/layout/layout.component";
+import { NotFoundComponent } from '@modules/home/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
         { path: 'articles', loadChildren: () => import('./modules/articles/articles.module').then(m => m.ArticlesModule) },
     ]
   },
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

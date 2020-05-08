@@ -19,6 +19,10 @@ const routes: Routes = [
     path: ':code/athletes',
     component: AthletesComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { CountryService } from "@services/country.service";
@@ -26,6 +26,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private countryService: CountryService,
   ) { }
@@ -48,7 +49,7 @@ export class DetailComponent implements OnInit {
     this.loading = true;
 
     const res = await this.countryService.GetCountry(this.country_code);
-    if (res.success){
+    if (res.success && res.data){
       this.country = res.data;
 
       this.appService.setTitle(this.country.name);
@@ -88,8 +89,10 @@ export class DetailComponent implements OnInit {
         // Necessary error
       }
 
+    } else if (res.success){
+      this.router.navigateByUrl('/404');
     } else {
-      this.error = res.error;
+      this.error = res.error || true;
     }
 
     this.loading = false;

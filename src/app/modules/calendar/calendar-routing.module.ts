@@ -13,6 +13,10 @@ const routes: Routes = [
     path: ':year',
     component: IndexComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
 ]
 ;
 
