@@ -9,6 +9,7 @@ export const environment = {
   },
   socialMedia: {
     twitter: 'athleticspodium',
-    facebook: 'athleticspodium'
+    facebook: 'athleticspodium',
+    instagram: 'athleticspodium'
   }
 };
