@@ -2,97 +2,15 @@
 <section class="main-container">
     
     <h1 class="h1">Simple Notes on Database</h1>
+
+    <app-loader *ngIf="loading"></app-loader>
+
+    <app-error *ngIf="error" [error]="error"></app-error>
     
-    <div class="row">
+    <div *ngIf="!loading && !error" class="row">
         <div class="col-12 col-md-8 text-content text-content-static">
 
-            <p>
-                You can find here some instructions about our database.
-            </p>
-
-            <p>
-                >> Olympics rings (on the names) indicate ‘Olympic gold medallists’.
-            </p>
-
-            <p>
-                >> The column of W/I (Winds/Information) reserved for wind reading data for sprint/jumping events (if available), or providing below technical addition examples:
-            </p>
-
-            <p>
-                <b>w</b> - windy, but no certain measurement available.
-                <br>
-                <b>w?</b> - possibly not legal performance, but not sure windy or not.
-                <br>
-                <b>nwi</b> - no wind information
-                <br>
-                <b>n/a</b> - not available
-                <br>
-                <b>(i)</b> - indoor performance
-                <br>
-                <b>,5</b> - additional half centimeter measurement in jumping/throwing events (earlier times)
-                <br>
-                <b>,000</b> (two or three digit detail) – decathlon points fractions. (Before 1934)
-                <br>
-                <b>pts</b> - Points for team competitions (mostly XC or road events).
-            </p>
-
-            <p>
-                >> The column of R reserved to record information if it exists. However, this column is not fully complete. Indications on R column:
-            </p>
-
-            <p>
-                <b>AR</b> - Area record (Continental record)
-                <br>
-                <b>CR</b> - Championship record
-                <br>
-                <b>AU23R</b> - Area U23 record
-                <br>
-                <b>AU20R</b> - Area U20 record
-                <br>
-                <b>AU18R</b> - Area U18 record
-                <br>
-                <b>NR</b> - National record
-                <br>
-                <b>OR</b> - Olympic record
-                <br>
-                <b>WB</b> - World best
-                <br>
-                <b>WR</b> - World record
-                <br>
-                <b>WIR</b> - World Indoor record
-                <br>
-                <b>WU18B</b> - World U18 best
-                <br>
-                <b>WU20R</b> - World U20 record
-                <br>
-                = Equaling to existing record
-                <br>
-                * If breaking record in heats/qualifying, additional info available on NOTES cell.
-            </p>
-
-            <p>
-                >> In the database, some non-existing countries merged under the current follow-up nations code. In this case, every medallist then-represented country has been noted on NOTES column. For example, Federal German Republic (West Germany) medallists in the 1949-89 period, shown as GER on country column, but enclosed with ‘competed under flag FRG’ note.
-            </p>
-
-            <p>
-                >> If split times available for relay events, every runner has its own split times on notes.
-            </p>
-            
-            <p>
-                >> Stripped medals after disciplinary sanctions (mostly doping) are indicated as overline as red. Every stripped medallists original positions and marks are available. Additional information can be found in the notes column.
-            </p>
-
-            <p>
-                >> Some ‘adjusted times’ available on the database. Adjusted times: technologically-measured (later) and adapted marks. Mostly applied as 1/10 secs to converting 1/100 in earlier Olympic results.
-            </p>
-
-            <p>
-                >> In case of equal results, tie-break applications noted on the last column. For example; 0.000 details on sprint races, or attempt (xxo) details on jumping events.
-            </p>
-
-            <p>
-                >> Exemption about results of Youth Olympics 2018: There was unique execution: Combined of two races counted as final result. We provided all marks (total = first + second) on the NOTES column instead of MARKS.
-            </p>
+            <div [innerHTML]="page.content"></div>
                 
         </div>
         <div class="col-12 col-md-4">

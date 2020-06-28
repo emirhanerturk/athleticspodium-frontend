@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/app.service";
+import { AppService } from "@services/app.service";
+import { PageService } from "@services/page.service";
+import { IPage } from "@interfaces/models.interface";
+import { IError } from '@interfaces/response.interface';
 
 @Component({
   selector: 'app-simple-notes',
@@ -9,8 +12,14 @@ import { AppService, ENavigation } from "@services/app.service";
 })
 export class SimpleNotesComponent implements OnInit {
 
+  loading: boolean = true;
+  error: IError | IError[];
+
+  page: IPage = null;
+
   constructor(
-    private appService: AppService
+    private appService: AppService,
+    private pageService: PageService
   ) { }
 
   ngOnInit() {
@@ -18,6 +27,23 @@ export class SimpleNotesComponent implements OnInit {
     this.appService.setNavigation(null);
     this.appService.setTitle('Simple Notes');
     this.appService.setMeta('These are the rules and simply notes to using in our database.');
+
+    this.getPage();
+
+  }
+
+  async getPage(){
+
+    this.loading = true;
+
+    const res = await this.pageService.Get('simple-notes');
+    if (res.success){
+      this.page = res.data;
+    } else {
+      this.error = res.error;
+    }
+
+    this.loading = false;
 
   }
 

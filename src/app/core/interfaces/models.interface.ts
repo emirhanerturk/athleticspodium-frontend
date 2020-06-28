@@ -126,3 +126,14 @@ export interface IContact {
     created_date?: Date,
     updated_date?: Date
 }
+
+
+export interface IPage {
+    id: string,
+    slug: string,
+    section: string,
+    title: string,
+    content?: string,
+    created_date: Date,
+    updated_date?: Date,
+}

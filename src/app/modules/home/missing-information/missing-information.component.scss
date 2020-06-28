@@ -25,11 +25,16 @@
     }
 }
 
-.tab-content {
+.tab-content::ng-deep tbody {
     counter-reset: section;
 
-    tbody tr span::before {
+    tr {
         counter-increment: section;
-        content: counter(section);    
+
+        span::before {
+            content: counter(section);    
+        }
+
     }
+
 }

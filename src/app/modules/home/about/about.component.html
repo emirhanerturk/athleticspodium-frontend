@@ -8,135 +8,29 @@
 
             <div class="text-content text-content-static mb-4">
 
-                <p>
-                    We all passionately love athletics, most elegant form of human-kind activity; and probably dearly follow it all life long. With a bunch of wondering, screaming, or crying…
-                </p>
-    
-                <p>
-                    As a keen athletics lover and journalist, I’m compiling lots of results for many years. First, I recorded some lists on my notebook in my school days, then copied all encyclopedia pages which I found some results in. Once I started my current job, journalism, made the compilation process easier to me.
-                </p>
-                
-                <p>
-                    Then I decided to gather all medallists from South American juniors to Oceania multi-eventers or African distance kings; at one place. This idea brings about athleticspodium.com. My aim is to have an open database which includes all big championships with all levels of competition types.
-                </p>
-    
-                <h2>
-                    TARGET: PROPER AND EASY INFO
-                </h2>
-                <p>
-                    Sometimes I spent hours to find correct podium owners after the years of competition ends, which may be changed ‘several’ times for doping offenses or subsequent appeals. It’s really hard to find getting proper information, even from the official web sites or Wikipedia, ‘shortest way’ to have results. The problem is ‘old information’ was always available on the web and mixed with correct ones on digital garbage. So, we’re trying to solve this complexity with help from all athletics lovers over the globe. This project formed by myself but belongs to athletics passionates.
-                </p>
-    
-                <p>
-                    When compiling such big data from very different sources, I learned lots of hidden stories between the pages. Also these stories must not be hidden in history. Athletics Podium will reveal also these finest memories.
-                </p>
-    
-                <h2>
-                    CONTENT: WHAT’S INCLUDED?
-                </h2>
-    
-                <p>
-                    In the first phase of the project, we have mainly ‘championships’. From Europe to Oceania, you can find all the top three medallists, results, technical data (wind, course measurement), and (if needs) some notes about the medal. We have all senior, U23, U20 and U18 level competition podiums on the database. Athletics Podium offering to you easily trace an athlete’s journey in global athletics from the very beginning.
-                </p>
-    
-                <p>
-                    We have the countries on the base of the data. You can select a country to get to know athletics history in one summary page.
-                </p>
-    
-                <p>
-                    Also, Athletics Podium is not only having great names of track and field, but noticing unsung heroes from different nations. It’s impossible to take some articles about all names registered in our database, but we’re sure it will be turning encyclopedia-type biographies during our journey.
-                </p>
-    
-                <p>
-                    Simply, we are aiming six topics at the project: 
-                </p>
-    
-                <p>
-                    - Most importantly, verified information. 
-                    <br>
-                    - Graphics use to easy understanding of data. (On social media posts)
-                    <br>
-                    - Easy and free reach to data. For everybody. 
-                    <br>
-                    - Strong connection between rich athletics history & today. 
-                    <br>
-                    - Broader collaboration for gathering information. 
-                    <br>
-                    - Credited every single contribution.
-                </p>
-    
-                <p>
-                    While I defined myself politically as an 'eco-anarchist' or some kind of collectivist, I'm supporting open knowledge or free sources on the net. I don't think I have a right to copyright such a kind of compiled material which actually belongs to everybody. Therefore, ALL RIGHTS ARE NOT RESERVED on this site. By bona fide effort, if you can put this site name as a source on your work in the case of excerpting data from our page, we'll be glad.
-                </p>
-    
-                <h2>
-                    SHARE YOUR KNOWLEDGE
-                </h2>
-    
-                <p>
-                    We are demanding from you to help us to find missing information which is <a routerLink="/missing-information">listed here</a>. After every single contribution, we put the names who help us by sending missing names, results, biography notes, name correction, or photographs. Please use nearby form to send your contribution to athleticspodium.com.
-                </p>
-    
-                <p>
-                    So, Let’s start to celebrate athletics culture.
-                </p>
-    
-                <p>
-                    Şevket F. ERBAY
-                    <br>
-                    Editor, AthleticsPodium.com
-                </p>
+                <app-loader *ngIf="loading.main" size="partial"></app-loader>
+
+                <app-error *ngIf="error.main" [error]="error.main"></app-error>
+
+                <div *ngIf="!loading.main && !error.main" [innerHTML]="page.main.content"></div>
 
             </div>
 
             <div class="card mb-4 text-content text-content-static">
-                <div class="row">
+
+                <app-loader *ngIf="loading.box" size="partial"></app-loader>
+
+                <app-error *ngIf="error.box" [error]="error.box"></app-error>
+
+                <div *ngIf="!loading.box && !error.box" class="row">
                     <div class="col-12 col-sm-4 order-sm-last pictures">
 
                         <img *ngFor="let i of [1, 2]" (click)="showPicture = i" class="img-fluid" [src]="'/assets/media/sfe-profile-' + i + '.jpg'" alt="">
 
                     </div>
                     <div class="col-12 col-sm-8">
-
-                        <h2>
-                            EDITOR - Sevket Furkan ERBAY
-                        </h2>
-
-                        <p>
-                            Born in 1981. Turkish sports journalist, media researcher, athletics aficionado. Worked several magazines, journals and TV stations since 1999. Between 2002-2014, works as a commentator in Eurosport Turkey, still part-time works there. Conducted tennis and athletics magazine for 10 years as a chief editor. In athletics, accredited to World & European Championships for eight times in total. Curious about athletics statistics, mainly compiler of Balkan & Turkish athletics. Planned & realized athleticspodium.com in two years.
-                        </p>
-
-                        <p>
-                            More on his personal website - <a href="http://www.sferbay.com" target="_blank">www.sferbay.com</a>
-                        </p>
-
-                        <h2>
-                            ATHLETICS PODIUM, All contributors
-                        </h2>
-
-                        <p>
-                            Şevket F. Erbay, Founder and editor
-                            <br>
-                            Emirhan Ertürk, Programmer-Technical manager
-                            <br>
-                            Evren Özüyener, Contributing editor
-                            <br>
-                            Engin Eryiğit, Contributing editor
-                            <br>
-                            Sencer Yücel, Contributing editor
-                            <br>
-                            Can Korkmazoğlu, Adviser
-                            <br>
-                            Bülent Gürkan, Adviser
-                            <br>
-                            Gökhan Taner, Adviser
-                            <br>
-                            Emir İncegül, Adviser
-                            <br>
-                            Ali Katipoğlu, Adviser
-                            <br>
-                            M.Ali Yaman, Adviser
-                        </p>
+                        
+                        <div [innerHTML]="page.box.content"></div>
 
                     </div>
                 </div>
