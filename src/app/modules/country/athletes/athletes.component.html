@@ -63,7 +63,7 @@
                 </tbody>
             </table>
 
-            <app-pagination *ngIf="count && !searchKey" [pageSize]="50" [total]="count" [currentPage]="page" (changedPage)="changedPage($event)"></app-pagination>
+            <app-pagination *ngIf="count && !searchKey" [pageSize]="pageSize" [total]="count" [currentPage]="page" (changedPage)="changedPage($event)"></app-pagination>
 
         </div>
     </div>
