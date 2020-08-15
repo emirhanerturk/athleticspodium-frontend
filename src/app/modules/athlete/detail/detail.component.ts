@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from "../../../../environments/environment";
+import { Lightbox } from 'ngx-lightbox';
 
 import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";
@@ -23,12 +25,14 @@ export class DetailComponent implements OnInit {
   medals: IMedal[];
   medals_counts: any;
   medals_counts_total: any;
+  mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
 
   expandBio: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private lightbox: Lightbox,
     private appService: AppService,
     private athleteService: AthleteService) { }
 
@@ -135,6 +139,18 @@ export class DetailComponent implements OnInit {
   
     this.medals_counts = counts_obj;
     this.medals_counts_total = total;
+    
+  }
+
+  openLightbox(index: number){
+
+    const album = this.athlete.image.map(img => ({
+      src: `${this.mediaPath}/${this.athlete.id}/${img.uri}`,
+      caption: `${[img.credit, img.caption].filter(img => img).join('<br>')}`,
+      thumb: ''
+    }))
+
+    this.lightbox.open(album, index, { showImageNumberLabel: true });
     
   }
 

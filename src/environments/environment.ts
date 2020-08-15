@@ -8,6 +8,13 @@ export const environment = {
     host: 'http://localhost:3001',
     version: '1.0',
   },
+  cdn: {
+    host: 'http://localhost:3001',
+    media: {
+      athletes: 'media/athletes',
+      champs: 'media/champs',
+    }
+  },
   analytics: {
     trackerId: 'G-7EDH9146FP'
   },
@@ -15,7 +22,7 @@ export const environment = {
     twitter: 'athleticspodium',
     facebook: 'athleticspodium',
     instagram: 'athleticspodium'
-  }
+  },
 };
 
 /*

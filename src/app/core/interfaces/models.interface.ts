@@ -110,8 +110,10 @@ export interface ICountry {
 
 export interface IImage {
     uri: string,
+    credit?: string,
     caption?: string,
-    cover: boolean,
+    cover?: boolean,
+    created_date?: Date,
 }
 
 export interface IContact {

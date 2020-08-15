@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LightboxModule } from 'ngx-lightbox';
 
 import { AthleteRoutingModule } from './athlete-routing.module';
 import { IndexComponent } from './index/index.component';
@@ -13,6 +14,7 @@ import { PipesModule } from '@shared/modules/pipes/pipes.module';
   declarations: [IndexComponent, DetailComponent],
   imports: [
     CommonModule,
+    LightboxModule,
     AthleteRoutingModule,
     ComponentsModule,
     DirectivesModule,

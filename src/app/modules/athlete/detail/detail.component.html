@@ -10,11 +10,23 @@
     <div class="row">
         <div class="col-md-3">
 
-            <section class="card mb-4 athlete-left">
+            <section class="athlete-left mb-4">
 
-                <img *ngIf="athlete.image" src="/assets/media/andre-domingos.jpg" alt="">
+                <ng-container *ngIf="athlete.image?.length; else noImages">
+                    <ul class="athlete-images">
+                        <li *ngFor="let image of athlete.image; let i = index" [class.cover]="i === 0">
+                            <div class="card p-0 mb-2"  (click)="openLightbox(i)">
+                                <img [src]="mediaPath + '/' + athlete.id + '/' + image.uri" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                </ng-container>
 
-                <img *ngIf="!athlete.image" [src]="'/assets/placeholders/athlete-' + (athlete.gender ? 'men' : 'women') + '.jpg'" alt="">
+                <ng-template #noImages>
+                    <div class="card p-0">
+                        <img class="default-image" [src]="'/assets/placeholders/athlete-' + (athlete.gender ? 'men' : 'women') + '.jpg'" alt="">
+                    </div>
+                </ng-template>
 
             </section>
             

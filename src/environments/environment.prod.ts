@@ -4,6 +4,13 @@ export const environment = {
     host: 'https://api.athleticspodium.com',
     version: '1.0',
   },
+  cdn: {
+    host: 'https://api.athleticspodium.com',
+    media: {
+      athletes: 'media/athletes',
+      champs: 'media/champs',
+    }
+  },
   analytics: {
     trackerId: 'G-7EDH9146FP'
   },
