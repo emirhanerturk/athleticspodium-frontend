@@ -3,7 +3,7 @@ export enum ERelated {
     FATHER,
     MOTHER,
     SON,
-    DOUGTER,
+    DOUGHTER,
     WIFE,
     HUSBAND,
     EX_WIFE,
@@ -13,7 +13,7 @@ export enum ERelated {
     GRANDFATHER,
     GRANDMOTHER,
     GRANDSON,
-    GRANDDOUGTER
+    GRANDDOUGHTER
 }
 
 export interface IRelatedInfo {
@@ -40,7 +40,7 @@ export const ERelatedInfo: IRelatedInfo[] = [
     },
     {
         id: 3,
-        name: 'Dougter',
+        name: 'Doughter',
         gender: false
     },
     {
@@ -90,7 +90,7 @@ export const ERelatedInfo: IRelatedInfo[] = [
     },
     {
         id: 13,
-        name: 'Granddougter',
+        name: 'Granddoughter',
         gender: false
     },
 ]
