@@ -20,7 +20,7 @@ export class ApiService {
   async get(endpoint: string): Promise<IResponse> {
     
     try {
-      return await this.http.get<IResponse>(this.baseUrl + endpoint).toPromise();      
+      return this.http.get<IResponse>(this.baseUrl + endpoint).toPromise();      
     } catch (error) {
       return Promise.resolve({ success: false, error: { code: error.status, message: error.statusText } })
     }
@@ -30,7 +30,7 @@ export class ApiService {
   async post(endpoint: string, body: any = {}): Promise<IResponse> {
     
     try {
-      return await this.http.post<IResponse>(this.baseUrl + endpoint, body).toPromise();
+      return this.http.post<IResponse>(this.baseUrl + endpoint, body).toPromise();
     } catch (error) {
       return Promise.resolve({ success: false, error: { code: error.status, message: error.statusText } })
     }
