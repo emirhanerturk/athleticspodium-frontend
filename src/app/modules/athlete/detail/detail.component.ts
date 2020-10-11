@@ -7,7 +7,7 @@ import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";
 
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
-import { IAthlete, IMedal } from "@interfaces/models.interface";
+import { IAthlete, IMedal, IRelatedAthlete } from "@interfaces/models.interface";
 
 @Component({
   selector: 'app-detail',
@@ -22,6 +22,7 @@ export class DetailComponent implements OnInit {
 
   athlete_id: number;
   athlete: IAthlete;
+  relateds: IRelatedAthlete[] = [];
   medals: IMedal[];
   medals_counts: any;
   medals_counts_total: any;
@@ -72,10 +73,12 @@ export class DetailComponent implements OnInit {
 
         this.calculateMedalsCounts(res2.data);
 
-      } else {
-
       }
 
+      const res3 = await this.athleteService.GetRelatedAthletes(this.athlete_id);
+      if (res3.success){
+        this.relateds = res3.data;
+      }
       
     } else if (res.success){
       this.router.navigateByUrl('/404');

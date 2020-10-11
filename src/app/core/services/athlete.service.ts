@@ -42,4 +42,14 @@ export class AthleteService {
 
   }
 
+  /**
+   * Get related athletes
+   * @param id
+   */
+  async GetRelatedAthletes(athlete_id: number): Promise<IResponse> {
+
+    return await this.apiService.get(`/athletes/${athlete_id}/relateds`);
+
+  }
+
 }

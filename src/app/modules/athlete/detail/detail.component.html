@@ -77,6 +77,22 @@
                         <span>Events</span>
                         <span>{{ athlete.events ? athlete.events.join(', ') : '-' }}</span>
                     </li>
+                    <li>
+                        <span>Related Athletes</span>
+                        <span *ngIf="!relateds?.length">-</span>
+                        <span *ngIf="relateds?.length">
+                            <span *ngFor="let relation of relateds; let i = index" class="related-item">
+
+                                <ng-container *ngIf="relation.athlete_from_id === athlete.id">
+                                    <a class="related-link" [routerLink]="'/athlete/' + relation.athlete_to_id + '/' + relation.athlete_to.slug">{{ relation.athlete_to.first_name }} {{ relation.athlete_to.last_name }}</a>
+                                    ({{ (relation.relation_from | related).name }})</ng-container>
+                                <ng-container *ngIf="relation.athlete_from_id !== athlete.id">
+                                    <a class="related-link" [routerLink]="'/athlete/' + relation.athlete_from_id + '/' + relation.athlete_from.slug">{{ relation.athlete_from.first_name }} {{ relation.athlete_from.last_name }}</a>
+                                    ({{ (relation.relation_to | related).name }})</ng-container>
+
+                            </span>
+                        </span>
+                    </li>
                 </ul>
 
             </section>

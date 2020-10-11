@@ -139,3 +139,14 @@ export interface IPage {
     created_date: Date,
     updated_date?: Date,
 }
+
+export interface IRelatedAthlete {
+    athlete_from_id: number,
+    athlete_to_id: number,
+    relation_from: number,
+    relation_to: number,
+    created_date: Date,
+    // includes
+    athlete_from: IAthlete,
+    athlete_to: IAthlete
+}

@@ -71,14 +71,14 @@
         li {
             margin-bottom: 8px;
 
-            span:first-child {
+            > span:first-child {
                 display: inline-block;
-                width: 120px;
+                width: 140px;
                 font-size: 12px;
                 color: #888;
             }
 
-            span:last-child {
+            > span:last-child {
                 display: inline-block;
                 font-weight: bold;
 
@@ -99,6 +99,24 @@
                 top: -2px;
             }
 
+        }
+
+        .related-item {
+            font-weight: normal;
+            margin-right: 8px;
+
+            a {
+                font-weight: bold;
+            }
+
+            &:after {
+                content: ',',
+            }
+
+            &:last-child:after {
+                content: ''
+            }
+            
         }
 
     }

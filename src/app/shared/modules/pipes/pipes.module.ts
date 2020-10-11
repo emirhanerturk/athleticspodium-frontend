@@ -6,6 +6,7 @@ import { GenderPipe } from '@pipes/gender.pipe';
 import { StripHtmlTagsPipe } from '@pipes/strip-html-tags.pipe';
 import { StringSlicePipe } from '@pipes/string-slice.pipe';
 import { SafeHtmlPipe } from '@pipes/safe-html.pipe';
+import { RelatedPipe } from '@pipes/related.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SafeHtmlPipe } from '@pipes/safe-html.pipe';
     StripHtmlTagsPipe,
     StringSlicePipe,
     SafeHtmlPipe,
+    RelatedPipe,
   ],
   exports: [
     MedalPipe,
@@ -24,6 +26,7 @@ import { SafeHtmlPipe } from '@pipes/safe-html.pipe';
     StripHtmlTagsPipe,
     StringSlicePipe,
     SafeHtmlPipe,
+    RelatedPipe,
   ]
 })
 export class PipesModule { }
