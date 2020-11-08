@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-
+import { GenerateQueryString } from "@services/util.service";
 import { IResponse } from '@core/interfaces/response.interface';
 
 @Injectable({
@@ -10,6 +10,17 @@ import { IResponse } from '@core/interfaces/response.interface';
 export class AthleteService {
 
   constructor(private apiService: ApiService) { }
+
+  /**
+   * Get all athletes
+   */
+  async List(filters?: Object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
+
+    const query = GenerateQueryString({ ...filters, fields, order, limit, offset })
+
+    return await this.apiService.get(`/athletes?${query}`);
+
+  }
 
   /**
    * Get the athlete details

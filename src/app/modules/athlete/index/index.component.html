@@ -3,7 +3,86 @@
 
     <h1 class="h1">Athletes</h1>
 
-    <p class="mb-4">athlete index works!</p>
+    <section class="row mb-4">
+        <div class="col mb-4">
+            <h2 class="h2-yellow">Today's Birthdates</h2>
+
+            <table class="table-medals">
+                <thead>
+                    <tr>
+                        <th>Athlete Name</th>
+                        <th style="width: 90px" class="text-center">Country</th>
+                        <th>Birth Date</th>
+                        <th style="width: 56px" class="text-center">Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let athlete of athletesBorns">
+                        <td>
+                            <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                                {{ athlete.last_name }}, {{ athlete.first_name }}
+                                <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a [routerLink]="'/country/' + athlete.country_code" [attr.aria-label]="athlete.country.name" data-balloon-pos="up">
+                                <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                {{ athlete.country.code }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ athlete.date_of_birth | date }}
+                        </td>
+                        <td class="text-center p-0">
+                            <img class="gender-icon" [src]="'/assets/icons/gender-' + (athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <app-pagination *ngIf="countBorns" [pageSize]="pageSizeTodays" [total]="countBorns" [currentPage]="pageBorns" (changedPage)="onChangePageTodays('borns', $event)"></app-pagination>
+
+        </div>
+        <div class="col mb-4">
+            <h2 class="h2-yellow">Today's Death Anniversaries</h2>
+
+            <table class="table-medals">
+                <thead>
+                    <tr>
+                        <th>Athlete Name</th>
+                        <th style="width: 90px" class="text-center">Country</th>
+                        <th>Death Date</th>
+                        <th style="width: 56px" class="text-center">Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let athlete of athletesDeaths">
+                        <td>
+                            <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                                {{ athlete.last_name }}, {{ athlete.first_name }}
+                                <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a [routerLink]="'/country/' + athlete.country_code" [attr.aria-label]="athlete.country.name" data-balloon-pos="up">
+                                <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                {{ athlete.country.code }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ athlete.date_of_death | date }}
+                        </td>
+                        <td class="text-center p-0">
+                            <img class="gender-icon" [src]="'/assets/icons/gender-' + (athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <app-pagination *ngIf="countDeaths" [pageSize]="pageSizeTodays" [total]="countDeaths" [currentPage]="pageDeaths" (changedPage)="onChangePageTodays('deaths', $event)"></app-pagination>
+
+        </div>
+    </section>
     
     <h2 class="h2-yellow">Athletes by Alphabet</h2>
     <section>

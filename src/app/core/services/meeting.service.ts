@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { GenerateQuerySring } from "@services/util.service";
+import { GenerateQueryString } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MeetingService {
    */
   async List(year: number, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ year, limit });
+    const qs = GenerateQueryString({ year, limit });
 
     return await this.apiService.get(`/meetings/?${qs}`);
 
@@ -50,7 +50,7 @@ export class MeetingService {
    */
   async GetCounts(meeting_id: number, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ limit });
+    const qs = GenerateQueryString({ limit });
     
     return await this.apiService.get(`/meetings/${meeting_id}/counts?${qs}`);
 

@@ -39,6 +39,8 @@ export interface IMeeting {
     // includes
     champ?: IChamps,
     country?: ICountry,
+    // others
+    medalCount?: number
 }
 
 export interface IEvent {

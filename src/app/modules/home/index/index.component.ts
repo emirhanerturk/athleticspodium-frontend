@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppService, ENavigation } from "@services/app.service";
 import { MeetingService } from "@services/meeting.service";
 import { MedalService } from "@services/medal.service";
-import { IMeeting } from '@core/interfaces/models.interface';
+import { AthleteService } from "@services/athlete.service";
+import { IMeeting, IAthlete } from '@core/interfaces/models.interface';
 
 @Component({
   selector: 'app-index',
@@ -12,14 +13,16 @@ import { IMeeting } from '@core/interfaces/models.interface';
 })
 export class IndexComponent implements OnInit {
 
-  upcomingMeetings: any[];
-  lastMeetings: any[];
+  athletesBorns: IAthlete[];
+  upcomingMeetings: IMeeting[];
+  lastMeetings: IMeeting[];
   totalCount: number;
 
   constructor(
     private appService: AppService,
     private meetingService: MeetingService,
-    private medalService: MedalService
+    private medalService: MedalService,
+    private athleteService: AthleteService
   ) { }
 
   ngOnInit() {
@@ -28,9 +31,21 @@ export class IndexComponent implements OnInit {
     this.appService.setTitle('Athletics Podium', false);
     this.appService.setMeta('Athletics Podium is an international medallist database covering track and field events. All open track, indoor and XC medals in any age groups are included.');
 
+    this.getTodaysBorns();
     this.getUpcomingMeetings();
     this.getLastMeetings();
     this.getTotalCount();
+
+  }
+
+  async getTodaysBorns(){
+
+    const now = new Date();
+    const date_of_birth = `${now.getMonth() + 1}-${now.getDate()}`; 
+    const res = await this.athleteService.List({ date_of_birth }, ['country'], 'date_of_birth');
+    if (res.success){
+      this.athletesBorns = res.data.rows;
+    }
 
   }
 

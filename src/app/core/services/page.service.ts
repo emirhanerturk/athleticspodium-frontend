@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { GenerateQuerySring } from '@services/util.service';
+import { GenerateQueryString } from '@services/util.service';
 import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class PageService {
    */
   async Get(slug: string, section?: string): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ section });
+    const qs = GenerateQueryString({ section });
 
     return await this.apiService.get(`/pages/${slug}?${qs}`);
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { GenerateQuerySring } from "@services/util.service";
+import { GenerateQueryString } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
 import { ICategoryInfo, ECategoryInfo } from '@enums/category.enum';
 
@@ -17,7 +17,7 @@ export class ChampsService {
    */
   async List(fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ fields, order, limit });
+    const qs = GenerateQueryString({ fields, order, limit });
 
     return await this.apiService.get(`/champs?${qs}`);
 
@@ -40,7 +40,7 @@ export class ChampsService {
    */
   async GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQuerySring({ limit });
+    const qs = GenerateQueryString({ limit });
     
     return await this.apiService.get(`/champs/${champs_id}/counts?${qs}`);
 

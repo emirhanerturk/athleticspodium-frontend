@@ -38,85 +38,42 @@
                 </div>
             </section>
 
-            <!-- <section class="articles">
+            <section class="mb-4">
+                <h2 class="h2-yellow">Today's Birthdates</h2>
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Athlete Name</th>
+                            <th style="width: 90px" class="text-center">Country</th>
+                            <th>Birth Date</th>
+                            <th style="width: 56px" class="text-center">Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let athlete of athletesBorns">
+                            <td>
+                                <a [routerLink]="'/athlete/' + athlete.id + '/' + athlete.slug">
+                                    {{ athlete.last_name }}, {{ athlete.first_name }}
+                                    <img *ngIf="athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a [routerLink]="'/country/' + athlete.country_code" [attr.aria-label]="athlete.country.name" data-balloon-pos="up">
+                                    <img class="country-flag" [src]="'/assets/flags/' + athlete.country_code.toLowerCase() + '.svg'" alt="">
+                                    {{ athlete.country.code }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ athlete.date_of_birth | date }}
+                            </td>
+                            <td class="text-center p-0">
+                                <img class="gender-icon" [src]="'/assets/icons/gender-' + (athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-                <a href="#" class="article">
-                    <img src="https://golfdunyasi.com.tr/static/img/post/680x360/2019/08/img_1575.jpg" alt="">
-                    <aside>
-                        <h1>
-                            <span>Headline One</span>
-                        </h1>
-                        <p>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non odit minima cum hic dignissimos repudiandae possimus magni perferendis ut qui deleniti adipisci, provident nisi consequatur at.</span>
-                        </p>
-                    </aside>
-                </a>
-
-                <div class="row">
-                    <div class="col-6">
-
-                        <a href="#" class="article article-small">
-                            <img src="https://golfdunyasi.com.tr/static/img/post/680x360/2019/07/agc.jpg" alt="">
-                            <aside>
-                                <h1>
-                                    <span>Headline Two</span>
-                                </h1>
-                                <p>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-                                </p>
-                            </aside>
-                        </a>
-
-                    </div>
-                    <div class="col-6">
-
-                        <a href="#" class="article article-small">
-                            <img src="https://golfdunyasi.com.tr/static/img/post/680x360/2018/05/aslii.jpg" alt="">
-                            <aside>
-                                <h1>
-                                    <span>Headline Three</span>
-                                </h1>
-                                <p>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non odit minima cum hic dignissimos repudiandae possimus magni perferendis ut qui deleniti adipisci, provident nisi consequatur at.</span>
-                                </p>
-                            </aside>
-                        </a>
-
-                    </div>
-                    <div class="col-6">
-
-                        <a href="#" class="article article-small">
-                            <img src="https://golfdunyasi.com.tr/static/img/post/680x360/2016/05/pavonn-9d7bz919.jpg" alt="">
-                            <aside>
-                                <h1>
-                                    <span>Headline Two</span>
-                                </h1>
-                                <p>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-                                </p>
-                            </aside>
-                        </a>
-
-                    </div>
-                    <div class="col-6">
-
-                        <a href="#" class="article article-small">
-                            <img src="https://golfdunyasi.com.tr/static/img/post/680x360/2016/05/pavonn-9d7bz919.jpg" alt="">
-                            <aside>
-                                <h1>
-                                    <span>Headline Three</span>
-                                </h1>
-                                <p>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non odit minima cum hic dignissimos repudiandae possimus magni perferendis ut qui deleniti adipisci, provident nisi consequatur at.</span>
-                                </p>
-                            </aside>
-                        </a>
-
-                    </div>
-                </div>
-
-            </section> -->
-        
         </div>
         <div class="col-12 col-md-4">
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from "@services/api.service";
-import { GenerateQuerySring } from "@services/util.service";
+import { GenerateQueryString } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class MedalService {
    */
   async List (query: Object): Promise<IResponse> {
 
-    const qs = GenerateQuerySring(query);
+    const qs = GenerateQueryString(query);
 
     return await this.apiService.get(`/medals?` + qs);
 

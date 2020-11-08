@@ -1,5 +1,5 @@
 
-export function GenerateQuerySring(queries: Object): string {
+export function GenerateQueryString(queries: Object): string {
 
   if (queries){
     return Object.keys(queries).filter(key => queries[key] !== undefined).map(key => key + '=' + queries[key]).join('&');
