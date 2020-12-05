@@ -17,12 +17,11 @@ export class CountryService {
    * Get all countries
    */
   @memoize()
-  async List (filters?: any, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+  async List (filters?: Object, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
-    const qs = GenerateQueryString({ fields, order, limit });
-    const qs_filters = GenerateQueryString(filters);
+    const qs = GenerateQueryString({ fields, order, limit, ...filters });
 
-    return await this.apiService.get(`/countries?${qs}&${qs_filters}`);
+    return await this.apiService.get(`/countries?${qs}`);
 
   }
 

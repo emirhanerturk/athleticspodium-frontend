@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { AppService } from "@services/app.service";
 import { EStorage } from '@enums/storage.enum';
 
 @Injectable({
@@ -9,19 +10,22 @@ export class StorageService {
 
   storages = EStorage;
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   get (key: EStorage): any {
+
     try {
       return JSON.parse(localStorage.getItem(key));
     } catch (e) {
-      console.error('Error getting data from localStorage: ', e);
+      this.appService.logError({ message: `Error getting data from local storage: ${key}`, code: 500 })
       return null;
     }
+
   }
 
   
   set (key: EStorage, data: any, override: boolean = false): void {
+
     try {
 
       if (override){
@@ -32,8 +36,9 @@ export class StorageService {
       localStorage.setItem(key, JSON.stringify(data));
 
     } catch (e) {
-      console.error('Error saving to localStorage: ', e);
+      this.appService.logError({ message: `Error saving to local storage: ${key}`, code: 500 })
     }
+
   }
 
   remove (key: EStorage): void {
