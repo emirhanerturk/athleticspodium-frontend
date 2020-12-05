@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { ApiService } from "@services/index";
-import { IResponse } from '@interfaces/response.interface';
-import { IContact } from '@interfaces/models.interface';
+import { ApiService } from "@services/api.service";
+import { IResponse, IContact } from '@interfaces/index';
 
 @Injectable({
   providedIn: 'root'

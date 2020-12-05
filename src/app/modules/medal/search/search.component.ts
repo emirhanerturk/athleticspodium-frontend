@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AppService, MedalService, WindowScroll } from '@services/index';
-import { IError } from '@interfaces/response.interface';
-import { IMedal } from '@interfaces/models.interface';
-import { IMedalSearch } from '@interfaces/medal-search.interface';
+import { IMedal, IError, IMedalSearch } from '@interfaces/index';
 
 @Component({
   selector: 'app-search',

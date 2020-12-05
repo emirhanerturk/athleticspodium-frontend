@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { ChampsService, CountryService, EventService } from "@services/index";
-import { IMedalSearch } from '@interfaces/medal-search.interface';
-import { IChamps, ICountry, IEvent } from '@interfaces/models.interface';
+import { IMedalSearch, IChamps, ICountry, IEvent } from '@interfaces/index';
 import { ECategory, EGender } from "@enums/index";
 
 @Component({

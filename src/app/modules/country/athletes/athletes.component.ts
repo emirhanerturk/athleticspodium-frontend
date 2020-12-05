@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppService, CountryService, ArrayPaginate, WindowScroll } from "@services/index";
-import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
-import { ICountry } from '@interfaces/models.interface';
+import { IBreadcrumb, ICountry } from '@interfaces/index';
 import { ENavigation } from "@enums/navigation.enum";
 
 @Component({

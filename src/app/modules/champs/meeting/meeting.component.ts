@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
 import { AppService, ChampsService, MeetingService } from "@services/index";
-import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
-import { IChamps, IMeeting } from "@interfaces/models.interface";
+import { IBreadcrumb, IChamps, IMeeting } from '@interfaces/index';
 import { ENavigation, EGender } from "@enums/index";
 
 @Component({

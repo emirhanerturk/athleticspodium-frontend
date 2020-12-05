@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 import { AppService, CountryService } from "@services/index";
-import { ICountry } from "@interfaces/models.interface";
-import { IError } from '@interfaces/response.interface';
+import { ICountry, IError } from "@interfaces/index";
 import { ENavigation, ICategoryInfo } from '@enums/index';
 
 @Component({

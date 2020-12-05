@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppService, PageService } from "@services/index";
-import { IPage } from "@interfaces/models.interface";
-import { IError } from '@interfaces/response.interface';
+import { IPage, IError } from "@interfaces/index";
 
 @Component({
   selector: 'app-simple-notes',

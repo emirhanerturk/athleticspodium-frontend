@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppService, ChampsService } from "@services/index";
-import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
-import { IChamps } from "@interfaces/models.interface";
+import { IBreadcrumb, IChamps } from '@interfaces/index';
 import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
