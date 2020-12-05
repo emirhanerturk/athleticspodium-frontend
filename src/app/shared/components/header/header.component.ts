@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { environment } from '../../../../environments/environment';
+import { environment } from '@env/environment';
 
 import { AppService } from "@services/app.service";
 

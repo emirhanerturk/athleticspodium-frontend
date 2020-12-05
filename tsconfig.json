@@ -23,15 +23,18 @@
       "@modules/*": ["src/app/modules/*"],
       "@shared/*": ["src/app/shared/*"],
       /* core */
-      "@pipes/*": ["src/app/core/pipes/*"],
       "@services/*": ["src/app/core/services/*"],
-      "@directives/*": ["src/app/core/directives/*"],
       "@enums/*": ["src/app/core/enums/*"],
+      "@pipes/*": ["src/app/core/pipes/*"],
       "@interfaces/*": ["src/app/core/interfaces/*"],
+      "@directives/*": ["src/app/core/directives/*"],
       "@guards/*": ["src/app/core/guards/*"],
+      "@decorators/*": ["src/app/core/decorators/*"],
       "@interceptors/*": ["src/app/core/interceptors/*"],
       /* shared */
       "@layouts/*": ["src/app/shared/layouts/*"],
+      /* env */
+      "@env/*": ["src/environments/*"],
     }
   },
   "angularCompilerOptions": {

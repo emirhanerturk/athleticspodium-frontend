@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from "../../../../environments/environment";
 import { Lightbox } from 'ngx-lightbox';
+import { environment } from "@env/environment";
 
 import { AppService, ENavigation } from "@services/app.service";
 import { AthleteService } from "@services/athlete.service";

@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
