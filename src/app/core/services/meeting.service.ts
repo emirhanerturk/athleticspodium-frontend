@@ -29,6 +29,7 @@ export class MeetingService {
    * Get the meeting details
    * @param meeting meeting id or slug
    */
+  @memoize()
   GetMeeting(meeting: string|number): Promise<IResponse>{
 
     return this.apiService.get(`/meetings/${meeting}`);

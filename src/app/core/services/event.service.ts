@@ -15,7 +15,7 @@ export class EventService {
   /**
    * Get all events
    */
-  @memoize()
+  @memoize({ json: true })
   List (fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit });

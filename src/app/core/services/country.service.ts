@@ -16,7 +16,7 @@ export class CountryService {
   /**
    * Get all countries
    */
-  @memoize()
+  @memoize({ json: true })
   List (filters?: Object, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit, ...filters });
@@ -50,6 +50,7 @@ export class CountryService {
    * Get top athletes by country
    * @param country_code country code
    */
+  @memoize()
   GetAthletes(country_code: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });

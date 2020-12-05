@@ -16,7 +16,7 @@ export class ChampsService {
   /**
    * Get all champs
    */
-  @memoize()
+  @memoize({ json: true })
   List(fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit });
@@ -29,6 +29,7 @@ export class ChampsService {
    * Get the champs details
    * @param champs champ id or slug
    */
+  @memoize()
   GetChamps(champs: string|number): Promise<IResponse> {
 
     return this.apiService.get(`/champs/${champs}`);
@@ -40,6 +41,7 @@ export class ChampsService {
    * @param champs_id
    * @param limit
    */
+  @memoize()
   GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });
