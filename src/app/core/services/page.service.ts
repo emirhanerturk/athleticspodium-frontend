@@ -18,11 +18,11 @@ export class PageService {
    * @param section
    */
   @memoize()
-  async Get(slug: string, section?: string): Promise<IResponse> {
+  Get(slug: string, section?: string): Promise<IResponse> {
 
     const qs = GenerateQueryString({ section });
 
-    return await this.apiService.get(`/pages/${slug}?${qs}`);
+    return this.apiService.get(`/pages/${slug}?${qs}`);
 
   }
 

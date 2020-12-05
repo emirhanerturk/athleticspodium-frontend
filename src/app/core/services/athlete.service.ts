@@ -14,11 +14,11 @@ export class AthleteService {
   /**
    * Get all athletes
    */
-  async List(filters?: Object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
+  List(filters?: Object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
 
     const query = GenerateQueryString({ ...filters, fields, order, limit, offset })
 
-    return await this.apiService.get(`/athletes?${query}`);
+    return this.apiService.get(`/athletes?${query}`);
 
   }
 
@@ -26,9 +26,9 @@ export class AthleteService {
    * Get the athlete details
    * @param athlete_id
    */
-  async GetAthlete(athlete_id: number): Promise<IResponse> {
+  GetAthlete(athlete_id: number): Promise<IResponse> {
 
-    return await this.apiService.get(`/athletes/${athlete_id}`);
+    return this.apiService.get(`/athletes/${athlete_id}`);
 
   }
 
@@ -36,9 +36,9 @@ export class AthleteService {
    * Get all medals of the athlete
    * @param athlete_id
    */
-  async GetAthleteAllMedals(athlete_id: number): Promise<IResponse> {
+  GetAthleteAllMedals(athlete_id: number): Promise<IResponse> {
 
-    return await this.apiService.get(`/athletes/${athlete_id}/medals`);
+    return this.apiService.get(`/athletes/${athlete_id}/medals`);
 
   }
 
@@ -47,9 +47,9 @@ export class AthleteService {
    * @param letter
    * @param page
    */
-  async GetAthleteByFirstLetter(letter: string, page: number = 1): Promise<IResponse> {
+  GetAthleteByFirstLetter(letter: string, page: number = 1): Promise<IResponse> {
 
-    return await this.apiService.get(`/athletes/first-letter/${letter}/${page}`);
+    return this.apiService.get(`/athletes/first-letter/${letter}/${page}`);
 
   }
 
@@ -57,9 +57,9 @@ export class AthleteService {
    * Get related athletes
    * @param id
    */
-  async GetRelatedAthletes(athlete_id: number): Promise<IResponse> {
+  GetRelatedAthletes(athlete_id: number): Promise<IResponse> {
 
-    return await this.apiService.get(`/athletes/${athlete_id}/relateds`);
+    return this.apiService.get(`/athletes/${athlete_id}/relateds`);
 
   }
 

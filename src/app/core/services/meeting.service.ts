@@ -17,11 +17,11 @@ export class MeetingService {
    * @param year
    */
   @memoize()
-  async List(year: number, limit?: number): Promise<IResponse> {
+  List(year: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ year, limit });
 
-    return await this.apiService.get(`/meetings?${qs}`);
+    return this.apiService.get(`/meetings?${qs}`);
 
   }
 
@@ -29,9 +29,9 @@ export class MeetingService {
    * Get the meeting details
    * @param meeting meeting id or slug
    */
-  async GetMeeting(meeting: string|number): Promise<IResponse>{
+  GetMeeting(meeting: string|number): Promise<IResponse>{
 
-    return await this.apiService.get(`/meetings/${meeting}`);
+    return this.apiService.get(`/meetings/${meeting}`);
 
   }
 
@@ -39,9 +39,9 @@ export class MeetingService {
    * Get the meeting's medals
    * @param meeting_id
    */
-  async GetMedals(meeting_id: number): Promise<IResponse> {
+  GetMedals(meeting_id: number): Promise<IResponse> {
 
-    return await this.apiService.get(`/meetings/${meeting_id}/medals`);
+    return this.apiService.get(`/meetings/${meeting_id}/medals`);
 
   }
 
@@ -50,11 +50,11 @@ export class MeetingService {
    * @param meeting_id
    * @param limit
    */
-  async GetCounts(meeting_id: number, limit?: number): Promise<IResponse> {
+  GetCounts(meeting_id: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });
     
-    return await this.apiService.get(`/meetings/${meeting_id}/counts?${qs}`);
+    return this.apiService.get(`/meetings/${meeting_id}/counts?${qs}`);
 
   }
 
@@ -62,9 +62,9 @@ export class MeetingService {
    * Get last added 5 meetings
    */
   @memoize()
-  async GetLastMeetings(): Promise<IResponse> {
+  GetLastMeetings(): Promise<IResponse> {
 
-    return await this.apiService.get(`/meetings/last-meetings`);
+    return this.apiService.get(`/meetings/last-meetings`);
 
   }
 
@@ -72,9 +72,9 @@ export class MeetingService {
    * Get upcoming meetings
    */
   @memoize()
-  async GetUpcomingMeetings(): Promise<IResponse> {
+  GetUpcomingMeetings(): Promise<IResponse> {
 
-    return await this.apiService.get(`/meetings/upcoming-meetings`);
+    return this.apiService.get(`/meetings/upcoming-meetings`);
 
   }
 

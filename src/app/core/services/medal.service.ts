@@ -15,11 +15,11 @@ export class MedalService {
   /**
    * Get all medals
    */
-  async List (query: Object): Promise<IResponse> {
+  List (query: Object): Promise<IResponse> {
 
     const qs = GenerateQueryString(query);
 
-    return await this.apiService.get(`/medals?` + qs);
+    return this.apiService.get(`/medals?` + qs);
 
   }
 
@@ -27,9 +27,9 @@ export class MedalService {
    * Total count for medals
    */
   @memoize()
-  async TotalCount (): Promise<IResponse> {
+  TotalCount (): Promise<IResponse> {
 
-    return await this.apiService.get(`/medals/total-count`);
+    return this.apiService.get(`/medals/total-count`);
 
   }
 

@@ -13,9 +13,9 @@ export class ContactService {
   /**
    * Create a contact entity
    */
-  async Create(fields: IContact): Promise<IResponse> {
+  Create(fields: IContact): Promise<IResponse> {
 
-    return await this.apiService.post(`/contacts`, fields);
+    return this.apiService.post(`/contacts`, fields);
 
   }
 

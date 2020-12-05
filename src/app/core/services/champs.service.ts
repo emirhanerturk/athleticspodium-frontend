@@ -17,11 +17,11 @@ export class ChampsService {
    * Get all champs
    */
   @memoize()
-  async List(fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+  List(fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit });
 
-    return await this.apiService.get(`/champs?${qs}`);
+    return this.apiService.get(`/champs?${qs}`);
 
   }
 
@@ -29,9 +29,9 @@ export class ChampsService {
    * Get the champs details
    * @param champs champ id or slug
    */
-  async GetChamps(champs: string|number): Promise<IResponse> {
+  GetChamps(champs: string|number): Promise<IResponse> {
 
-    return await this.apiService.get(`/champs/${champs}`);
+    return this.apiService.get(`/champs/${champs}`);
 
   }
 
@@ -40,11 +40,11 @@ export class ChampsService {
    * @param champs_id
    * @param limit
    */
-  async GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
+  GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });
     
-    return await this.apiService.get(`/champs/${champs_id}/counts?${qs}`);
+    return this.apiService.get(`/champs/${champs_id}/counts?${qs}`);
 
   }
 

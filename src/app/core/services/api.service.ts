@@ -26,7 +26,7 @@ export class ApiService {
     
   }
 
-  async post(endpoint: string, body: any = {}): Promise<IResponse> {
+  async post(endpoint: string, body: Object = {}): Promise<IResponse> {
     
     try {
       return this.http.post<IResponse>(this.baseUrl + endpoint, body).toPromise();

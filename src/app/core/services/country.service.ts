@@ -17,11 +17,11 @@ export class CountryService {
    * Get all countries
    */
   @memoize()
-  async List (filters?: Object, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+  List (filters?: Object, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit, ...filters });
 
-    return await this.apiService.get(`/countries?${qs}`);
+    return this.apiService.get(`/countries?${qs}`);
 
   }
 
@@ -30,9 +30,9 @@ export class CountryService {
    * @param country_code country code
    */
   @memoize()
-  async GetCountry(country_code: string): Promise<IResponse> {
+  GetCountry(country_code: string): Promise<IResponse> {
 
-    return await this.apiService.get(`/countries/${country_code}`);
+    return this.apiService.get(`/countries/${country_code}`);
 
   }
 
@@ -40,9 +40,9 @@ export class CountryService {
    * Get counts group by champs
    * @param country_code country code
    */
-  async GetMedals(country_code: string): Promise<IResponse> {
+  GetMedals(country_code: string): Promise<IResponse> {
 
-    return await this.apiService.get(`/countries/${country_code}/medals`);
+    return this.apiService.get(`/countries/${country_code}/medals`);
 
   }
 
@@ -50,11 +50,11 @@ export class CountryService {
    * Get top athletes by country
    * @param country_code country code
    */
-  async GetAthletes(country_code: string, limit?: number): Promise<IResponse> {
+  GetAthletes(country_code: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });
 
-    return await this.apiService.get(`/countries/${country_code}/athletes?${qs}`);
+    return this.apiService.get(`/countries/${country_code}/athletes?${qs}`);
 
   }
 

@@ -16,11 +16,11 @@ export class EventService {
    * Get all events
    */
   @memoize()
-  async List (fields?: string[], order?: string, limit?: number): Promise<IResponse> {
+  List (fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit });
 
-    return await this.apiService.get(`/events?${qs}`);
+    return this.apiService.get(`/events?${qs}`);
 
   }
 
