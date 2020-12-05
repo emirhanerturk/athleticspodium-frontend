@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppService, MeetingService, ENavigation } from '@services/index';
+import { AppService, MeetingService } from '@services/index';
 import { IMeeting } from '@interfaces/models.interface';
 import { IError } from '@interfaces/response.interface';
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-index',

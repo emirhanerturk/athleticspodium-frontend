@@ -2,10 +2,9 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 
-import { ApiService } from '@services/index';
+import { ApiService } from '@services/api.service';
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
-export { ENavigation } from '@enums/navigation.enum';
 
 declare var gtag: any;
 

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
-import { AppService, ChampsService, MeetingService, ENavigation } from "@services/index";
+import { AppService, ChampsService, MeetingService } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IChamps, IMeeting } from "@interfaces/models.interface";
-import { EGender } from "@enums/gender.enum";
+import { ENavigation, EGender } from "@enums/index";
 
 @Component({
   selector: 'app-meeting',

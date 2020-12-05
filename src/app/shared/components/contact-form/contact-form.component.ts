@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { ContactService } from "@services/index";
+import { ContactService } from "@services/contact.service";
 import { EContactSubject } from "@enums/contact-subject.enum";
 
 @Component({

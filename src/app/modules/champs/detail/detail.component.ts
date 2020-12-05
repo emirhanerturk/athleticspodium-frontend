@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppService, ChampsService, ENavigation } from "@services/index";
+import { AppService, ChampsService } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
-import { IChamps, IMeeting } from "@interfaces/models.interface";
+import { IChamps } from "@interfaces/models.interface";
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-detail',

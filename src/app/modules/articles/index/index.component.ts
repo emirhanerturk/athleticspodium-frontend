@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/index";
+import { AppService } from "@services/app.service";
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-index',

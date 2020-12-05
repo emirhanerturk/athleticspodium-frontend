@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ChampsService, ENavigation } from "@services/index";
+import { AppService, ChampsService } from "@services/index";
 import { IChamps } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
-import { ICategoryInfo } from '@enums/category.enum';
+import { ENavigation, ICategoryInfo } from '@enums/index';
 
 @Component({
   selector: 'app-index',

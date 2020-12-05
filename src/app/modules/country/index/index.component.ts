@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { CountryService } from "@services/country.service";
-
+import { AppService, CountryService } from "@services/index";
 import { ICountry } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
-import { ICategoryInfo } from '@enums/category.enum';
+import { ENavigation, ICategoryInfo } from '@enums/index';
 
 @Component({
   selector: 'app-index',

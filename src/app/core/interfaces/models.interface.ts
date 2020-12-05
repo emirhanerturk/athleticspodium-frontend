@@ -1,7 +1,5 @@
 
-import { EGender } from "@enums/gender.enum";
-import { ECategory } from "@enums/category.enum";
-import { EContactSubject } from "@enums/contact-subject.enum";
+import { EGender, ECategory, EContactSubject } from "@enums/index";
 
 export interface IChamps {
     id: number,

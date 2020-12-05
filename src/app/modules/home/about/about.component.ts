@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 
-import { AppService, PageService, ENavigation } from "@services/index";
+import { AppService, PageService } from "@services/index";
 import { IPage } from "@interfaces/models.interface";
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-about',

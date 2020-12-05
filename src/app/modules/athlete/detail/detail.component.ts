@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lightbox } from 'ngx-lightbox';
 import { environment } from "@env/environment";
 
-import { AppService, AthleteService, ENavigation } from "@services/index";
+import { AppService, AthleteService } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IAthlete, IMedal, IRelatedAthlete } from "@interfaces/models.interface";
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-detail',

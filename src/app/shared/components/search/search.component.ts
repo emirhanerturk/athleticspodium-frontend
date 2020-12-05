@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-import { AppService } from '@services/index';
+import { AppService } from '@services/app.service';
 import { ICountry, IAthlete, IChamps } from '@interfaces/models.interface';
 
 @Component({

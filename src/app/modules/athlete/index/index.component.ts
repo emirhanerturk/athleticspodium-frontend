@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { AthleteService } from "@services/athlete.service";
-import { WindowScroll } from "@services/util.service";
-import { IAthlete } from '@core/interfaces/models.interface';
+import { AppService, AthleteService, WindowScroll } from "@services/index";
+import { IAthlete } from '@interfaces/models.interface';
+import { ENavigation } from "@enums/navigation.enum";
 
 @Component({
   selector: 'app-index',
