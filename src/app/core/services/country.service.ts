@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService, GenerateQueryString } from "@services/index";
 import { IResponse } from '@interfaces/response.interface';
 import { ICategoryInfo, ECategoryInfo } from '@enums/category.enum';
+import { memoize } from "@decorators/memoize.decorator";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CountryService {
   /**
    * Get all countries
    */
+  @memoize()
   async List (filters?: any, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ fields, order, limit });
@@ -27,6 +29,7 @@ export class CountryService {
    * Get the country details
    * @param country_code country code
    */
+  @memoize()
   async GetCountry(country_code: string): Promise<IResponse> {
 
     return await this.apiService.get(`/countries/${country_code}`);
