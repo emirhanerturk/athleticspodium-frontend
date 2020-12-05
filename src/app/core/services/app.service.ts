@@ -5,6 +5,7 @@ import { environment } from '@env/environment';
 import { ApiService } from '@services/api.service';
 import { IError } from '@interfaces/response.interface';
 import { ENavigation } from '@enums/navigation.enum';
+import { memoize } from "@decorators/memoize.decorator";
 
 declare var gtag: any;
 
@@ -79,9 +80,10 @@ export class AppService {
 
   }
 
-  async searchOnSite(q: string){
+  @memoize()
+  searchOnSite(q: string){
 
-    return await this.apiService.get(`/search?q=${q}`);
+    return this.apiService.get(`/search?q=${q}`);
 
   }
 
