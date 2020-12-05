@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AppService } from '@services/app.service';
-import { MedalService } from "@services/medal.service";
-import { WindowScroll } from "@services/util.service";
+import { AppService, MedalService, WindowScroll } from '@services/index';
 import { IError } from '@interfaces/response.interface';
 import { IMedal } from '@interfaces/models.interface';
 import { IMedalSearch } from '@interfaces/medal-search.interface';

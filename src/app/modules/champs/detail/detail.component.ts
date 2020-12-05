@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { ChampsService } from "@services/champs.service";
-
+import { AppService, ChampsService, ENavigation } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IChamps, IMeeting } from "@interfaces/models.interface";
 

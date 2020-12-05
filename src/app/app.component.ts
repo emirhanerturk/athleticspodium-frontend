@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AppService } from '@core/services/app.service';
+
+import { AppService } from '@services/index';
 
 @Component({
   selector: 'app-root',

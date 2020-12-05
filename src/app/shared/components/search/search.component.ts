@@ -1,8 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-import { AppService } from '@core/services/app.service';
-import { ICountry, IAthlete, IChamps } from '@core/interfaces/models.interface';
+import { AppService } from '@services/index';
+import { ICountry, IAthlete, IChamps } from '@interfaces/models.interface';
 
 @Component({
   selector: 'app-search',

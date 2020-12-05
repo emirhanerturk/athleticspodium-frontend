@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IBreadcrumb } from '@core/interfaces/breadcrumb.interface';
+import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 
 @Component({
   selector: 'app-breadcrumb',

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { AppService } from "@services/app.service";
-
+import { AppService } from "@services/index";
 import { IError } from '@interfaces/response.interface';
 
 @Component({

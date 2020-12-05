@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService } from "@services/app.service";
-import { PageService } from "@services/page.service";
+import { AppService, PageService } from "@services/index";
 import { IPage } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
 

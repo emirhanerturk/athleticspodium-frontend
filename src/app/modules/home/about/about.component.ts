@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { PageService } from "@services/page.service";
+import { AppService, PageService, ENavigation } from "@services/index";
 import { IPage } from "@interfaces/models.interface";
 
 @Component({

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppService, ENavigation } from '@core/services/app.service';
-import { MeetingService } from '@core/services/meeting.service';
-import { IMeeting } from '@core/interfaces/models.interface';
-import { IError } from '@core/interfaces/response.interface';
+import { AppService, MeetingService, ENavigation } from '@services/index';
+import { IMeeting } from '@interfaces/models.interface';
+import { IError } from '@interfaces/response.interface';
 
 @Component({
   selector: 'app-index',

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { ChampsService } from "@services/champs.service";
-
+import { AppService, ChampsService, ENavigation } from "@services/index";
 import { IChamps } from "@interfaces/models.interface";
 import { IError } from '@interfaces/response.interface';
 import { ICategoryInfo } from '@enums/category.enum';

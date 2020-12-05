@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ApiService } from "@services/api.service";
-import { GenerateQueryString } from '@services/util.service';
+import { ApiService, GenerateQueryString } from "@services/index";
 import { IResponse } from '@interfaces/response.interface';
 
 @Injectable({

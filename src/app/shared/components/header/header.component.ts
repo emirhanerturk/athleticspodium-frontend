@@ -1,9 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { environment } from '@env/environment';
 
-import { AppService } from "@services/app.service";
-
-import { ENavigation } from '@core/enums/navigation.enum';
+import { AppService } from "@services/index";
+import { ENavigation } from '@enums/navigation.enum';
 
 @Component({
   selector: 'app-header',

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { MeetingService } from "@services/meeting.service";
-import { MedalService } from "@services/medal.service";
-import { AthleteService } from "@services/athlete.service";
-import { IMeeting, IAthlete } from '@core/interfaces/models.interface';
+import { AppService, MeetingService, MedalService, AthleteService, ENavigation } from "@services/index";
+import { IMeeting, IAthlete } from '@interfaces/models.interface';
 
 @Component({
   selector: 'app-index',

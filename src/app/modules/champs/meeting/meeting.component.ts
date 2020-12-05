@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { ChampsService } from "@services/champs.service";
-import { MeetingService } from "@services/meeting.service";
+import { AppService, ChampsService, MeetingService, ENavigation } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IChamps, IMeeting } from "@interfaces/models.interface";
 import { EGender } from "@enums/gender.enum";

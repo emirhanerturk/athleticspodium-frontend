@@ -3,9 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lightbox } from 'ngx-lightbox';
 import { environment } from "@env/environment";
 
-import { AppService, ENavigation } from "@services/app.service";
-import { AthleteService } from "@services/athlete.service";
-
+import { AppService, AthleteService, ENavigation } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { IAthlete, IMedal, IRelatedAthlete } from "@interfaces/models.interface";
 

@@ -2,13 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { ChampsService } from "@services/champs.service";
-import { CountryService } from "@services/country.service";
-import { EventService } from "@services/event.service";
+import { ChampsService, CountryService, EventService } from "@services/index";
 import { IMedalSearch } from '@interfaces/medal-search.interface';
 import { IChamps, ICountry, IEvent } from '@interfaces/models.interface';
-import { ECategory } from "@core/enums/category.enum";
-import { EGender } from '@core/enums/gender.enum';
+import { ECategory } from "@enums/category.enum";
+import { EGender } from '@enums/gender.enum';
 
 @Component({
   selector: 'app-medal-search-form',

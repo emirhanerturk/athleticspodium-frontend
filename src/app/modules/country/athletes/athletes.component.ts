@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AppService, ENavigation } from "@services/app.service";
-import { CountryService } from "@services/country.service";
-import { ArrayPaginate, WindowScroll } from "@services/util.service";
-
+import { AppService, CountryService, ArrayPaginate, WindowScroll, ENavigation } from "@services/index";
 import { IBreadcrumb } from '@interfaces/breadcrumb.interface';
 import { ICountry } from '@interfaces/models.interface';
 
