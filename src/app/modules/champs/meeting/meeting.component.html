@@ -21,14 +21,14 @@
                     <ul class="meetings d-none d-md-block">
                         <li *ngFor="let meeting of champs.meetings">
                             <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
-                                {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name  }})</span>
+                                {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name }}) </span><span *ngIf="meeting.city">{{ meeting.city }}</span>
                             </a>
                         </li>
                     </ul>
 
                     <select class="form-select d-block d-md-none" [value]="meeting?.slug" name="years" (change)="changeMeeting($event)">
                         <ng-container *ngFor="let meeting of champs.meetings">
-                            <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}}</option>
+                            <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}} {{ meeting.city }}</option>
                         </ng-container>
                     </select>
     
