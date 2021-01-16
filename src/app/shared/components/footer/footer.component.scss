@@ -27,7 +27,7 @@
         .info {
 
             @media #{$responsive-sm} {
-                margin-top: 20px;
+                margin-top: 10px;
                 text-align: center;
             }
 
@@ -55,6 +55,10 @@
         h6 {
             font-size: 14px;
             margin-bottom: 14px;
+
+            @media #{$responsive-sm} {
+                display: none;
+            }
         }
 
         ul {
@@ -69,8 +73,17 @@
             justify-content: flex-start;
             align-items: center;
 
+            @media #{$responsive-sm} {
+                justify-content: center;
+                margin-top: 20px;
+            }
+
             li {
                 margin-right: 10px;
+
+                @media #{$responsive-sm} {
+                    margin: 0 5px;
+                }
             
                 svg {
                     width: 22px;
