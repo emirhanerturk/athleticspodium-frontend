@@ -4,4 +4,15 @@
     > p {
         line-height: 22px;
     }
+
+    .table-medals th.orderable {
+        cursor: pointer;
+        
+        img {
+            position: relative;
+            top: -1px;
+            width: 10px;
+            height: 10px;
+        }
+    }
 }

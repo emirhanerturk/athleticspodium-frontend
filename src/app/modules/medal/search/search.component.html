@@ -33,13 +33,27 @@
                 <table *ngIf="count" class="table-medals">
                     <thead>
                         <tr>
-                            <th style="width: 60px">Year</th>
-                            <th>Champs</th>
-                            <th>Event</th>
-                            <th style="width: 60px" class="text-center">Medal</th>
-                            <th>Athlete</th>
-                            <th style="width: 60px" class="text-center">Gender</th>
-                            <th style="width: 90px" class="text-center">Country</th>
+                            <th (click)="changedOrder('year')" class="orderable" [ngStyle]="{ width: selectedOrder === 'year' ? '66px' : '60px' }">
+                                Year <img *ngIf="selectedOrder === 'year'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('champs')" class="orderable">
+                                Champs <img *ngIf="selectedOrder === 'champs'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('event')" class="orderable">
+                                Event <img *ngIf="selectedOrder === 'event'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('medal')" class="orderable text-center" [ngStyle]="{ width: selectedOrder === 'medal' ? '66px' : '60px' }">
+                                Medal <img *ngIf="selectedOrder === 'medal'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('athlete')" class="orderable">
+                                Athlete <img *ngIf="selectedOrder === 'athlete'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('gender')" class="orderable text-center"  [ngStyle]="{ width: selectedOrder === 'gender' ? '74px' : '60px' }">
+                                Gender <img *ngIf="selectedOrder === 'gender'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
+                            <th (click)="changedOrder('country')" class="orderable text-center" style="width: 90px">
+                                Country <img *ngIf="selectedOrder === 'country'" src="/assets/icons/down-arrow.svg" alt="" />
+                            </th>
                             <th style="width: 100px" class="text-right">Mark</th>
                             <th style="width: 80px">W/I</th>
                             <th style="width: 80px">Record</th>

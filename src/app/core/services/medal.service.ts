@@ -10,12 +10,15 @@ import { memoize } from "@decorators/memoize.decorator";
 })
 export class MedalService {
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   /**
    * Get all medals
    */
-  List (query: Object): Promise<IResponse> {
+  @memoize({ json: true })
+  List (query: object): Promise<IResponse> {
 
     const qs = GenerateQueryString(query);
 

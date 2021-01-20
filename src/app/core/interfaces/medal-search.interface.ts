@@ -6,5 +6,6 @@ export interface IMedalSearch {
     gender: string,
     medal: string,
     is_canceled?: string,
-    page?: number
+    page?: number,
+    order?: 'year'|'champs'|'event'|'medal'|'athlete'|'gender'|'country'
 }

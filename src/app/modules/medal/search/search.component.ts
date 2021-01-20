@@ -23,6 +23,8 @@ export class SearchComponent implements OnInit {
   };
   queries: IMedalSearch;
 
+  selectedOrder: 'year'|'champs'|'event'|'medal'|'athlete'|'gender'|'country' = 'year';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -47,8 +49,10 @@ export class SearchComponent implements OnInit {
           medal: '',
           is_canceled: '0',
           page: 1,
+          order: 'year',
         }
         this.queries = { ...this.queries, ...queries };
+        this.selectedOrder = this.queries.order;
         this.searchMedals();
       }
     });
@@ -77,6 +81,13 @@ export class SearchComponent implements OnInit {
 
     WindowScroll();
     this.queries.page = page;
+    this.router.navigate(['/medals/search', this.queries]);
+
+  }
+
+  changedOrder(order: 'year'|'champs'|'event'|'medal'|'athlete'|'gender'|'country'){
+
+    this.queries.order = order;
     this.router.navigate(['/medals/search', this.queries]);
 
   }
