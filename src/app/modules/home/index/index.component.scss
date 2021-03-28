@@ -22,6 +22,10 @@
     align-items: stretch;
     padding: 15px;
 
+    @media #{$responsive-md} {
+        flex-direction: column;
+    }
+
     .olympic-rings {
         width: 24px !important;
     }
@@ -32,14 +36,23 @@
         align-items: flex-start;
         width: 65%;
 
+        @media #{$responsive-md} {
+            width: 100%;
+        }
+
         h5 {
             font-weight: bold;
             font-size: 18px;
+            line-height: 24px;
         }
 
         &-picture {
             width: 220px;
             margin-right: 15px;
+
+            @media #{$responsive-sm} {
+                width: 120px;
+            }
         }
 
         &-bio {
@@ -54,6 +67,16 @@
         margin-left: 15px;
         padding-left: 15px;
         border-left: 1px solid #eee;
+
+        @media #{$responsive-md} {
+            border-left: none;
+            border-top: 1px solid #eee;
+            width: 100%;
+            padding: 0;
+            padding-top: 15px;
+            margin: 0;
+            margin-top: 15px;
+        }
 
         li {
             position: relative;

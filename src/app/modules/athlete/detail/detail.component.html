@@ -237,7 +237,7 @@
 </section>
 
 <div *ngIf="athlete" class="picture-overlay" [class.active]="showPicture !== null" (click)="showPicture = null">
-    <div *ngFor="let image of athlete.image; let i = index" [class.active]="showPicture === i">
+    <div *ngFor="let image of athlete.image; let i = index" class="item" [class.active]="showPicture === i">
         <img [src]="mediaPath + '/' + athlete.id + '/' + image.uri" alt="">
         <p *ngIf="image.caption && image.credit" [innerHTML]="image.caption + '<br>' + image.credit"></p>
         <p *ngIf="!(image.caption && image.credit)">{{ image.caption || image.credit }}</p>
