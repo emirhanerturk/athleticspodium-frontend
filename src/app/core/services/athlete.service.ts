@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { GenerateQueryString } from "@services/util.service";
 import { IResponse } from '@interfaces/response.interface';
+import { memoize } from "@decorators/memoize.decorator";
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,16 @@ export class AthleteService {
   GetRelatedAthletes(athlete_id: number): Promise<IResponse> {
 
     return this.apiService.get(`/athletes/${athlete_id}/relateds`);
+
+  }
+
+  /**
+   * Get featured athletes
+   */
+  @memoize()
+  GetFeaturedAthletes(): Promise<IResponse> {
+
+    return this.apiService.get(`/featured-athletes`);
 
   }
 

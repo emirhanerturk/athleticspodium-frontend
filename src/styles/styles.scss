@@ -256,9 +256,10 @@ textarea.form-input {
 }
 
 .btn {
+    display: inline-block;
     height: 36px;
+    line-height: 36px;
     padding: 0 20px;
-    // margin-left: 12px;
     background-color: #ffdd00;
     color: #313339;
     font-family: 'Allerta Stencil', sans-serif;
@@ -278,6 +279,7 @@ textarea.form-input {
         padding: 0 8px;
         font-size: 11px;
         height: 22px;
+        line-height: 22px;
     }
 
     span {

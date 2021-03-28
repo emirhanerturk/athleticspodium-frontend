@@ -150,3 +150,12 @@ export interface IRelatedAthlete {
     athlete_from: IAthlete,
     athlete_to: IAthlete
 }
+
+
+export interface IFeaturedAthlete {
+    id?: number,
+    athlete_id: number,
+    rank: number,
+    // includes
+    athlete?: IAthlete
+}

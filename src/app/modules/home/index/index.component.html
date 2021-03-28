@@ -38,6 +38,49 @@
                 </div>
             </section>
 
+            <section class="mb-4" *ngIf="featuredAthletes?.length">
+                <h2 class="h2-yellow">Featured Athletes</h2>
+                <div class="card featured-athletes">
+
+                    <div class="featured-athletes-first">
+                        <a [routerLink]="['/athlete', featuredAthletes[0].athlete_id, featuredAthletes[0].athlete.slug]">
+                            <img *ngIf="featuredAthletes[0].athlete.image?.length; else noImage" class="featured-athletes-first-picture border-radius-2" [src]="mediaPath + '/' + featuredAthletes[0].athlete.id + '/' + featuredAthletes[0].athlete.image[0].uri" alt="">
+                            <ng-template #noImage>
+                                <img class="featured-athletes-first-picture border-radius-2" [src]="'/assets/placeholders/athlete-' + (featuredAthletes[0].athlete.gender ? 'men' : 'women') + '.jpg'" alt="">
+                            </ng-template>
+                        </a>
+                        <div>
+                            <a [routerLink]="['/athlete', featuredAthletes[0].athlete_id, featuredAthletes[0].athlete.slug]">
+                                <h5>
+                                    {{ featuredAthletes[0].athlete.first_name }} {{ featuredAthletes[0].athlete.last_name }}
+                                    <img *ngIf="featuredAthletes[0].athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                                </h5>
+                            </a>
+                            <div *ngIf="featuredAthletes[0].athlete.biography">
+                                <div class="featured-athletes-first-bio">
+                                    {{ featuredAthletes[0].athlete.biography | stripHtmlTags | stringSlice: 100 }}...
+                                </div>
+                                <a [routerLink]="['/athlete', featuredAthletes[0].athlete_id, featuredAthletes[0].athlete.slug]" class="btn btn-sm mt-2">Profile &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="featured-athletes-list">
+                        <ng-container *ngFor="let item of featuredAthletes; let i = index">
+                            <li *ngIf="i > 0">
+                                <a [routerLink]="['/athlete', item.athlete_id, item.athlete.slug]">
+                                    <h6>
+                                        {{ item.athlete.first_name }} {{ item.athlete.last_name }}
+                                        <img *ngIf="item.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                                    </h6>
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                
+                </div>
+            </section>
+
             <section class="mb-4">
                 <h2 class="h2-yellow">Today's Birthdates</h2>
                 <table class="table-medals">
