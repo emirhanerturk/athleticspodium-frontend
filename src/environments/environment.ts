@@ -9,7 +9,7 @@ export const environment = {
     version: '1.0',
   },
   cdn: {
-    host: 'http://localhost:3001',
+    host: 'https://api.athleticspodium.com',
     media: {
       athletes: 'media/athletes',
       champs: 'media/champs',

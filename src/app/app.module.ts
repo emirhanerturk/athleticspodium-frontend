@@ -19,7 +19,7 @@ import { SearchComponent } from '@shared/components/search/search.component';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.scss",
-              "./node_modules/ngx-lightbox/lightbox.css"
+              "src/styles/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
@@ -97,8 +96,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.scss",
-              "./node_modules/ngx-lightbox/lightbox.css"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }

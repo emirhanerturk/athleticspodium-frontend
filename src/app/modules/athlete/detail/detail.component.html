@@ -15,7 +15,7 @@
                 <ng-container *ngIf="athlete.image?.length; else noImages">
                     <ul class="athlete-images">
                         <li *ngFor="let image of athlete.image; let i = index" [class.cover]="i === 0">
-                            <div class="card p-0 mb-2"  (click)="openLightbox(i)">
+                            <div class="card p-0 mb-2" (click)="showPicture = i">
                                 <img [src]="mediaPath + '/' + athlete.id + '/' + image.uri" alt="">
                             </div>
                         </li>
@@ -235,3 +235,11 @@
     </div>
     
 </section>
+
+<div *ngIf="athlete" class="picture-overlay" [class.active]="showPicture !== null" (click)="showPicture = null">
+    <div *ngFor="let image of athlete.image; let i = index" [class.active]="showPicture === i">
+        <img [src]="mediaPath + '/' + athlete.id + '/' + image.uri" alt="">
+        <p *ngIf="image.caption && image.credit" [innerHTML]="image.caption + '<br>' + image.credit"></p>
+        <p *ngIf="!(image.caption && image.credit)">{{ image.caption || image.credit }}</p>
+    </div>
+</div>
