@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit {
 
     this.route.params.subscribe(params => {
 
-      this.athlete_id = parseInt(params.id);
+      this.athlete_id = Number(params.id);
       this.getAthlete();
 
     });

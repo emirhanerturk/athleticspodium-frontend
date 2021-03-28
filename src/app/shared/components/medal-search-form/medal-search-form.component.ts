@@ -96,7 +96,7 @@ export class MedalSearchFormComponent implements OnInit {
 
     if (this.formValues.champs){
       
-      const champ = this._champs.find(i => i.id === parseInt(this.formValues.champs));
+      const champ = this._champs.find(i => i.id === Number(this.formValues.champs));
       
       if (champ.countries.length){
         this.countries = this._countries.filter(i => champ.countries.includes(i.code));
@@ -108,10 +108,10 @@ export class MedalSearchFormComponent implements OnInit {
 
       this.years = this._years.filter(i => champ.years.includes(i));
 
-      if (!isNaN(parseInt(this.formValues.gender))){
+      if (!isNaN(Number(this.formValues.gender))){
 
         let field_name = '';
-        switch(parseInt(this.formValues.gender)){
+        switch(Number(this.formValues.gender)){
           case EGender.MEN: field_name = 'events_men'; break;
           case EGender.WOMEN: field_name = 'events_women'; break;
           case EGender.MIXED: field_name = 'events_mixed'; break;

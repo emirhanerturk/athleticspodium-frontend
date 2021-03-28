@@ -70,10 +70,10 @@ export class DetailComponent implements OnInit {
         };
 
         this.medals.map(m => {
-          this.medals_counts.gold += parseInt(m.gold);
-          this.medals_counts.silver += parseInt(m.silver);
-          this.medals_counts.bronze += parseInt(m.bronze);
-          this.medals_counts.total += parseInt(m.total);
+          this.medals_counts.gold += Number(m.gold);
+          this.medals_counts.silver += Number(m.silver);
+          this.medals_counts.bronze += Number(m.bronze);
+          this.medals_counts.total += Number(m.total);
         })
 
       } else {

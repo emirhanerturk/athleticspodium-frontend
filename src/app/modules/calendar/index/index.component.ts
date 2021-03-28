@@ -40,7 +40,7 @@ export class IndexComponent implements OnInit {
     this.route.params.subscribe(async data => {
       
       if (data.year){
-        this.active_year = parseInt(data.year);
+        this.active_year = Number(data.year);
         this.appService.setTitle(`${this.active_year} Calendar`);
         this.appService.setMeta(`You can find here international athletics calendar of ${this.active_year}.`);
       } else {
