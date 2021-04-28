@@ -6,7 +6,7 @@
 <app-breadcrumb *ngIf="!loading && !error" [data]="breadcrumbs"></app-breadcrumb>
 
 <section *ngIf="!loading && !error" class="main-container">
-    
+
     <div class="row">
         <div class="col-md-3">
 
@@ -15,12 +15,12 @@
                 <h4 class="h2-yellow">
                     Meetings
                 </h4>
-    
-                <div class="card mb-4">
-                    
+
+                <div *ngIf="champs.meetings.length" class="card mb-4">
+
                     <ul class="meetings d-none d-md-block">
                         <li *ngFor="let meeting of champs.meetings">
-                            <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
+                            <a [routerLink]="['/champs', champs.slug, meeting.slug]" routerLinkActive="active">
                                 {{ meeting.year }} <span *ngIf="meeting.short_name">({{ meeting.short_name }}) </span><span *ngIf="meeting.city">{{ meeting.city }}</span>
                             </a>
                         </li>
@@ -32,8 +32,12 @@
                             <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}} {{ meeting.city }}</option>
                         </ng-container>
                     </select>
-    
+
                 </div>
+
+				<div *ngIf="!champs.meetings.length" class="mb-4">
+					Not found any meeting.
+				</div>
 
             </section>
 

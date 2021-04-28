@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { ErrorComponent } from '@shared/components/error/error.component';

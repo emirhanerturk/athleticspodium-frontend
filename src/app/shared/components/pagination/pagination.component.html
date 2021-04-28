@@ -17,8 +17,8 @@
         <li *ngIf="scenario === 'middle' || scenario === 'begin'" class="page disabled">
             ...
         </li>
-        <li *ngIf="scenario === 'middle' || scenario === 'begin'" class="page" (click)="setPage(this.pageCount)">
-            {{ this.pageCount }}
+        <li *ngIf="scenario === 'middle' || scenario === 'begin'" class="page" (click)="setPage(pageCount)">
+            {{ pageCount }}
         </li>
         <li class="next" [class.disabled]="currentPage === pageCount" (click)="next()">
             Next
