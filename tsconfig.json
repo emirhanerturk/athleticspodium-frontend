@@ -19,14 +19,12 @@
       "dom"
     ],
     "paths": {
-      "@core/*": ["src/app/core/*"],
-      "@modules/*": ["src/app/modules/*"],
-      "@shared/*": ["src/app/shared/*"],
       /* core */
       "@services/*": ["src/app/core/services/*"],
       "@enums/*": ["src/app/core/enums/*"],
       "@pipes/*": ["src/app/core/pipes/*"],
       "@interfaces/*": ["src/app/core/interfaces/*"],
+      "@models/*": ["src/app/core/models/*"],
       "@directives/*": ["src/app/core/directives/*"],
       "@guards/*": ["src/app/core/guards/*"],
       "@decorators/*": ["src/app/core/decorators/*"],
@@ -35,6 +33,10 @@
       "@layouts/*": ["src/app/shared/layouts/*"],
       /* env */
       "@env/*": ["src/environments/*"],
+      /* app */
+      "@core/*": ["src/app/core/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@shared/*": ["src/app/shared/*"],
     }
   },
   "angularCompilerOptions": {

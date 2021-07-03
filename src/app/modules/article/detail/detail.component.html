@@ -1,0 +1,54 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<app-error *ngIf="error" [error]="error"></app-error>
+
+<app-breadcrumb *ngIf="!loading && !error" [data]="breadcrumbs"></app-breadcrumb>
+
+<section *ngIf="article" class="main-container">
+
+	<div class="row">
+        <div class="col-12 col-md-8">
+
+			<section class="card mb-4 article">
+
+				<figure>
+					<img [src]="mediaPath + '/' + article.image.uri" class="img-fluid" alt="">
+				</figure>
+
+				<div class="article-content">
+
+					<h1 class="h1">{{ article.title }}</h1>
+
+					<p class="article-spot">{{ article.spot }}</p>
+
+					<time class="article-date">
+						Created date: {{ article.created_date | date }}
+						<ng-container *ngIf="article.updated_date">- Updated date: {{ article.updated_date | date }}</ng-container>
+					</time>
+
+					<div [innerHTML]="article.content" class="text-content"></div>
+
+				</div>
+
+			</section>
+
+			<h2 class="h2-yellow">Related Topics</h2>
+
+		</div>
+		<div class="col-12 col-md-4">
+
+			<section class="mb-4">
+				<h2 class="h2-yellow">Featured Athletes</h2>
+				<div class="card">
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+</section>

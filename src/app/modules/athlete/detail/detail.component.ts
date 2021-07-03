@@ -14,7 +14,7 @@ import { ENavigation } from "@enums/navigation.enum";
 export class DetailComponent implements OnInit {
 
   loading: boolean = true;
-  error: any;  
+  error: any;
   breadcrumbs: IBreadcrumb[];
 
   athlete_id: number;
@@ -32,7 +32,8 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private athleteService: AthleteService) { }
+    private athleteService: AthleteService
+  ) { }
 
   ngOnInit() {
 
@@ -54,6 +55,7 @@ export class DetailComponent implements OnInit {
 
     const res = await this.athleteService.GetAthlete(this.athlete_id);
     if (res.success && res.data){
+
       this.athlete = res.data;
 
       this.appService.setTitle(`${this.athlete.first_name} ${this.athlete.last_name}`);
@@ -76,7 +78,7 @@ export class DetailComponent implements OnInit {
       if (res3.success){
         this.relateds = res3.data;
       }
-      
+
     } else if (res.success){
       this.router.navigateByUrl('/404');
     } else {
@@ -100,7 +102,7 @@ export class DetailComponent implements OnInit {
           counts[item.champ_id] = item.champ;
           counts[item.champ_id].medals = { gold: 0, silver: 0, bronze: 0, total: 0 };
         }
-  
+
         switch(item.medal){
           case 1:
             counts[item.champ_id].medals.gold++;
@@ -136,10 +138,10 @@ export class DetailComponent implements OnInit {
       return 0;
 
     });
-  
+
     this.medals_counts = counts_obj;
     this.medals_counts_total = total;
-    
+
   }
 
   toggleBio(e: Event){

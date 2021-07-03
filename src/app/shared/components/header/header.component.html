@@ -66,7 +66,7 @@
                 <a routerLink="/calendar">Calendar</a>
             </li>
             <li [class.active]="activeNav === ENavigation.ARTICLES">
-                <a routerLink="/articles">Articles</a>
+                <a routerLink="/article">Articles</a>
             </li>
             <li [class.active]="activeNav === ENavigation.ABOUT">
                 <a routerLink="/about">About</a>
@@ -81,7 +81,7 @@
 </nav>
 
 <nav class="mobile-nav" [class.opened]="mobileMenuOpened">
-    
+
     <ul class="menu">
         <li [class.active]="activeNav === ENavigation.HOME" (click)="mobileMenuToggler(false)">
             <a routerLink="/">Home</a>
@@ -99,7 +99,7 @@
             <a routerLink="/calendar">Calendar</a>
         </li>
         <li [class.active]="activeNav === ENavigation.ARTICLES" (click)="mobileMenuToggler(false)">
-            <a routerLink="/articles">Articles</a>
+            <a routerLink="/article">Articles</a>
         </li>
         <li [class.active]="activeNav === ENavigation.ABOUT" (click)="mobileMenuToggler(false)">
             <a routerLink="/about">About</a>

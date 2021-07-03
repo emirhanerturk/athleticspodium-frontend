@@ -1,5 +1,6 @@
 
 import { EGender, ECategory, EContactSubject } from "@enums/index";
+import { Event } from "@models/index";
 
 export interface IChamps {
     id: number,
@@ -41,12 +42,6 @@ export interface IMeeting {
     medalCount?: number
 }
 
-export interface IEvent {
-    id: number,
-    name: string,
-    rank: number,
-}
-
 export interface IMedal {
     id: number,
     champ_id: number,
@@ -72,7 +67,7 @@ export interface IMedal {
     // includes
     champ?: IChamps
     meeting?: IMeeting
-    event?: IEvent
+    event?: Event
     athlete?: IAthlete
     country?: ICountry
 }

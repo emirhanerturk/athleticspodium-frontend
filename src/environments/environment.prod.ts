@@ -9,6 +9,7 @@ export const environment = {
     media: {
       athletes: 'media/athletes',
       champs: 'media/champs',
+      articles: 'media/articles',
     }
   },
   analytics: {

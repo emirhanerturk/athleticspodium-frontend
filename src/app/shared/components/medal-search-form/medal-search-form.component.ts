@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { ChampsService, CountryService, EventService } from "@services/index";
-import { IMedalSearch, IChamps, ICountry, IEvent } from '@interfaces/index';
+import { IMedalSearch, IChamps, ICountry } from '@interfaces/index';
 import { ECategory, EGender } from "@enums/index";
+import { Event } from "@models/index";
 
 @Component({
   selector: 'app-medal-search-form',
@@ -22,12 +23,12 @@ export class MedalSearchFormComponent implements OnInit {
 
   champs: IChamps[] = [];
   countries: ICountry[] = [];
-  events: IEvent[] = [];
+  events: Event[] = [];
   years: number[] = [];
 
   private _champs: IChamps[] = [];
   private _countries: ICountry[] = [];
-  private _events: IEvent[] = [];
+  private _events: Event[] = [];
   private _years: number[] = [];
 
   formError: boolean = false;
@@ -50,7 +51,7 @@ export class MedalSearchFormComponent implements OnInit {
     private champsService: ChampsService,
     private countryService: CountryService,
     private eventService: EventService) {
-    
+
     for (let i = new Date().getFullYear(); i > 1919; i--) {
       this._years.push(i);
     }
@@ -95,9 +96,9 @@ export class MedalSearchFormComponent implements OnInit {
   formValuesChanges(){
 
     if (this.formValues.champs){
-      
+
       const champ = this._champs.find(i => i.id === Number(this.formValues.champs));
-      
+
       if (champ.countries.length){
         this.countries = this._countries.filter(i => champ.countries.includes(i.code));
       } else if (ECategory.UNIVERSAL == champ.category) {
@@ -117,7 +118,7 @@ export class MedalSearchFormComponent implements OnInit {
           case EGender.MIXED: field_name = 'events_mixed'; break;
         }
         this.events = this._events.filter(e => champ[field_name].includes(e.id));
-  
+
       } else {
 
         const events = champ.events_men.concat(champ.events_women).concat(champ.events_mixed)
@@ -138,7 +139,7 @@ export class MedalSearchFormComponent implements OnInit {
           } else {
             return country.categories.includes(champ.category);
           }
-        });  
+        });
       } else {
         this.champs = this._champs;
         this.events = this._events;
