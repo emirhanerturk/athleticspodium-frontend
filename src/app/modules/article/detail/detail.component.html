@@ -12,8 +12,16 @@
 
 			<section class="card mb-4 article">
 
-				<figure>
+				<figure class="article-figure">
 					<img [src]="mediaPath + '/' + article.image.uri" class="img-fluid" alt="">
+					<div *ngIf="article.image.credit || article.image.caption" class="article-figure-caption">
+						<span *ngIf="article.image.credit">
+							{{ article.image.credit }}
+						</span>
+						<span *ngIf="article.image.caption">
+							{{ article.image.caption }}
+						</span>
+					</div>
 				</figure>
 
 				<div class="article-content">
@@ -33,13 +41,39 @@
 
 			</section>
 
-			<h2 class="h2-yellow">Related Topics</h2>
+			<section class="mb-4">
+
+				<h2 class="h2-yellow">Related Topics</h2>
+				<ul class="related-topics">
+					<li *ngFor="let champ of article.related_champs_map">
+						<a [routerLink]="['/champs', champ.slug]" class="btn btn-sm">
+							{{ champ.name }}
+						</a>
+					</li>
+					<li *ngFor="let meeting of article.related_meetings_map">
+						<a [routerLink]="['/champs', meeting.champ.slug, meeting.slug]" class="btn btn-sm">
+							{{ meeting.name }}
+						</a>
+					</li>
+					<li *ngFor="let country of article.related_countries_map">
+						<a [routerLink]="['/country', country.code]" class="btn btn-sm">
+							{{ country.name }}
+						</a>
+					</li>
+					<li *ngFor="let athlete of article.related_athletes_map">
+						<a [routerLink]="['/athlete', athlete.id, athlete.slug]" class="btn btn-sm">
+							{{ athlete.first_name }} {{ athlete.last_name }}
+						</a>
+					</li>
+				</ul>
+
+			</section>
 
 		</div>
 		<div class="col-12 col-md-4">
 
 			<section class="mb-4">
-				<h2 class="h2-yellow">Featured Athletes</h2>
+				<h2 class="h2-yellow">Featured Articles</h2>
 				<div class="card">
 					<br>
 					<br>
