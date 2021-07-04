@@ -29,6 +29,9 @@
     Not found any medal.
 </div>
 
-<button *ngIf="data.length > 10" type="button" class="btn btn-sm mb-4" (click)="showMoreOrLess()">
-    {{ showMore ? '&larr; Less' : 'More &rarr;' }}
-</button>
+<div *ngIf="data.length > 10" class="btn-wrapper">
+	<button type="button" class="btn btn-sm mb-4" (click)="showMoreOrLess()">
+		{{ showMore ? '&larr; Less' : 'More &rarr;' }}
+	</button>
+</div>
+

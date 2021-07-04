@@ -26,7 +26,7 @@
                         </li>
                     </ul>
 
-                    <select class="form-select d-block d-md-none" name="years" (change)="changeMeeting($event)">
+                    <select class="form-select d-block d-md-none" name="years" (change)="changeMeeting($event.target.value)">
                         <option value="">Meetings</option>
                         <ng-container *ngFor="let meeting of champs.meetings">
                             <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}} {{ meeting.city }}</option>
@@ -49,6 +49,11 @@
 
                 <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
 
+            </section>
+
+			<section class="mb-4 d-none d-md-block">
+                <h2 class="h2-yellow">Related Articles</h2>
+				<app-articles [articles]="articles"></app-articles>
             </section>
 
         </div>
@@ -78,6 +83,11 @@
 
                 <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
 
+            </section>
+
+			<section class="mb-4 d-block d-md-none">
+                <h2 class="h2-yellow">Related Articles</h2>
+				<app-articles [articles]="articles"></app-articles>
             </section>
 
         </div>

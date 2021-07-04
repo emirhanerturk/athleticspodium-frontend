@@ -6,7 +6,7 @@
 <app-breadcrumb *ngIf="!loading && !error" [data]="breadcrumbs"></app-breadcrumb>
 
 <section *ngIf="!loading && !error" class="main-container">
-    
+
     <div class="row">
         <div class="col-md-3">
 
@@ -15,9 +15,9 @@
                 <h4 class="h2-yellow">
                     Meetings
                 </h4>
-    
+
                 <div class="card mb-4">
-                    
+
                     <ul class="meetings d-none d-md-block">
                         <li *ngFor="let meeting of champs.meetings">
                             <a [routerLink]="'/champs/' + champs.slug + '/' + meeting.slug" routerLinkActive="active">
@@ -26,12 +26,12 @@
                         </li>
                     </ul>
 
-                    <select class="form-select d-block d-md-none" [value]="meeting?.slug" name="years" (change)="changeMeeting($event)">
+                    <select class="form-select d-block d-md-none" [value]="meeting?.slug" name="years" (change)="changeMeeting($event.target.value)">
                         <ng-container *ngFor="let meeting of champs.meetings">
                             <option [value]="meeting.slug">{{ meeting.year }}{{ meeting.short_name ? ' (' + meeting.short_name + ')' : ''}} {{ meeting.city }}</option>
                         </ng-container>
                     </select>
-    
+
                 </div>
 
             </section>
@@ -44,6 +44,11 @@
 
                 <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
 
+            </section>
+
+			<section class="mb-4 d-none d-md-block">
+                <h2 class="h2-yellow">Related Articles</h2>
+				<app-articles [articles]="articles"></app-articles>
             </section>
 
         </div>
@@ -88,11 +93,11 @@
                         </ul>
 
                         <div class="mb-4"></div>
-                        
+
                         <div *ngFor="let event of gender.value" class="event">
-        
+
                             <h3 class="event-name">{{ event.name }}</h3>
-        
+
                             <div class="table-responsive">
                                 <table class="table-medals table-medals-min-width mb-0">
                                     <thead>
@@ -145,20 +150,20 @@
                                             </td>
                                             <td class="p-0 text-center">
                                                 <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up" data-balloon-length="small">
-                                                    <img src="/assets/icons/info.svg" class="info-circle" alt="">                                        
+                                                    <img src="/assets/icons/info.svg" class="info-circle" alt="">
                                                 </span>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-        
+
                             <div *ngIf="event.notes" class="event-notes">
                                 * {{ event.notes }}
                             </div>
-        
+
                         </div>
-    
+
                     </section>
 
                 </ng-container>
@@ -175,6 +180,11 @@
 
                 <app-country-medal-count-table [data]="totals"></app-country-medal-count-table>
 
+            </section>
+
+			<section class="mb-4 d-block d-md-none">
+                <h2 class="h2-yellow">Related Articles</h2>
+				<app-articles [articles]="articles"></app-articles>
             </section>
 
         </div>

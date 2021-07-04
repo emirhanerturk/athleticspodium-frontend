@@ -5,6 +5,8 @@ import { ViewportScroller } from '@angular/common';
 import { AppService, ChampsService, MeetingService } from "@services/index";
 import { IBreadcrumb, IChamps, IMeeting } from '@interfaces/index';
 import { ENavigation, EGender } from "@enums/index";
+import { Article } from '@models/article.model';
+import { ArticleService } from '@services/article.service';
 
 @Component({
   selector: 'app-meeting',
@@ -24,6 +26,7 @@ export class MeetingComponent implements OnInit {
   meeting: IMeeting;
   events: any[];
   totals: any[];
+  articles: Article[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +34,9 @@ export class MeetingComponent implements OnInit {
     private appService: AppService,
     private champsService: ChampsService,
     private meetingService: MeetingService,
-    private viewportScroller: ViewportScroller) { }
+    private articleService: ArticleService,
+    private viewportScroller: ViewportScroller
+  ) { }
 
   async ngOnInit() {
 
@@ -85,13 +90,14 @@ export class MeetingComponent implements OnInit {
 
       await this.getMedals();
       this.getTotals();
+      this.getArticles();
 
     } else {
       this.error = res.error;
     }
 
     this.loading_meeting = false;
-    
+
   }
 
   async getMedals(){
@@ -111,20 +117,24 @@ export class MeetingComponent implements OnInit {
     if (res){
       this.totals = res.data;
     }
-    
+
+  }
+
+  async getArticles(){
+
+    const res = await this.articleService.List({ meeting: this.meeting.id }, 5);
+    if (res.success){
+      this.articles = res.data.rows;
+    }
+
   }
 
   scrollToGender(gender: string) {
-
     this.viewportScroller.scrollToAnchor(`section-${gender}`);
-  
   }
 
-  changeMeeting(e: any){
-
-    const value = e.target.value;
-    this.router.navigateByUrl(`/champs/${this.champs.slug}/${value}`);
-
+  changeMeeting(slug: string){
+    this.router.navigateByUrl(`/champs/${this.champs.slug}/${slug}`);
   }
 
 }

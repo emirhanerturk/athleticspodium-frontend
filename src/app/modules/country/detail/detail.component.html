@@ -9,8 +9,8 @@
 
     <div class="row">
         <div class="col-md-3">
-    
-            <div class="card country-info mb-4">
+
+            <section class="card country-info mb-4">
 
                 <figure>
                     <img class="country-flag" [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" [attr.alt]="country.code">
@@ -22,9 +22,14 @@
                 </h1>
 
                 <div *ngIf="country.content" class="country-content" [innerHTML]="country.content"></div>
-    
-            </div>
-    
+
+            </section>
+
+			<section class="mb-4">
+                <h2 class="h2-yellow">Related Articles</h2>
+				<app-articles [articles]="articles"></app-articles>
+            </section>
+
         </div>
         <div class="col-md-9">
 
@@ -109,6 +114,6 @@
             </section>
 
         </div>
-    </div> 
+    </div>
 
 </section>

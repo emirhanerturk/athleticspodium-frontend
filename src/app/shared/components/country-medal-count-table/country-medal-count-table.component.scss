@@ -1,12 +1,8 @@
-
 .table-medals {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.btn {
-    float: right;
-
-    &:after {
-        clear: both;
-    }
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }

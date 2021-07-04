@@ -15,6 +15,7 @@ export class AthleteService {
   /**
    * Get all athletes
    */
+  @memoize({ json: true })
   List(filters?: object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
 
     const query = GenerateQueryString({ ...filters, fields, order, limit, offset })
@@ -27,6 +28,7 @@ export class AthleteService {
    * Get the athlete details
    * @param athlete_id
    */
+  @memoize()
   GetAthlete(athlete_id: number): Promise<IResponse> {
 
     return this.apiService.get(`/athletes/${athlete_id}`);

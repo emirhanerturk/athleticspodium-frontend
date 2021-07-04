@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppService, CountryService } from "@services/index";
 import { IBreadcrumb, ICountry } from '@interfaces/index';
 import { ENavigation } from '@enums/navigation.enum';
+import { Article } from '@models/article.model';
+import { ArticleService } from '@services/article.service';
 
 @Component({
   selector: 'app-detail',
@@ -22,11 +24,14 @@ export class DetailComponent implements OnInit {
   medals_counts: any;
   top_athletes: any[];
 
+  articles: Article[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
     private countryService: CountryService,
+    private articleService: ArticleService,
   ) { }
 
   async ngOnInit() {
@@ -39,7 +44,7 @@ export class DetailComponent implements OnInit {
       this.getCountry();
 
     });
-    
+
   }
 
   async getCountry(){
@@ -52,7 +57,7 @@ export class DetailComponent implements OnInit {
 
       this.appService.setTitle(this.country.name);
       this.appService.setMeta(`This page is containing all international championship medals in athletics for ${this.country.name} (${this.country.code}).`);
-      
+
       this.breadcrumbs = [
         { name: 'Countries', uri: `/country` },
         { name: `${this.country.name} (${this.country.code})`, uri: `/country/${this.country.code}` },
@@ -69,23 +74,21 @@ export class DetailComponent implements OnInit {
           total: 0,
         };
 
-        this.medals.map(m => {
+        this.medals.forEach(m => {
           this.medals_counts.gold += Number(m.gold);
           this.medals_counts.silver += Number(m.silver);
           this.medals_counts.bronze += Number(m.bronze);
           this.medals_counts.total += Number(m.total);
         })
 
-      } else {
-        // Necessary error
       }
 
       const res3 = await this.countryService.GetAthletes(this.country_code, 10);
       if (res3.success){
         this.top_athletes = res3.data;
-      } else {
-        // Necessary error
       }
+
+      this.getArticles();
 
     } else if (res.success){
       this.router.navigateByUrl('/404');
@@ -94,6 +97,15 @@ export class DetailComponent implements OnInit {
     }
 
     this.loading = false;
+
+  }
+
+  async getArticles(){
+
+    const res = await this.articleService.List({ country: this.country_code }, 10);
+    if (res.success){
+      this.articles = res.data.rows;
+    }
 
   }
 

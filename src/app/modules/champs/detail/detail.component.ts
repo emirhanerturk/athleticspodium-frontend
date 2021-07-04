@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService, ChampsService } from "@services/index";
 import { IBreadcrumb, IChamps } from '@interfaces/index';
 import { ENavigation } from "@enums/navigation.enum";
+import { ArticleService } from '@services/article.service';
+import { Article } from '@models/article.model';
 
 @Component({
   selector: 'app-detail',
@@ -19,11 +21,14 @@ export class DetailComponent implements OnInit {
   champs: IChamps;
   totals: any[];
 
+  articles: Article[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
     private champsService: ChampsService,
+    private articleService: ArticleService,
   ) { }
 
   ngOnInit() {
@@ -31,7 +36,7 @@ export class DetailComponent implements OnInit {
     this.appService.setNavigation(ENavigation.CHAMPS);
 
     this.route.params.subscribe(params => {
-      
+
       const champ_slug = params.champ_slug;
       this.getChamps(champ_slug);
 
@@ -57,6 +62,7 @@ export class DetailComponent implements OnInit {
       ];
 
       this.getTotals();
+      this.getArticles();
 
     } else {
       this.error = res.error
@@ -66,7 +72,7 @@ export class DetailComponent implements OnInit {
 
   }
 
-  async getTotals(){
+  async getTotals(): Promise<void> {
 
     const res = await this.champsService.GetCounts(this.champs.id);
     if (res){
@@ -75,11 +81,17 @@ export class DetailComponent implements OnInit {
 
   }
 
-  changeMeeting(e: any){
+  async getArticles(): Promise<void> {
 
-    const value = e.target.value;
-    this.router.navigateByUrl(`/champs/${this.champs.slug}/${value}`);
+    const res = await this.articleService.List({ champ: this.champs.id }, 5);
+    if (res.success){
+      this.articles = res.data.rows;
+    }
 
+  }
+
+  changeMeeting(slug: string): void {
+    this.router.navigateByUrl(`/champs/${this.champs.slug}/${slug}`);
   }
 
 }

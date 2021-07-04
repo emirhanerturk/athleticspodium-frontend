@@ -4,12 +4,16 @@
   font-family: $font-ubuntu;
 
   .article-item {
-    padding: 15px;
     border-bottom: 1px solid #eee;
     transition: all .2s ease-in-out;
 
     &:hover {
       background-color: #f6f6f6;
+    }
+
+    a {
+      display: block;
+      padding: 15px;
     }
 
     h4 {

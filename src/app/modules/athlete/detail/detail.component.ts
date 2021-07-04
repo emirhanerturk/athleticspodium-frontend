@@ -25,7 +25,7 @@ export class DetailComponent implements OnInit {
   medals: IMedal[];
   medals_counts: any;
   medals_counts_total: any;
-  relatedArticles: Article[] = [];
+  articles: Article[] = [];
 
   mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
 
@@ -79,15 +79,8 @@ export class DetailComponent implements OnInit {
 
       }
 
-      const res3 = await this.athleteService.GetRelatedAthletes(this.athlete_id);
-      if (res3.success){
-        this.relateds = res3.data;
-      }
-
-      const res4 = await this.articleService.List({ athlete: this.athlete_id }, 5);
-      if (res4.success){
-        this.relatedArticles = res4.data.rows;
-      }
+      this.relatedAthletes();
+      this.getArticles();
 
     } else if (res.success){
       this.router.navigateByUrl('/404');
@@ -151,6 +144,24 @@ export class DetailComponent implements OnInit {
 
     this.medals_counts = counts_obj;
     this.medals_counts_total = total;
+
+  }
+
+  async relatedAthletes(){
+
+    const res = await this.athleteService.GetRelatedAthletes(this.athlete_id);
+    if (res.success){
+      this.relateds = res.data;
+    }
+
+  }
+
+  async getArticles() {
+
+    const res = await this.articleService.List({ athlete: this.athlete_id }, 5);
+    if (res.success){
+      this.articles = res.data.rows;
+    }
 
   }
 
