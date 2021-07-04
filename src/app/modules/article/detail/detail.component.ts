@@ -19,7 +19,7 @@ export class DetailComponent implements OnInit {
   error: any;
   breadcrumbs: IBreadcrumb[];
 
-  mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.articles}`;
+  mediaPath = `${environment.cdn.host}/${environment.cdn.media.articles}/`;
 
   articleId: number;
   article: Article;

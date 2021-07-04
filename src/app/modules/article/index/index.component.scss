@@ -1,0 +1,52 @@
+@import 'variables';
+
+.articles {
+	font-family: $font-ubuntu;
+
+	.article-item {
+		display: block;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		padding: 0;
+		margin-bottom: 20px;
+
+		&:hover {
+			.article-figure img {
+				transform: scale(1.04);
+			}
+		}
+
+		.article-figure {
+			height: 140px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			overflow: hidden;
+
+			img {
+				height: 140px;
+				object-fit: cover;
+				transition: all .3s ease;
+			}
+		}
+
+		.article-content {
+			padding: 10px;
+
+			h4 {
+				font-size: 18px;
+				font-weight: 700;
+				line-height: 20px;
+				margin-bottom: 10px;
+			}
+
+			p {
+				font-size: 14px;
+				line-height: 18px;
+				margin-bottom: 10px;
+			}
+
+		}
+
+	}
+
+}

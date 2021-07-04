@@ -13,7 +13,7 @@
 			<section class="card mb-4 article">
 
 				<figure class="article-figure">
-					<img [src]="mediaPath + '/' + article.image.uri" class="img-fluid" alt="">
+					<img [src]="mediaPath + article.image.uri" class="img-fluid" alt="">
 					<div *ngIf="article.image.credit" class="article-figure-credit">
 						{{ article.image.credit }}
 					</div>

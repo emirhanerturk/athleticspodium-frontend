@@ -20,7 +20,7 @@
                 <h1 class="h1 mb-2">
                     {{ country.name }}
                 </h1>
-    
+
             </div>
 
         </div>
@@ -29,39 +29,41 @@
             <div class="country-athletes-header mb-4">
                 <h1 class="h1 mb-4 m-lg-0">{{ country.name }}'s All Athletes</h1>
                 <div class="search-wrapper">
-                    <input class="form-input" type="text" (keyup)="search($event)" placeholder="Type something for search on list" autocomplete="off" maxlength="40">
+                    <input class="form-input" type="text" (keyup)="search($event)" placeholder="Type something for search on list..." autocomplete="off" maxlength="40">
                 </div>
             </div>
 
-            <table class="table-medals">
-                <thead>
-                    <tr>
-                        <th>Athlete</th>
-                        <th class="text-center" style="width: 70px">Gender</th>
-                        <th class="text-center">Gold</th>
-                        <th class="text-center">Silver</th>
-                        <th class="text-center">Bronze</th>
-                        <th class="text-center">Total</th>
-                    </tr>
-                </thead>
-                <tbody style="text-align: center;">
-                    <tr *ngFor="let row of athletes">
-                        <td>
-                            <a [routerLink]="'/athlete/' + row.athlete.id + '/' + row.athlete.slug">
-                                {{ row.athlete.first_name }} {{ row.athlete.last_name }}
-                                <img *ngIf="row.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <img class="gender-icon" [src]="'/assets/icons/gender-' + (row.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
-                        </td>
-                        <td class="text-center">{{ row.gold }}</td>
-                        <td class="text-center">{{ row.silver }}</td>
-                        <td class="text-center">{{ row.bronze }}</td>
-                        <td class="text-center font-bold">{{ row.total }}</td>
-                    </tr>
-                </tbody>
-            </table>
+			<div class="table-responsive">
+				<table class="table-medals">
+					<thead>
+						<tr>
+							<th>Athlete</th>
+							<th class="text-center" style="width: 70px">Gender</th>
+							<th class="text-center">Gold</th>
+							<th class="text-center">Silver</th>
+							<th class="text-center">Bronze</th>
+							<th class="text-center">Total</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: center;">
+						<tr *ngFor="let row of athletes">
+							<td>
+								<a [routerLink]="'/athlete/' + row.athlete.id + '/' + row.athlete.slug">
+									{{ row.athlete.first_name }} {{ row.athlete.last_name }}
+									<img *ngIf="row.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+								</a>
+							</td>
+							<td class="text-center">
+								<img class="gender-icon" [src]="'/assets/icons/gender-' + (row.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
+							</td>
+							<td class="text-center">{{ row.gold }}</td>
+							<td class="text-center">{{ row.silver }}</td>
+							<td class="text-center">{{ row.bronze }}</td>
+							<td class="text-center font-bold">{{ row.total }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
             <app-pagination *ngIf="count && !searchKey" [pageSize]="pageSize" [total]="count" [currentPage]="page" (changedPage)="changedPage($event)"></app-pagination>
 
