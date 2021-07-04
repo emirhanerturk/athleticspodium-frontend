@@ -5,6 +5,8 @@ import { environment } from "@env/environment";
 import { AppService, AthleteService } from "@services/index";
 import { IBreadcrumb, IAthlete, IMedal, IRelatedAthlete } from '@interfaces/index';
 import { ENavigation } from "@enums/navigation.enum";
+import { Article } from '@models/article.model';
+import { ArticleService } from '@services/article.service';
 
 @Component({
   selector: 'app-detail',
@@ -23,6 +25,8 @@ export class DetailComponent implements OnInit {
   medals: IMedal[];
   medals_counts: any;
   medals_counts_total: any;
+  relatedArticles: Article[] = [];
+
   mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
 
   showPicture: number = null;
@@ -32,7 +36,8 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private athleteService: AthleteService
+    private athleteService: AthleteService,
+    private articleService: ArticleService
   ) { }
 
   ngOnInit() {
@@ -77,6 +82,11 @@ export class DetailComponent implements OnInit {
       const res3 = await this.athleteService.GetRelatedAthletes(this.athlete_id);
       if (res3.success){
         this.relateds = res3.data;
+      }
+
+      const res4 = await this.articleService.List({ athlete: this.athlete_id }, 5);
+      if (res4.success){
+        this.relatedArticles = res4.data.rows;
       }
 
     } else if (res.success){
@@ -141,13 +151,6 @@ export class DetailComponent implements OnInit {
 
     this.medals_counts = counts_obj;
     this.medals_counts_total = total;
-
-  }
-
-  toggleBio(e: Event){
-
-    e.preventDefault();
-    this.expandBio = !this.expandBio;
 
   }
 

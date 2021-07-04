@@ -14,32 +14,33 @@
 
 				<figure class="article-figure">
 					<img [src]="mediaPath + '/' + article.image.uri" class="img-fluid" alt="">
-					<div *ngIf="article.image.credit || article.image.caption" class="article-figure-caption">
-						<span *ngIf="article.image.credit">
-							{{ article.image.credit }}
-						</span>
-						<span *ngIf="article.image.caption">
-							{{ article.image.caption }}
-						</span>
+					<div *ngIf="article.image.credit" class="article-figure-credit">
+						{{ article.image.credit }}
+					</div>
+					<div *ngIf="article.image.caption" class="article-figure-caption">
+						{{ article.image.caption }}
 					</div>
 				</figure>
 
 				<div class="article-content">
 
-					<h1 class="h1">{{ article.title }}</h1>
+					<h1 class="article-title">{{ article.title }}</h1>
 
 					<p class="article-spot">{{ article.spot }}</p>
+
+					<div [innerHTML]="article.content" class="text-content"></div>
 
 					<time class="article-date">
 						Created date: {{ article.created_date | date }}
 						<ng-container *ngIf="article.updated_date">- Updated date: {{ article.updated_date | date }}</ng-container>
 					</time>
 
-					<div [innerHTML]="article.content" class="text-content"></div>
-
 				</div>
 
 			</section>
+
+		</div>
+		<div class="col-12 col-md-4">
 
 			<section class="mb-4">
 
@@ -69,17 +70,9 @@
 
 			</section>
 
-		</div>
-		<div class="col-12 col-md-4">
-
 			<section class="mb-4">
-				<h2 class="h2-yellow">Featured Articles</h2>
-				<div class="card">
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
+				<h2 class="h2-yellow">Latest Articles</h2>
+				<app-articles [articles]="latestArticles"></app-articles>
 			</section>
 
 		</div>

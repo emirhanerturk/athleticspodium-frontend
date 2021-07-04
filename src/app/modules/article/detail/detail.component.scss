@@ -1,21 +1,22 @@
+@import 'variables';
 
 .article {
+  font-family: $font-ubuntu;
   padding: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
   .article-figure {
     position: relative;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    overflow: hidden;
 
     img {
       max-height: 400px;
       object-fit: cover;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
 
-    .article-figure-caption {
+    .article-figure-credit, .article-figure-caption {
       position: absolute;
       bottom: 0;
       right: 0;
@@ -23,33 +24,50 @@
       font-size: 12px;
       line-height: 14px;
       color: #fff;
-
-      span {
-        display: block;
-        background-color: rgba(0,0,0,.4);
-        padding: 4px 8px;
-        border-top-left-radius: 4px;
-      }
-
+      background-color: rgba(0,0,0,.4);
+      padding: 4px 8px;
+      border-top-left-radius: 4px;
     }
+
+    .article-figure-caption {
+      top: 100%;
+      bottom: unset;
+      background-color: transparent;
+      color: #999;
+      font-style: italic;
+    }
+
   }
 
   .article-content {
     padding: 20px;
 
+    .article-title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 60px;
+      margin-bottom: 10px;
+    }
+
     .article-spot {
       display: block;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 24px;
+      text-align: justify;
       margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .text-content {
+      margin-bottom: 10px;
     }
 
     .article-date {
       display: block;
       font-size: 12px;
       text-transform: uppercase;
-      margin-bottom: 20px;
     }
 
   }

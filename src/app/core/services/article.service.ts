@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from "@services/api.service";
 import { memoize } from "@decorators/memoize.decorator";
 import { IResponse } from '@core/interfaces/response.interface';
+import { GenerateQueryString } from './util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,17 @@ import { IResponse } from '@core/interfaces/response.interface';
 export class ArticleService {
 
   constructor(private apiService: ApiService) { }
+
+  /**
+   * Get all athletes
+   */
+  @memoize({ json: true })
+  List(filters?: object, limit?: number, offset?: number): Promise<IResponse> {
+
+    const query = GenerateQueryString({ ...filters, limit, offset })
+    return this.apiService.get(`/articles?${query}`);
+
+  }
 
   /**
    * Get the article details
@@ -22,5 +34,14 @@ export class ArticleService {
 
   }
 
+  /**
+   * Get featured articles
+   */
+  @memoize()
+  GetFeaturedArticles(): Promise<IResponse> {
+
+    return this.apiService.get(`/featured-articles`);
+
+  }
 
 }

@@ -10,6 +10,7 @@ import { MedalSearchFormComponent } from '@shared/components/medal-search-form/m
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { CountryMedalCountTableComponent } from '@shared/components/country-medal-count-table/country-medal-count-table.component';
 import { ContactFormComponent } from '@shared/components/contact-form/contact-form.component';
+import { ArticlesComponent } from '@shared/components/articles/articles.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ContactFormComponent } from '@shared/components/contact-form/contact-fo
     PaginationComponent,
     CountryMedalCountTableComponent,
     ContactFormComponent,
+    ArticlesComponent
   ],
   exports: [
     LoaderComponent,
@@ -34,6 +36,7 @@ import { ContactFormComponent } from '@shared/components/contact-form/contact-fo
     PaginationComponent,
     CountryMedalCountTableComponent,
     ContactFormComponent,
+    ArticlesComponent
   ]
 })
 export class ComponentsModule { }

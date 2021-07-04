@@ -24,6 +24,8 @@ export class DetailComponent implements OnInit {
   articleId: number;
   article: Article;
 
+  latestArticles: Article[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -40,10 +42,13 @@ export class DetailComponent implements OnInit {
       this.getArticle();
     });
 
+    this.getLatest();
+
   }
 
   async getArticle(): Promise<void> {
 
+    this.article = null;
     this.loading = true;
     this.error = null;
 
@@ -61,12 +66,21 @@ export class DetailComponent implements OnInit {
       ];
 
     } else if (res.success){
-      // this.router.navigateByUrl('/404');
+      this.router.navigateByUrl('/404');
     } else {
       this.error = res.error;
     }
 
     this.loading = false;
+
+  }
+
+  async getLatest(): Promise<void> {
+
+    const res = await this.articleService.List({}, 10);
+    if (res.success){
+      this.latestArticles = res.data.rows;
+    }
 
   }
 

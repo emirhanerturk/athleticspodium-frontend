@@ -1,0 +1,29 @@
+@import 'variables';
+
+.articles {
+  font-family: $font-ubuntu;
+
+  .article-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      background-color: #f6f6f6;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+  }
+
+}

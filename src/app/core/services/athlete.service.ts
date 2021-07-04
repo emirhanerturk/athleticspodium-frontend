@@ -15,7 +15,7 @@ export class AthleteService {
   /**
    * Get all athletes
    */
-  List(filters?: Object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
+  List(filters?: object, fields?: string[], order?: string, limit?: number, offset?: number): Promise<IResponse> {
 
     const query = GenerateQueryString({ ...filters, fields, order, limit, offset })
 

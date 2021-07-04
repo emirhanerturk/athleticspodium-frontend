@@ -29,10 +29,10 @@
                 </ng-template>
 
             </section>
-            
+
             <section class="mb-4 d-none d-md-block">
                 <h2 class="h2-yellow">Related Articles</h2>
-                <p>There is no articles yet.</p>
+				<app-articles [articles]="relatedArticles"></app-articles>
             </section>
 
         </div>
@@ -176,7 +176,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
-                                        <img src="/assets/icons/info.svg" class="info-circle" alt="">                                        
+                                        <img src="/assets/icons/info.svg" class="info-circle" alt="">
                                     </span>
                                 </td>
                             </tr>
@@ -228,12 +228,12 @@
 
             <section class="mb-4 d-block d-md-none">
                 <h2 class="h2-yellow">Related Articles</h2>
-                <p>There is no articles yet.</p>
+				<app-articles [articles]="relatedArticles"></app-articles>
             </section>
 
         </div>
     </div>
-    
+
 </section>
 
 <div *ngIf="athlete" class="picture-overlay" [class.active]="showPicture !== null" (click)="showPicture = null">

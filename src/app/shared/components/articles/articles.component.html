@@ -1,0 +1,12 @@
+
+<div *ngIf="articles.length" class="card p-0">
+	<ul class="articles">
+		<li *ngFor="let article of articles" class="article-item">
+			<a [routerLink]="['/article', article.id, article.slug]">
+				<h4>{{ article.title }}</h4>
+				<p>{{ article.description }}</p>
+			</a>
+		</li>
+	</ul>
+</div>
+<p *ngIf="!articles.length">There is no articles yet.</p>
