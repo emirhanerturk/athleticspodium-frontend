@@ -5,13 +5,13 @@
 
 <section *ngIf="!loading && !error" class="main-container">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="countries-header mb-4">
 
-        <h1 class="h1 mb-0">Countries {{ searchKey ? '— with contains "' + searchKey +'" key' : '' }}</h1>
-        <div style="width: 240px">
-            <input class="form-input" type="text" (keyup)="search($event)" placeholder="Type something for search on list" autocomplete="off" maxlength="40">
+        <h1 class="h1">Countries<small>{{ searchKey ? ' — with contains "' + searchKey +'" key' : '' }}</small></h1>
+        <div class="search-wrapper">
+            <input class="form-input" type="text" (keyup)="search($event)" placeholder="Type something for search on list..." autocomplete="off" maxlength="40">
         </div>
-        
+
     </div>
 
     <ul class="filters">
@@ -30,7 +30,7 @@
                     <h6>{{ item.name }}</h6>
                 </div>
             </a>
-        </li>        
+        </li>
     </ul>
 
     <div *ngIf="countries.length === 0">

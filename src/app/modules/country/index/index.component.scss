@@ -1,9 +1,41 @@
 
 @import 'variables';
 
-h1 small {
-    font-size: 12px;
-    font-weight: normal;
+.countries-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.h1 {
+		margin-bottom: 0;
+
+		small {
+			font-size: 14px;
+			font-weight: normal;
+		}
+	}
+
+	.search-wrapper {
+		width: 260px;
+	}
+
+	@media #{$responsive-md} {
+		align-items: flex-start;
+        flex-direction: column;
+
+		.h1 {
+			margin-bottom: 10px;
+
+			small {
+				font-size: 12px;
+			}
+		}
+
+		.search-wrapper {
+			width: 100%;
+		}
+    }
+
 }
 
 .filters {
@@ -22,6 +54,10 @@ h1 small {
         cursor: pointer;
         transition: all .2s ease;
         border-bottom: 0px solid transparent;
+
+		@media #{$responsive-md} {
+			margin-right: 4px;
+		}
 
         &.active {
             border-bottom: 4px solid $color-yellow;
@@ -54,7 +90,7 @@ h1 small {
                 background-color: #fff;
                 box-shadow: 0px 1px 1px rgba(0,0,0,.15);
             }
-        
+
             h5 {
                 display: block;
                 font-weight: 700;
@@ -70,12 +106,12 @@ h1 small {
                 color: #4b4f54;
                 display: -webkit-box;
                 -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;  
+                -webkit-box-orient: vertical;
                 overflow: hidden;
             }
-            
+
         }
 
     }
-    
+
 }
