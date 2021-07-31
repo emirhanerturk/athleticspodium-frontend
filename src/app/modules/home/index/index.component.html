@@ -3,7 +3,37 @@
     <div class="row">
         <div class="col-12 col-md-8">
 
-            <section class="intro card p-0 mb-4">
+			<section *ngIf="featuredArticle" class="featured-articles mb-4">
+
+				<a [routerLink]="['/article', featuredArticle.article.id, featuredArticle.article.slug]" class="card featured-article-headline">
+					<figure class="article-figure">
+						<img [src]="mediaPathArticle + featuredArticle.article.image.uri" alt="">
+					</figure>
+					<div class="article-content">
+						<h2>{{ featuredArticle.article.title }}</h2>
+						<p>{{ featuredArticle.article.description }}</p>
+						<span class="btn btn-sm">Read more</span>
+					</div>
+				</a>
+
+				<div class="row">
+					<div *ngFor="let featuredArticle of featuredArticles" class="col-12 col-md-6 col-lg-4">
+						<a [routerLink]="['/article', featuredArticle.article.id, featuredArticle.article.slug]" class="card featured-article-item">
+							<figure class="article-figure">
+								<img [src]="mediaPathArticle + featuredArticle.article.image.uri" alt="">
+							</figure>
+							<div class="article-content">
+								<h4>{{ featuredArticle.article.title }}</h4>
+								<p>{{ featuredArticle.article.description }}</p>
+								<span class="btn btn-sm">Read more</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+			</section>
+
+            <!-- <section class="intro card p-0 mb-4">
                 <a routerLink="/about">
                     <img src="/assets/media/home-intro.jpg" class="img-fluid border-radius-2" alt="">
                 </a>
@@ -36,7 +66,7 @@
                     </p>
 
                 </div>
-            </section>
+            </section> -->
 
             <section class="mb-4" *ngIf="featuredAthletes?.length">
                 <h2 class="h2-yellow">Featured Athletes</h2>
@@ -44,7 +74,7 @@
 
                     <div class="featured-athletes-first">
                         <a [routerLink]="['/athlete', featuredAthletes[0].athlete_id, featuredAthletes[0].athlete.slug]">
-                            <img *ngIf="featuredAthletes[0].athlete.image?.length; else noImage" class="featured-athletes-first-picture border-radius-2" [src]="mediaPath + '/' + featuredAthletes[0].athlete.id + '/' + featuredAthletes[0].athlete.image[0].uri" alt="">
+                            <img *ngIf="featuredAthletes[0].athlete.image?.length; else noImage" class="featured-athletes-first-picture border-radius-2" [src]="mediaPathAthlete + '/' + featuredAthletes[0].athlete.id + '/' + featuredAthletes[0].athlete.image[0].uri" alt="">
                             <ng-template #noImage>
                                 <img class="featured-athletes-first-picture border-radius-2" [src]="'/assets/placeholders/athlete-' + (featuredAthletes[0].athlete.gender ? 'men' : 'women') + '.jpg'" alt="">
                             </ng-template>
@@ -77,7 +107,7 @@
                             </li>
                         </ng-container>
                     </ul>
-                
+
                 </div>
             </section>
 
