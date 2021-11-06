@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-color: #f9f9f9;
+    background-color: #313339;
     color: #4b4f54;
     font-family: $font-roboto;
     font-size: 14px;
@@ -301,6 +301,19 @@ textarea.form-input {
         pointer-events: none;
     }
 
+}
+
+.related-topics {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-top: 8px;
+
+  li {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
 }
 
 .img-fluid {

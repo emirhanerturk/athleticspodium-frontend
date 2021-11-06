@@ -1,6 +1,7 @@
 .app-container {
     width: 100%;
     height: 100%;
+    background-color: #f9f9f9;
 
     &.blur {
         filter: blur(3px);
@@ -18,5 +19,5 @@
             background-color: rgba(0,0,0,.7);
         }
     }
-    
+
 }

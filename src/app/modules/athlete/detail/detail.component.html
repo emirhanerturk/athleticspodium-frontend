@@ -30,6 +30,17 @@
 
             </section>
 
+			<section *ngIf="olympians?.length" class="mb-4 d-none d-md-block">
+                <h2 class="h2-yellow">x{{ olympians.length }} Olympian</h2>
+				<ul class="related-topics">
+					<li *ngFor="let medal of olympians">
+						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
+							{{ medal.meeting.year }}
+						</a>
+					</li>
+				</ul>
+            </section>
+
             <section class="mb-4 d-none d-md-block">
                 <h2 class="h2-yellow">Related Articles</h2>
 				<app-articles [articles]="articles"></app-articles>
@@ -224,6 +235,17 @@
                     </tbody>
                 </table>
 
+            </section>
+
+			<section *ngIf="olympians?.length" class="mb-4 d-block d-md-none">
+                <h2 class="h2-yellow">x{{ olympians.length }} Olympian</h2>
+				<ul class="related-topics">
+					<li *ngFor="let medal of olympians">
+						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
+							{{ medal.meeting.year }}
+						</a>
+					</li>
+				</ul>
             </section>
 
             <section class="mb-4 d-block d-md-none">
