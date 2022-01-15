@@ -15,9 +15,9 @@
             <div class="row">
                 <div class="col-12 col-md-8">
 
-                    <h4>{{ popular ? 'Popular ' : '' }}Athletes</h4>
+                    <h4 class="h2-yellow">{{ popular ? 'Popular ' : '' }}Athletes</h4>
 
-                    <div *ngIf="athletes.length === 0" class="mb-5">Not found any athlete.</div>
+                    <div *ngIf="!athletes.length" class="mb-5">Not found any athlete.</div>
 
                     <table *ngIf="athletes.length" class="athletes mb-4">
                         <thead>
@@ -45,10 +45,20 @@
                 </div>
                 <div class="col-12 col-md-4">
 
-                    <h4>{{ popular ? 'Popular ' : '' }}Countries</h4>
+					<!-- articles -->
+					<h4 class="h2-yellow">{{ popular ? 'Popular ' : '' }}Articles</h4>
+					<div *ngIf="!articles.length">Not found any article.</div>
+					<div *ngIf="articles.length" class="champs">
+						<div *ngFor="let article of articles">
+							<a [routerLink]="'/article/' + article.id + '/' + article.slug" (click)="close()">
+								<span>{{ article.title }}</span>
+							</a>
+						</div>
+					</div>
 
-                    <div *ngIf="countries.length === 0">Not found any country.</div>
-
+					<!-- countries -->
+                    <h4 class="h2-yellow mt-4">{{ popular ? 'Popular ' : '' }}Countries</h4>
+                    <div *ngIf="!countries.length">Not found any country.</div>
                     <div *ngIf="countries.length" class="countries">
                         <a *ngFor="let country of countries" [routerLink]="'/country/' + country.code" (click)="close()">
                             <img [src]="'/assets/flags/' + country.code.toLowerCase() + '.svg'" alt="">
@@ -56,10 +66,9 @@
                         </a>
                     </div>
 
-                    <h4 class="mt-5">{{ popular ? 'Popular ' : '' }}Champs</h4>
-
-                    <div *ngIf="champs.length === 0">Not found any champs.</div>
-
+					<!-- champs -->
+                    <h4 class="h2-yellow mt-4">{{ popular ? 'Popular ' : '' }}Champs</h4>
+                    <div *ngIf="!champs.length">Not found any champs.</div>
                     <div *ngIf="champs.length" class="champs">
                         <div *ngFor="let champ of champs">
                             <a [routerLink]="'/champs/' + champ.slug" (click)="close()">

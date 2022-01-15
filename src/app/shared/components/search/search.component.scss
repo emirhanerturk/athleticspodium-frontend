@@ -71,7 +71,7 @@
                     font-size: 32px;
                     line-height: 32px;
                 }
-                
+
                 &::placeholder{
                     color: #444;
                 }
@@ -111,11 +111,11 @@
             &::-webkit-scrollbar {
                 width: 4px;
             }
-        
+
             &::-webkit-scrollbar-track {
                 background: rgba(255,255,55,.2);
             }
-        
+
             &::-webkit-scrollbar-thumb {
                 background: var(--yellow);
                 border-radius: 4px;
@@ -123,7 +123,7 @@
 
             h4 {
                 font-weight: bold;
-                font-size: 20px;            
+                font-size: 20px;
                 margin-bottom: 20px;
             }
 
@@ -141,24 +141,19 @@
                     padding: 6px 8px;
                     padding-left: 0;
                     vertical-align: middle;
-                    
+
                     br {
                         display: none;
                     }
                 }
+            }
 
-                // tbody > tr.highlight {
+			.articles, .champs {
 
-                //     .name {
-                //         font-size: 32px;
-                //         font-weight: bold;
-                //     }
-
-                //     br {
-                //         display: block;
-                //     }
-
-                // }
+                a {
+                    display: inline-block;
+                    padding: 10px 0;
+                }
             }
 
             .countries {
@@ -180,14 +175,6 @@
                         font-weight: bold;
                         margin-left: 20px;
                     }
-                }
-            }
-
-            .champs {
-
-                a {
-                    display: inline-block;
-                    padding: 10px 0;
                 }
             }
 
