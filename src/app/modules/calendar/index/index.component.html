@@ -13,13 +13,13 @@
             <div class="card mb-4">
                 <ul class="years">
                     <li *ngFor="let year of years">
-                        <a [routerLink]="'/calendar/' + year" [class.active]="active_year === year">
+                        <a [routerLink]="'/calendar/' + year" [class.active]="activeYear === year">
                             {{ year }}
                         </a>
                     </li>
                 </ul>
             </div>
-    
+
         </div>
         <div class="col-12 col-md-10">
 
@@ -29,16 +29,16 @@
                     Years
                 </h4>
 
-                <select class="form-select" name="years" [value]="active_year" (change)="changeYear($event)">
+                <select class="form-select" name="years" [value]="activeYear" (change)="changeYear($event)">
                     <ng-container *ngFor="let year of years">
                         <option [value]="year">{{ year }}</option>
                     </ng-container>
                 </select>
 
             </section>
-    
+
             <h1 class="h1">
-                {{ active_year }} Calendar
+                {{ activeYear }} Calendar
             </h1>
 
             <app-loader *ngIf="loading" size="partial"></app-loader>
@@ -83,13 +83,13 @@
                         </tbody>
                     </table>
                 </div>
-    
+
                 <div *ngIf="meetings.length === 0">
                     Not found any meeting in this year.
                 </div>
 
             </section>
-    
+
         </div>
     </div>
 

@@ -4,23 +4,16 @@
 <app-error *ngIf="error" [error]="error"></app-error>
 
 <section *ngIf="!loading && !error" class="main-container">
-    
+
     <h1 class="h1 mb-4">Champs</h1>
 
-    <div class="row">
-
-        <ng-container *ngFor="let category of categories">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <h2 class="h2-yellow">{{ category.name }}</h2>
-    
-                <ul class="champs">
-                    <li *ngFor="let item of category.champs">
-                        <a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
-                    </li>
-                </ul>
-            </div>
-        </ng-container>
-
-    </div>
+	<div *ngFor="let category of categories" class="champs">
+		<h2 class="h2-yellow">{{ category.name }}</h2>
+		<ul class="champs">
+			<li *ngFor="let item of category.champs">
+				<a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
+			</li>
+		</ul>
+	</div>
 
 </section>

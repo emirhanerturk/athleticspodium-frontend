@@ -30,8 +30,8 @@
 
             </section>
 
-			<section *ngIf="olympians?.length" class="mb-4 d-none d-md-block">
-                <h2 class="h2-yellow">x{{ olympians.length }} Olympian</h2>
+			<!-- <section *ngIf="olympians?.length" class="mb-4 d-none d-md-block">
+                <h2 class="h2-yellow">{{ olympians.length }}x Olympian</h2>
 				<ul class="related-topics">
 					<li *ngFor="let medal of olympians">
 						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
@@ -39,7 +39,7 @@
 						</a>
 					</li>
 				</ul>
-            </section>
+            </section> -->
 
             <section class="mb-4 d-none d-md-block">
                 <h2 class="h2-yellow">Related Articles</h2>
@@ -124,6 +124,46 @@
                 </div>
             </section>
 
+			<section class="athlete-medals-counts mb-4">
+
+                <h2 class="h2-yellow">
+                    {{ athlete.first_name }} {{ athlete.last_name }}'s Totals
+                </h2>
+
+                <table class="table-medals">
+                    <thead>
+                        <tr>
+                            <th>Champs</th>
+                            <th class="text-center">Gold</th>
+                            <th class="text-center">Silver</th>
+                            <th class="text-center">Bronze</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr *ngFor="let champ of medalsCount">
+                            <td>
+                                <a [routerLink]="'/champs/' + champ.slug">
+                                    {{ champ.name }}
+                                </a>
+                            </td>
+                            <td class="text-center">{{ champ.medals.gold }}</td>
+                            <td class="text-center">{{ champ.medals.silver }}</td>
+                            <td class="text-center">{{ champ.medals.bronze }}</td>
+                            <td class="text-center font-bold">{{ champ.medals.total }}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td class="text-center font-bold">{{ medalsCountTotals.gold }}</td>
+                            <td class="text-center font-bold">{{ medalsCountTotals.silver }}</td>
+                            <td class="text-center font-bold">{{ medalsCountTotals.bronze }}</td>
+                            <td class="text-center font-bold">{{ medalsCountTotals.total }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
             <section class="athlete-medals mb-4">
 
                 <h2 class="h2-yellow">
@@ -197,48 +237,8 @@
 
             </section>
 
-            <section class="athlete-medals-counts mb-4">
-
-                <h2 class="h2-yellow">
-                    {{ athlete.first_name }} {{ athlete.last_name }}'s Totals
-                </h2>
-
-                <table class="table-medals">
-                    <thead>
-                        <tr>
-                            <th>Champs</th>
-                            <th class="text-center">Gold</th>
-                            <th class="text-center">Silver</th>
-                            <th class="text-center">Bronze</th>
-                            <th class="text-center">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align: center;">
-                        <tr *ngFor="let champ of medals_counts">
-                            <td>
-                                <a [routerLink]="'/champs/' + champ.slug">
-                                    {{ champ.name }}
-                                </a>
-                            </td>
-                            <td class="text-center">{{ champ.medals.gold }}</td>
-                            <td class="text-center">{{ champ.medals.silver }}</td>
-                            <td class="text-center">{{ champ.medals.bronze }}</td>
-                            <td class="text-center font-bold">{{ champ.medals.total }}</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td class="text-center font-bold">{{ medals_counts_total.gold }}</td>
-                            <td class="text-center font-bold">{{ medals_counts_total.silver }}</td>
-                            <td class="text-center font-bold">{{ medals_counts_total.bronze }}</td>
-                            <td class="text-center font-bold">{{ medals_counts_total.total }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </section>
-
-			<section *ngIf="olympians?.length" class="mb-4 d-block d-md-none">
-                <h2 class="h2-yellow">x{{ olympians.length }} Olympian</h2>
+			<!-- <section *ngIf="olympians?.length" class="mb-4 d-block d-md-none">
+                <h2 class="h2-yellow">{{ olympians.length }}x Olympian</h2>
 				<ul class="related-topics">
 					<li *ngFor="let medal of olympians">
 						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
@@ -246,7 +246,7 @@
 						</a>
 					</li>
 				</ul>
-            </section>
+            </section> -->
 
             <section class="mb-4 d-block d-md-none">
                 <h2 class="h2-yellow">Related Articles</h2>

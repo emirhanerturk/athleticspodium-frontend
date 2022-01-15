@@ -22,9 +22,8 @@ export class DetailComponent implements OnInit {
   athlete: IAthlete;
   relateds: IRelatedAthlete[] = [];
   medals: IMedal[] = [];
-  medals_counts: any;
-  medals_counts_total = { gold: 0, silver: 0, bronze: 0, total: 0 };
-  olympians: IMedal[];
+  medalsCount: any;
+  medalsCountTotals = { gold: 0, silver: 0, bronze: 0, total: 0 };
   articles: Article[] = [];
 
   mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
@@ -89,14 +88,7 @@ export class DetailComponent implements OnInit {
     if (res.success) {
       this.medals = res.data;
       this.calculateMedalsCounts(res.data);
-      this.fetchOlympians();
     }
-  }
-
-  fetchOlympians(): void {
-    this.olympians = this.medals.filter((m) => m.champ_id === 40);
-    console.log(this.medals);
-    console.log(this.olympians);
   }
 
   calculateMedalsCounts(medals: IMedal[]): void {
@@ -117,36 +109,30 @@ export class DetailComponent implements OnInit {
         switch (item.medal) {
           case 1:
             counts[item.champ_id].medals.gold++;
-            this.medals_counts_total.gold++;
+            this.medalsCountTotals.gold++;
             break;
           case 2:
             counts[item.champ_id].medals.silver++;
-            this.medals_counts_total.silver++;
+            this.medalsCountTotals.silver++;
             break;
           case 3:
             counts[item.champ_id].medals.bronze++;
-            this.medals_counts_total.bronze++;
+            this.medalsCountTotals.bronze++;
             break;
         }
         counts[item.champ_id].medals.total++;
-        this.medals_counts_total.total++;
+        this.medalsCountTotals.total++;
       }
     });
 
-    let counts_obj = Object.values(counts);
-    counts_obj = counts_obj.sort((a: any, b: any) => {
+    let countsArray = Object.values(counts);
+    countsArray = countsArray.sort((a: any, b: any) => {
       if (a.rank > b.rank) return 1;
       if (a.rank < b.rank) return -1;
-      // if(a.medals.gold > b.medals.gold) return -1;
-      // if(a.medals.gold < b.medals.gold) return 1;
-      // if(a.medals.silver > b.medals.silver) return -1;
-      // if(a.medals.silver < b.medals.silver) return 1;
-      // if(a.medals.bronze > b.medals.bronze) return -1;
-      // if(a.medals.bronze < b.medals.bronze) return 1;
       return 0;
     });
 
-    this.medals_counts = counts_obj;
+    this.medalsCount = countsArray;
   }
 
   async getRelatedAthletes(): Promise<void> {
