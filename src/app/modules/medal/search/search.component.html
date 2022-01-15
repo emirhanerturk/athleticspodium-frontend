@@ -28,7 +28,7 @@
             <p *ngIf="count === 0" class="mb-4">
                 Not found any medal with your filters.
             </p>
-        
+
             <div class="table-responsive">
                 <table *ngIf="count" class="table-medals">
                     <thead>
@@ -45,9 +45,10 @@
                             <th (click)="changedOrder('medal')" class="orderable text-center" [ngStyle]="{ width: selectedOrder === 'medal' ? '66px' : '60px' }">
                                 Medal <img *ngIf="selectedOrder === 'medal'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
-                            <th (click)="changedOrder('athlete')" class="orderable">
+                            <th style="min-width: 200px" (click)="changedOrder('athlete')" class="orderable">
                                 Athlete <img *ngIf="selectedOrder === 'athlete'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
+							<th style="width: 60px" class="text-center" title="Date of Birth">DoB</th>
                             <th (click)="changedOrder('gender')" class="orderable text-center"  [ngStyle]="{ width: selectedOrder === 'gender' ? '74px' : '60px' }">
                                 Gender <img *ngIf="selectedOrder === 'gender'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
@@ -55,7 +56,7 @@
                                 Country <img *ngIf="selectedOrder === 'country'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
                             <th style="width: 100px" class="text-right">Mark</th>
-                            <th style="width: 80px">W/I</th>
+                            <th style="width: 80px" title="Wind / Info">W/I</th>
                             <th style="width: 80px">Record</th>
                             <th style="width: 60px" class="text-center">Notes</th>
                         </tr>
@@ -87,8 +88,11 @@
                                 </a>
                             </td>
                             <td *ngIf="!medal.athlete">
-                                {{ medal.athlete_name ? medal.athlete_name : '-' }}
+                                {{ medal.athlete_name || '-' }}
                             </td>
+							<td class="text-center font-smaller">
+								{{ medal.athlete?.date_of_birth | date: 'y' }}
+							</td>
                             <td class="text-center p-0">
                                 <img *ngIf="medal.athlete" class="gender-icon" [src]="'/assets/icons/gender-' + (medal.athlete.gender ? 'men' : 'women') + '.svg'" alt="">
                             </td>
@@ -112,7 +116,7 @@
                             </td>
                             <td class="text-center">
                                 <span *ngIf="medal.notes" [attr.aria-label]="medal.notes" data-balloon-pos="up">
-                                    <img src="/assets/icons/info.svg" class="info-circle" alt="">                                        
+                                    <img src="/assets/icons/info.svg" class="info-circle" alt="">
                                 </span>
                             </td>
                         </tr>

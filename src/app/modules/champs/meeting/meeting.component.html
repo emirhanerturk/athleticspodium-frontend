@@ -104,9 +104,10 @@
                                         <tr>
                                             <th style="width: 60px" class="text-center">Medal</th>
                                             <th>Athlete</th>
+                                            <th style="width: 60px" class="text-center" title="Date of Birth">DoB</th>
                                             <th style="width: 90px" class="text-center">Country</th>
                                             <th style="width: 100px" class="text-right">Mark</th>
-                                            <th style="width: 80px">W/I</th>
+                                            <th style="width: 80px" title="Wind / Info">W/I</th>
                                             <th style="width: 80px">Record</th>
                                             <th style="width: 60px" class="text-center">Notes</th>
                                         </tr>
@@ -128,8 +129,11 @@
                                                 </a>
                                             </td>
                                             <td *ngIf="!medal.athlete">
-                                                {{ medal.athlete_name ? medal.athlete_name : '-' }}
+                                                {{ medal.athlete_name || '-' }}
                                             </td>
+											<td class="text-center font-smaller">
+												{{ medal.athlete?.date_of_birth | date: 'y' }}
+											</td>
                                             <td class="text-center text-nowrap">
                                                 <a [routerLink]="'/country/' + medal.country_code" [attr.aria-label]="medal.country.name" data-balloon-pos="up">
                                                     <img class="country-flag" [attr.src]="'/assets/flags/' + medal.country_code.toLowerCase() + '.svg'" alt="">
