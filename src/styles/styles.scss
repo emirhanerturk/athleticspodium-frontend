@@ -81,7 +81,7 @@ body {
     display: block;
     width: 100%;
 
-    @media #{$responsive-sm} {
+    @media #{$responsive-md} {
         overflow-x: auto;
     }
 }

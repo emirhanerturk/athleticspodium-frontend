@@ -36,7 +36,7 @@
                             <th (click)="changedOrder('year')" class="orderable" [ngStyle]="{ width: selectedOrder === 'year' ? '66px' : '60px' }">
                                 Year <img *ngIf="selectedOrder === 'year'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
-                            <th (click)="changedOrder('champs')" class="orderable">
+                            <th style="min-width: 140px" (click)="changedOrder('champs')" class="orderable">
                                 Champs <img *ngIf="selectedOrder === 'champs'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
                             <th (click)="changedOrder('event')" class="orderable">
@@ -45,7 +45,7 @@
                             <th (click)="changedOrder('medal')" class="orderable text-center" [ngStyle]="{ width: selectedOrder === 'medal' ? '66px' : '60px' }">
                                 Medal <img *ngIf="selectedOrder === 'medal'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
-                            <th style="min-width: 200px" (click)="changedOrder('athlete')" class="orderable">
+                            <th style="min-width: 180px" (click)="changedOrder('athlete')" class="orderable">
                                 Athlete <img *ngIf="selectedOrder === 'athlete'" src="/assets/icons/down-arrow.svg" alt="" />
                             </th>
 							<th style="width: 60px" class="text-center" title="Date of Birth">DoB</th>
