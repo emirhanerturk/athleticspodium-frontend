@@ -142,7 +142,6 @@
             align-items: center;
             text-transform: uppercase;
             user-select: none;
-            color: #313339;
             font-family: $font-ubuntu;
             font-weight: 700;
             font-size: 16px;
@@ -166,6 +165,7 @@
 
                 a {
                     display: block;
+            		color: #313339;
                     height: 100%;
                     line-height: 50px;
                     padding: 0 20px;
@@ -179,8 +179,11 @@
 
                 &:hover, &.active {
                     background-color: #313339;
-                    color: #ffdd00;
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+					a {
+                    	color: #ffdd00;
+					}
                 }
             }
         }
