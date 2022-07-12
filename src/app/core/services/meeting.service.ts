@@ -6,11 +6,10 @@ import { IResponse } from '@interfaces/response.interface';
 import { memoize } from "@decorators/memoize.decorator";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MeetingService {
-
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   /**
    * Get all meetings
@@ -18,11 +17,9 @@ export class MeetingService {
    */
   @memoize()
   List(year: number, limit?: number): Promise<IResponse> {
-
     const qs = GenerateQueryString({ year, limit });
 
     return this.apiService.get(`/meetings?${qs}`);
-
   }
 
   /**
@@ -30,20 +27,17 @@ export class MeetingService {
    * @param meeting meeting id or slug
    */
   @memoize()
-  GetMeeting(meeting: string|number): Promise<IResponse>{
-
+  GetMeeting(meeting: string | number): Promise<IResponse> {
     return this.apiService.get(`/meetings/${meeting}`);
-
   }
 
   /**
    * Get the meeting's medals
    * @param meeting_id
    */
+  @memoize()
   GetMedals(meeting_id: number): Promise<IResponse> {
-
     return this.apiService.get(`/meetings/${meeting_id}/medals`);
-
   }
 
   /**
@@ -51,12 +45,10 @@ export class MeetingService {
    * @param meeting_id
    * @param limit
    */
+  @memoize()
   GetCounts(meeting_id: number, limit?: number): Promise<IResponse> {
-
     const qs = GenerateQueryString({ limit });
-    
     return this.apiService.get(`/meetings/${meeting_id}/counts?${qs}`);
-
   }
 
   /**
@@ -64,9 +56,7 @@ export class MeetingService {
    */
   @memoize()
   GetLastMeetings(): Promise<IResponse> {
-
     return this.apiService.get(`/meetings/last-meetings`);
-
   }
 
   /**
@@ -74,9 +64,6 @@ export class MeetingService {
    */
   @memoize()
   GetUpcomingMeetings(): Promise<IResponse> {
-
     return this.apiService.get(`/meetings/upcoming-meetings`);
-
   }
-
 }

@@ -7,22 +7,23 @@ import { ICategoryInfo, ECategoryInfo } from '@enums/category.enum';
 import { memoize } from "@decorators/memoize.decorator";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountryService {
-
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   /**
    * Get all countries
    */
   @memoize({ json: true })
-  List (filters?: Object, fields?: string[], order?: string, limit?: number): Promise<IResponse> {
-
+  List(
+    filters?: Object,
+    fields?: string[],
+    order?: string,
+    limit?: number
+  ): Promise<IResponse> {
     const qs = GenerateQueryString({ fields, order, limit, ...filters });
-
     return this.apiService.get(`/countries?${qs}`);
-
   }
 
   /**
@@ -31,19 +32,16 @@ export class CountryService {
    */
   @memoize()
   GetCountry(country_code: string): Promise<IResponse> {
-
     return this.apiService.get(`/countries/${country_code}`);
-
   }
 
   /**
    * Get counts group by champs
    * @param country_code country code
    */
+  @memoize()
   GetMedals(country_code: string): Promise<IResponse> {
-
     return this.apiService.get(`/countries/${country_code}/medals`);
-
   }
 
   /**
@@ -52,17 +50,11 @@ export class CountryService {
    */
   @memoize()
   GetAthletes(country_code: string, limit?: number): Promise<IResponse> {
-
     const qs = GenerateQueryString({ limit });
-
     return this.apiService.get(`/countries/${country_code}/athletes?${qs}`);
-
   }
 
   GetCategories(): ICategoryInfo[] {
-
-    return ECategoryInfo.filter(i => i.country);
-
+    return ECategoryInfo.filter((i) => i.country);
   }
-
 }
