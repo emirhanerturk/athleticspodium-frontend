@@ -30,16 +30,16 @@
 
             </section>
 
-			<!-- <section *ngIf="olympians?.length" class="mb-4 d-none d-md-block">
+			<section *ngIf="olympians?.length" class="mb-4 d-none d-md-block">
                 <h2 class="h2-yellow">{{ olympians.length }}x Olympian</h2>
 				<ul class="related-topics">
-					<li *ngFor="let medal of olympians">
-						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
-							{{ medal.meeting.year }}
+					<li *ngFor="let meeting of olympians">
+						<a [routerLink]="['/champs', meeting.champ.slug, meeting.slug]" class="btn btn-sm">
+							{{ meeting.year }}, {{ meeting.city }}
 						</a>
 					</li>
 				</ul>
-            </section> -->
+            </section>
 
             <section class="mb-4 d-none d-md-block">
                 <h2 class="h2-yellow">Related Articles</h2>
@@ -237,16 +237,16 @@
 
             </section>
 
-			<!-- <section *ngIf="olympians?.length" class="mb-4 d-block d-md-none">
+			<section *ngIf="olympians?.length" class="mb-4 d-block d-md-none">
                 <h2 class="h2-yellow">{{ olympians.length }}x Olympian</h2>
 				<ul class="related-topics">
-					<li *ngFor="let medal of olympians">
-						<a [routerLink]="['/champs', medal.champ.slug, medal.meeting.slug]" class="btn btn-sm">
-							{{ medal.meeting.year }}
+					<li *ngFor="let meeting of olympians">
+						<a [routerLink]="['/champs', meeting.champ.slug, meeting.slug]" class="btn btn-sm">
+							{{ meeting.year }}, {{ meeting.city }}
 						</a>
 					</li>
 				</ul>
-            </section> -->
+            </section>
 
             <section class="mb-4 d-block d-md-none">
                 <h2 class="h2-yellow">Related Articles</h2>

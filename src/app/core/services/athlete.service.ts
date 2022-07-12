@@ -66,11 +66,20 @@ export class AthleteService {
 
   /**
    * Get related athletes
-   * @param id
+   * @param athlete_id
    */
   @memoize()
   GetRelatedAthletes(athlete_id: number): Promise<IResponse> {
     return this.apiService.get(`/athletes/${athlete_id}/relateds`);
+  }
+
+  /**
+   * Get olympians
+   * @param athlete_id
+   */
+  @memoize()
+  GetOlympians(athlete_id: number): Promise<IResponse> {
+    return this.apiService.get(`/athletes/${athlete_id}/olympians`);
   }
 
   /**

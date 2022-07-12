@@ -7,11 +7,12 @@ import { IBreadcrumb, IAthlete, IMedal, IRelatedAthlete } from '@interfaces/inde
 import { ENavigation } from "@enums/navigation.enum";
 import { Article } from '@models/article.model';
 import { ArticleService } from '@services/article.service';
+import { Meeting } from '@models/meeting.model';
 
 @Component({
-  selector: "app-detail",
-  templateUrl: "./detail.component.html",
-  styleUrls: ["./detail.component.scss"],
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
   loading: boolean = true;
@@ -25,6 +26,7 @@ export class DetailComponent implements OnInit {
   medalsCount: any;
   medalsCountTotals = { gold: 0, silver: 0, bronze: 0, total: 0 };
   articles: Article[] = [];
+  olympians: Meeting[] = [];
 
   mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
 
@@ -64,7 +66,7 @@ export class DetailComponent implements OnInit {
       );
 
       this.breadcrumbs = [
-        { name: "Athletes", uri: `/athlete` },
+        { name: 'Athletes', uri: `/athlete` },
         {
           name: `${this.athlete.first_name} ${this.athlete.last_name} (${this.athlete.country_code})`,
           uri: `/athlete/${this.athlete.id}/${this.athlete.slug}`,
@@ -74,8 +76,9 @@ export class DetailComponent implements OnInit {
       this.getMedals();
       this.getRelatedAthletes();
       this.getArticles();
+      this.getOlympians();
     } else if (res.success) {
-      this.router.navigateByUrl("/404");
+      this.router.navigateByUrl('/404');
     } else {
       this.error = res.error;
     }
@@ -139,6 +142,13 @@ export class DetailComponent implements OnInit {
     const res = await this.athleteService.GetRelatedAthletes(this.athleteId);
     if (res.success) {
       this.relateds = res.data;
+    }
+  }
+
+  async getOlympians(): Promise<void> {
+    const res = await this.athleteService.GetOlympians(this.athleteId);
+    if (res.success) {
+      this.olympians = res.data;
     }
   }
 
