@@ -7,13 +7,17 @@
 
     <h1 class="h1 mb-4">Champs</h1>
 
-	<div *ngFor="let category of categories" class="champs">
-		<h2 class="h2-yellow">{{ category.name }}</h2>
-		<ul class="champs">
-			<li *ngFor="let item of category.champs">
-				<a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
-			</li>
-		</ul>
-	</div>
+	<ng-container *ngFor="let category of categories">
+		<div *ngIf="category.champs?.length" class="champs">
+
+			<h2 class="h2-yellow">{{ category.name }}</h2>
+			<ul class="champs">
+				<li *ngFor="let item of category.champs">
+					<a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
+				</li>
+			</ul>
+
+		</div>
+	</ng-container>
 
 </section>

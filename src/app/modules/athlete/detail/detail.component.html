@@ -35,7 +35,7 @@
 				<ul class="related-topics">
 					<li *ngFor="let meeting of olympians">
 						<a [routerLink]="['/champs', meeting.champ.slug, meeting.slug]" class="btn btn-sm">
-							{{ meeting.year }}, {{ meeting.city }}
+							{{ meeting.year }} {{ meeting.city }}
 						</a>
 					</li>
 				</ul>
@@ -242,7 +242,7 @@
 				<ul class="related-topics">
 					<li *ngFor="let meeting of olympians">
 						<a [routerLink]="['/champs', meeting.champ.slug, meeting.slug]" class="btn btn-sm">
-							{{ meeting.year }}, {{ meeting.city }}
+							{{ meeting.year }} {{ meeting.city }}
 						</a>
 					</li>
 				</ul>

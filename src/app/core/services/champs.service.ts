@@ -45,15 +45,13 @@ export class ChampsService {
   GetCounts(champs_id: number, limit?: number): Promise<IResponse> {
 
     const qs = GenerateQueryString({ limit });
-    
+
     return this.apiService.get(`/champs/${champs_id}/counts?${qs}`);
 
   }
 
   GetCategories(): ICategoryInfo[] {
-
     return ECategoryInfo.filter(i => i.champs);
-
   }
 
 }
