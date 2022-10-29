@@ -8,6 +8,8 @@ import { ENavigation } from "@enums/navigation.enum";
 import { Article } from '@models/article.model';
 import { ArticleService } from '@services/article.service';
 import { Meeting } from '@models/meeting.model';
+import { EMedal } from '@enums/medal.enum';
+import { ECategory } from '@enums/category.enum';
 
 @Component({
   selector: 'app-detail',
@@ -23,6 +25,7 @@ export class DetailComponent implements OnInit {
   athlete: IAthlete;
   relateds: IRelatedAthlete[] = [];
   medals: IMedal[] = [];
+  medalsNationals: IMedal[] = [];
   medalsCount: any;
   medalsCountTotals = { gold: 0, silver: 0, bronze: 0, total: 0 };
   articles: Article[] = [];
@@ -90,14 +93,23 @@ export class DetailComponent implements OnInit {
     const res = await this.athleteService.GetAthleteAllMedals(this.athleteId);
     if (res.success) {
       this.medals = res.data;
-      this.calculateMedalsCounts(res.data);
+      this.seperateNationalsMedals();
+      this.calculateMedalsCounts();
     }
   }
 
-  calculateMedalsCounts(medals: IMedal[]): void {
-    let counts = {};
+  seperateNationalsMedals(): void {
+    this.medalsNationals = this.medals.filter(
+      (m) => m.champ.category === ECategory.NATIONALS
+    );
+    this.medals = this.medals.filter(
+      (m) => m.champ.category !== ECategory.NATIONALS
+    );
+  }
 
-    medals.forEach((item) => {
+  calculateMedalsCounts(): void {
+    const counts = {};
+    this.medals.forEach((item) => {
       if (item.is_canceled === false) {
         if (counts[item.champ_id] === undefined) {
           counts[item.champ_id] = item.champ;
@@ -110,15 +122,15 @@ export class DetailComponent implements OnInit {
         }
 
         switch (item.medal) {
-          case 1:
+          case EMedal.GOLD:
             counts[item.champ_id].medals.gold++;
             this.medalsCountTotals.gold++;
             break;
-          case 2:
+          case EMedal.SILVER:
             counts[item.champ_id].medals.silver++;
             this.medalsCountTotals.silver++;
             break;
-          case 3:
+          case EMedal.BRONZE:
             counts[item.champ_id].medals.bronze++;
             this.medalsCountTotals.bronze++;
             break;
@@ -128,14 +140,11 @@ export class DetailComponent implements OnInit {
       }
     });
 
-    let countsArray = Object.values(counts);
-    countsArray = countsArray.sort((a: any, b: any) => {
+    this.medalsCount = Object.values(counts).sort((a: any, b: any) => {
       if (a.rank > b.rank) return 1;
       if (a.rank < b.rank) return -1;
       return 0;
     });
-
-    this.medalsCount = countsArray;
   }
 
   async getRelatedAthletes(): Promise<void> {
