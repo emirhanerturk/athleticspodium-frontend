@@ -10,13 +10,13 @@
     <div class="row">
         <div class="col-md-3">
 
-            <section>
+            <section class="mb-4">
 
                 <h4 class="h2-yellow">
                     Meetings
                 </h4>
 
-                <div *ngIf="champs.meetings.length" class="card mb-4">
+                <div *ngIf="champs.meetings.length" class="card">
 
                     <ul class="meetings d-none d-md-block">
                         <li *ngFor="let meeting of champs.meetings">
@@ -35,13 +35,13 @@
 
                 </div>
 
-				<div *ngIf="!champs.meetings.length" class="mb-4">
+				<div *ngIf="!champs.meetings.length">
 					Not found any meeting.
 				</div>
 
             </section>
 
-            <section *ngIf="!loading && totals" class="d-none d-md-block">
+            <section *ngIf="!loading && totals" class="d-none d-md-block mb-4">
 
                 <h4 class="h2-yellow">
                     Total Medals
@@ -51,7 +51,7 @@
 
             </section>
 
-			<section class="mb-4 d-none d-md-block">
+			<section class="d-none d-md-block mb-4">
                 <h2 class="h2-yellow">Related Articles</h2>
 				<app-articles [articles]="articles"></app-articles>
             </section>

@@ -4,7 +4,7 @@ import { ViewportScroller } from '@angular/common';
 
 import { AppService, ChampsService, MeetingService } from "@services/index";
 import { IBreadcrumb, IChamps, IMeeting } from '@interfaces/index';
-import { ENavigation, EGender } from "@enums/index";
+import { ENavigation, EGender, ECategory } from "@enums/index";
 import { Article } from '@models/article.model';
 import { ArticleService } from '@services/article.service';
 
@@ -54,27 +54,24 @@ export class MeetingComponent implements OnInit {
 
   }
 
-  async getChamps(champs_slug: string){
-
+  async getChamps(slug: string){
     this.loading = true;
     this.error = null;
 
-    const res = await this.champsService.GetChamps(champs_slug);
-    if (res.success){
+    const res = await this.champsService.GetChamps(slug);
+    if (res.success) {
       this.champs = res.data;
     } else {
       this.error = res.error;
     }
 
     this.loading = false;
-
   }
 
-  async getMeeting(meeting_slug: string){
-
+  async getMeeting(slug: string){
     this.loading_meeting = true;
 
-    const res = await this.meetingService.GetMeeting(meeting_slug);
+    const res = await this.meetingService.GetMeeting(slug);
     if (res.success){
 
       this.meeting = res.data;
@@ -100,33 +97,31 @@ export class MeetingComponent implements OnInit {
 
   }
 
-  async getMedals(){
-
+  async getMedals() {
     const res = await this.meetingService.GetMedals(this.meeting.id);
-    if (res.success){
+    if (res.success) {
       this.events = res.data;
     } else {
       this.error = res.error;
     }
-
   }
 
-  async getTotals(){
+  async getTotals() {
+    if (this.champs.category === ECategory.NATIONALS) {
+      return;
+    }
 
     const res = await this.meetingService.GetCounts(this.meeting.id);
-    if (res){
+    if (res) {
       this.totals = res.data;
     }
-
   }
 
-  async getArticles(){
-
+  async getArticles() {
     const res = await this.articleService.List({ meeting: this.meeting.id }, 5);
-    if (res.success){
+    if (res.success) {
       this.articles = res.data.rows;
     }
-
   }
 
   scrollToGender(gender: string) {
