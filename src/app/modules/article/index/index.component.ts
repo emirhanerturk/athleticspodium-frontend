@@ -40,7 +40,7 @@ export class IndexComponent implements OnInit {
 
   async getArticles(): Promise<void> {
 
-    const limit = this.pageSize * this.page;
+    const limit = this.pageSize;
     const offset = this.pageSize * (this.page - 1);
 
     const res = await this.articleService.List({}, limit, offset);
