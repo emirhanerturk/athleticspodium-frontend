@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '@env/environment';
 
 import { AppService, ChampsService } from "@services/index";
 import { IBreadcrumb, IChamps } from '@interfaces/index';
@@ -22,6 +23,8 @@ export class DetailComponent implements OnInit {
   totals: any[];
 
   articles: Article[] = [];
+
+  mediaPath = `${environment.cdn.host}/${environment.cdn.media.champs}`;
 
   constructor(
     private route: ActivatedRoute,

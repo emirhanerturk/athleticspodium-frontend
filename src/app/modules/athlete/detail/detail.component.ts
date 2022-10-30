@@ -17,7 +17,7 @@ import { ECategory } from '@enums/category.enum';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-  loading: boolean = true;
+  loading = true;
   error: any;
   breadcrumbs: IBreadcrumb[];
 
@@ -31,10 +31,10 @@ export class DetailComponent implements OnInit {
   articles: Article[] = [];
   olympians: Meeting[] = [];
 
-  mediaPath: string = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
+  mediaPath = `${environment.cdn.host}/${environment.cdn.media.athletes}`;
 
-  showPicture: number = null;
-  expandBio: boolean = false;
+  showPicture = -1;
+  expandBio = false;
 
   constructor(
     private route: ActivatedRoute,
