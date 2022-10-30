@@ -64,8 +64,8 @@
             <ng-container *ngIf="!loading">
 
                 <section class="card champs-detail mb-4">
-                    <figure>
-                        <img [attr.src]="mediaPath + '/' + champs.slug +  '.jpg'" class="img-cover" [attr.alt]="champs.name">
+                    <figure *ngIf="!champsImageError">
+                        <img [attr.src]="mediaPath + '/' + champs.slug +  '.jpg'" class="img-cover" width="800" height="400" [attr.alt]="champs.name" (error)="champsImageError = true">
                     </figure>
                     <h1 class="h1 h1-larger">
                         {{ champs.name }}

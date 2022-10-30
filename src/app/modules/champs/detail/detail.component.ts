@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
   articles: Article[] = [];
 
   mediaPath = `${environment.cdn.host}/${environment.cdn.media.champs}`;
+  champsImageError = false;
 
   constructor(
     private route: ActivatedRoute,
