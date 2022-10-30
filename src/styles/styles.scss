@@ -130,18 +130,15 @@ body {
         letter-spacing: -1px;
     }
 
-    .canceled {
-
+    tr.canceled {
         td {
             color: #de2d2d;
             text-decoration: line-through;
-
-            &:hover {
-                text-decoration: none !important;
-            }
-
         }
 
+		&:hover td {
+			text-decoration: none !important;
+		}
     }
 
     .invalid-wind {
