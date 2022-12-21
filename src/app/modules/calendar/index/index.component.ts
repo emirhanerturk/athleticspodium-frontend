@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService, MeetingService } from '@services/index';
 import { IMeeting, IError } from '@interfaces/index';
 import { ENavigation } from "@enums/navigation.enum";
+import { ECategory } from '@enums/category.enum';
 
 @Component({
   selector: 'app-index',
@@ -18,6 +19,10 @@ export class IndexComponent implements OnInit {
   activeYear = new Date().getFullYear();
   meetings: IMeeting[] = [];
 
+  showNationals = false;
+
+  ECategory = ECategory;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -25,7 +30,7 @@ export class IndexComponent implements OnInit {
     private meetingService: MeetingService
   ) {
     const currentYear = new Date().getFullYear();
-    for (let i = currentYear + 5; i > 1919; i--) {
+    for (let i = currentYear + 5; i > 1859; i--) {
       this.years.push(i);
     }
   }

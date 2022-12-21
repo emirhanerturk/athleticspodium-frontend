@@ -39,6 +39,10 @@
 
             <h1 class="h1">
                 {{ activeYear }} Calendar
+				<label *ngIf="meetings.length" class="national-checkbox">
+					<input type="checkbox" [checked]="showNationals" (change)="showNationals = !showNationals" />
+					Show National Championships
+				</label>
             </h1>
 
             <app-loader *ngIf="loading" size="partial"></app-loader>
@@ -58,7 +62,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let meeting of meetings">
+							<ng-container *ngFor="let meeting of meetings">
+                            <tr *ngIf="meeting.champ.category !== ECategory.NATIONALS || showNationals">
                                 <td>
                                     <a [routerLink]="'/champs/' + meeting.champ.slug + '/' + meeting.slug">
                                         {{ meeting.name }} {{ meeting.short_name ? '(' + meeting.short_name + ')' : '' }}
@@ -80,6 +85,7 @@
                                     </ng-container>
                                 </td>
                             </tr>
+							</ng-container>
                         </tbody>
                     </table>
                 </div>

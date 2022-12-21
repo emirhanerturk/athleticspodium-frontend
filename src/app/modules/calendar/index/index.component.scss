@@ -1,3 +1,4 @@
+@import 'variables';
 
 .years {
     font-weight: bold;
@@ -39,6 +40,18 @@
             }
 
         }
-        
+
+    }
+}
+
+.national-checkbox {
+	font-size: 12px;
+	font-weight: normal;
+	vertical-align: middle;
+	margin-left: 12px;
+
+	@media #{$responsive-md} {
+        display: block;
+		margin-left: 0;
     }
 }
