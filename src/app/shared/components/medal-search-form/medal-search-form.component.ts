@@ -52,7 +52,7 @@ export class MedalSearchFormComponent implements OnInit {
     private countryService: CountryService,
     private eventService: EventService) {
 
-    for (let i = new Date().getFullYear(); i > 1919; i--) {
+    for (let i = new Date().getFullYear(); i > 1859; i--) {
       this._years.push(i);
     }
     this.years = this._years;
@@ -128,6 +128,8 @@ export class MedalSearchFormComponent implements OnInit {
 
     } else {
       this.countries = this._countries;
+
+      this.years = this._years;
 
       if (this.formValues.country){
         const country = this._countries.find(i => i.code === this.formValues.country);
