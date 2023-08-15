@@ -7,6 +7,7 @@ export enum ECategory {
   OCEANIA,
   REGIONAL,
   NATIONALS,
+  ROAD_RACES,
 }
 
 export interface ICategoryInfo {
@@ -62,6 +63,12 @@ export const ECategoryInfo: ICategoryInfo[] = [
   {
     id: 7,
     name: 'National',
+    champs: true,
+    country: false,
+  },
+  {
+    id: 8,
+    name: 'Road Races',
     champs: true,
     country: false,
   },
