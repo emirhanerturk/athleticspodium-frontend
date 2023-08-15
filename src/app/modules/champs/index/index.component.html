@@ -7,17 +7,49 @@
 
     <h1 class="h1 mb-4">Champs</h1>
 
-	<ng-container *ngFor="let category of categories">
-		<div *ngIf="category.champs?.length" class="champs">
+	<div class="row">
+		<div class="col-md-3 d-none d-md-block">
 
-			<h2 class="h2-yellow">{{ category.name }}</h2>
+			<div class="card mb-4">
+				<ul class="categories">
+					<li *ngFor="let category of categories">
+						<span type="button" (click)="setActiveCategory(category.id)" [class.active]="activeCategory === category.id">
+							{{ category.name }}
+						</span>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="col-12 col-md-9">
+
+			<section class="d-block d-md-none mb-4">
+
+				<h4 class="h2-yellow">
+					Categories
+				</h4>
+
+				<select class="form-select" name="category" [value]="activeCategory" (change)="setActiveCategory($event.target.value)">
+					<ng-container *ngFor="let category of categories">
+						<option [value]="category.id">{{ category.name }}</option>
+					</ng-container>
+				</select>
+
+			</section>
+
+			<h2 class="h2-yellow">
+				{{ categories[activeCategory].name }}
+			</h2>
+
 			<ul class="champs">
-				<li *ngFor="let item of category.champs">
-					<a [routerLink]="'/champs/' + item.slug">{{ item.name }}</a>
+				<li *ngFor="let champ of filteredChamps">
+					<a [routerLink]="'/champs/' + champ.slug">
+						{{ champ.name }}
+					</a>
 				</li>
 			</ul>
 
 		</div>
-	</ng-container>
+	</div>
 
 </section>

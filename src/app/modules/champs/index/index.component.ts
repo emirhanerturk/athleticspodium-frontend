@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppService, ChampsService } from '@services/index';
-import { IChamps, IError } from '@interfaces/index';
+import { IError } from '@interfaces/index';
 import { ENavigation, ICategoryInfo } from '@enums/index';
+import { Champ } from '@models/champ.model';
 
 @Component({
   selector: 'app-index',
@@ -14,6 +15,9 @@ export class IndexComponent implements OnInit {
   error: IError | IError[];
 
   categories: ICategoryInfo[];
+  champs: Champ[] = [];
+  filteredChamps: Champ[] = [];
+  activeCategory: number = 0;
 
   constructor(
     private appService: AppService,
@@ -40,18 +44,19 @@ export class IndexComponent implements OnInit {
 
     const res = await this.champsService.List(['id', 'name', 'category']);
     if (res.success) {
-      const champs = res.data.rows;
-
-      this.categories.map((category) => {
-        category.champs = champs.filter(
-          (i: IChamps) => i.category === category.id
-        );
-        return category;
-      });
+      this.champs = res.data.rows;
+      this.setActiveCategory(0);
     } else {
       this.error = res.error;
     }
 
     this.loading = false;
+  }
+
+  setActiveCategory(id: string | number) {
+    this.activeCategory = Number(id);
+    this.filteredChamps = this.champs.filter(
+      (c) => c.category === this.activeCategory
+    );
   }
 }
