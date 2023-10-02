@@ -10,14 +10,15 @@ export const environment = {
       athletes: 'media/athletes',
       champs: 'media/champs',
       articles: 'media/articles',
-    }
+    },
   },
   analytics: {
-    trackerId: 'G-7EDH9146FP'
+    trackerId: 'G-7EDH9146FP',
   },
   socialMedia: {
-    twitter: 'athleticspodium',
+    // twitter: 'athleticspodium',
+    mastadon: 'athleticspodium',
     facebook: 'athleticspodium',
-    instagram: 'athleticspodium'
-  }
+    instagram: 'athleticspodium',
+  },
 };

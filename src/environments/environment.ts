@@ -20,7 +20,8 @@ export const environment = {
     trackerId: 'G-7EDH9146FP'
   },
   socialMedia: {
-    twitter: 'athleticspodium',
+    // twitter: 'athleticspodium',
+    mastadon: 'athleticspodium',
     facebook: 'athleticspodium',
     instagram: 'athleticspodium'
   },

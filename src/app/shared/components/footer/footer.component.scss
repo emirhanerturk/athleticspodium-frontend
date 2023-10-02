@@ -84,12 +84,12 @@
                 @media #{$responsive-sm} {
                     margin: 0 5px;
                 }
-            
+
                 svg {
                     width: 22px;
                     height: 22px;
 
-                    path {
+                    path:not(.transparent) {
                         fill: #fff;
                     }
                 }

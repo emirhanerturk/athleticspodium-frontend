@@ -55,12 +55,12 @@
                 height: 32px;
                 margin-right: 20px;
 
-                path {
+                path:not(.transparent) {
                     fill: #fff;
                     transition: all .3s ease;
                 }
 
-                &:hover path {
+                &:hover path:not(.transparent) {
                     fill: #ffdd00;
                 }
             }
