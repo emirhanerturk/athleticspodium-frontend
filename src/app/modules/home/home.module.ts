@@ -12,13 +12,18 @@ import { DirectivesModule } from '@shared/modules/directives/directives.module';
 import { PipesModule } from '@shared/modules/pipes/pipes.module';
 
 @NgModule({
-  declarations: [IndexComponent, AboutComponent, SimpleNotesComponent, MissingInformationComponent],
+  declarations: [
+    IndexComponent,
+    AboutComponent,
+    SimpleNotesComponent,
+    MissingInformationComponent,
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ComponentsModule,
     DirectivesModule,
     PipesModule,
-  ]
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}
