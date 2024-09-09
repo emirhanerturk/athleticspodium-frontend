@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -19,25 +19,50 @@
       "dom"
     ],
     "paths": {
-      /* core */
-      "@services/*": ["src/app/core/services/*"],
-      "@enums/*": ["src/app/core/enums/*"],
-      "@pipes/*": ["src/app/core/pipes/*"],
-      "@interfaces/*": ["src/app/core/interfaces/*"],
-      "@models/*": ["src/app/core/models/*"],
-      "@directives/*": ["src/app/core/directives/*"],
-      "@guards/*": ["src/app/core/guards/*"],
-      "@decorators/*": ["src/app/core/decorators/*"],
-      "@interceptors/*": ["src/app/core/interceptors/*"],
-      /* shared */
-      "@layouts/*": ["src/app/shared/layouts/*"],
-      /* env */
-      "@env/*": ["src/environments/*"],
-      /* app */
-      "@core/*": ["src/app/core/*"],
-      "@modules/*": ["src/app/modules/*"],
-      "@shared/*": ["src/app/shared/*"],
-    }
+      "@services/*": [
+        "src/app/core/services/*"
+      ],
+      "@enums/*": [
+        "src/app/core/enums/*"
+      ],
+      "@pipes/*": [
+        "src/app/core/pipes/*"
+      ],
+      "@interfaces/*": [
+        "src/app/core/interfaces/*"
+      ],
+      "@models/*": [
+        "src/app/core/models/*"
+      ],
+      "@directives/*": [
+        "src/app/core/directives/*"
+      ],
+      "@guards/*": [
+        "src/app/core/guards/*"
+      ],
+      "@decorators/*": [
+        "src/app/core/decorators/*"
+      ],
+      "@interceptors/*": [
+        "src/app/core/interceptors/*"
+      ],
+      "@layouts/*": [
+        "src/app/shared/layouts/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
