@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, Directive } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 
@@ -9,6 +9,7 @@ import { memoize } from "@decorators/memoize.decorator";
 
 declare var gtag: any;
 
+@Directive()
 @Injectable({
   providedIn: 'root'
 })
