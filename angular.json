@@ -68,9 +68,13 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -78,10 +82,11 @@
             "buildTarget": "AthleticsPodium:build"
           },
           "configurations": {
-            "production": {
-              "buildTarget": "AthleticsPodium:build:production"
+            "development": {
+              "buildTarget": "AthleticsPodium:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
