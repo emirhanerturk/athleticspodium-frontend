@@ -1,39 +1,32 @@
 import { Injectable } from '@angular/core';
 
-import { ApiService } from "@services/api.service";
-import { GenerateQueryString } from "@services/util.service";
+import { ApiService } from '@services/api.service';
+import { GenerateQueryString } from '@services/util.service';
 import { IResponse } from '@interfaces/response.interface';
-import { memoize } from "@decorators/memoize.decorator";
+import { memoize } from '@decorators/memoize.decorator';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedalService {
+  constructor(private apiService: ApiService) {}
 
-  constructor(
-    private apiService: ApiService
-  ) { }
-
-  /**
-   * Get all medals
-   */
   @memoize({ json: true })
-  List (query: object): Promise<IResponse> {
-
+  List(query: object): Promise<IResponse> {
     const qs = GenerateQueryString(query);
 
     return this.apiService.get(`/medals?` + qs);
-
   }
 
-  /**
-   * Total count for medals
-   */
+  @memoize({ json: true })
+  CountryChamps(query: object): Promise<IResponse> {
+    const qs = GenerateQueryString(query);
+
+    return this.apiService.get(`/medals/country-champs?` + qs);
+  }
+
   @memoize()
-  TotalCount (): Promise<IResponse> {
-
+  TotalCount(): Promise<IResponse> {
     return this.apiService.get(`/medals/total-count`);
-
   }
-
 }

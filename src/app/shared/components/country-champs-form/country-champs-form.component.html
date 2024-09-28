@@ -1,0 +1,35 @@
+<section class="country-champs" [class.vertical]="vertical" [class.card]="!vertical">
+
+	<div class="country-champs-form">
+		<div class="form-group">
+			<label *ngIf="vertical" class="form-label text-nowrap" for="">Country:</label>
+			<select name="country" class="form-select" [(ngModel)]="form.country" (change)="formValuesChanges()">
+				<option value="">Select a Country</option>
+				<option *ngFor="let country of countries" [value]="country.code">
+					{{ country.name }} ({{ country.code }})
+				</option>
+			</select>
+		</div>
+
+		<div *ngIf="!vertical" class="country-champs-form-sep">
+			X
+		</div>
+
+		<div class="form-group">
+			<label *ngIf="vertical" class="form-label text-nowrap" for="">Championship:</label>
+			<select name="champs" class="form-select" [(ngModel)]="form.champ" (change)="formValuesChanges()">
+				<option value="">Select a Championship</option>
+				<option *ngFor="let champ of champs" [value]="champ.id">
+					{{ champ.name }}
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button type="button" [disabled]="!form.country || !form.champ" (click)="getMedals()" class="btn" [class.btn-block]="vertical">
+			<span>Get Medals</span>
+		</button>
+	</div>
+
+</section>

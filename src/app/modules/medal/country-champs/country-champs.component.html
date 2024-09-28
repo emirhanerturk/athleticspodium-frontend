@@ -1,0 +1,61 @@
+<section class="main-container">
+
+	<h1 class="h1 text-center mb-4">
+		Country x Champs
+	</h1>
+
+	<app-country-champs-form (search)="getMedals($event)" (selectedChamp)="selectedChamp = $event" />
+
+	<div *ngIf="firstSearch" class="mt-4">
+
+		<section *ngIf="loading || (!loading && !table?.length)" class="card text-center p-4 mb-4">
+			<p *ngIf="!loading && !table?.length" class="">
+				No result.
+			</p>
+			<app-loader *ngIf="loading" [size]="'partial'"></app-loader>
+		</section>
+
+		<div *ngIf="firstSearch && !loading && table?.length" class="table-responsive">
+			<table class="table-medals">
+				<thead>
+					<tr>
+						<th>Meeting</th>
+						<th class="text-center">Gold</th>
+						<th class="text-center">Silver</th>
+						<th class="text-center">Bronze</th>
+						<th class="text-center">Total</th>
+						<th style="width: 120px;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of table">
+						<td>
+							<a [routerLink]="'/champs/' + selectedChamp.slug + '/' + item.meeting.slug">
+								{{ item.meeting.name }}
+							</a>
+						</td>
+						<td class="text-center">{{ item.gold }}</td>
+						<td class="text-center">{{ item.silver }}</td>
+						<td class="text-center">{{ item.bronze }}</td>
+						<td class="text-center font-bold">{{ item.total }}</td>
+						<td class="text-center">
+							<a [routerLink]="['/medals/search', { champs: form.champ, country: form.country, year: item.meeting.year } ]" target="_blank" class="btn btn-sm">
+								Details &rarr;
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Total</td>
+						<td class="text-center font-bold">{{ totals.gold }}</td>
+						<td class="text-center font-bold">{{ totals.silver }}</td>
+						<td class="text-center font-bold">{{ totals.bronze }}</td>
+						<td class="text-center font-bold">{{ totals.total }}</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</section>

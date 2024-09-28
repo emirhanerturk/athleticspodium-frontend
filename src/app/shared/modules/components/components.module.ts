@@ -11,13 +11,10 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { CountryMedalCountTableComponent } from '@shared/components/country-medal-count-table/country-medal-count-table.component';
 import { ContactFormComponent } from '@shared/components/contact-form/contact-form.component';
 import { ArticlesComponent } from '@shared/components/articles/articles.component';
+import { CountryChampsFormComponent } from '@shared/components/country-champs-form/country-champs-form.component'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, RouterModule, FormsModule],
   declarations: [
     LoaderComponent,
     ErrorComponent,
@@ -26,7 +23,8 @@ import { ArticlesComponent } from '@shared/components/articles/articles.componen
     PaginationComponent,
     CountryMedalCountTableComponent,
     ContactFormComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    CountryChampsFormComponent,
   ],
   exports: [
     LoaderComponent,
@@ -36,7 +34,8 @@ import { ArticlesComponent } from '@shared/components/articles/articles.componen
     PaginationComponent,
     CountryMedalCountTableComponent,
     ContactFormComponent,
-    ArticlesComponent
-  ]
+    ArticlesComponent,
+    CountryChampsFormComponent,
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

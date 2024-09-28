@@ -33,41 +33,6 @@
 
 			</section>
 
-            <!-- <section class="intro card p-0 mb-4">
-                <a routerLink="/about">
-                    <img src="/assets/media/home-intro.jpg" class="img-fluid border-radius-2" alt="">
-                </a>
-                <div class="text-content text-content-static p-4">
-
-                    <h1 class="h1">WELCOME TO MEDAL HEAVEN</h1>
-
-                    <p>
-                        Eight years ago, we started our journey digital publishing with an athletics dedicated web site & magazine in Turkey (Atletizm Dünyası). Our printed magazine closed in late 2014, but web site continued on its way until this year, along with <a href="https://twitter.com/atletizmdunyasi" target="_blank" rel="noopener noreferrer">@atletizmdunyasi</a> on twitter, which is one of the most trusted micro news sources. Now, we’re opening a new chapter on our publication scale: Newly-formed data-driven athletics database: Athleticspodium.com
-                    </p>
-
-                    <p>
-                        Athletics Podium is aiming to become the main hub for athletics info-seekers. While the site will be storing all distributed medals in the international scene, also aiming to compile encyclopedia notes on medal-winning heroes.
-                    </p>
-
-                    <p>
-                        We’re in testing period now for a while. but you can trace thousands medals which distributed in 57 different championships from South America to Asia.
-                    </p>
-
-                    <p>
-                        More on Athletics Podium, <a routerLink="/about">click here.</a>
-                    </p>
-
-                    <p>
-                        Looking to some useful notes about data, <a routerLink="/simple-notes">click here.</a>
-                    </p>
-
-                    <p>
-                        Helping to missing medals and collaboration issues, <a routerLink="/missing-information">look here.</a>
-                    </p>
-
-                </div>
-            </section> -->
-
             <section class="mb-4" *ngIf="featuredAthletes?.length">
                 <h2 class="h2-yellow">Featured Athletes</h2>
                 <div class="card featured-athletes">
@@ -156,6 +121,13 @@
                     <app-medal-search-form></app-medal-search-form>
                 </div>
             </section>
+
+			<section>
+				<h2 class="h2-yellow">Country x Champs</h2>
+				<div class="card mb-4">
+					<app-country-champs-form (search)="countryChampSearch($event)" [vertical]="true" />
+				</div>
+			</section>
 
 			<section class="card p-0 mb-4">
 				<a routerLink="/article/199/paris-2024-all-information">
