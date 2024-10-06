@@ -59,8 +59,9 @@ export class CountryChampsFormComponent {
       'name'
     );
     if (resChamp.success) {
-      this.champs = resChamp.data.rows as IChamps[];
-      this.allChamps = resChamp.data.rows as IChamps[];
+      const rows = resChamp.data.rows.filter(c => c.category !== ECategory.ROAD_RACES && c.category !== ECategory.NATIONALS);
+      this.champs = rows;
+      this.allChamps = rows;
     }
 
     this.formValuesChanges();
