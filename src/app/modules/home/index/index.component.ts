@@ -97,4 +97,8 @@ export class IndexComponent implements OnInit {
       this.totalCount = res.data;
     }
   }
+
+  countryChampSearch(form: any): void {
+    this.router.navigate(['/medals/country-champs', form]);
+  }
 }

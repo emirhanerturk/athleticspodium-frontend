@@ -27,7 +27,7 @@
 	</div>
 
 	<div class="form-group">
-		<button type="button" [disabled]="!form.country || !form.champ" (click)="getMedals()" class="btn" [class.btn-block]="vertical">
+		<button type="button" [disabled]="!vertical && (!form.country || !form.champ)" (click)="getMedals()" class="btn" [class.btn-block]="vertical">
 			<span>Search</span>
 		</button>
 	</div>

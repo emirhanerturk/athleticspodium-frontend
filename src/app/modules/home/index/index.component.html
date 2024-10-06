@@ -122,6 +122,13 @@
                 </div>
             </section>
 
+			<section>
+				<h2 class="h2-yellow">Medal Countdown by Champs</h2>
+				<div class="card mb-4">
+					<app-country-champs-form (search)="countryChampSearch($event)" [vertical]="true" />
+				</div>
+			</section>
+
 			<section class="card p-0 mb-4">
 				<a routerLink="/article/199/paris-2024-all-information">
 					<img src="/assets/media/paris-2024.png" class="img-fluid border-radius-2" alt="">
