@@ -38,7 +38,7 @@ export class CountryChampsComponent {
 
   ngOnInit(): void {
     this.appService.setNavigation(null);
-    this.appService.setTitle('Country x Champs');
+    this.appService.setTitle('Medal Countdown by Champs');
     this.appService.setMeta(
       'You can search any medal in athletics history, sorted by country, type, event, or year.'
     );
