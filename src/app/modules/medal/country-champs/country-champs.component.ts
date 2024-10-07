@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IError } from '@interfaces/index';
 import { IChamps } from '@interfaces/models.interface';
 import { AppService } from '@services/app.service';
@@ -32,6 +32,7 @@ export class CountryChampsComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appService: AppService,
     private medalService: MedalService
   ) {}
@@ -45,6 +46,7 @@ export class CountryChampsComponent {
 
     this.route.params.subscribe((queries) => {
       if (Object.keys(queries).length) {
+        this.form = { ...queries as any };
         this.searchMedals();
       }
     });
@@ -52,7 +54,7 @@ export class CountryChampsComponent {
 
   getMedals(form: any): void {
     this.form = form;
-    this.searchMedals();
+    this.router.navigate(['/medals/country-champs', form]);
   }
 
   async searchMedals() {
