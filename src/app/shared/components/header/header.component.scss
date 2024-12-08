@@ -49,19 +49,15 @@
         }
 
         .social-media {
+			color: #fff;
 
             svg {
                 width: 32px;
                 height: 32px;
                 margin-right: 20px;
 
-                path:not(.transparent) {
-                    fill: #fff;
-                    transition: all .3s ease;
-                }
-
-                &:hover path:not(.transparent) {
-                    fill: #ffdd00;
+                &:hover {
+                    color: #ffdd00;
                 }
             }
 
