@@ -16,9 +16,8 @@ export const environment = {
     trackerId: 'G-7EDH9146FP',
   },
   socialMedia: {
-    // twitter: 'athleticspodium',
-    mastadon: 'athleticspodium',
-    facebook: 'athleticspodium',
-    instagram: 'athleticspodium',
+    bluesky: 'https://bsky.app/profile/athleticspodium.bsky.social',
+    facebook: 'https://www.facebook.com/athleticspodium',
+    instagram: 'https://www.instagram.com/athleticspodium',
   },
 };
