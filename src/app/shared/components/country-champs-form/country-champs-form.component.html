@@ -2,8 +2,8 @@
 
 	<div class="country-champs-form">
 		<div class="form-group">
-			<label *ngIf="vertical" class="form-label text-nowrap" for="">Country:</label>
-			<select name="country" class="form-select" [(ngModel)]="form.country" (change)="formValuesChanges()">
+			<label *ngIf="vertical" class="form-label text-nowrap" for="ccf-country">Country:</label>
+			<select name="ccf-country" class="form-select" [(ngModel)]="form.country" (change)="formValuesChanges()">
 				<option value="">Select a Country</option>
 				<option *ngFor="let country of countries" [value]="country.code">
 					{{ country.name }} ({{ country.code }})
@@ -16,8 +16,8 @@
 		</div>
 
 		<div class="form-group">
-			<label *ngIf="vertical" class="form-label text-nowrap" for="">Championship:</label>
-			<select name="champs" class="form-select" [(ngModel)]="form.champ" (change)="formValuesChanges()">
+			<label *ngIf="vertical" class="form-label text-nowrap" for="ccf-champ">Championship:</label>
+			<select id="ccf-champ" name="champs" class="form-select" [(ngModel)]="form.champ" (change)="formValuesChanges()">
 				<option value="">Select a Championship</option>
 				<option *ngFor="let champ of champs" [value]="champ.id">
 					{{ champ.name }}
