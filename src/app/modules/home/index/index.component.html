@@ -7,7 +7,7 @@
 
 				<a [routerLink]="['/article', featuredArticle.article.id, featuredArticle.article.slug]" class="card featured-article-headline">
 					<figure class="article-figure">
-						<img [src]="mediaPathArticle + featuredArticle.article.image.uri" alt="">
+						<img [src]="mediaPathArticle + featuredArticle.article.image.uri" alt="" fetchpriority="high">
 					</figure>
 					<div class="article-content">
 						<h2>{{ featuredArticle.article.title }}</h2>
@@ -202,7 +202,7 @@
                 <h2 class="h2-yellow">Total Medal Count</h2>
                 <div class="card total-medal-card">
                     <h6>
-                        {{ totalCount }}
+                        {{ totalCount.toLocaleString() }}
                     </h6>
                     <p>Number of medals currently available on the site.</p>
                 </div>
