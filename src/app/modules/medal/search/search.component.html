@@ -84,7 +84,7 @@
                             <td *ngIf="medal.athlete">
                                 <a [routerLink]="'/athlete/' + medal.athlete_id + '/' + medal.athlete.slug">
                                     {{ medal.athlete_name ? medal.athlete_name : medal.athlete.first_name + ' ' + medal.athlete.last_name }}
-                                    <img *ngIf="medal.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="">
+                                    <img *ngIf="medal.athlete.olympic_mark" class="olympic-rings" src="/assets/icons/olympic-rings.svg" alt="" width="1020" height="495">
                                 </a>
                             </td>
                             <td *ngIf="!medal.athlete">
