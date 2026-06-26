@@ -97,6 +97,9 @@
 			<li [class.active]="activeNav === ENavigation.ARTICLES">
 				<a routerLink="/article">Articles</a>
 			</li>
+			<li [class.active]="activeNav === ENavigation.COMPARE">
+				<a routerLink="/compare">Compare</a>
+			</li>
 			<li [class.active]="activeNav === ENavigation.ABOUT">
 				<a routerLink="/about">About</a>
 			</li>
@@ -146,6 +149,12 @@
 			(click)="mobileMenuToggler(false)"
 		>
 			<a routerLink="/article">Articles</a>
+		</li>
+		<li
+			[class.active]="activeNav === ENavigation.COMPARE"
+			(click)="mobileMenuToggler(false)"
+		>
+			<a routerLink="/compare">Compare</a>
 		</li>
 		<li
 			[class.active]="activeNav === ENavigation.ABOUT"

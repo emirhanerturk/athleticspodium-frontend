@@ -1,0 +1,269 @@
+<app-error *ngIf="error" [error]="error"></app-error>
+
+<app-breadcrumb [data]="breadcrumbs"></app-breadcrumb>
+
+<section class="main-container">
+	<h1 class="h1">Compare Championships</h1>
+	<p class="intro">
+		Pick two championships and an event to compare their winners — and marks
+		— year by year.
+	</p>
+
+	<app-loader *ngIf="loading"></app-loader>
+
+	<ng-container *ngIf="!loading">
+		<div class="card">
+			<form
+				(ngSubmit)="onSubmit(form)"
+				#form="ngForm"
+				class="form-horizontal align-items-end"
+			>
+				<div class="form-group">
+					<label class="form-label text-nowrap" for="cmp-a"
+						>* Championship A:</label
+					>
+					<select
+						id="cmp-a"
+						name="champA"
+						class="form-select"
+						[(ngModel)]="champAId"
+						(change)="onSelectionChange()"
+					>
+						<option [ngValue]="null">Select a Championship</option>
+						<option *ngFor="let c of champsList" [ngValue]="c.id">
+							{{ c.name }}
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label text-nowrap" for="cmp-b"
+						>* Championship B:</label
+					>
+					<select
+						id="cmp-b"
+						name="champB"
+						class="form-select"
+						[(ngModel)]="champBId"
+						(change)="onSelectionChange()"
+					>
+						<option [ngValue]="null">Select a Championship</option>
+						<option *ngFor="let c of champsList" [ngValue]="c.id">
+							{{ c.name }}
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label" for="cmp-gender">Gender:</label>
+					<select
+						id="cmp-gender"
+						name="gender"
+						class="form-select"
+						[(ngModel)]="gender"
+						(change)="onSelectionChange()"
+					>
+						<option value="">All</option>
+						<option value="0">Men</option>
+						<option value="1">Women</option>
+						<option value="2">Mixed</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label" for="cmp-event">* Event:</label>
+					<select
+						id="cmp-event"
+						name="event"
+						class="form-select"
+						[(ngModel)]="selectedOption"
+						[disabled]="!eventOptions.length"
+					>
+						<option [ngValue]="null">Select an Event</option>
+						<option *ngFor="let o of eventOptions" [ngValue]="o">
+							{{ o.label }}
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-block">
+						<span>Compare</span>
+					</button>
+				</div>
+			</form>
+
+			<div *ngIf="formError" class="mt-2">
+				*: please select both championships and an event
+			</div>
+		</div>
+
+		<app-loader *ngIf="loadingResults"></app-loader>
+
+		<ng-container *ngIf="submitted && !loadingResults && rows.length">
+			<div class="table-responsive mt-4">
+				<table class="table-medals">
+					<thead>
+						<tr>
+							<th rowspan="2" class="text-center">Year</th>
+							<th colspan="4" class="text-center">
+								{{ champA?.name }}
+							</th>
+							<th colspan="4" class="text-center">
+								{{ champB?.name }}
+							</th>
+							<th rowspan="2" class="text-center">Diff</th>
+						</tr>
+						<tr>
+							<th class="text-center">Medal</th>
+							<th>Athlete</th>
+							<th class="text-center">Country</th>
+							<th class="text-right">Mark</th>
+							<th class="text-center">Medal</th>
+							<th>Athlete</th>
+							<th class="text-center">Country</th>
+							<th class="text-right">Mark</th>
+						</tr>
+					</thead>
+					<tbody>
+						<ng-container
+							*ngFor="let row of rows; trackBy: trackByYear"
+						>
+							<tr>
+								<td
+									class="font-bold text-nowrap text-center year-cell"
+									[class.clickable]="hasExtra(row)"
+									(click)="onYearClick(row)"
+									[attr.aria-label]="
+										hasExtra(row)
+											? (isExpanded(row.year)
+												? 'Hide podium'
+												: 'Show podium')
+											: null
+									"
+								>
+									<span class="year-value">{{ row.year }}</span>
+									<span class="caret-slot">
+										<span
+											class="btn btn-sm expand-btn"
+											*ngIf="hasExtra(row)"
+											[class.open]="isExpanded(row.year)"
+										>
+											<svg
+												viewBox="0 0 24 24"
+												width="10"
+												height="10"
+												aria-hidden="true"
+											>
+												<path d="M8 5l8 7-8 7z" fill="currentColor" />
+											</svg>
+										</span>
+									</span>
+								</td>
+								<ng-container
+									*ngTemplateOutlet="
+										medalCells;
+										context: { m: row.winnerA }
+									"
+								></ng-container>
+								<ng-container
+									*ngTemplateOutlet="
+										medalCells;
+										context: { m: row.winnerB }
+									"
+								></ng-container>
+								<ng-container
+									*ngTemplateOutlet="
+										diffCell;
+										context: {
+											a: row.winnerA,
+											b: row.winnerB,
+										}
+									"
+								></ng-container>
+							</tr>
+
+							<ng-container *ngIf="isExpanded(row.year)">
+								<tr
+									*ngFor="let extra of getExtraRows(row)"
+									class="extra-row"
+								>
+									<td></td>
+									<ng-container
+										*ngTemplateOutlet="
+											medalCells;
+											context: { m: extra.a }
+										"
+									></ng-container>
+									<ng-container
+										*ngTemplateOutlet="
+											medalCells;
+											context: { m: extra.b }
+										"
+									></ng-container>
+									<ng-container
+										*ngTemplateOutlet="
+											diffCell;
+											context: { a: extra.a, b: extra.b }
+										"
+									></ng-container>
+								</tr>
+							</ng-container>
+						</ng-container>
+					</tbody>
+				</table>
+			</div>
+		</ng-container>
+
+		<p class="empty" *ngIf="submitted && !loadingResults && !rows.length">
+			No comparable years found for this selection.
+		</p>
+	</ng-container>
+</section>
+
+<!-- 4 cells for one medal (medal icon, athlete, country, mark) -->
+<ng-template #medalCells let-m="m">
+	<td class="text-center" [class.canceled]="m?.is_canceled">
+		<img
+			*ngIf="m?.medal"
+			[src]="(m.medal | medal).icon"
+			class="medal-icon"
+			alt=""
+		/>
+	</td>
+	<td [class.canceled]="m?.is_canceled">
+		<ng-container *ngIf="m; else dash">
+			<a
+				*ngIf="m.athlete"
+				[routerLink]="'/athlete/' + m.athlete_id + '/' + m.athlete.slug"
+			>
+				{{
+					m.athlete_name ||
+						m.athlete.first_name + ' ' + m.athlete.last_name
+				}}
+			</a>
+			<span *ngIf="!m.athlete">{{ m.athlete_name || '-' }}</span>
+		</ng-container>
+		<ng-template #dash>—</ng-template>
+	</td>
+	<td class="text-center text-nowrap">
+		<a *ngIf="m?.country_code" [routerLink]="'/country/' + m.country_code">
+			<img
+				class="country-flag"
+				[src]="'/assets/flags/' + m.country_code.toLowerCase() + '.svg'"
+				alt=""
+			/>
+			{{ m.country_code }}
+		</a>
+	</td>
+	<td class="text-right font-bold text-nowrap">{{ m?.mark_display }}</td>
+</ng-template>
+
+<!-- diff cell (A − B) -->
+<ng-template #diffCell let-a="a" let-b="b">
+	<td class="text-right text-nowrap font-bold">
+		<span *ngIf="diff(a, b) as d" [ngClass]="'diff-' + d.sign">{{
+			d.display
+		}}</span>
+	</td>
+</ng-template>

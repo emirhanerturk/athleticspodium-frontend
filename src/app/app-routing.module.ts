@@ -16,6 +16,7 @@ const routes: Routes = [
         { path: 'calendar', loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule) },
         { path: 'medals', loadChildren: () => import('./modules/medal/medal.module').then(m => m.MedalModule) },
         { path: 'article', loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule) },
+        { path: 'compare', loadChildren: () => import('./modules/compare/compare.module').then(m => m.CompareModule) },
     ]
   },
   {

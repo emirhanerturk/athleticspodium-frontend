@@ -6,5 +6,6 @@ export enum ENavigation {
     ATHLETES,
     CALENDAR,
     ARTICLES,
+    COMPARE,
     ABOUT,
 }

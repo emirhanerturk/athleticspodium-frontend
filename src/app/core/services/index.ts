@@ -3,6 +3,7 @@ export * from "@services/api.service";
 export * from "@services/app.service";
 export * from "@services/athlete.service";
 export * from "@services/champs.service";
+export * from "@services/compare.service";
 export * from "@services/contact.service";
 export * from "@services/country.service";
 export * from "@services/event.service";
