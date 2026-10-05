@@ -1,12 +1,13 @@
 export const environment = {
   production: false,
   api: {
-    host: 'https://api.athleticspodium.com',
-    // host: 'http://localhost:3001',
+    host: 'http://localhost:3001',
+    // host: 'https://api.athleticspodium.com',
     version: '1.0',
   },
   cdn: {
     host: 'https://api.athleticspodium.com',
+    // host: 'http://localhost:3001',
     media: {
       athletes: 'media/athletes',
       champs: 'media/champs',
