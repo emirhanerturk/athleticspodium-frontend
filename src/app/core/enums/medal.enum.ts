@@ -5,6 +5,9 @@ export enum EMedal {
     BRONZE = 3
 }
 
+// Finishing positions 4-8 share the medal column but are not medals: they have no icon and are never counted
+export const EPlacings: number[] = [4, 5, 6, 7, 8];
+
 export interface IMedalInfo {
     id: number,
     name: string,
