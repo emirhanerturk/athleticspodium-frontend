@@ -115,10 +115,10 @@
                                     <tbody>
                                         <tr *ngFor="let medal of event.medals" [class.canceled]="medal.is_canceled">
                                             <td class="p-0 text-center">
-                                                <p *ngIf="!medal.is_canceled" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
+                                                <p *ngIf="!medal.is_canceled && (medal.medal | medal).icon" [attr.aria-label]="(medal.medal | medal).name" data-balloon-pos="up">
                                                     <img [src]="(medal.medal | medal).icon" class="medal-icon" alt="">
                                                 </p>
-                                                <span *ngIf="medal.is_canceled">
+                                                <span *ngIf="medal.is_canceled || !(medal.medal | medal).icon">
                                                     {{ medal.medal ? medal.medal + '.' : '-'}}
                                                 </span>
                                             </td>

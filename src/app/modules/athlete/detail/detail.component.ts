@@ -8,7 +8,7 @@ import { ENavigation } from "@enums/navigation.enum";
 import { Article } from '@models/article.model';
 import { ArticleService } from '@services/article.service';
 import { Meeting } from '@models/meeting.model';
-import { EMedal } from '@enums/medal.enum';
+import { EMedal, EPlacings } from '@enums/medal.enum';
 import { ECategory } from '@enums/category.enum';
 
 @Component({
@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
   athlete: IAthlete;
   relateds: IRelatedAthlete[] = [];
   medals: IMedal[] = [];
+  medalsOthers: IMedal[] = [];
   medalsNationals: IMedal[] = [];
   medalsCount: any;
   medalsCountTotals = { gold: 0, silver: 0, bronze: 0, total: 0 };
@@ -93,18 +94,22 @@ export class DetailComponent implements OnInit {
     const res = await this.athleteService.GetAthleteAllMedals(this.athleteId);
     if (res.success) {
       this.medals = res.data;
-      this.seperateNationalsMedals();
+      this.separateMedals();
       this.calculateMedalsCounts();
     }
   }
 
-  seperateNationalsMedals(): void {
-    this.medalsNationals = this.medals.filter(
-      (m) => m.champ.category === ECategory.NATIONALS
-    );
-    this.medals = this.medals.filter(
+  // Splits the rows into medals, other achievements (4th-8th places) and national titles (medals only)
+  separateMedals(): void {
+    const isPlacing = (m: IMedal) => EPlacings.includes(m.medal);
+    const internationals = this.medals.filter(
       (m) => m.champ.category !== ECategory.NATIONALS
     );
+    this.medalsNationals = this.medals.filter(
+      (m) => m.champ.category === ECategory.NATIONALS && !isPlacing(m)
+    );
+    this.medalsOthers = internationals.filter(isPlacing);
+    this.medals = internationals.filter((m) => !isPlacing(m));
   }
 
   calculateMedalsCounts(): void {
